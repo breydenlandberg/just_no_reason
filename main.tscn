@@ -1,0 +1,354 @@
+[gd_scene format=3 uid="uid://d28k7ytseere4"]
+
+[ext_resource type="Texture2D" uid="uid://bq1gb0px7oo1h" path="res://assets/textures/Day0.exr" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://772t21cg58vo" path="res://ui/ui_manager.tscn" id="1_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://player/player.tscn" id="1_ig7tw"]
+[ext_resource type="Material" uid="uid://fj84wfp0ra3m" path="res://assets/materials/greybox.tres" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bdaq1v7cg2fay" path="res://killzone/killzone.tscn" id="3_efxa6"]
+[ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bh2tpishmathl" path="res://assets/textures/stone/shine_stone.png" id="5_272bh"]
+[ext_resource type="PackedScene" uid="uid://cqin7vy65rmcv" path="res://assets/models/godot_plush_model/godot_plush_model_inherited.tscn" id="7_272bh"]
+[ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://f850uti4ula1" path="res://interact/interact.tscn" id="10_4c57u"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
+panorama = ExtResource("1_0xm2m")
+energy_multiplier = 0.25
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("PanoramaSkyMaterial_h2yge")
+
+[sub_resource type="Environment" id="Environment_lquwl"]
+background_mode = 2
+sky = SubResource("Sky_1bvp3")
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_efxa6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prop2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.8, 11.7, 16.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prop3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5.7, 14, -6.3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Prop3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.7453293, 0.17453292)]
+}
+
+[sub_resource type="Animation" id="Animation_272bh"]
+resource_name = "hoverspin"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prop2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-8.8, 16, 16.4), Vector3(-8.8, 16.5, 16.4), Vector3(-8.8, 16, 16.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6666667, 5, 7.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0), Vector3(0, 3.1415927, 0), Vector3(0, 4.712389, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prop3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(5.7, 14, -6.3), Vector3(5.7, 15, -6.3), Vector3(5.7, 15, -6.3), Vector3(5.7, 14, -6.3), Vector3(5.7, 14, -6.3), Vector3(5.7, 15, -6.3), Vector3(5.7, 15, -6.3), Vector3(5.7, 14, -6.3), Vector3(5.7, 14, -6.3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Prop3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5, 5.1, 6.9, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.7453293, 0), Vector3(0, 1.7453293, 0), Vector3(0, 1.7453293, 0.08726646), Vector3(0, 1.7453293, 0.08726646), Vector3(0, 1.7453293, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vw27"]
+_data = {
+&"RESET": SubResource("Animation_7mycd"),
+&"hoverspin": SubResource("Animation_272bh")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_texture = ExtResource("3_1bvp3")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+albedo_texture = ExtResource("4_7mycd")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
+albedo_texture = ExtResource("5_272bh")
+uv1_triplanar = true
+
+[node name="Main" type="Node3D" unique_id=55940079]
+
+[node name="UIManager" parent="." unique_id=844932442 instance=ExtResource("1_5vw27")]
+unique_name_in_owner = true
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=544927907]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 100, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 512.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1332608087]
+environment = SubResource("Environment_lquwl")
+
+[node name="Killzone" parent="." unique_id=35288440 instance=ExtResource("3_efxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=169422717]
+shape = SubResource("WorldBoundaryShape3D_efxa6")
+
+[node name="Scaffolding" type="Node3D" parent="." unique_id=381982267]
+
+[node name="CollisionScaffolding" type="CSGCombiner3D" parent="Scaffolding" unique_id=459411100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+material_override = ExtResource("2_h2yge")
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding" unique_id=159776753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+material_override = SubResource("StandardMaterial3D_h2yge")
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="Walls1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=1604473469]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=1624390824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, -15)
+size = Vector3(37.5, 75, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=1621170819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.25, 37, 7)
+size = Vector3(1, 75, 45)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=2062860134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.25, 37, 7)
+size = Vector3(1, 75, 45)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=587190352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, 29)
+size = Vector3(37.5, 75, 1)
+
+[node name="Pipe1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=902056747]
+transform = Transform3D(-0.362573, -0.7115894, -0.6018149, 0.7028469, -0.6328417, 0.32483426, -0.61200225, -0.30520767, 0.72958976, 0, 7.1000004, 18.800001)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Scaffolding/CollisionScaffolding/Pipe1" unique_id=1925297712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+radius = 2.0
+height = 20.0
+sides = 32
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Scaffolding/CollisionScaffolding/Pipe1" unique_id=1969030268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+operation = 2
+radius = 1.5
+height = 21.0
+sides = 32
+
+[node name="Floor1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=226730831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.9, 7)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor1" unique_id=1818659727]
+size = Vector3(37.5, 1, 43)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor1" unique_id=578099899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.000001, 0, 12.699999)
+operation = 2
+size = Vector3(7, 1, 4.7000003)
+
+[node name="Stairs1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=2025009929]
+transform = Transform3D(-0.15624261, -0.05615105, -0.9861214, -0.68451154, 0.7259053, 0.06712118, 0.7120617, 0.6854988, -0.1518535, -11.3, 13.800001, -5.2999988)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1278815653]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0, 0.05000019, 0)
+size = Vector3(0.3, 12.8, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1874844606]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.0017976761, -4.863449, -0.91788197)
+size = Vector3(0.3, 0.2, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1359859650]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.033122063, -4.1929827, 0.9571676)
+size = Vector3(0.3, 0.5, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1790396768]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.06701183, -2.667314, -0.9717989)
+size = Vector3(0.3, 0.90000004, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=68208237]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.05652523, -1.4540777, 0.97469044)
+size = Vector3(0.3, 1.2, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=763170896]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.01645565, 0.3619032, -0.9306164)
+size = Vector3(0.3, 0.2, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=71821033]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.016991615, 1.4397097, 0.9819727)
+size = Vector3(0.3, 0.90000004, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1176540055]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.04536724, 2.7830935, -0.9300432)
+size = Vector3(0.3, 0.5, 1)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=876532637]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.019266129, 4.040719, 0.91782856)
+size = Vector3(0.3, 0.1, 1)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=706820314]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.031110764, 4.837264, -0.943346)
+size = Vector3(0.3, 0.5, 1)
+
+[node name="Floor2" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=1908864690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 7)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor2" unique_id=130307213]
+size = Vector3(37.5, 1, 43)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor2" unique_id=33474128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.800002, 0, 14.9)
+operation = 2
+size = Vector3(7, 1, 2.7)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor2" unique_id=835550335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.349998, 0, -14.750002)
+operation = 2
+size = Vector3(10.900001, 1, 13.6)
+
+[node name="Props" type="Node3D" parent="Scaffolding/CollisionScaffolding" unique_id=1576630873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scaffolding/CollisionScaffolding/Props" unique_id=1765936523]
+libraries/ = SubResource("AnimationLibrary_5vw27")
+autoplay = &"hoverspin"
+
+[node name="Prop1" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=310141198]
+transform = Transform3D(0.7880108, 0, -0.6156615, 0, 1, 0, 0.6156615, 0, 0.7880108, 11.3, 14.200001, 9.1)
+material_override = SubResource("StandardMaterial3D_lquwl")
+use_collision = true
+size = Vector3(10, 8, 5)
+
+[node name="Prop2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=437848936]
+transform = Transform3D(0.9999995, 0, 0, 0, 1, 0, 0, 0, 0.9999995, -8.8, 11.7, 16.4)
+material_override = SubResource("StandardMaterial3D_5vw27")
+use_collision = true
+size = Vector3(10, 3, 9)
+
+[node name="Prop3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=1743002657]
+transform = Transform3D(-0.17100957, 0.030153677, 0.98480725, 0.17364766, 0.98480725, 0, -0.9698434, 0.17100999, -0.1736481, 5.7, 14, -6.3)
+material_override = SubResource("StandardMaterial3D_kek77")
+use_collision = true
+size = Vector3(3, 5, 9)
+
+[node name="Player" parent="." unique_id=767760826 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="NPC" type="Node3D" parent="." unique_id=819740215]
+
+[node name="MrGodot" parent="NPC" unique_id=59045274 instance=ExtResource("7_272bh")]
+transform = Transform3D(-0.74314487, 0, 0.6691307, 0, 1, 0, -0.6691307, 0, -0.74314487, 10.9, 10.2, 4.7999997)
+
+[node name="Interact" parent="NPC/MrGodot" unique_id=146110054 instance=ExtResource("10_4c57u")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.6999998, 0)
+duration = 10
+id = "mr_godot"
+label = "[E] Talk"
+value = "Mr Godot is gooning!"
+
+[node name="InteractLabel" type="Label3D" parent="NPC/MrGodot/Interact" unique_id=1493461104]
+transform = Transform3D(0.2, 0, 0, 0, 0.19999999, 0, 0, 0, 0.2, 0, 0.29999995, 0)
+layers = 2
+billboard = 1
+no_depth_test = true
+font = ExtResource("9_kek77")
+font_size = 96
+outline_size = 0
+
+[node name="MrGodot2" parent="NPC" unique_id=1776741629 instance=ExtResource("7_272bh")]
+transform = Transform3D(-0.65605927, 0, -0.7547097, 0, 1, 0, 0.7547097, 0, -0.65605927, 13.899999, 10.2, 5.0000005)
+
+[node name="Interact" parent="NPC/MrGodot2" unique_id=880575212 instance=ExtResource("10_4c57u")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.6999998, 0)
+duration = 5
+id = "mr_godot_2"
+label = "[E] Talk"
+value = "Mr Godot 2 is bingchilling!"
+
+[node name="InteractLabel" type="Label3D" parent="NPC/MrGodot2/Interact" unique_id=626792679]
+transform = Transform3D(0.2, 0, 0, 0, 0.19999999, 0, 0, 0, 0.2, 0, 0.29999995, 0)
+layers = 2
+billboard = 1
+no_depth_test = true
+font = ExtResource("9_kek77")
+font_size = 96
+outline_size = 0
