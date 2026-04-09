@@ -7,9 +7,9 @@ signal _transition(state, new_state)
 # var
 var animation: AnimationPlayer
 var attack_animation: AnimationPlayer
-var collider: CollisionShape3D # ?
+var collider: CollisionShape3D
 var entity: CharacterBody3D
-var mesh: MeshInstance3D # ?
+var mesh: MeshInstance3D
 var previous_state: State
 
 
@@ -26,13 +26,13 @@ func _exit():
 	pass
 
 # Handle an input event in the current state
-func _state_input(event: InputEvent):
+func _state_input(_event: InputEvent):
 	pass
 
 # Whenever the state machine is processing, we also want the current state to process (NON-PHYSICS)
-func _state_process(delta: float):
+func _state_process(_delta: float):
 	pass
 
 # Whenever the state machine is processing, we also want the current state to process (PHYSICS)
-func _state_physics_process(delta: float):
+func _state_physics_process(_delta: float):
 	pass

@@ -18,7 +18,6 @@ var CROUCHING := false
 
 @export_group('Speeds')
 @export var base_speed := 8.0
-@export var jump_velocity := 5.0
 @export var sprint_speed := 10.0
 @export var freefly_speed := 25.0
 
@@ -35,9 +34,10 @@ var CROUCHING := false
 
 # @onready
 @onready var ui_manager := %UIManager
+
 @onready var camera: Node3D = $Camera
 @onready var collider := $CollisionShape3D
-@onready var mesh := $Mesh
+@onready var player_model := $PlayerModel
 
 
 ### fn
@@ -77,7 +77,7 @@ func _physics_process(delta: float):
 		motion *= freefly_speed * delta
 
 		if input_dir != Vector2(0, 0):
-			mesh.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
+			player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
 
 		move_and_collide(motion)
 		return
@@ -86,11 +86,6 @@ func _physics_process(delta: float):
 	if has_gravity:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-
-	# Apply jumping
-	if can_jump:
-		if Input.is_action_just_pressed(input_jump) and is_on_floor():
-			velocity.y = jump_velocity
 
 	# Modify speed based on sprinting
 	if can_sprint and Input.is_action_pressed(input_sprint):
@@ -104,7 +99,7 @@ func _physics_process(delta: float):
 		var direction := (camera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 		if input_dir != Vector2(0, 0):
-			mesh.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
+			player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
 
 		if direction:
 			velocity.x = direction.x * SPEED
@@ -132,16 +127,16 @@ func disable_freefly():
 	FREEFLYING = false
 
 func enable_crouch():
-	mesh.mesh.height = 1.2
+	#mesh.mesh.height = 1.2
 	collider.shape.height = 1.2
-	mesh.position.y = 0.6
+	#mesh.position.y = 0.6
 	collider.position.y = 0.6
 	CROUCHING = true
 
 func disable_crouch():
-	mesh.mesh.height = 1.8
+	#mesh.mesh.height = 1.8
 	collider.shape.height = 1.8
-	mesh.position.y = 0.9
+	#mesh.position.y = 0.9
 	collider.position.y = 0.9
 	CROUCHING = false
 
