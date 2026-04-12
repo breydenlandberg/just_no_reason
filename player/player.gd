@@ -2,9 +2,11 @@ extends CharacterBody3D
 
 
 # var
-var SPEED := 0.0
-var FREEFLYING := false
+### donot make these all caps lol
+var is_attacking := false
 var CROUCHING := false
+var FREEFLYING := false
+var SPEED := 0.0
 
 # @export
 @export_group('Toggles')
@@ -15,6 +17,7 @@ var CROUCHING := false
 @export var can_freefly := true
 @export var can_crouch := true
 @export var can_interact := true
+@export var can_attack := true
 
 @export_group('Speeds')
 @export var base_speed := 8.0
@@ -31,6 +34,7 @@ var CROUCHING := false
 @export var input_freefly := 'freefly'
 @export var input_crouch := 'crouch'
 @export var input_interact := 'interact'
+@export var input_attack_basic := 'attack_basic'
 
 # @onready
 @onready var ui_manager := %UIManager
@@ -170,6 +174,12 @@ func check_input_mappings():
 		can_freefly = false
 	if can_crouch and not InputMap.has_action(input_crouch):
 		push_error('Crouch disabled. No InputAction found for input_crouch: ' + input_crouch)
+		can_freefly = false
+	if can_interact and not InputMap.has_action(input_interact):
+		push_error('Crouch disabled. No InputAction found for input_interact: ' + input_interact)
+		can_freefly = false
+	if can_attack and not InputMap.has_action(input_attack_basic):
+		push_error('Attack basic disabled. No InputAction found for attack_basic: ' + input_crouch)
 		can_freefly = false
 
 ## SignalBus

@@ -3,14 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://bq1gb0px7oo1h" path="res://assets/textures/Day0.exr" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://772t21cg58vo" path="res://ui/ui_manager.tscn" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://player/player.tscn" id="1_ig7tw"]
-[ext_resource type="Material" uid="uid://fj84wfp0ra3m" path="res://assets/materials/greybox.tres" id="2_h2yge"]
+[ext_resource type="Material" uid="uid://fj84wfp0ra3m" path="res://assets/materials/scaffolding.tres" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bdaq1v7cg2fay" path="res://killzone/killzone.tscn" id="3_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bh2tpishmathl" path="res://assets/textures/stone/shine_stone.png" id="5_272bh"]
-[ext_resource type="PackedScene" uid="uid://cqin7vy65rmcv" path="res://assets/models/godot_plush_model/godot_plush_model_inherited.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://cqin7vy65rmcv" path="res://npc/godot_plush/assets/godot_plush_model_inherited.tscn" id="7_272bh"]
 [ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://f850uti4ula1" path="res://interact/interact.tscn" id="10_4c57u"]
+[ext_resource type="PackedScene" uid="uid://cqiofva7y4sn4" path="res://enemy/grunt/grunt.tscn" id="12_dg77c"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
 panorama = ExtResource("1_0xm2m")
@@ -305,12 +306,12 @@ use_collision = true
 size = Vector3(10, 3, 9)
 
 [node name="Prop3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=1743002657]
-transform = Transform3D(-0.17100951, 0.030153677, 0.98480725, 0.17364761, 0.98480725, 0, -0.9698431, 0.17100999, -0.1736481, 5.7, 14, -6.3)
+transform = Transform3D(-0.17100942, 0.030153677, 0.98480725, 0.17364751, 0.98480725, 0, -0.9698425, 0.17100999, -0.1736481, 5.7, 14, -6.3)
 material_override = SubResource("StandardMaterial3D_kek77")
 use_collision = true
 size = Vector3(3, 5, 9)
 
-[node name="Player" parent="." unique_id=767760826 instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." unique_id=685403359 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="NPC" type="Node3D" parent="." unique_id=819740215]
@@ -334,7 +335,7 @@ font = ExtResource("9_kek77")
 font_size = 96
 outline_size = 0
 
-[node name="MrGodot2" parent="NPC" unique_id=1776741629 instance=ExtResource("7_272bh")]
+[node name="MrGodot2" parent="NPC" unique_id=1646889940 instance=ExtResource("7_272bh")]
 transform = Transform3D(-0.65605927, 0, -0.7547097, 0, 1, 0, 0.7547097, 0, -0.65605927, 13.899999, 10.2, 5.0000005)
 
 [node name="Interact" parent="NPC/MrGodot2" unique_id=880575212 instance=ExtResource("10_4c57u")]
@@ -352,3 +353,8 @@ no_depth_test = true
 font = ExtResource("9_kek77")
 font_size = 96
 outline_size = 0
+
+[node name="Enemy" type="Node3D" parent="." unique_id=300713747]
+
+[node name="Grunt" parent="Enemy" unique_id=1565200042 instance=ExtResource("12_dg77c")]
+transform = Transform3D(-0.10452843, 0, 0.99452186, 0, 1, 0, -0.99452186, 0, -0.10452843, -10.5, 0.5, 2.4)

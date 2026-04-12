@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cqiofva7y4sn4"]
+
+[ext_resource type="PackedScene" uid="uid://crp52pevyqtbn" path="res://enemy/grunt/assets/grunt_model_inherited.tscn" id="1_bv6wf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xr21d"]
+height = 1.7850008
+radius = 0.32999998
+
+[node name="Grunt" type="CharacterBody3D" unique_id=1739248134]
+
+[node name="GruntModel" parent="." unique_id=1741684379 instance=ExtResource("1_bv6wf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=195870332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019999998, 0.89250046, 0)
+shape = SubResource("CylinderShape3D_xr21d")

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://s25oy1nvnjmb"]
+
+[ext_resource type="Texture2D" uid="uid://bxv4chnaate7s" path="res://npc/godot_plush/assets/godot_plush_albedo.png" id="1_qley0"]
+
+[resource]
+albedo_texture = ExtResource("1_qley0")
