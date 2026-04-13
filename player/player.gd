@@ -50,6 +50,7 @@ var speed := 0.0
 #
 func _physics_process(delta: float):
 	# Handle freefly ONLY if toggled
+	# FREEFLY SHOULD BE ITS OWN STATE
 	if can_freefly and is_freeflying:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
 		var motion := (camera.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -165,7 +166,7 @@ func message(text: String):
 # attack
 func _on_animation_player_animation_finished(anim_name: StringName):
 	match anim_name:
-		'Punch_Jab':
+		'Punch_Jab', 'Punch_Cross', 'Spell_Simple_Shoot':
 			is_attacking = false
 			speed = base_speed
 
