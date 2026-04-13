@@ -8,11 +8,11 @@ class_name PlayerStateMachine extends StateMachine
 func _input(_event: InputEvent):
 	handle_input(_event)
 
-func _process(_delta):
-	handle_process(_delta)
-
 func _physics_process(_delta):
 	handle_physics_process(_delta)
+
+func _process(_delta):
+	handle_process(_delta)
 
 func _ready():
 	set_up_state_machine()

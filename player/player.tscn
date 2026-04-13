@@ -71,6 +71,7 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_5hfox")
 
+[connection signal="animation_finished" from="PlayerModel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Interact/InteractArea" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="Interact/InteractArea" to="." method="_on_interact_area_exited"]
 

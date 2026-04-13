@@ -26,15 +26,15 @@ func handle_input(event: InputEvent):
 	if current_state:
 		current_state._state_input(event)
 
-# Used in _process
-func handle_process(delta: float):
-	if current_state:
-		current_state._state_process(delta)
-
 # Used in _physics_process
 func handle_physics_process(delta: float):
 	if current_state:
 		current_state._state_physics_process(delta)
+
+# Used in _process
+func handle_process(delta: float):
+	if current_state:
+		current_state._state_process(delta)
 
 # Used in _ready
 func set_up_state_machine():

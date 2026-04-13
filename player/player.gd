@@ -2,27 +2,27 @@ extends CharacterBody3D
 
 
 # var
-### donot make these all caps lol
 var is_attacking := false
-var CROUCHING := false
-var FREEFLYING := false
-var SPEED := 0.0
+var is_crouching := false
+var is_freeflying := false
+
+var speed := 0.0
 
 # @export
 @export_group('Toggles')
 @export var can_move := true
-@export var has_gravity := true
 @export var can_jump := true
 @export var can_sprint := true
 @export var can_freefly := true
 @export var can_crouch := true
 @export var can_interact := true
 @export var can_attack := true
+@export var has_gravity := true
 
 @export_group('Speeds')
 @export var base_speed := 8.0
-@export var sprint_speed := 10.0
-@export var freefly_speed := 25.0
+@export var sprint_speed := 16.0
+@export var freefly_speed := 32.0
 
 @export_group('Input Actions')
 @export var input_left := 'left'
@@ -48,34 +48,9 @@ var SPEED := 0.0
 
 ## virtual
 #
-func _ready():
-	check_input_mappings()
-	InteractManager.set_player(self)
-	# Does below need to be a signal?
-	SignalBus._message.connect(message)
-
-func _unhandled_input(event: InputEvent):
-	# Handle freefly mode
-	if can_freefly and event.is_action_pressed(input_freefly):
-		if not FREEFLYING:
-			enable_freefly()
-		else:
-			disable_freefly()
-
-	# Handle crouch (toggle)
-	if can_crouch and event.is_action_pressed(input_crouch):
-		if not CROUCHING:
-			enable_crouch()
-		else:
-			disable_crouch()
-
-	# Handle interactions
-	if can_interact and event.is_action_pressed(input_interact):
-		InteractManager.execute_current_interaction()
-
 func _physics_process(delta: float):
-	# If FREEFLYING, handle freefly and nothing else
-	if can_freefly and FREEFLYING:
+	# Handle freefly ONLY if toggled
+	if can_freefly and is_freeflying:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
 		var motion := (camera.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		motion *= freefly_speed * delta
@@ -85,17 +60,11 @@ func _physics_process(delta: float):
 
 		move_and_collide(motion)
 		return
-	
+
 	# Apply gravity to velocity
 	if has_gravity:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-
-	# Modify speed based on sprinting
-	if can_sprint and Input.is_action_pressed(input_sprint):
-		SPEED = sprint_speed
-	else:
-		SPEED = base_speed
 
 	# Apply desired movement to velocity
 	if can_move:
@@ -106,11 +75,11 @@ func _physics_process(delta: float):
 			player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
 
 		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
 	else:
 		velocity.x = 0
 		velocity.y = 0
@@ -118,38 +87,27 @@ func _physics_process(delta: float):
 	# Use velocity to actually move
 	move_and_slide()
 
+func _ready():
+	check_input_mappings()
+	InteractManager.set_player(self)
+	# Does below need to be a signal?
+	SignalBus._message.connect(message)
+
+func _unhandled_input(event: InputEvent):
+	# Handle freefly mode
+	if can_freefly and event.is_action_pressed(input_freefly):
+		if not is_freeflying:
+			enable_freefly()
+		else:
+			disable_freefly()
+
+	# Handle interactions
+	if can_interact and event.is_action_pressed(input_interact):
+		InteractManager.execute_current_interaction()
+
 
 ### helper
 #
-func enable_freefly():
-	set_collision_mask_value(1, false)
-	FREEFLYING = true
-	velocity = Vector3.ZERO
-
-func disable_freefly():
-	set_collision_mask_value(1, true)
-	FREEFLYING = false
-
-func enable_crouch():
-	#mesh.mesh.height = 1.2
-	collider.shape.height = 1.2
-	#mesh.position.y = 0.6
-	collider.position.y = 0.6
-	CROUCHING = true
-
-func disable_crouch():
-	#mesh.mesh.height = 1.8
-	collider.shape.height = 1.8
-	#mesh.position.y = 0.9
-	collider.position.y = 0.9
-	CROUCHING = false
-
-func handle_input():
-	if Input.is_action_just_pressed('interact'):
-		InteractManager.execute_current_interaction()
-
-## Checks if some Input Actions haven't been created.
-## Disables functionality accordingly.
 func check_input_mappings():
 	if can_move and not InputMap.has_action(input_left):
 		push_error('Movement disabled. No InputAction found for input_left: ' + input_left)
@@ -174,18 +132,27 @@ func check_input_mappings():
 		can_freefly = false
 	if can_crouch and not InputMap.has_action(input_crouch):
 		push_error('Crouch disabled. No InputAction found for input_crouch: ' + input_crouch)
-		can_freefly = false
+		can_crouch = false
 	if can_interact and not InputMap.has_action(input_interact):
 		push_error('Crouch disabled. No InputAction found for input_interact: ' + input_interact)
-		can_freefly = false
+		can_interact = false
 	if can_attack and not InputMap.has_action(input_attack_basic):
-		push_error('Attack basic disabled. No InputAction found for attack_basic: ' + input_crouch)
-		can_freefly = false
+		push_error('Basic attack disabled. No InputAction found for input_attack_basic: ' + input_attack_basic)
+		can_attack = false
+
+func disable_freefly():
+	set_collision_mask_value(1, true)
+	is_freeflying = false
+
+func enable_freefly():
+	set_collision_mask_value(1, false)
+	is_freeflying = true
+	velocity = Vector3.ZERO
 
 ## SignalBus
 #
 func message(text: String):
-	var messages = ui_manager.get_node('MasterContainer/Message/PanelContainer/MarginContainer/ScrollContainer/Messages')
+	var messages = ui_manager.get_node('MasterContainer/PanelContainer/MarginContainer/ScrollContainer/Messages')
 	
 	if messages.text.length() > 0:
 		messages.text += ('\n' + text)  
@@ -195,6 +162,13 @@ func message(text: String):
 
 ## signals
 #
+# attack
+func _on_animation_player_animation_finished(anim_name: StringName):
+	match anim_name:
+		'Punch_Jab':
+			is_attacking = false
+			speed = base_speed
+
 # interact
 func _on_interact_area_entered(interaction: Interaction):
 	InteractManager.push_front(interaction)
