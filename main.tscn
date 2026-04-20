@@ -24,8 +24,6 @@ sky_material = SubResource("PanoramaSkyMaterial_h2yge")
 background_mode = 2
 sky = SubResource("Sky_1bvp3")
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_efxa6"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
 
 [sub_resource type="Animation" id="Animation_7mycd"]
@@ -150,6 +148,8 @@ uv1_triplanar = true
 albedo_texture = ExtResource("5_272bh")
 uv1_triplanar = true
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_efxa6"]
+
 [node name="Main" type="Node3D" unique_id=55940079]
 
 [node name="UIManager" parent="." unique_id=844932442 instance=ExtResource("1_5vw27")]
@@ -162,12 +162,6 @@ directional_shadow_max_distance = 512.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1332608087]
 environment = SubResource("Environment_lquwl")
-
-[node name="Killzone" parent="." unique_id=35288440 instance=ExtResource("3_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=169422717]
-shape = SubResource("WorldBoundaryShape3D_efxa6")
 
 [node name="Scaffolding" type="Node3D" parent="." unique_id=381982267]
 
@@ -306,10 +300,16 @@ use_collision = true
 size = Vector3(10, 3, 9)
 
 [node name="Prop3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=1743002657]
-transform = Transform3D(-0.1710094, 0.030153677, 0.98480725, 0.1736475, 0.98480725, 0, -0.96984243, 0.17100999, -0.1736481, 5.7, 14, -6.3)
+transform = Transform3D(-0.17100939, 0.030153677, 0.98480725, 0.17364748, 0.98480725, 0, -0.9698424, 0.17100999, -0.1736481, 5.7, 14, -6.3)
 material_override = SubResource("StandardMaterial3D_kek77")
 use_collision = true
 size = Vector3(3, 5, 9)
+
+[node name="Killzone" parent="." unique_id=35288440 instance=ExtResource("3_efxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=169422717]
+shape = SubResource("WorldBoundaryShape3D_efxa6")
 
 [node name="Player" parent="." unique_id=685403359 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
