@@ -14,7 +14,7 @@ var camera_tween: Tween
 
 # @onready
 @onready var edge_spring_arm := $EdgeSpringArm
-@onready var default_edge_sprint_arm_length: float = edge_spring_arm.spring_length
+@onready var default_edge_spring_arm_length: float = edge_spring_arm.spring_length
 
 
 ### fn
@@ -34,9 +34,14 @@ func _unhandled_input(event: InputEvent):
 		var mouse_event: Vector2 = event.screen_relative * mouse_sensitivity
 		camera_look(mouse_event)
 
-	if event.is_action_pressed('swap_camera_alignment'):
+	if Input.is_action_just_pressed('swap_camera_alignment'):
 		swap_camera_alignment()
 
+	if Input.is_action_pressed('aim'):
+		pass
+
+	if Input.is_action_just_released('aim'):
+		pass
 
 ## helper
 #
@@ -58,14 +63,20 @@ func release_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_captured = false
 
-func set_rear_spring_arm_position(pos: float, speed: float):
+func set_edge_spring_arm_position(pos: float, speed: float):
 	if camera_tween:
 		camera_tween.kill()
 
-	camera_tween = get_tree().create_tween()
+	camera_tween = get_tree().create_tween().set_parallel()
 	camera_tween.tween_property(edge_spring_arm, 'spring_length', pos, speed)
 
 func swap_camera_alignment():
-	default_edge_sprint_arm_length = -default_edge_sprint_arm_length
+	default_edge_spring_arm_length = -default_edge_spring_arm_length
 
-	set_rear_spring_arm_position(default_edge_sprint_arm_length, camera_alignment_speed)
+	set_edge_spring_arm_position(default_edge_spring_arm_length, camera_alignment_speed)
+
+func enter_aim():
+	if camera_tween:
+		camera_tween.kill()
+
+	camera_tween = get_tree().create_tween().set_parallel()
