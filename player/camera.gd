@@ -9,13 +9,13 @@ var mouse_captured := true
 var mouse_sensitivity := 0.001
 
 # @export
-@export var aim_fov := 55
+@export var aim_fov := 65.0
 @export var aim_edge_spring_length := 1.0
 @export var aim_rear_spring_length := 1.0
-@export var aim_speed := 0.5
-@export var camera_alignment_speed := 0.1 # Why does it get slower the higher the number?
-@export var sprint_fov := 90.0
-@export var sprint_tween_speed := 0.5
+@export var aim_speed := 0.075					# Why does it get slower the higher the number?
+@export var camera_alignment_speed := 0.1		# Why does it get slower the higher the number?
+@export var sprint_fov := 85.0
+@export var sprint_tween_speed := 0.1			# Why does it get slower the higher the number?
 
 # @onready
 @onready var camera: Camera3D = $EdgeSpringArm/RearSpringArm/Camera3D; @onready var default_fov: float = camera.fov
@@ -82,19 +82,19 @@ func enter_aim():
 		camera: ['fov', aim_fov],
 		edge_spring_arm: ["spring_length", aim_edge_spring_length * sign(edge_spring_arm.spring_length)],
 		rear_spring_arm: ["spring_length", aim_rear_spring_length]
-	}, aim_speed, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	}, aim_speed)#, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 
 func exit_aim():
 	tween_camera_properties({
-		camera: ['fov', aim_fov],
+		camera: ['fov', default_fov],
 		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * sign(edge_spring_arm.spring_length)],
 		rear_spring_arm: ["spring_length", default_rear_spring_arm_length]
-	}, aim_speed, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	}, aim_speed)#, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 
 func swap_camera_alignment():
-	default_edge_spring_arm_length = -default_edge_spring_arm_length
+	var new_pos: float = default_edge_spring_arm_length * -sign(edge_spring_arm.spring_length)
 
-	tween_camera_property(edge_spring_arm, 'spring_length', default_edge_spring_arm_length, camera_alignment_speed)
+	tween_camera_property(edge_spring_arm, 'spring_length', new_pos, camera_alignment_speed)
 
 # sprint
 func enter_sprint():
@@ -102,14 +102,14 @@ func enter_sprint():
 		camera: ['fov', sprint_fov],
 		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * sign(edge_spring_arm.spring_length)],
 		rear_spring_arm: ["spring_length", default_rear_spring_arm_length]
-	}, sprint_tween_speed, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	}, sprint_tween_speed)#, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 
 func exit_sprint():
 	tween_camera_properties({
 		camera: ['fov', default_fov],
 		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * sign(edge_spring_arm.spring_length)],
 		rear_spring_arm: ["spring_length", default_rear_spring_arm_length]
-	}, sprint_tween_speed, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	}, sprint_tween_speed)#, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 
 # tween
 func kill_camera_tween():
@@ -119,16 +119,17 @@ func kill_camera_tween():
 func tween_camera_property(target: Object, property: String, value: Variant, duration: float):
 	kill_camera_tween()
 
-	camera_tween = get_tree().create_tween().set_parallel() # ?
+	camera_tween = get_tree().create_tween().set_parallel() # set_parellel() ?
 	camera_tween.tween_property(target, property, value, duration)
 
-func tween_camera_properties(properties: Dictionary, duration: float, trans: Tween.TransitionType, ease: Tween.EaseType):
+# TRANS_LINEAR and EASE_IN_OUT are Camera3D defaults
+func tween_camera_properties(properties: Dictionary, duration: float, trans := Tween.TRANS_LINEAR, ease_param := Tween.EASE_IN_OUT):
 	kill_camera_tween()
 
-	camera_tween = get_tree().create_tween().set_parallel() # ?
-	#if no trans or ease?
+	camera_tween = get_tree().create_tween().set_parallel() # set_parallel() ?
+
 	camera_tween.set_trans(trans)
-	camera_tween.set_ease(ease)
+	camera_tween.set_ease(ease_param)
 
 	for target in properties:
 		var pair = properties[target]
