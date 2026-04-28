@@ -42,6 +42,7 @@ var speed := 0.0
 @onready var camera: Node3D = $Camera
 @onready var collider := $CollisionShape3D
 @onready var player_model := $PlayerModel
+@onready var player_state_machine := $PlayerStateMachine
 
 
 ### fn
@@ -52,15 +53,16 @@ func _physics_process(delta: float):
 	# Handle freefly ONLY if toggled
 	# FREEFLY SHOULD BE ITS OWN STATE
 	if can_freefly and is_freeflying:
-		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
-		var motion := (camera.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		motion *= freefly_speed * delta
-
-		if input_dir != Vector2(0, 0):
-			player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
-
-		move_and_collide(motion)
-		return
+		player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'freefly') # lol could this be any wordier?
+		#var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
+		#var motion := (camera.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		#motion *= freefly_speed * delta
+#
+		#if input_dir != Vector2(0, 0):
+			#player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
+#
+		#move_and_collide(motion)
+		#return
 
 	# Apply gravity to velocity
 	if has_gravity:
