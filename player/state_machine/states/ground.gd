@@ -1,6 +1,5 @@
 extends State
 
-###
 
 # var
 var attack_basic_current_phase := 0

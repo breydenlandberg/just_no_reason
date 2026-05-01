@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://wpgt0vwoc2ma" path="res://player/state_machine/states/air.gd" id="3_boad6"]
 [ext_resource type="Script" uid="uid://tostf6lyr27j" path="res://player/state_machine/states/ground.gd" id="3_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://b2yfduoiiofai" path="res://player/assets/player_model_inherited.tscn" id="3_qjkh3"]
-[ext_resource type="Script" uid="uid://bkvw45iyq1mx4" path="res://player/freefly.gd" id="5_rgyib"]
+[ext_resource type="Script" uid="uid://bkvw45iyq1mx4" path="res://player/state_machine/states/freefly.gd" id="5_rgyib"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_boad6"]
 height = 1.7850008

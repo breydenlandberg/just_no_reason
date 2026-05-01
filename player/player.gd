@@ -22,7 +22,6 @@ var speed := 0.0
 @export_group('Speeds')
 @export var base_speed := 8.0
 @export var sprint_speed := 16.0
-@export var freefly_speed := 32.0
 
 @export_group('Input Actions')
 @export var input_left := 'left'
@@ -41,8 +40,8 @@ var speed := 0.0
 
 @onready var camera: Node3D = $Camera
 @onready var collider := $CollisionShape3D
-@onready var player_model := $PlayerModel
-@onready var player_state_machine := $PlayerStateMachine
+@onready var player_model: Node3D = $PlayerModel
+@onready var player_state_machine: Node3D = $PlayerStateMachine
 
 
 ### fn
@@ -50,45 +49,32 @@ var speed := 0.0
 ## virtual
 #
 func _physics_process(delta: float):
-	# Handle freefly ONLY if toggled
-	# FREEFLY SHOULD BE ITS OWN STATE
-	if can_freefly and is_freeflying:
-		player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'freefly') # lol could this be any wordier?
-		#var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
-		#var motion := (camera.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		#motion *= freefly_speed * delta
-#
-		#if input_dir != Vector2(0, 0):
-			#player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
-#
-		#move_and_collide(motion)
-		#return
+	if not is_freeflying:
+		# Apply gravity to velocity
+		if has_gravity:
+			if not is_on_floor():
+				velocity += get_gravity() * delta
 
-	# Apply gravity to velocity
-	if has_gravity:
-		if not is_on_floor():
-			velocity += get_gravity() * delta
+		# Apply desired movement to velocity
+		if can_move:
+			var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
+			var direction := (camera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	# Apply desired movement to velocity
-	if can_move:
-		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
-		var direction := (camera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			if input_dir != Vector2(0, 0):
+				player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
 
-		if input_dir != Vector2(0, 0):
-			player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
-
-		if direction:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
+			if direction:
+				velocity.x = direction.x * speed
+				velocity.z = direction.z * speed
+			else:
+				velocity.x = move_toward(velocity.x, 0, speed)
+				velocity.z = move_toward(velocity.z, 0, speed)
 		else:
-			velocity.x = move_toward(velocity.x, 0, speed)
-			velocity.z = move_toward(velocity.z, 0, speed)
-	else:
-		velocity.x = 0
-		velocity.y = 0
-	
-	# Use velocity to actually move
-	move_and_slide()
+			velocity.x = 0
+			velocity.y = 0
+
+		# Use velocity to actually move
+		move_and_slide()
 
 func _ready():
 	check_input_mappings()
@@ -98,11 +84,17 @@ func _ready():
 
 func _unhandled_input(event: InputEvent):
 	# Handle freefly mode
-	if can_freefly and event.is_action_pressed(input_freefly):
-		if not is_freeflying:
-			enable_freefly()
+	# We want freeflying to be accessible from every State. Ergo transitioning into it lives in player.gd
+	if Input.is_action_just_pressed(input_freefly):
+		if(can_freefly and not is_freeflying and not player_state_machine.current_state.name.to_lower() == 'freefly'):
+			player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'freefly')
 		else:
-			disable_freefly()
+			if is_on_floor():
+				player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'ground')
+			else:
+				player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'air')
+	# lol could above be any wordier?
+	# something's still not fuckin workin...
 
 	# Handle interactions
 	if can_interact and event.is_action_pressed(input_interact):
@@ -143,20 +135,11 @@ func check_input_mappings():
 		push_error('Basic attack disabled. No InputAction found for input_attack_basic: ' + input_attack_basic)
 		can_attack = false
 
-func disable_freefly():
-	set_collision_mask_value(1, true)
-	is_freeflying = false
-
-func enable_freefly():
-	set_collision_mask_value(1, false)
-	is_freeflying = true
-	velocity = Vector3.ZERO
-
 ## SignalBus
 #
 func message(text: String):
 	var messages = ui_manager.get_node('MasterContainer/PanelContainer/MarginContainer/ScrollContainer/Messages')
-	
+
 	if messages.text.length() > 0:
 		messages.text += ('\n' + text)  
 	else: 

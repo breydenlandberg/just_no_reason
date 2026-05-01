@@ -66,20 +66,20 @@ func transition(state, new_state_name):
 	if state != current_state:
 		push_warning('Passed state \'' + state.name.to_lower() + '\' does not equal current state \'' + current_state.name + '\'')
 		return
-#
+
 	var new_state = states.get(new_state_name.to_lower())
-#
+
 	if !new_state:
 		push_warning('New state not found')
 		return
-#
+
 	if current_state:
 		current_state._exit()
 		current_state.previous_state = null
-#
+
 	new_state.previous_state = current_state
 	new_state._enter()
-#
+
 	current_state = new_state
 
 	print('Transitioned from ', state, ' to ', new_state, ' State')
