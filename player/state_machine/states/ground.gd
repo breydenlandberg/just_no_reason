@@ -7,7 +7,7 @@ var attack_basic_phase_limit := 2
 var player: CharacterBody3D
 
 # @export
-@export var jump_velocity := 10.0
+@export var jump_velocity := 5.0
 
 
 ### fn
@@ -29,6 +29,7 @@ func _state_input(_event: InputEvent):
 				attack_basic()
 
 func _state_physics_process(_delta: float):
+	print(animation.current_animation)
 	if player.is_on_floor():
 		if can_play_default_animation():
 			if player.velocity.length() > 0:
@@ -37,7 +38,7 @@ func _state_physics_process(_delta: float):
 				animation.play('Idle')
 
 		handle_sprint()
-		# Handle crouch
+		# handle_crouch()
 	else:
 		_transition.emit(self, 'air')
 
@@ -62,25 +63,25 @@ func attack_basic():
 		attack_basic_current_phase = 0
 
 func can_play_default_animation() -> bool:
-	# This is becoming spaghetti and animations are not working properly after the introduction of 'Jump_Land'
-	match animation.current_animation:
-		'Jump_Land', 'Punch_Jab', 'Punch_Cross', 'Spell_Simple_Shoot', 'Walk':
-			return false
-		_:
-			if player.is_attacking: # or???
-				return false
-			else:
-				return true
+	if(animation.current_animation == 'Jump_Land'):
+		return false
+
+	if player.is_attacking:
+		return false
+
+	return true
 
 func handle_sprint():
 	if player.can_sprint and Input.is_action_pressed(player.input_sprint):
 		player.speed = player.sprint_speed
+
+		# What the mother fuck...
+		animation.play('Jog_Fwd')
 	else:
 		player.speed = player.base_speed
 
 func jump():
 	player.velocity.y = jump_velocity
 
-	match animation.current_animation:
-		'Punch_Jab', 'Punch_Cross', 'Spell_Simple_Shoot':
-			animation.play('Jump')
+	if not player.is_attacking:
+		animation.play('Jump_Start')

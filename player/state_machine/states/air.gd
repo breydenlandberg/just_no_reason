@@ -6,7 +6,7 @@ var player: CharacterBody3D
 var has_double_jumped := false
 
 # @export
-@export var double_jump_velocity := 5.0
+@export var double_jump_velocity := 15.0
 
 
 ### fn
@@ -24,6 +24,9 @@ func _state_input(_event: InputEvent):
 		double_jump()
 
 func _state_physics_process(_delta: float):
+	if not player.is_attacking and not animation.current_animation == 'Jump_Start':
+		animation.play('Jump')
+
 	if player.is_on_floor():
 		_transition.emit(self, 'ground')
 
@@ -32,5 +35,9 @@ func _state_physics_process(_delta: float):
 #
 func double_jump():
 	player.velocity.y = double_jump_velocity
+
+	if not player.is_attacking:
+		animation.stop()
+		animation.play('Jump_Start')
 
 	has_double_jumped = true
