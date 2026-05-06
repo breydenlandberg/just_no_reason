@@ -2,10 +2,6 @@ extends State
 
 
 # var
-@export var input_left := 'left'
-@export var input_right := 'right'
-@export var input_forward := 'up'
-@export var input_back := 'down'
 var player: CharacterBody3D
 
 # @export
@@ -29,12 +25,14 @@ func _enter():
 	player.velocity = Vector3.ZERO
 	player.is_freeflying = true
 
+	animation.play('Swim_Idle')
+
 func _exit():
 	player.set_collision_mask_value(1, true)
 	player.is_freeflying = false
 
 func _state_physics_process(_delta: float):
-	var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
+	var input_dir := Input.get_vector(InputManager.input_left, InputManager.input_right, InputManager.input_forward, InputManager.input_back)
 	var motion := (camera.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	motion *= freefly_speed * _delta
 

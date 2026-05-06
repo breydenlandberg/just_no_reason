@@ -20,11 +20,12 @@ config/icon="res://icon.svg"
 EntityManager="*uid://08ylejaoonqn"
 InteractManager="*uid://bctr4isvl8cjk"
 SignalBus="*uid://bqu88ygmdygue"
+InputManager="*uid://dkg30gyurvx3g"
 
 [display]
 
-window/size/viewport_width=2560
-window/size/viewport_height=1440
+window/size/viewport_width=3840
+window/size/viewport_height=2160
 window/size/borderless=true
 
 [input]

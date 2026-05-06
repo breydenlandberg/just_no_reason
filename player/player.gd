@@ -24,16 +24,17 @@ var speed := 0.0
 @export var sprint_speed := 16.0
 
 @export_group('Input Actions')
-@export var input_left := 'left'
-@export var input_right := 'right'
-@export var input_forward := 'up'
-@export var input_back := 'down'
-@export var input_jump := 'jump'
-@export var input_sprint := 'sprint'
-@export var input_freefly := 'freefly'
-@export var input_crouch := 'crouch'
-@export var input_interact := 'interact'
-@export var input_attack_basic := 'attack_basic'
+# Should we just... referece InputManager directly?
+@export var input_left := InputManager.input_left
+@export var input_right := InputManager.input_right
+@export var input_forward := InputManager.input_forward
+@export var input_back := InputManager.input_back
+@export var input_jump := InputManager.input_jump
+@export var input_sprint := InputManager.input_sprint
+@export var input_freefly := InputManager.input_freefly
+@export var input_crouch := InputManager.input_crouch
+@export var input_interact := InputManager.input_interact
+@export var input_attack_basic := InputManager.input_attack_basic
 
 # @onready
 @onready var ui_manager := %UIManager
@@ -94,7 +95,7 @@ func _unhandled_input(event: InputEvent):
 			else:
 				player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'air')
 	# lol could above be any wordier?
-	# something's still not fuckin workin...
+	# i swear something's still not fuckin workin...
 
 	# Handle interactions
 	if can_interact and event.is_action_pressed(input_interact):
