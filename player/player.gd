@@ -2,11 +2,10 @@ extends CharacterBody3D
 
 
 # var
-var is_attacking := false
+var is_sprinting := false
 var is_crouching := false
+var is_attacking := false
 var is_freeflying := false
-
-var speed := 0.0
 
 # @export
 @export_group('Toggles')
@@ -24,7 +23,7 @@ var speed := 0.0
 @export var sprint_speed := 16.0
 
 @export_group('Input Actions')
-# Should we just... referece InputManager directly?
+# Should we just... reference InputManager directly?
 @export var input_left := InputManager.input_left
 @export var input_right := InputManager.input_right
 @export var input_forward := InputManager.input_forward
@@ -37,6 +36,8 @@ var speed := 0.0
 @export var input_attack_basic := InputManager.input_attack_basic
 
 # @onready
+@onready var speed := base_speed
+
 @onready var ui_manager := %UIManager
 
 @onready var camera: Node3D = $Camera
