@@ -22,6 +22,10 @@ var mouse_sensitivity := 0.001
 @onready var edge_spring_arm: SpringArm3D = $EdgeSpringArm;	@onready var default_edge_spring_arm_length: float = edge_spring_arm.spring_length
 @onready var rear_spring_arm: SpringArm3D = $EdgeSpringArm/RearSpringArm; @onready var default_rear_spring_arm_length: float = rear_spring_arm.spring_length
 
+# enum
+enum CameraAlignment {LEFT = -1, CENTRE = 0, RIGHT = 1}
+var current_camera_alignment: int = CameraAlignment.RIGHT
+
 
 ### fn
 
@@ -80,19 +84,28 @@ func release_mouse():
 func enter_aim():
 	tween_camera_properties({
 		camera: ['fov', aim_fov],
-		edge_spring_arm: ["spring_length", aim_edge_spring_length * sign(edge_spring_arm.spring_length)],
+		edge_spring_arm: ["spring_length", aim_edge_spring_length * current_camera_alignment],
 		rear_spring_arm: ["spring_length", aim_rear_spring_length]
-	}, aim_speed)#, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	}, aim_speed)#, Tween.TRANS_EXPO, Tween.EASE_OUT)
 
 func exit_aim():
 	tween_camera_properties({
 		camera: ['fov', default_fov],
-		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * sign(edge_spring_arm.spring_length)],
+		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * current_camera_alignment],
 		rear_spring_arm: ["spring_length", default_rear_spring_arm_length]
-	}, aim_speed)#, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	}, aim_speed)#, Tween.TRANS_EXPO, Tween.EASE_OUT)
 
 func swap_camera_alignment():
-	var new_pos: float = default_edge_spring_arm_length * -sign(edge_spring_arm.spring_length)
+	match current_camera_alignment:
+		CameraAlignment.LEFT:
+			# set_camera_alignment('CameraAlignment.RIGHT')
+			current_camera_alignment = CameraAlignment.RIGHT
+		CameraAlignment.CENTRE:
+			return
+		CameraAlignment.RIGHT:
+			current_camera_alignment = CameraAlignment.LEFT
+
+	var new_pos: float = default_edge_spring_arm_length * current_camera_alignment
 
 	tween_camera_property(edge_spring_arm, 'spring_length', new_pos, camera_alignment_speed)
 
@@ -100,16 +113,16 @@ func swap_camera_alignment():
 func enter_sprint():
 	tween_camera_properties({
 		camera: ['fov', sprint_fov],
-		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * sign(edge_spring_arm.spring_length)],
+		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * current_camera_alignment],
 		rear_spring_arm: ["spring_length", default_rear_spring_arm_length]
-	}, sprint_tween_speed)#, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	}, sprint_tween_speed)#, Tween.TRANS_EXPO, Tween.EASE_OUT)
 
 func exit_sprint():
 	tween_camera_properties({
 		camera: ['fov', default_fov],
-		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * sign(edge_spring_arm.spring_length)],
+		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * current_camera_alignment],
 		rear_spring_arm: ["spring_length", default_rear_spring_arm_length]
-	}, sprint_tween_speed)#, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	}, sprint_tween_speed)#, Tween.TRANS_EXPO, Tween.EASE_OUT)
 
 # tween
 func kill_camera_tween():
