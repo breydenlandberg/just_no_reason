@@ -1,4 +1,5 @@
 class_name Motion extends State
+# Why is this inheriting State? I want my States to be States not "Motions" ... use composition if possible
 
 
 # signals
@@ -7,7 +8,7 @@ signal velocity_updated(vel: Vector3)
 # const
 const base_speed := 8.0
 const jump_velocity := 5.0
-const gravity := 9.8
+const gravity := -9.8
 const acceleration := 1000.0
 
 # var

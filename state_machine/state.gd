@@ -8,11 +8,11 @@ signal _transition(state, new_state)
 
 # var
 var previous_state: State # Should a State even know this?
+var entity: CharacterBody3D # We need to rework this... seems like a clunky abstraction, gotta be better ways to generalise
 
 var animation: AnimationPlayer
 var attack_animation: AnimationPlayer
 var collider: CollisionShape3D
-var entity: CharacterBody3D
 var mesh: MeshInstance3D
 
 

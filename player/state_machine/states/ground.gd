@@ -35,6 +35,7 @@ func _state_physics_process(_delta: float):
 				animation.play('Walk')
 			else:
 				animation.play('Idle')
+				_transition.emit(self, 'idle')
 
 		handle_sprint()
 		handle_crouch()

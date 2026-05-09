@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b2yfduoiiofai" path="res://player/assets/player_model_inherited.tscn" id="3_qjkh3"]
 [ext_resource type="Script" uid="uid://bkvw45iyq1mx4" path="res://player/state_machine/states/freefly.gd" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://dorj1mv5pt53f" path="res://player/state_machine/states/idle.gd" id="6_hg6s5"]
+[ext_resource type="Script" uid="uid://5w5efrmbjoqn" path="res://player/state_machine/states/walk.gd" id="7_8t03j"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_boad6"]
 height = 1.7850008
@@ -48,6 +49,10 @@ script = ExtResource("5_rgyib")
 [node name="Idle" type="Node3D" parent="PlayerStateMachine" unique_id=192390092]
 script = ExtResource("6_hg6s5")
 metadata/_custom_type_script = "uid://cq1kfe0pd4oro"
+
+[node name="Walk" type="Node3D" parent="PlayerStateMachine" unique_id=930283055]
+script = ExtResource("7_8t03j")
+metadata/_custom_type_script = "uid://8lo1i26mgc41"
 
 [node name="PlayerModel" parent="." unique_id=1356614005 instance=ExtResource("3_qjkh3")]
 
