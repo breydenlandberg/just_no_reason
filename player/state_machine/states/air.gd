@@ -25,7 +25,7 @@ func _state_input(_event: InputEvent):
 
 func _state_physics_process(_delta: float):
 	if not player.is_attacking and not animation.current_animation == 'Jump_Start':
-		animation.play('Jump')
+		pass
 
 	if player.is_on_floor():
 		_transition.emit(self, 'ground')

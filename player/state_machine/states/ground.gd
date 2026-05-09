@@ -17,13 +17,10 @@ var player: CharacterBody3D
 func _enter():
 	player = entity
 
-	if previous_state and previous_state.name.to_lower() == 'air' and not player.is_attacking:# and player.velocity.length() == 0
-		animation.play('Jump_Land')
-
 func _state_input(_event: InputEvent):
 	if player.is_on_floor():
 		if _event.is_action_pressed('jump') and player.can_jump:
-			jump()
+			pass
 		if player.can_attack and not player.is_attacking:
 			if _event.is_action_pressed('attack_basic'):
 				attack_basic()
@@ -90,9 +87,3 @@ func handle_sprint():
 	else:
 		player.speed = player.base_speed
 		player.is_sprinting = false
-
-func jump():
-	player.velocity.y = jump_velocity
-
-	if not player.is_attacking:
-		animation.play('Jump_Start')

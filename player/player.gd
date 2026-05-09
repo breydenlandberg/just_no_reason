@@ -40,6 +40,7 @@ var is_freeflying := false
 
 @onready var ui_manager := %UIManager
 
+@onready var animation: AnimationPlayer = $PlayerModel/AnimationPlayer
 @onready var camera: Node3D = $Camera
 @onready var model: Node3D = $PlayerModel
 
@@ -80,7 +81,7 @@ func _unhandled_input(event: InputEvent):
 		InteractManager.execute_current_interaction()
 
 
-### helper
+## helper
 #
 func check_input_mappings():
 	if can_move and not InputMap.has_action(input_left):

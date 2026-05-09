@@ -26,6 +26,9 @@ func _ready():
 
 ## helper
 #
+func is_on_floor() -> bool:
+	return entity.is_on_floor()
+
 func set_direction():
 	input_dir = Input.get_vector(InputManager.input_left, InputManager.input_right, InputManager.input_forward, InputManager.input_back)
 	direction = (entity.camera.transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
