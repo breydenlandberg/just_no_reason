@@ -2,15 +2,18 @@ class_name State extends Node3D
 
 
 # signals
+@warning_ignore('unused_signal')
 signal _transition(state, new_state)
+#signal _finished(next_state: String) ???
 
 # var
+var previous_state: State # Should a State even know this?
+
 var animation: AnimationPlayer
 var attack_animation: AnimationPlayer
 var collider: CollisionShape3D
 var entity: CharacterBody3D
 var mesh: MeshInstance3D
-var previous_state: State
 
 
 ### fn

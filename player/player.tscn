@@ -28,12 +28,12 @@ collision_layer = 132
 collision_mask = 3
 script = ExtResource("1_ucva2")
 
-[node name="PlayerStateMachine" type="Node3D" parent="." unique_id=1485374244 node_paths=PackedStringArray("animation", "collider", "entity", "initial_state")]
+[node name="PlayerStateMachine" type="Node3D" parent="." unique_id=1485374244 node_paths=PackedStringArray("initial_state", "entity", "animation", "collider")]
 script = ExtResource("2_yw30f")
+initial_state = NodePath("Ground")
+entity = NodePath("..")
 animation = NodePath("../PlayerModel/AnimationPlayer")
 collider = NodePath("../CollisionShape3D")
-entity = NodePath("..")
-initial_state = NodePath("Ground")
 
 [node name="Air" type="Node3D" parent="PlayerStateMachine" unique_id=1641536879]
 script = ExtResource("3_boad6")

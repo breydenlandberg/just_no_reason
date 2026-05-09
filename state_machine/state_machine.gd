@@ -6,12 +6,13 @@ var states: Dictionary
 var current_state: State
 
 # @export
+@export var initial_state: State
+@export var entity: CharacterBody3D
+
 @export var animation: AnimationPlayer
 @export var attack_animation: AnimationPlayer
 @export var collider: CollisionShape3D
-@export var entity: CharacterBody3D
 @export var mesh: MeshInstance3D
-@export var initial_state: State
 
 
 ### fn
@@ -39,21 +40,18 @@ func handle_process(delta: float):
 # Used in _ready
 func set_up_state_machine():
 	# Set up states
-	for child in get_children():
-		if child is State:
-			child.animation = animation
-			child.attack_animation = attack_animation
-			child.collider = collider
-			child.entity = entity
-			child.mesh = mesh
+	for child: State in get_children():
+		child.animation = animation
+		child.attack_animation = attack_animation
+		child.collider = collider
+		child.entity = entity
+		child.mesh = mesh
 
-			states[child.name.to_lower()] = child
+		states[child.name.to_lower()] = child
 
-			child._transition.connect(transition)
+		child._transition.connect(transition)
 
-			print('For ', self, ', initialise State: ', child)
-		else:
-			push_warning('Child \'' + child.name + '\' is not a valid State for the ' + entity.name + 'StateMachine')
+		print('For ', self, ', initialise State: ', child)
 
 	if initial_state:
 		initial_state._enter()
