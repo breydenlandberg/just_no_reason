@@ -41,8 +41,9 @@ var is_freeflying := false
 @onready var ui_manager := %UIManager
 
 @onready var camera: Node3D = $Camera
+@onready var model: Node3D = $PlayerModel
+
 @onready var collider := $CollisionShape3D
-@onready var player_model: Node3D = $PlayerModel
 @onready var player_state_machine: Node3D = $PlayerStateMachine
 
 
@@ -50,32 +51,8 @@ var is_freeflying := false
 
 ## virtual
 #
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	if not is_freeflying:
-		# Apply gravity to velocity
-		#if has_gravity:
-			#if not is_on_floor():
-				#velocity += get_gravity() * delta
-#
-		## Apply desired movement to velocity
-		#if can_move:
-			#var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
-			#var direction := (camera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-#
-			#if input_dir != Vector2(0, 0):
-				#player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
-#
-			#if direction:
-				#velocity.x = direction.x * speed
-				#velocity.z = direction.z * speed
-			#else:
-				#velocity.x = move_toward(velocity.x, 0, speed)
-				#velocity.z = move_toward(velocity.z, 0, speed)
-		#else:
-			#velocity.x = 0
-			#velocity.y = 0
-
-		# Use velocity to actually move
 		move_and_slide()
 
 func _ready():

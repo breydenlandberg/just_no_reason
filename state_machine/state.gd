@@ -8,8 +8,10 @@ signal _transition(state, new_state)
 
 # var
 var previous_state: State # Should a State even know this?
-var entity: CharacterBody3D # We need to rework this... seems like a clunky abstraction, gotta be better ways to generalise
+var entity: CharacterBody3D # Do we need to rework this... gotta be better ways to generalise, seems like a clunky abstraction ... OR IS IT!?
 
+# Move all below out of State... let entities (i.e. CharacterBody3Ds and their attached script) own these and if we want to shorthand it, do
+# var animation: AnimationPlayer = entity.animation in the _enter() function for those that a State needs...
 var animation: AnimationPlayer
 var attack_animation: AnimationPlayer
 var collider: CollisionShape3D

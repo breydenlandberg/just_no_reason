@@ -32,10 +32,9 @@ func _state_physics_process(_delta: float):
 	if player.is_on_floor():
 		if can_play_default_animation():
 			if player.velocity.length() > 0:
-				animation.play('Walk')
+				pass
 			else:
-				animation.play('Idle')
-				_transition.emit(self, 'idle')
+				pass
 
 		handle_sprint()
 		handle_crouch()

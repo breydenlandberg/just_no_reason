@@ -22,13 +22,13 @@ static var velocity := Vector3.ZERO
 ## virtual
 #
 func _ready():
-	velocity_updated.connect(owner.set_velocity_from_motion)
+	velocity_updated.connect(owner.set_velocity_from_motion) # owner!?!?!? entity doesn't work
 
 ## helper
 #
 func set_direction():
 	input_dir = Input.get_vector(InputManager.input_left, InputManager.input_right, InputManager.input_forward, InputManager.input_back)
-	direction = (owner.camera.transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
+	direction = (entity.camera.transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
 
 func calculate_velocity(_speed: float, _direction: Vector3, _delta: float):
 	velocity.x = move_toward(velocity.x, _direction.x * _speed, acceleration * _delta)
@@ -36,5 +36,9 @@ func calculate_velocity(_speed: float, _direction: Vector3, _delta: float):
 	velocity_updated.emit(velocity)
 
 func calculate_gravity(_delta: float):
-	if not owner.is_on_floor():
+	if not entity.is_on_floor():
 		velocity.y += gravity * _delta
+
+func rotate_model():
+	if input_dir != Vector2(0, 0):
+		entity.model.rotation_degrees.y = entity.camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90

@@ -41,10 +41,11 @@ func handle_process(delta: float):
 func set_up_state_machine():
 	# Set up states
 	for child: State in get_children():
+		child.entity = entity
+
 		child.animation = animation
 		child.attack_animation = attack_animation
 		child.collider = collider
-		child.entity = entity
 		child.mesh = mesh
 
 		states[child.name.to_lower()] = child
