@@ -137,6 +137,10 @@ func check_input_mappings():
 		push_error('Basic attack disabled. No InputAction found for input_attack_basic: ' + input_attack_basic)
 		can_attack = false
 
+# ???
+func set_velocity_from_motion(vel: Vector3):
+	velocity = vel
+
 ## SignalBus
 #
 func message(text: String):
