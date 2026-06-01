@@ -6,7 +6,7 @@ extends Motion
 ## virtual
 #
 func _enter():
-	if previous_state and previous_state.name.to_lower() in ['jump', 'fall'] and not entity.is_attacking:
+	if previous_state and previous_state.name.to_lower() in ['jump', 'sprintjump', 'fall', 'sprintfall'] and not entity.is_attacking:
 		animation.play('Jump_Land')
 	else:
 		animation.play('Idle')
@@ -18,6 +18,7 @@ func _state_input(_event: InputEvent):
 func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_velocity(base_speed, direction, _delta)
+	replenish_sprint(_delta)
 
 	if direction != Vector3.ZERO:
 		_transition.emit(self, 'walk')

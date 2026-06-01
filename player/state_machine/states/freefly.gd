@@ -19,7 +19,7 @@ var player: CharacterBody3D
 func _enter():
 	player = entity
 	camera = player.camera
-	player_model = player.player_model
+	player_model = player.model
 
 	player.set_collision_mask_value(1, false)
 	player.velocity = Vector3.ZERO

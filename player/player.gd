@@ -20,7 +20,6 @@ var is_freeflying := false
 
 @export_group('Speeds')
 @export var base_speed := 8.0
-@export var sprint_speed := 16.0
 
 @export_group('Input Actions')
 # Should we just... reference InputManager directly?
@@ -53,6 +52,7 @@ var is_freeflying := false
 ## virtual
 #
 func _physics_process(_delta: float):
+	#pass
 	if not is_freeflying:
 		move_and_slide()
 
@@ -115,7 +115,6 @@ func check_input_mappings():
 		push_error('Basic attack disabled. No InputAction found for input_attack_basic: ' + input_attack_basic)
 		can_attack = false
 
-# ???
 func set_velocity_from_motion(vel: Vector3):
 	velocity = vel
 

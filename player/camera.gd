@@ -53,12 +53,6 @@ func _unhandled_input(event: InputEvent):
 	if Input.is_action_just_released('aim'):
 		exit_aim()
 
-	if Input.is_action_pressed('sprint'):
-		enter_sprint()
-
-	if Input.is_action_just_released('sprint'):
-		exit_sprint()
-
 ## helper
 #
 func camera_look(mouse_movement: Vector2):
@@ -147,3 +141,10 @@ func tween_camera_properties(properties: Dictionary, duration: float, trans := T
 	for target in properties:
 		var pair = properties[target]
 		camera_tween.tween_property(target, pair[0], pair[1], duration)
+
+
+func _on_sprint_ended():
+	enter_sprint()
+
+func _on_sprint_started():
+	exit_sprint()

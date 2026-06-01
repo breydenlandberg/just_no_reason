@@ -17,6 +17,9 @@ func _state_physics_process(_delta: float):
 
 	if is_on_floor():
 		if direction != Vector3.ZERO:
-			_transition.emit(self, 'walk')
+			if Input.is_action_pressed('sprint'):
+				_transition.emit(self, 'sprint')
+			else:
+				_transition.emit(self, 'walk')
 		else:
 			_transition.emit(self, 'idle')

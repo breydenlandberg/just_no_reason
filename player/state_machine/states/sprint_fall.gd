@@ -1,6 +1,9 @@
 extends Motion
 
 
+### signal
+signal sprint_ended
+
 ### fn
 
 ## virtual
@@ -12,11 +15,16 @@ func _enter():
 func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_gravity(_delta)
-	calculate_velocity(base_speed, direction, _delta)
+	calculate_velocity(sprint_speed, direction, _delta)
 	rotate_model()
 
 	if is_on_floor():
 		if direction != Vector3.ZERO:
-			_transition.emit(self, 'walk')
+			if Input.is_action_pressed('sprint'):
+				_transition.emit(self, 'sprint')
+			else:
+				sprint_ended.emit()
+				_transition.emit(self, 'walk')
 		else:
+			sprint_ended.emit()
 			_transition.emit(self, 'idle')

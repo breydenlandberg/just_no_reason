@@ -15,10 +15,14 @@ func _state_input(_event: InputEvent):
 	if Input.is_action_just_pressed('jump'):
 		_transition.emit(self, 'jump')
 
+	if Input.is_action_pressed('sprint') and sprint_remaining > 1.0:
+		_transition.emit(self, 'sprint')
+
 func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_velocity(base_speed, direction, _delta)
 	rotate_model()
+	replenish_sprint(_delta)
 
 	if direction == Vector3.ZERO:
 		_transition.emit(self, 'idle')

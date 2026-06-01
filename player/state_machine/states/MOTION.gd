@@ -1,20 +1,23 @@
 class_name Motion extends State
-# Why is this inheriting State? I want my States to be States not "Motions" ... use composition if possible
 
 
 # signals
 signal velocity_updated(vel: Vector3)
+# can MOTION own the sprint_started and sprint_ended signals?
 
 # const
 const base_speed := 8.0
+const sprint_speed := 16.0
 const jump_velocity := 5.0
 const gravity := -9.8
 const acceleration := 1000.0
+const sprint_duration := 3.0
 
 # var
 static var input_dir := Vector2.ZERO
 static var direction := Vector3.ZERO
 static var velocity := Vector3.ZERO
+static var sprint_remaining := 0.0
 
 
 ### fn
@@ -22,7 +25,8 @@ static var velocity := Vector3.ZERO
 ## virtual
 #
 func _ready():
-	velocity_updated.connect(owner.set_velocity_from_motion) # owner!?!?!? entity doesn't work
+	velocity_updated.connect(owner.set_velocity_from_motion)
+	sprint_remaining = sprint_duration
 
 ## helper
 #
@@ -45,3 +49,6 @@ func calculate_gravity(_delta: float):
 func rotate_model():
 	if input_dir != Vector2(0, 0):
 		entity.model.rotation_degrees.y = entity.camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
+
+func replenish_sprint(delta: float):
+	sprint_remaining = min(sprint_remaining + delta, sprint_duration)
