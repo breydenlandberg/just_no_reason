@@ -4,8 +4,6 @@
 [ext_resource type="Script" uid="uid://b4spj3iaptg3p" path="res://player/camera.gd" id="2_5hfox"]
 [ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="2_wr06p"]
 [ext_resource type="Script" uid="uid://bfadw0tqcte5r" path="res://player/state_machine/player_state_machine.gd" id="2_yw30f"]
-[ext_resource type="Script" uid="uid://wpgt0vwoc2ma" path="res://player/state_machine/states/air.gd" id="3_boad6"]
-[ext_resource type="Script" uid="uid://tostf6lyr27j" path="res://player/state_machine/states/ground.gd" id="3_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://b2yfduoiiofai" path="res://player/assets/player_model_inherited.tscn" id="3_qjkh3"]
 [ext_resource type="Script" uid="uid://bkvw45iyq1mx4" path="res://player/state_machine/states/freefly.gd" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://dorj1mv5pt53f" path="res://player/state_machine/states/idle.gd" id="6_hg6s5"]
@@ -41,12 +39,6 @@ initial_state = NodePath("Idle")
 entity = NodePath("..")
 animation = NodePath("../PlayerModel/AnimationPlayer")
 collider = NodePath("../CollisionShape3D")
-
-[node name="Air" type="Node3D" parent="PlayerStateMachine" unique_id=1641536879]
-script = ExtResource("3_boad6")
-
-[node name="Ground" type="Node3D" parent="PlayerStateMachine" unique_id=1500868101]
-script = ExtResource("3_g6k8r")
 
 [node name="Freefly" type="Node3D" parent="PlayerStateMachine" unique_id=966406892]
 script = ExtResource("5_rgyib")

@@ -68,13 +68,6 @@ func _unhandled_input(event: InputEvent):
 	if Input.is_action_just_pressed(input_freefly):
 		if(can_freefly and not is_freeflying and not player_state_machine.current_state.name.to_lower() == 'freefly'):
 			player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'freefly')
-		else:
-			if is_on_floor():
-				player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'ground')
-			else:
-				player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'air')
-	# lol could above be any wordier?
-	# i swear something's still not fuckin workin...
 
 	# Handle interactions
 	if can_interact and event.is_action_pressed(input_interact):
