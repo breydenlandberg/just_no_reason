@@ -1,9 +1,6 @@
 extends Motion
 
 
-### signal
-signal sprint_ended
-
 ### fn
 
 ## virtual

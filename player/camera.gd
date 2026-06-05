@@ -143,6 +143,7 @@ func tween_camera_properties(properties: Dictionary, duration: float, trans := T
 		camera_tween.tween_property(target, pair[0], pair[1], duration)
 
 
+# signals
 func _on_sprint_ended():
 	enter_sprint()
 

@@ -3,7 +3,10 @@ class_name Motion extends State
 
 # signals
 signal velocity_updated(vel: Vector3)
-# can MOTION own the sprint_started and sprint_ended signals?
+@warning_ignore("unused_signal")
+signal sprint_started
+@warning_ignore("unused_signal")
+signal sprint_ended
 
 # const
 const base_speed := 8.0
