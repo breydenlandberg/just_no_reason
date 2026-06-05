@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://b2yfduoiiofai" path="res://player/assets/player_model_inherited.tscn" id="3_qjkh3"]
 [ext_resource type="Script" uid="uid://bkvw45iyq1mx4" path="res://player/state_machine/states/freefly.gd" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://dorj1mv5pt53f" path="res://player/state_machine/states/idle.gd" id="6_hg6s5"]
+[ext_resource type="Script" uid="uid://bfrocxkmlegnc" path="res://player/state_machine/states/aim_idle.gd" id="6_wodsf"]
 [ext_resource type="Script" uid="uid://5w5efrmbjoqn" path="res://player/state_machine/states/walk.gd" id="7_8t03j"]
+[ext_resource type="Script" uid="uid://dvb41n2ldupxy" path="res://player/state_machine/states/aim_walk.gd" id="7_wodsf"]
 [ext_resource type="Script" uid="uid://dmcbp1v7txniq" path="res://player/state_machine/states/jump.gd" id="8_2ieo8"]
 [ext_resource type="Script" uid="uid://c5fn5uxkndal3" path="res://player/state_machine/states/fall.gd" id="9_ebec5"]
 [ext_resource type="Script" uid="uid://3xqpw4m0uscs" path="res://player/state_machine/states/sprint_jump.gd" id="10_wodsf"]
@@ -51,6 +53,14 @@ metadata/_custom_type_script = "uid://cq1kfe0pd4oro"
 script = ExtResource("7_8t03j")
 metadata/_custom_type_script = "uid://8lo1i26mgc41"
 
+[node name="AimIdle" type="Node3D" parent="PlayerStateMachine" unique_id=737568984]
+script = ExtResource("6_wodsf")
+metadata/_custom_type_script = "uid://8lo1i26mgc41"
+
+[node name="AimWalk" type="Node3D" parent="PlayerStateMachine" unique_id=1547278980]
+script = ExtResource("7_wodsf")
+metadata/_custom_type_script = "uid://8lo1i26mgc41"
+
 [node name="Sprint" type="Node3D" parent="PlayerStateMachine" unique_id=1483076903]
 script = ExtResource("10_yllr7")
 metadata/_custom_type_script = "uid://8lo1i26mgc41"
@@ -59,12 +69,12 @@ metadata/_custom_type_script = "uid://8lo1i26mgc41"
 script = ExtResource("8_2ieo8")
 metadata/_custom_type_script = "uid://8lo1i26mgc41"
 
-[node name="SprintJump" type="Node3D" parent="PlayerStateMachine" unique_id=844208411]
-script = ExtResource("10_wodsf")
-metadata/_custom_type_script = "uid://8lo1i26mgc41"
-
 [node name="Fall" type="Node3D" parent="PlayerStateMachine" unique_id=1342943310]
 script = ExtResource("9_ebec5")
+metadata/_custom_type_script = "uid://8lo1i26mgc41"
+
+[node name="SprintJump" type="Node3D" parent="PlayerStateMachine" unique_id=844208411]
+script = ExtResource("10_wodsf")
 metadata/_custom_type_script = "uid://8lo1i26mgc41"
 
 [node name="SprintFall" type="Node3D" parent="PlayerStateMachine" unique_id=770472132]
