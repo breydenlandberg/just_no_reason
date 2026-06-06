@@ -1,5 +1,16 @@
 # BUGS
-- I just saw AnimationPlayer get perma-freefly'd... and then also perma-sprinting'd...
+- Idle state does not play idle animation after recovering from a fall
 
 # TODO
 - Interaction system should be proximity based (i.e. the closest interaction the player is facing), not a pure FIFO stack like it is now
+
+
+
+"As a recommendation, you can create a separate state machine to control the action in the upper body. That will avoid you having to do x100 crossovers of actions. E.g. instead of having: idle, idle-aim, walk, walk-aim, run, run-aim you'll have: state_machine -> idle, walk, run and action_state_machine -> aim.
+
+The action state_machine can controll the top part of the body and the other the actual movement action.
+1
+Reply
+@yukku121
+3 weeks ago
+Otherwise for each action the player can do: grab, eat, talk,... you'll need to have x2/3 states in the state machine to match with idle, walk,..."

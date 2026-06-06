@@ -47,11 +47,6 @@ func _unhandled_input(event: InputEvent):
 	if Input.is_action_just_pressed('swap_camera_alignment'):
 		swap_camera_alignment()
 
-	if Input.is_action_pressed('aim'):
-		enter_aim()
-
-	if Input.is_action_just_released('aim'):
-		exit_aim()
 
 ## helper
 #
@@ -149,3 +144,9 @@ func _on_sprint_ended():
 
 func _on_sprint_started():
 	exit_sprint()
+
+func _on_aim_entered():
+	enter_aim()
+
+func _on_aim_exited():
+	exit_aim()

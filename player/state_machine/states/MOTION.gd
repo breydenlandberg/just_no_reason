@@ -3,14 +3,16 @@ class_name Motion extends State
 
 # signals
 signal velocity_updated(vel: Vector3)
-@warning_ignore("unused_signal")
+@warning_ignore('unused_signal')
 signal sprint_started
-@warning_ignore("unused_signal")
+@warning_ignore('unused_signal')
 signal sprint_ended
 
 # const
+# make into @export var
 const base_speed := 8.0
 const sprint_speed := 16.0
+const aim_speed := 4.0
 const jump_velocity := 5.0
 const gravity := -9.8
 const acceleration := 1000.0

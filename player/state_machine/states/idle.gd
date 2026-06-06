@@ -15,6 +15,9 @@ func _state_input(_event: InputEvent):
 	if Input.is_action_just_pressed('jump'):
 		_transition.emit(self, 'jump')
 
+	if Input.is_action_pressed('aim'):
+		_transition.emit(self, 'aimidle')
+
 func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_velocity(base_speed, direction, _delta)

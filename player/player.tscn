@@ -187,6 +187,10 @@ label_settings = SubResource("LabelSettings_5hfox")
 
 [node name="AttackAnimationPlayer" type="AnimationPlayer" parent="." unique_id=224155862]
 
+[connection signal="aim_entered" from="PlayerStateMachine/AimIdle" to="Camera" method="_on_aim_entered"]
+[connection signal="aim_exited" from="PlayerStateMachine/AimIdle" to="Camera" method="_on_aim_exited"]
+[connection signal="aim_entered" from="PlayerStateMachine/AimWalk" to="Camera" method="_on_aim_entered"]
+[connection signal="aim_exited" from="PlayerStateMachine/AimWalk" to="Camera" method="_on_aim_exited"]
 [connection signal="sprint_ended" from="PlayerStateMachine/Sprint" to="Camera" method="_on_sprint_ended"]
 [connection signal="sprint_started" from="PlayerStateMachine/Sprint" to="Camera" method="_on_sprint_started"]
 [connection signal="sprint_ended" from="PlayerStateMachine/SprintFall" to="Camera" method="_on_sprint_ended"]
