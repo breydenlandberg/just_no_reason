@@ -1,6 +1,9 @@
 class_name PlayerStateMachine extends StateMachine
 
 
+@export var player_movement_stats: MovementStats
+
+
 ### fn
 
 ## virtual

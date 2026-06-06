@@ -9,7 +9,6 @@ signal sprint_started
 signal sprint_ended
 
 # const
-# make into @export var
 const base_speed := 8.0
 const sprint_speed := 16.0
 const aim_speed := 4.0
