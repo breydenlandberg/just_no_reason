@@ -25,7 +25,7 @@ func _state_input(_event: InputEvent):
 # Rename _delta to delta
 func _state_physics_process(_delta: float):
 	set_direction()
-	calculate_velocity(sprint_speed, direction, _delta)
+	calculate_velocity(sprint_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta)
 	rotate_model()
 	sprint_remaining -= _delta # Reduce sprint
 

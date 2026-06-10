@@ -19,8 +19,8 @@ func _state_input(_event: InputEvent):
 		_transition.emit(self, 'aimidle')
 
 func _state_physics_process(_delta: float):
-	set_direction()
-	calculate_velocity(base_speed, direction, _delta)
+	set_direction() # Do these need to be in idle?
+	calculate_velocity(base_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta) # Do these need to be in idle?
 	replenish_sprint(_delta)
 
 	if direction != Vector3.ZERO:
