@@ -1,0 +1,46 @@
+MIXAMO ANIMATIONS
+
+Non Combat Animations
+
+fast run
+slow run
+falling idle
+walking
+weight shift idle
+
+Combat Animations
+
+rifle sprint forward
+rifle jump idle
+reloading rifle while standing
+running with rifle aimed
+running backward while aiming rifle
+rifle run left
+rifle run forward left
+rifle run backwards left
+rifle run right
+rifle run forward right
+rifle run backwards right
+
+crouch walk strafe left
+crouch walk strafe right
+walk backwards
+walk backward left
+walk backward right
+walk with rifle
+walk forward right
+walk forward left
+
+rifle aiming idle
+idle with aimed pistol
+great sword idle
+grab and put back rifle
+
+Hand Animated
+
+Weapon Strike
+Pistol Shoot
+Rifle Shoot
+
+If you want to use mixamo for the firing animations search "Gunplay" and you can find some decent ones
+for Melee you could use "great sword slash"
