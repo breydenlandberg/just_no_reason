@@ -28,6 +28,10 @@ window/size/viewport_width=3840
 window/size/viewport_height=2160
 window/size/borderless=true
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_left={
