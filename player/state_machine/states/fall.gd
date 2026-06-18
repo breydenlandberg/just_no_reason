@@ -6,6 +6,8 @@ extends Motion
 ## virtual
 #
 func _enter():
+	_animation_state_changed.emit('fall')
+
 	if not entity.is_attacking:
 		entity.animation.play('Jump')
 

@@ -6,10 +6,12 @@ extends Motion
 ## virtual
 #
 func _enter():
+	_animation_state_changed.emit('walk')
+
 	#if previous_state and previous_state.name.to_lower() == 'fall' and not entity.is_attacking:
 		#animation.play('Jump_Land')
 	#else:
-		animation.play('Walk')
+		#animation.play('Walk')
 
 func _state_input(_event: InputEvent):
 	if Input.is_action_just_pressed('jump'):

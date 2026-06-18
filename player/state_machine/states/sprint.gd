@@ -8,11 +8,13 @@ extends Motion
 ## virtual
 #
 func _enter():
+	_animation_state_changed.emit('sprint')
+
 	#if previous_state and previous_state.name.to_lower() == 'fall' and not entity.is_attacking:
 		#animation.play('Jump_Land')
 	#else:
-		sprint_started.emit()
-		animation.play('Jog_Fwd')
+	sprint_started.emit()
+		#animation.play('Jog_Fwd')
 
 func _state_input(_event: InputEvent):
 	if Input.is_action_just_released('sprint'):

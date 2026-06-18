@@ -1,4 +1,4 @@
-extends State
+extends Motion
 
 
 # var
@@ -26,6 +26,8 @@ func _enter():
 	player.is_freeflying = true
 
 	animation.play('Swim_Idle')
+
+	_animation_state_changed.emit('freefly')
 
 func _exit():
 	player.set_collision_mask_value(1, true)

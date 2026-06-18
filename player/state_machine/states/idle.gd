@@ -6,6 +6,8 @@ extends Motion
 ## virtual
 #
 func _enter():
+	_animation_state_changed.emit('idle')
+
 	if previous_state and previous_state.name.to_lower() in ['jump', 'sprintjump', 'fall', 'sprintfall'] and not entity.is_attacking:
 		animation.play('Jump_Land')
 	else:

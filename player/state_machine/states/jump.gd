@@ -6,6 +6,7 @@ extends Motion
 ## virtual
 #
 func _enter():
+	_animation_state_changed.emit('jump')
 	jump()
 
 func _state_physics_process(_delta: float):

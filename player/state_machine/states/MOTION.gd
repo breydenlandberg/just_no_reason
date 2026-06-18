@@ -4,6 +4,8 @@ class_name Motion extends State
 # signals
 signal velocity_updated(vel: Vector3)
 @warning_ignore('unused_signal')
+signal _animation_state_changed(state: String)
+@warning_ignore('unused_signal')
 signal sprint_started
 @warning_ignore('unused_signal')
 signal sprint_ended
@@ -73,7 +75,7 @@ func calculate_gravity(_delta: float):
 
 func rotate_model():
 	if input_dir != Vector2(0, 0):
-		entity.model.rotation_degrees.y = entity.camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
+		%PlayerModelAnimated.rotation_degrees.y = entity.camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
 
 func replenish_sprint(delta: float):
 	sprint_remaining = min(sprint_remaining + delta, PLAYER_MOVEMENT_STATS.sprint_duration)
