@@ -50,7 +50,7 @@ input_5/reset = true
 animation = &"walk_forward"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kxiw5"]
-graph_offset = Vector2(-602.26654, 41.54593)
+graph_offset = Vector2(-502, -55.5)
 nodes/output/position = Vector2(275, 150)
 nodes/walk_forward/node = SubResource("AnimationNodeAnimation_xyray")
 nodes/walk_forward/position = Vector2(-250, 300)
@@ -75,7 +75,6 @@ animation_tree = NodePath("AnimationTree")
 [node name="PlayerAnimated" parent="." unique_id=1542641781 instance=ExtResource("1_7qkvy")]
 
 [node name="Skeleton3D" parent="PlayerAnimated/Armature" parent_id_path=PackedInt32Array(1542641781, 290517916) index="0" unique_id=460776067]
-bones/0/position = Vector3(-6.9920483, -4.665943, -113.9972)
 bones/0/rotation = Quaternion(-0.73301756, -0.2246199, 0.25283805, 0.5901729)
 bones/1/rotation = Quaternion(0.06038887, 0.017606124, -0.015829576, 0.99789417)
 bones/2/rotation = Quaternion(0.089387715, 0.036812324, -0.024866764, 0.9950057)
