@@ -26,7 +26,8 @@ func _state_input(_event: InputEvent):
 func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_velocity(base_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta)
-	rotate_model()
+	#rotate_model()
+	_input_direction_changed.emit(input_dir)
 	replenish_sprint(_delta)
 
 	if direction == Vector3.ZERO:

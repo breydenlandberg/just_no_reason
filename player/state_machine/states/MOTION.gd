@@ -6,6 +6,8 @@ signal velocity_updated(vel: Vector3)
 @warning_ignore('unused_signal')
 signal _animation_state_changed(state: String)
 @warning_ignore('unused_signal')
+signal _input_direction_changed(_input_dir: Vector2)
+@warning_ignore('unused_signal')
 signal sprint_started
 @warning_ignore('unused_signal')
 signal sprint_ended

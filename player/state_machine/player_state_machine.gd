@@ -21,5 +21,6 @@ func _process(_delta):
 func _ready():
 	for child: Motion in get_children():
 		child._animation_state_changed.connect(player_model.on_state_machine_animation_state_changed)
+		child._input_direction_changed.connect(player_model.on_input_direction_changed)
 
 	set_up_state_machine()
