@@ -6,12 +6,16 @@ extends Motion
 ## virtual
 #
 func _enter():
-	_animation_state_changed.emit('walk')
+	_animation_state_changed.connect(player_model.on_state_machine_animation_state_changed)
 
-	#if previous_state and previous_state.name.to_lower() == 'fall' and not entity.is_attacking:
-		#animation.play('Jump_Land')
-	#else:
-		#animation.play('Walk')
+	if previous_state and previous_state.name.to_lower() in ['jump', 'sprintjump', 'fall', 'sprintfall']:
+		_animation_state_changed.emit('land_move')
+		await animation_tree.animation_finished
+
+	super._enter()
+
+func _exit():
+	_animation_state_changed.disconnect(player_model.on_state_machine_animation_state_changed)
 
 func _state_input(_event: InputEvent):
 	if Input.is_action_just_pressed('jump'):

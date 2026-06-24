@@ -3,19 +3,21 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ctcb8hu638xhc"
-path="res://.godot/imported/Standing Jump Running Landing.fbx-7be5108ff6b6b57a4ff3b5c8e7932ed3.scn"
+uid="uid://cumw6gtyaiwah"
+path="res://.godot/imported/Falling To Landing.fbx-59c5c35406e75e3cdbed615988db3d57.scn"
 
 [deps]
 
-source_file="res://assets/player_animated/fbx/Standing Jump Running Landing.fbx"
-dest_files=["res://.godot/imported/Standing Jump Running Landing.fbx-7be5108ff6b6b57a4ff3b5c8e7932ed3.scn"]
+source_file="res://assets/player_animated/fbx/Falling To Landing.fbx"
+dest_files=["res://.godot/imported/Falling To Landing.fbx-59c5c35406e75e3cdbed615988db3d57.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

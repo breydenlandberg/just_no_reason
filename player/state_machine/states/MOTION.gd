@@ -28,6 +28,9 @@ static var direction := Vector3.ZERO
 static var velocity := Vector3.ZERO
 static var sprint_remaining := 0.0
 
+# @export var
+@export var on_enter_animation: String
+
 
 ### fn
 
@@ -81,3 +84,7 @@ func rotate_model():
 
 func replenish_sprint(delta: float):
 	sprint_remaining = min(sprint_remaining + delta, PLAYER_MOVEMENT_STATS.sprint_duration)
+
+func _enter():
+	if on_enter_animation:
+		_animation_state_changed.emit(on_enter_animation)

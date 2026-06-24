@@ -10,6 +10,8 @@ var current_state: State
 @export var entity: CharacterBody3D
 
 @export var animation: AnimationPlayer
+@export var animation_tree: AnimationTree
+@export var player_model: PlayerModelAnimated
 @export var attack_animation: AnimationPlayer
 @export var collider: CollisionShape3D
 @export var mesh: MeshInstance3D
@@ -44,6 +46,8 @@ func set_up_state_machine():
 		child.entity = entity
 
 		child.animation = animation
+		child.animation_tree = animation_tree
+		child.player_model = player_model
 		child.attack_animation = attack_animation
 		child.collider = collider
 		child.mesh = mesh

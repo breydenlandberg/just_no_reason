@@ -1,6 +1,10 @@
 extends Motion
 
 
+# @export var
+@export var floor_ray_cast: RayCast3D
+
+
 ### fn
 
 ## virtual

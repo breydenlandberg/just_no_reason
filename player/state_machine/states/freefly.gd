@@ -9,7 +9,7 @@ var player: CharacterBody3D
 
 # @onready
 @onready var camera: Node3D
-@onready var player_model: Node3D
+#@onready var player_model: Node3D
 
 
 ### fn

@@ -13,6 +13,8 @@ var entity: CharacterBody3D # Do we need to rework this... gotta be better ways 
 # Move all below out of State... let entities (i.e. CharacterBody3Ds and their attached script) own these and if we want to shorthand it, do
 # var animation: AnimationPlayer = entity.animation in the _enter() function for those that a State needs...
 var animation: AnimationPlayer
+var animation_tree: AnimationTree
+var player_model: PlayerModelAnimated
 var attack_animation: AnimationPlayer
 var collider: CollisionShape3D
 var mesh: MeshInstance3D

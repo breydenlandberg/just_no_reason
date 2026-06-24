@@ -3,19 +3,21 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://db7y1pxrijtys"
-path="res://.godot/imported/Landing.fbx-9f56e9cff4740ce2b170e7c4638e5389.scn"
+uid="uid://d2hbi8d6g1b44"
+path="res://.godot/imported/Fall A Land To Run Forward.fbx-c60ed777c7e5cb7a14a2bca320964969.scn"
 
 [deps]
 
-source_file="res://assets/player_animated/fbx/Landing.fbx"
-dest_files=["res://.godot/imported/Landing.fbx-9f56e9cff4740ce2b170e7c4638e5389.scn"]
+source_file="res://assets/player_animated/fbx/Fall A Land To Run Forward.fbx"
+dest_files=["res://.godot/imported/Fall A Land To Run Forward.fbx-c60ed777c7e5cb7a14a2bca320964969.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

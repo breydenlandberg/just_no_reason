@@ -2,7 +2,7 @@ class_name PlayerStateMachine extends StateMachine
 
 
 @export var player_movement_stats: MovementStats
-@export var player_model: PlayerModelAnimated
+#@export var player_model: PlayerModelAnimated
 
 
 ### fn
