@@ -20,7 +20,6 @@ func _enter():
 	owner.is_freeflying = true
 	camera = owner.camera
 	owner.set_collision_mask_value(1, false)
-	owner.velocity = Vector3.ZERO
 
 	super._enter()
 
@@ -39,5 +38,10 @@ func _state_physics_process(_delta: float):
 
 	_rotate_model.emit(_input_dir)
 	replenish_sprint(_delta)
+
+	if motion == Vector3.ZERO:
+		_animation_state_changed.emit('freefly_idle')
+	else:
+		_animation_state_changed.emit('freefly_move')
 
 	owner.move_and_collide(motion)

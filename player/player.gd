@@ -2,17 +2,17 @@ extends CharacterBody3D
 
 
 # var
+var is_freeflying := false
 var is_sprinting := false
 var is_crouching := false
 var is_attacking := false
-var is_freeflying := false
 
 # @export
 @export_group('Toggles')
+@export var can_freefly := true
 @export var can_move := true
 @export var can_jump := true
 @export var can_sprint := true
-@export var can_freefly := true
 @export var can_crouch := true
 @export var can_interact := true
 @export var can_attack := true
@@ -51,7 +51,6 @@ var is_freeflying := false
 ## virtual
 #
 func _physics_process(_delta: float):
-	#pass
 	if not is_freeflying:
 		move_and_slide()
 
@@ -62,13 +61,6 @@ func _ready():
 	SignalBus._message.connect(message)
 
 func _unhandled_input(event: InputEvent):
-	pass
-	# Handle freefly mode
-	# We want freeflying to be accessible from every State. Ergo transitioning into it lives in player.gd
-	#if event.is_action_pressed(input_freefly):
-		#if not player_state_machine.current_state.name.to_lower() == 'freefly':
-			#player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'freefly')
-
 	# Handle interactions
 	if can_interact and event.is_action_pressed(input_interact):
 		InteractManager.execute_current_interaction()

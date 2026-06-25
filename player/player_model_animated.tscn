@@ -9,6 +9,9 @@ animation = &"fall"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pahwv"]
 animation = &"float"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kxiw5"]
+animation = &"fly"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7scgr"]
 animation = &"idle"
 
@@ -27,53 +30,57 @@ animation = &"sprint"
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_dmyp1"]
 sync = true
 xfade_time = 0.08
-input_0/name = "freefly"
+input_0/name = "freefly_idle"
 input_0/auto_advance = false
 input_0/break_loop_at_end = false
 input_0/reset = true
-input_1/name = "idle"
+input_1/name = "freefly_move"
 input_1/auto_advance = false
 input_1/break_loop_at_end = false
 input_1/reset = true
-input_2/name = "walk"
+input_2/name = "idle"
 input_2/auto_advance = false
 input_2/break_loop_at_end = false
 input_2/reset = true
-input_3/name = "sprint"
+input_3/name = "walk"
 input_3/auto_advance = false
 input_3/break_loop_at_end = false
 input_3/reset = true
-input_4/name = "jump"
+input_4/name = "sprint"
 input_4/auto_advance = false
 input_4/break_loop_at_end = false
 input_4/reset = true
-input_5/name = "fall"
+input_5/name = "jump"
 input_5/auto_advance = false
 input_5/break_loop_at_end = false
 input_5/reset = true
-input_6/name = "land"
+input_6/name = "fall"
 input_6/auto_advance = false
 input_6/break_loop_at_end = false
 input_6/reset = true
-input_7/name = "land_move"
+input_7/name = "land"
 input_7/auto_advance = false
 input_7/break_loop_at_end = false
 input_7/reset = true
+input_8/name = "land_move"
+input_8/auto_advance = false
+input_8/break_loop_at_end = false
+input_8/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xyray"]
 animation = &"walk_forward"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kxiw5"]
-graph_offset = Vector2(-389.1685, 80.70262)
+graph_offset = Vector2(-770.1636, -189.3555)
 nodes/output/position = Vector2(275, 150)
 nodes/walk_forward/node = SubResource("AnimationNodeAnimation_xyray")
 nodes/walk_forward/position = Vector2(-250, 300)
 nodes/unarmed_movement/node = SubResource("AnimationNodeTransition_dmyp1")
-nodes/unarmed_movement/position = Vector2(25, 150)
+nodes/unarmed_movement/position = Vector2(30, 150)
 nodes/idle/node = SubResource("AnimationNodeAnimation_7scgr")
 nodes/idle/position = Vector2(-175, 100)
 nodes/float/node = SubResource("AnimationNodeAnimation_pahwv")
-nodes/float/position = Vector2(-125, -100)
+nodes/float/position = Vector2(50, -100)
 nodes/fall/node = SubResource("AnimationNodeAnimation_7qkvy")
 nodes/fall/position = Vector2(-375, 900)
 nodes/sprint/node = SubResource("AnimationNodeAnimation_wc8xe")
@@ -84,7 +91,9 @@ nodes/land/node = SubResource("AnimationNodeAnimation_dmyp1")
 nodes/land/position = Vector2(-425, 1100)
 nodes/land_move/node = SubResource("AnimationNodeAnimation_l8muv")
 nodes/land_move/position = Vector2(-475, 1300)
-node_connections = [&"output", 0, &"unarmed_movement", &"unarmed_movement", 0, &"float", &"unarmed_movement", 1, &"idle", &"unarmed_movement", 2, &"walk_forward", &"unarmed_movement", 3, &"sprint", &"unarmed_movement", 4, &"jump", &"unarmed_movement", 5, &"fall", &"unarmed_movement", 6, &"land", &"unarmed_movement", 7, &"land_move"]
+nodes/fly/node = SubResource("AnimationNodeAnimation_kxiw5")
+nodes/fly/position = Vector2(-125, -100)
+node_connections = [&"output", 0, &"unarmed_movement", &"unarmed_movement", 0, &"float", &"unarmed_movement", 1, &"fly", &"unarmed_movement", 2, &"idle", &"unarmed_movement", 3, &"walk_forward", &"unarmed_movement", 4, &"sprint", &"unarmed_movement", 5, &"jump", &"unarmed_movement", 6, &"fall", &"unarmed_movement", 7, &"land", &"unarmed_movement", 8, &"land_move"]
 
 [node name="PlayerModelAnimated" type="Node3D" unique_id=1758736805 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("1_dmyp1")
