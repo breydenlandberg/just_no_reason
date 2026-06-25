@@ -11,7 +11,7 @@ var mouse_sensitivity := 0.001
 # @export
 @export var aim_fov := 65.0
 @export var aim_edge_spring_length := 1.0
-@export var aim_rear_spring_length := 1.0
+@export var aim_rear_spring_length := 2.0
 @export var aim_speed := 0.075					# Why does it get slower the higher the number?
 @export var camera_alignment_speed := 0.1		# Why does it get slower the higher the number?
 @export var sprint_fov := 85.0
@@ -140,10 +140,10 @@ func tween_camera_properties(properties: Dictionary, duration: float, trans := T
 
 # signals
 func _on_sprint_ended():
-	enter_sprint()
+	exit_sprint()
 
 func _on_sprint_started():
-	exit_sprint()
+	enter_sprint()
 
 func _on_aim_entered():
 	enter_aim()

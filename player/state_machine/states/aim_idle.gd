@@ -11,13 +11,7 @@ signal aim_exited
 #
 func _enter():
 	aim_entered.emit()
-
-	if previous_state and previous_state.name.to_lower() in ['jump', 'sprintjump', 'fall', 'sprintfall'] and not entity.is_attacking:
-		pass
-		#animation.play('Jump_Land')
-	else:
-		pass
-		#animation.play('Idle')
+	super._enter()
 
 func _state_input(_event: InputEvent):
 	if Input.is_action_just_released('aim'):

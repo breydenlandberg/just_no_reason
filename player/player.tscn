@@ -58,10 +58,12 @@ metadata/_custom_type_script = "uid://8lo1i26mgc41"
 
 [node name="AimIdle" type="Node3D" parent="PlayerStateMachine" unique_id=737568984]
 script = ExtResource("6_wodsf")
+on_enter_animation = "idle"
 metadata/_custom_type_script = "uid://8lo1i26mgc41"
 
 [node name="AimWalk" type="Node3D" parent="PlayerStateMachine" unique_id=1547278980]
 script = ExtResource("7_wodsf")
+on_enter_animation = "walk"
 metadata/_custom_type_script = "uid://8lo1i26mgc41"
 
 [node name="Sprint" type="Node3D" parent="PlayerStateMachine" unique_id=1483076903]

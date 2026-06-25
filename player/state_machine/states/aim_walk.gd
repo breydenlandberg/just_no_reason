@@ -12,8 +12,7 @@ signal aim_exited
 #
 func _enter():
 	aim_entered.emit()
-
-	#animation.play('Walk')
+	super._enter()
 
 func _state_input(_event: InputEvent):
 	if Input.is_action_just_released('aim'):
