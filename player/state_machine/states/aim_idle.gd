@@ -14,11 +14,15 @@ func _enter():
 	super._enter()
 
 func _state_input(_event: InputEvent):
+	if _event.is_action_pressed(InputManager.input_freefly):
+		aim_exited.emit()
+		_transition.emit(self, 'freefly')
+
 	if Input.is_action_just_released('aim'):
 		aim_exited.emit()
 		_transition.emit(self, 'idle')
 
-	if Input.is_action_just_pressed('jump'):
+	if Input.is_action_just_pressed(InputManager.input_jump):
 		aim_exited.emit()
 		_transition.emit(self, 'jump')
 

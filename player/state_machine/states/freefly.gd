@@ -17,29 +17,27 @@ var player: CharacterBody3D
 ## virtual
 #
 func _enter():
-	player = entity
-	camera = player.camera
-	#player_model = player.model
+	owner.is_freeflying = true
+	camera = owner.camera
+	owner.set_collision_mask_value(1, false)
+	owner.velocity = Vector3.ZERO
 
-	player.set_collision_mask_value(1, false)
-	player.velocity = Vector3.ZERO
-	player.is_freeflying = true
-
-	#animation.play('Swim_Idle')
-
-	_animation_state_changed.emit('freefly')
+	super._enter()
 
 func _exit():
-	player.set_collision_mask_value(1, true)
-	player.is_freeflying = false
+	owner.set_collision_mask_value(1, true)
+	owner.is_freeflying = false
+
+func _state_input(_event: InputEvent):
+	if _event.is_action_pressed(InputManager.input_freefly):
+		_transition.emit(self, 'idle')
 
 func _state_physics_process(_delta: float):
-	#var input_dir := Input.get_vector(InputManager.input_left, InputManager.input_right, InputManager.input_forward, InputManager.input_back)
-	var motion := (camera.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var _input_dir := Input.get_vector(InputManager.input_left, InputManager.input_right, InputManager.input_forward, InputManager.input_back)
+	var motion := (camera.global_basis * Vector3(_input_dir.x, 0, _input_dir.y)).normalized()
 	motion *= freefly_speed * _delta
 
-	if input_dir != Vector2(0, 0):
-		#player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
-		pass
+	_rotate_model.emit(_input_dir)
+	replenish_sprint(_delta)
 
-	player.move_and_collide(motion)
+	owner.move_and_collide(motion)

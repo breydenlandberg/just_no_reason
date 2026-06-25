@@ -4,5 +4,4 @@
 
 [resource]
 script = ExtResource("1_e42c2")
-aim_jump_distance = 5.0
 metadata/_custom_type_script = "uid://bdenuf0oto2xs"

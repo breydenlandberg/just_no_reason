@@ -62,11 +62,12 @@ func _ready():
 	SignalBus._message.connect(message)
 
 func _unhandled_input(event: InputEvent):
+	pass
 	# Handle freefly mode
 	# We want freeflying to be accessible from every State. Ergo transitioning into it lives in player.gd
-	if Input.is_action_just_pressed(input_freefly):
-		if(can_freefly and not is_freeflying and not player_state_machine.current_state.name.to_lower() == 'freefly'):
-			player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'freefly')
+	#if event.is_action_pressed(input_freefly):
+		#if not player_state_machine.current_state.name.to_lower() == 'freefly':
+			#player_state_machine.current_state._transition.emit(player_state_machine.current_state, 'freefly')
 
 	# Handle interactions
 	if can_interact and event.is_action_pressed(input_interact):

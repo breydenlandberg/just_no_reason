@@ -5,6 +5,10 @@ extends PlayerMotionState
 
 ## virtual
 #
+func _state_input(_event: InputEvent):
+	if _event.is_action_pressed(InputManager.input_freefly):
+		_transition.emit(self, 'freefly')
+
 func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_gravity(_delta)
