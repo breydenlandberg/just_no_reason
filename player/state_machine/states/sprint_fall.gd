@@ -1,23 +1,15 @@
-extends Motion
-
-
-# @export var
-@export var floor_ray_cast: RayCast3D
+extends PlayerMotionState
 
 
 ### fn
 
 ## virtual
 #
-func _enter():
-	if not entity.is_attacking:
-		entity.animation.play('Jump')
-
 func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_gravity(_delta)
 	calculate_velocity(sprint_speed, direction, PLAYER_MOVEMENT_STATS.in_air_acceleration, _delta)
-	rotate_model()
+	_rotate_model.emit(input_dir)
 
 	if is_on_floor():
 		if direction != Vector3.ZERO:

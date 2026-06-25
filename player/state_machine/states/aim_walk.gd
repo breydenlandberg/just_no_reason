@@ -1,4 +1,4 @@
-extends Motion
+extends PlayerMotionState
 
 
 # signal
@@ -13,7 +13,7 @@ signal aim_exited
 func _enter():
 	aim_entered.emit()
 
-	animation.play('Walk')
+	#animation.play('Walk')
 
 func _state_input(_event: InputEvent):
 	if Input.is_action_just_released('aim'):
@@ -31,7 +31,7 @@ func _state_input(_event: InputEvent):
 func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_velocity(aim_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta)
-	rotate_model()
+	_rotate_model.emit(input_dir)
 	replenish_sprint(_delta)
 
 	if direction == Vector3.ZERO:

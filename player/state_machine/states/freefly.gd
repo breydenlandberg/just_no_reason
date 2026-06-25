@@ -1,4 +1,4 @@
-extends Motion
+extends PlayerMotionState
 
 
 # var
@@ -19,13 +19,13 @@ var player: CharacterBody3D
 func _enter():
 	player = entity
 	camera = player.camera
-	player_model = player.model
+	#player_model = player.model
 
 	player.set_collision_mask_value(1, false)
 	player.velocity = Vector3.ZERO
 	player.is_freeflying = true
 
-	animation.play('Swim_Idle')
+	#animation.play('Swim_Idle')
 
 	_animation_state_changed.emit('freefly')
 
@@ -34,11 +34,12 @@ func _exit():
 	player.is_freeflying = false
 
 func _state_physics_process(_delta: float):
-	var input_dir := Input.get_vector(InputManager.input_left, InputManager.input_right, InputManager.input_forward, InputManager.input_back)
+	#var input_dir := Input.get_vector(InputManager.input_left, InputManager.input_right, InputManager.input_forward, InputManager.input_back)
 	var motion := (camera.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	motion *= freefly_speed * _delta
 
 	if input_dir != Vector2(0, 0):
-		player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
+		#player_model.rotation_degrees.y = camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
+		pass
 
 	player.move_and_collide(motion)

@@ -1,4 +1,4 @@
-class_name Motion extends State
+class_name PlayerMotionState extends State
 
 
 # signals
@@ -6,7 +6,7 @@ signal velocity_updated(vel: Vector3)
 @warning_ignore('unused_signal')
 signal _animation_state_changed(state: String)
 @warning_ignore('unused_signal')
-signal _input_direction_changed(_input_dir: Vector2)
+signal _rotate_model(_input_dir: Vector2)
 @warning_ignore('unused_signal')
 signal sprint_started
 @warning_ignore('unused_signal')
@@ -23,6 +23,8 @@ var jump_gravity: float
 var fall_gravity: float
 var jump_velocity: float
 
+var is_waiting_for_animation_signal := false
+
 static var input_dir := Vector2.ZERO
 static var direction := Vector3.ZERO
 static var velocity := Vector3.ZERO
@@ -36,6 +38,10 @@ static var sprint_remaining := 0.0
 
 ## virtual
 #
+func _enter():
+	if on_enter_animation:
+		_animation_state_changed.emit(on_enter_animation)
+
 func _ready():
 	velocity_updated.connect(owner.set_velocity_from_motion)
 
@@ -78,13 +84,26 @@ func calculate_gravity(_delta: float):
 		else:
 			velocity.y -= fall_gravity * _delta
 
-func rotate_model():
-	if input_dir != Vector2(0, 0):
-		%PlayerModelAnimated.rotation_degrees.y = entity.camera.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
-
 func replenish_sprint(delta: float):
 	sprint_remaining = min(sprint_remaining + delta, PLAYER_MOVEMENT_STATS.sprint_duration)
 
-func _enter():
-	if on_enter_animation:
-		_animation_state_changed.emit(on_enter_animation)
+#
+# Assists in connecting and disconnecting the _animation_state_changed signal from
+# a PlayerMotionState instance, should be called upon _entry and _exit respectively.
+# This is necessary to allow animations to delay playing their on_enter_animation
+# until another animation has finished playing - animation_finished()
+# If we don't connect and disconnect the signals when entering and exiting a state,
+# it will fire the _animation_state_changed signal
+# even after the state has been exited and result in unexpected behaviour.
+#
+func handle_animation_state_changed_signal():
+	if not _animation_state_changed.is_connected(animated_model.on_state_machine_animation_state_changed):
+		_animation_state_changed.connect(animated_model.on_state_machine_animation_state_changed)
+	else:
+		if is_waiting_for_animation_signal:
+			_animation_state_changed.disconnect(animated_model.on_state_machine_animation_state_changed)
+
+func animation_finished():
+	is_waiting_for_animation_signal = true
+	await animated_model.animation_tree.animation_finished
+	is_waiting_for_animation_signal = false

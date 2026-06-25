@@ -4,20 +4,11 @@ class_name State extends Node3D
 # signals
 @warning_ignore('unused_signal')
 signal _transition(state, new_state)
-#signal _finished(next_state: String) ???
 
 # var
-var previous_state: State # Should a State even know this?
+var previous_state: State
 var entity: CharacterBody3D # Do we need to rework this... gotta be better ways to generalise, seems like a clunky abstraction ... OR IS IT!?
-
-# Move all below out of State... let entities (i.e. CharacterBody3Ds and their attached script) own these and if we want to shorthand it, do
-# var animation: AnimationPlayer = entity.animation in the _enter() function for those that a State needs...
-var animation: AnimationPlayer
-var animation_tree: AnimationTree
-var player_model: PlayerModelAnimated
-var attack_animation: AnimationPlayer
-var collider: CollisionShape3D
-var mesh: MeshInstance3D
+var animated_model: Node3D
 
 
 ### fn
@@ -43,3 +34,8 @@ func _state_process(_delta: float):
 # Whenever the state machine is processing, we also want the current state to process (PHYSICS)
 func _state_physics_process(_delta: float):
 	pass
+
+## helper
+#
+func previous_state_in(state_names: Array[String]) -> bool:
+	return previous_state and previous_state.name.to_lower() in state_names

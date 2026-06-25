@@ -1,4 +1,4 @@
-extends Motion
+extends PlayerMotionState
 
 
 # signal
@@ -13,9 +13,11 @@ func _enter():
 	aim_entered.emit()
 
 	if previous_state and previous_state.name.to_lower() in ['jump', 'sprintjump', 'fall', 'sprintfall'] and not entity.is_attacking:
-		animation.play('Jump_Land')
+		pass
+		#animation.play('Jump_Land')
 	else:
-		animation.play('Idle')
+		pass
+		#animation.play('Idle')
 
 func _state_input(_event: InputEvent):
 	if Input.is_action_just_released('aim'):

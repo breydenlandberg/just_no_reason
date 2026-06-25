@@ -30,7 +30,7 @@ window/size/borderless=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/mixamo_animation_batcher/plugin.cfg")
+enabled=PackedStringArray()
 
 [filesystem]
 

@@ -43,7 +43,6 @@ var is_freeflying := false
 @onready var camera: Node3D = $Camera
 @onready var model: Node3D = $PlayerModel
 
-@onready var collider := $CollisionShape3D
 @onready var player_state_machine: Node3D = $PlayerStateMachine
 
 

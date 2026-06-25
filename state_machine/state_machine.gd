@@ -8,13 +8,7 @@ var current_state: State
 # @export
 @export var initial_state: State
 @export var entity: CharacterBody3D
-
-@export var animation: AnimationPlayer
-@export var animation_tree: AnimationTree
-@export var player_model: PlayerModelAnimated
-@export var attack_animation: AnimationPlayer
-@export var collider: CollisionShape3D
-@export var mesh: MeshInstance3D
+@export var animated_model: Node3D
 
 
 ### fn
@@ -44,13 +38,7 @@ func set_up_state_machine():
 	# Set up states
 	for child: State in get_children():
 		child.entity = entity
-
-		child.animation = animation
-		child.animation_tree = animation_tree
-		child.player_model = player_model
-		child.attack_animation = attack_animation
-		child.collider = collider
-		child.mesh = mesh
+		child.animated_model = animated_model
 
 		states[child.name.to_lower()] = child
 
