@@ -26,15 +26,15 @@ func _exit():
 	handle_animation_state_changed_signal()
 
 func _state_input(_event: InputEvent):
-	if _event.is_action_pressed(InputManager.input_freefly):
+	if _event.is_action_pressed(InputManager.freefly):
 		sprint_ended.emit()
 		_transition.emit(self, 'freefly')
 
-	if Input.is_action_just_released(InputManager.input_sprint):
+	if Input.is_action_just_released(InputManager.sprint):
 		sprint_ended.emit()
 		_transition.emit(self, 'walk')
 
-	if _event.is_action_pressed(InputManager.input_jump):
+	if _event.is_action_pressed(InputManager.jump):
 		_transition.emit(self, 'sprintjump')
 
 # Rename _delta to delta

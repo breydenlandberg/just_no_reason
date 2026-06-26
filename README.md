@@ -1,6 +1,5 @@
 # BUGS
-- Idle state does not play idle animation after recovering from a fall
-- Sprint is reducing FOV?
+- Gravity when falling off (not jumping) seems borked
 
 # TODO
 - Interaction system should be proximity based (i.e. the closest interaction the player is facing), not a pure FIFO stack like it is now

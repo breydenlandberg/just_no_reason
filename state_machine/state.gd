@@ -7,7 +7,6 @@ signal _transition(state, new_state)
 
 # var
 var previous_state: State
-var entity: CharacterBody3D # Do we need to rework this... gotta be better ways to generalise, seems like a clunky abstraction ... OR IS IT!?
 var animated_model: Node3D
 
 

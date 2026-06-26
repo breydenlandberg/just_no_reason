@@ -10,7 +10,7 @@ func _enter():
 	super._enter()
 
 func _state_input(_event: InputEvent):
-	if _event.is_action_pressed(InputManager.input_freefly):
+	if _event.is_action_pressed(InputManager.freefly):
 		_transition.emit(self, 'freefly')
 
 func _state_physics_process(_delta: float):

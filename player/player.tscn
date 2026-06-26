@@ -35,16 +35,14 @@ collision_layer = 132
 collision_mask = 3
 script = ExtResource("1_ucva2")
 
-[node name="PlayerStateMachine" type="Node3D" parent="." unique_id=1485374244 node_paths=PackedStringArray("initial_state", "entity", "animated_model")]
+[node name="PlayerStateMachine" type="Node3D" parent="." unique_id=1485374244 node_paths=PackedStringArray("initial_state", "animated_model")]
 visible = false
 script = ExtResource("2_yw30f")
 initial_state = NodePath("Idle")
-entity = NodePath("..")
 animated_model = NodePath("../PlayerModelAnimated")
 
 [node name="Freefly" type="Node3D" parent="PlayerStateMachine" unique_id=966406892]
 script = ExtResource("5_rgyib")
-on_enter_animation = "freefly_idle"
 
 [node name="Idle" type="Node3D" parent="PlayerStateMachine" unique_id=192390092]
 script = ExtResource("6_hg6s5")
@@ -54,6 +52,16 @@ metadata/_custom_type_script = "uid://cq1kfe0pd4oro"
 [node name="Walk" type="Node3D" parent="PlayerStateMachine" unique_id=930283055]
 script = ExtResource("7_8t03j")
 on_enter_animation = "walk"
+metadata/_custom_type_script = "uid://8lo1i26mgc41"
+
+[node name="Jump" type="Node3D" parent="PlayerStateMachine" unique_id=1646148404]
+script = ExtResource("8_2ieo8")
+on_enter_animation = "jump"
+metadata/_custom_type_script = "uid://8lo1i26mgc41"
+
+[node name="Fall" type="Node3D" parent="PlayerStateMachine" unique_id=1342943310]
+script = ExtResource("9_ebec5")
+on_enter_animation = "fall"
 metadata/_custom_type_script = "uid://8lo1i26mgc41"
 
 [node name="AimIdle" type="Node3D" parent="PlayerStateMachine" unique_id=737568984]
@@ -69,16 +77,6 @@ metadata/_custom_type_script = "uid://8lo1i26mgc41"
 [node name="Sprint" type="Node3D" parent="PlayerStateMachine" unique_id=1483076903]
 script = ExtResource("10_yllr7")
 on_enter_animation = "sprint"
-metadata/_custom_type_script = "uid://8lo1i26mgc41"
-
-[node name="Jump" type="Node3D" parent="PlayerStateMachine" unique_id=1646148404]
-script = ExtResource("8_2ieo8")
-on_enter_animation = "jump"
-metadata/_custom_type_script = "uid://8lo1i26mgc41"
-
-[node name="Fall" type="Node3D" parent="PlayerStateMachine" unique_id=1342943310]
-script = ExtResource("9_ebec5")
-on_enter_animation = "fall"
 metadata/_custom_type_script = "uid://8lo1i26mgc41"
 
 [node name="SprintJump" type="Node3D" parent="PlayerStateMachine" unique_id=844208411]

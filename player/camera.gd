@@ -44,7 +44,7 @@ func _unhandled_input(event: InputEvent):
 		var mouse_event: Vector2 = event.screen_relative * mouse_sensitivity
 		camera_look(mouse_event)
 
-	if Input.is_action_just_pressed('swap_camera_alignment'):
+	if Input.is_action_just_pressed(InputManager.swap_camera_alignment):
 		swap_camera_alignment()
 
 

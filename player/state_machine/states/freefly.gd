@@ -28,11 +28,11 @@ func _exit():
 	owner.is_freeflying = false
 
 func _state_input(_event: InputEvent):
-	if _event.is_action_pressed(InputManager.input_freefly):
+	if _event.is_action_pressed(InputManager.freefly):
 		_transition.emit(self, 'idle')
 
 func _state_physics_process(_delta: float):
-	var _input_dir := Input.get_vector(InputManager.input_left, InputManager.input_right, InputManager.input_forward, InputManager.input_back)
+	var _input_dir := Input.get_vector(InputManager.left, InputManager.right, InputManager.forward, InputManager.back)
 	var motion := (camera.global_basis * Vector3(_input_dir.x, 0, _input_dir.y)).normalized()
 	motion *= freefly_speed * _delta
 

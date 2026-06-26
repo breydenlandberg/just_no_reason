@@ -7,7 +7,6 @@ var current_state: State
 
 # @export
 @export var initial_state: State
-@export var entity: CharacterBody3D
 @export var animated_model: Node3D
 
 
@@ -37,7 +36,6 @@ func handle_process(delta: float):
 func set_up_state_machine():
 	# Set up states
 	for child: State in get_children():
-		child.entity = entity
 		child.animated_model = animated_model
 
 		states[child.name.to_lower()] = child

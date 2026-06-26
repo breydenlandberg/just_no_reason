@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 # var
 var is_freeflying := false
+var is_aiming := false
 var is_sprinting := false
 var is_crouching := false
 var is_attacking := false
@@ -12,6 +13,7 @@ var is_attacking := false
 @export var can_freefly := true
 @export var can_move := true
 @export var can_jump := true
+@export var can_aim := true
 @export var can_sprint := true
 @export var can_crouch := true
 @export var can_interact := true
@@ -21,29 +23,9 @@ var is_attacking := false
 @export_group('Speeds')
 @export var base_speed := 8.0
 
-@export_group('Input Actions')
-# Should we just... reference InputManager directly?
-@export var input_left := InputManager.input_left
-@export var input_right := InputManager.input_right
-@export var input_forward := InputManager.input_forward
-@export var input_back := InputManager.input_back
-@export var input_jump := InputManager.input_jump
-@export var input_sprint := InputManager.input_sprint
-@export var input_freefly := InputManager.input_freefly
-@export var input_crouch := InputManager.input_crouch
-@export var input_interact := InputManager.input_interact
-@export var input_attack_basic := InputManager.input_attack_basic
-
 # @onready
-@onready var speed := base_speed
-
 @onready var ui_manager := %UIManager
-
-@onready var animation: AnimationPlayer = $PlayerModel/AnimationPlayer
 @onready var camera: Node3D = $Camera
-@onready var model: Node3D = $PlayerModel
-
-@onready var player_state_machine: Node3D = $PlayerStateMachine
 
 
 ### fn
@@ -62,42 +44,45 @@ func _ready():
 
 func _unhandled_input(event: InputEvent):
 	# Handle interactions
-	if can_interact and event.is_action_pressed(input_interact):
+	if can_interact and event.is_action_pressed(InputManager.interact):
 		InteractManager.execute_current_interaction()
 
 
 ## helper
 #
 func check_input_mappings():
-	if can_move and not InputMap.has_action(input_left):
-		push_error('Movement disabled. No InputAction found for input_left: ' + input_left)
-		can_move = false
-	if can_move and not InputMap.has_action(input_right):
-		push_error('Movement disabled. No InputAction found for input_right: ' + input_right)
-		can_move = false
-	if can_move and not InputMap.has_action(input_forward):
-		push_error('Movement disabled. No InputAction found for input_forward: ' + input_forward)
-		can_move = false
-	if can_move and not InputMap.has_action(input_back):
-		push_error('Movement disabled. No InputAction found for input_back: ' + input_back)
-		can_move = false
-	if can_jump and not InputMap.has_action(input_jump):
-		push_error('Jumping disabled. No InputAction found for input_jump: ' + input_jump)
-		can_jump = false
-	if can_sprint and not InputMap.has_action(input_sprint):
-		push_error('Sprinting disabled. No InputAction found for input_sprint: ' + input_sprint)
-		can_sprint = false
-	if can_freefly and not InputMap.has_action(input_freefly):
-		push_error('Freefly disabled. No InputAction found for input_freefly: ' + input_freefly)
+	if can_freefly and not InputMap.has_action(InputManager.freefly):
+		push_error('Freefly disabled. No InputAction found for InputManager.freefly: ' + InputManager.freefly)
 		can_freefly = false
-	if can_crouch and not InputMap.has_action(input_crouch):
-		push_error('Crouch disabled. No InputAction found for input_crouch: ' + input_crouch)
+	if can_move and not InputMap.has_action(InputManager.forward):
+		push_error('Movement disabled. No InputAction found for InputManager.forward: ' + InputManager.forward)
+		can_move = false
+	if can_move and not InputMap.has_action(InputManager.back):
+		push_error('Movement disabled. No InputAction found for InputManager.back: ' + InputManager.back)
+		can_move = false
+	if can_move and not InputMap.has_action(InputManager.left):
+		push_error('Movement disabled. No InputAction found for InputManager.left: ' + InputManager.left)
+		can_move = false
+	if can_move and not InputMap.has_action(InputManager.right):
+		push_error('Movement disabled. No InputAction found for InputManager.right: ' + InputManager.right)
+		can_move = false
+	if can_jump and not InputMap.has_action(InputManager.jump):
+		push_error('Jumping disabled. No InputAction found for InputManager.jump: ' + InputManager.jump)
+		can_jump = false
+	if can_aim and not InputMap.has_action(InputManager.aim):
+		push_error('Jumping disabled. No InputAction found for InputManager.aim: ' + InputManager.aim)
+		can_aim = false
+	if can_sprint and not InputMap.has_action(InputManager.sprint):
+		push_error('Sprinting disabled. No InputAction found for InputManager.sprint: ' + InputManager.sprint)
+		can_sprint = false
+	if can_crouch and not InputMap.has_action(InputManager.crouch):
+		push_error('Crouch disabled. No InputAction found for InputManager.crouch: ' + InputManager.crouch)
 		can_crouch = false
-	if can_interact and not InputMap.has_action(input_interact):
-		push_error('Crouch disabled. No InputAction found for input_interact: ' + input_interact)
+	if can_interact and not InputMap.has_action(InputManager.interact):
+		push_error('Crouch disabled. No InputAction found for InputManager.interact: ' + InputManager.interact)
 		can_interact = false
-	if can_attack and not InputMap.has_action(input_attack_basic):
-		push_error('Basic attack disabled. No InputAction found for input_attack_basic: ' + input_attack_basic)
+	if can_attack and not InputMap.has_action(InputManager.attack_basic):
+		push_error('Basic attack disabled. No InputAction found for InputManager.attack_basic: ' + InputManager.attack_basic)
 		can_attack = false
 
 func set_velocity_from_motion(vel: Vector3):
@@ -115,14 +100,6 @@ func message(text: String):
 
 
 ## signals
-#
-# attack
-func _on_animation_player_animation_finished(anim_name: StringName):
-	match anim_name:
-		'Punch_Jab', 'Punch_Cross', 'Spell_Simple_Shoot':
-			is_attacking = false
-			speed = base_speed
-
 # interact
 func _on_interact_area_entered(interaction: Interaction):
 	InteractManager.push_front(interaction)
