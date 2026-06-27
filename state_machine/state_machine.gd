@@ -38,7 +38,7 @@ func set_up_state_machine():
 	for child: State in get_children():
 		child.animated_model = animated_model
 
-		states[child.name.to_lower()] = child
+		states[child.name] = child
 
 		child._transition.connect(transition)
 
@@ -53,10 +53,10 @@ func set_up_state_machine():
 
 func transition(state, new_state_name):
 	if state != current_state:
-		push_warning('Passed state \'' + state.name.to_lower() + '\' does not equal current state \'' + current_state.name + '\'')
+		push_warning('Passed state \'' + state.name + '\' does not equal current state \'' + current_state.name + '\'')
 		return
 
-	var new_state = states.get(new_state_name.to_lower())
+	var new_state = states.get(new_state_name)
 
 	if !new_state:
 		push_warning('New state not found')

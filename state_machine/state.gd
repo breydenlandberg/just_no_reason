@@ -37,4 +37,4 @@ func _state_physics_process(_delta: float):
 ## helper
 #
 func previous_state_in(state_names: Array[String]) -> bool:
-	return previous_state and previous_state.name.to_lower() in state_names
+	return previous_state and previous_state.name in state_names
