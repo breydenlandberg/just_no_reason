@@ -21,7 +21,7 @@ func _state_input(_event: InputEvent):
 
 	if _event.is_action_pressed(InputManager.jump):
 		aim_exited.emit()
-		_transition.emit(self, 'jump')
+		_transition.emit(self, States.jump)
 
 func _state_process(_delta: float):
 	if Input.is_action_just_released(InputManager.aim):
@@ -35,8 +35,8 @@ func _state_physics_process(_delta: float):
 	replenish_sprint(_delta)
 
 	if direction == Vector3.ZERO:
-		_transition.emit(self, 'aimidle')
+		_transition.emit(self, States.aim_idle)
 
 	if not is_on_floor():
 		aim_exited.emit()
-		_transition.emit(self, 'fall')
+		_transition.emit(self, States.fall)

@@ -14,7 +14,7 @@ func _state_input(_event: InputEvent):
 		_transition.emit(self, States.freefly)
 
 	if _event.is_action_pressed(InputManager.jump):
-		_transition.emit(self, 'jump')
+		_transition.emit(self, States.jump)
 
 func _state_process(_delta: float):
 	if Input.is_action_pressed(InputManager.aim):

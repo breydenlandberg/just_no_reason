@@ -20,7 +20,7 @@ func _state_physics_process(_delta: float):
 	_rotate_model.emit(input_dir)
 
 	if velocity.y <= 0.0:
-		_transition.emit(self, 'fall')
+		_transition.emit(self, States.fall)
 
 
 ## helper

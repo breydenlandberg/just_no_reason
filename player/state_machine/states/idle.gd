@@ -26,11 +26,11 @@ func _state_input(_event: InputEvent):
 		_transition.emit(self, States.freefly)
 
 	if _event.is_action_pressed(InputManager.jump):
-		_transition.emit(self, 'jump')
+		_transition.emit(self, States.jump)
 
 func _state_process(_delta: float):
 	if Input.is_action_pressed(InputManager.aim):
-		_transition.emit(self, 'aimidle')
+		_transition.emit(self, States.aim_idle)
 
 	if Input.is_action_pressed(InputManager.crouch):
 		_transition.emit(self, 'crouchidle')
@@ -47,4 +47,4 @@ func _state_physics_process(_delta: float):
 			_transition.emit(self, 'walk')
 
 	if not is_on_floor():
-		_transition.emit(self, 'fall')
+		_transition.emit(self, States.fall)

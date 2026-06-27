@@ -48,7 +48,7 @@ func _state_physics_process(_delta: float):
 	if direction == Vector3.ZERO:
 		if Input.is_action_pressed(InputManager.aim):
 			sprint_ended.emit()
-			_transition.emit(self, 'aimidle')
+			_transition.emit(self, States.aim_idle)
 		else:
 			sprint_ended.emit()
 			_transition.emit(self, 'idle')

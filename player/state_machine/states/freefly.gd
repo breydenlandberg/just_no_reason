@@ -29,7 +29,7 @@ func _exit():
 
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
-		_transition.emit(self, 'fall')
+		_transition.emit(self, States.fall)
 
 func _state_physics_process(_delta: float):
 	var _input_dir := Input.get_vector(InputManager.left, InputManager.right, InputManager.forward, InputManager.back)
