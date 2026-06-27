@@ -19,17 +19,14 @@ func _state_input(_event: InputEvent):
 		aim_exited.emit()
 		_transition.emit(self, 'freefly')
 
-	if Input.is_action_just_released('aim'):
-		aim_exited.emit()
-		_transition.emit(self, 'walk')
-
-	if Input.is_action_just_pressed(InputManager.jump):
+	if _event.is_action_pressed(InputManager.jump):
 		aim_exited.emit()
 		_transition.emit(self, 'jump')
 
-	if Input.is_action_pressed(InputManager.sprint) and sprint_remaining > PLAYER_MOVEMENT_STATS.minimum_sprint_threshold:
+func _state_process(_delta: float):
+	if Input.is_action_just_released(InputManager.aim):
 		aim_exited.emit()
-		_transition.emit(self, 'sprint')
+		_transition.emit(self, 'walk')
 
 func _state_physics_process(_delta: float):
 	set_direction()

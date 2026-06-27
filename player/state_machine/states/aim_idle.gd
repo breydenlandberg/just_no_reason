@@ -18,13 +18,14 @@ func _state_input(_event: InputEvent):
 		aim_exited.emit()
 		_transition.emit(self, 'freefly')
 
-	if Input.is_action_just_released('aim'):
-		aim_exited.emit()
-		_transition.emit(self, 'idle')
-
-	if Input.is_action_just_pressed(InputManager.jump):
+	if _event.is_action_pressed(InputManager.jump):
 		aim_exited.emit()
 		_transition.emit(self, 'jump')
+
+func _state_process(_delta: float):
+	if Input.is_action_just_released(InputManager.aim):
+		aim_exited.emit()
+		_transition.emit(self, 'idle')
 
 func _state_physics_process(_delta: float):
 	set_direction()

@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_e42c2")
+sprint_duration = 180.0
 metadata/_custom_type_script = "uid://bdenuf0oto2xs"

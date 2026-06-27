@@ -30,12 +30,13 @@ func _state_input(_event: InputEvent):
 		sprint_ended.emit()
 		_transition.emit(self, 'freefly')
 
+	if _event.is_action_pressed(InputManager.jump):
+		_transition.emit(self, 'sprintjump')
+
+func _state_process(_delta: float):
 	if Input.is_action_just_released(InputManager.sprint):
 		sprint_ended.emit()
 		_transition.emit(self, 'walk')
-
-	if _event.is_action_pressed(InputManager.jump):
-		_transition.emit(self, 'sprintjump')
 
 # Rename _delta to delta
 func _state_physics_process(_delta: float):
@@ -45,8 +46,16 @@ func _state_physics_process(_delta: float):
 	sprint_remaining -= _delta # Reduce sprint
 
 	if direction == Vector3.ZERO:
-		sprint_ended.emit()
-		_transition.emit(self, 'idle')
+		if Input.is_action_pressed(InputManager.aim):
+			sprint_ended.emit()
+			_transition.emit(self, 'aimidle')
+		else:
+			sprint_ended.emit()
+			_transition.emit(self, 'idle')
+	else:
+		if Input.is_action_pressed(InputManager.aim):
+			sprint_ended.emit()
+			_transition.emit(self, 'aimwalk')
 
 	if not is_on_floor():
 		sprint_ended.emit()
