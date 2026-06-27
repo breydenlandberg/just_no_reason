@@ -7,7 +7,7 @@ extends PlayerMotionState
 #
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
-		_transition.emit(self, 'freefly')
+		_transition.emit(self, States.freefly)
 
 	if _event.is_action_pressed(InputManager.jump):
 		_transition.emit(self, 'jump')

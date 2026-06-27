@@ -11,7 +11,7 @@ var land_after_these_states: Array[String] = ['jump', 'sprintjump', 'fall', 'spr
 #
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
-		_transition.emit(self, 'freefly')
+		_transition.emit(self, States.freefly)
 
 	if _event.is_action_pressed(InputManager.jump):
 		_transition.emit(self, 'jump')
@@ -34,3 +34,6 @@ func _state_physics_process(_delta: float):
 	else:
 		if Input.is_action_just_released(InputManager.crouch):
 			_transition.emit(self, 'walk')
+
+	if not is_on_floor():
+		_transition.emit(self, States.fall)
