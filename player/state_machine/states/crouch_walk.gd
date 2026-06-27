@@ -33,7 +33,7 @@ func _state_physics_process(_delta: float):
 		_transition.emit(self, 'crouchidle')
 	else:
 		if Input.is_action_just_released(InputManager.crouch):
-			_transition.emit(self, 'walk')
+			_transition.emit(self, States.walk)
 
 	if not is_on_floor():
 		_transition.emit(self, States.fall)

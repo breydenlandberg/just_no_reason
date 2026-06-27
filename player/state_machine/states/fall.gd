@@ -25,6 +25,11 @@ func _state_physics_process(_delta: float):
 			elif Input.is_action_pressed(InputManager.crouch):
 				_transition.emit(self, 'crouchwalk')
 			else:
-				_transition.emit(self, 'walk')
+				_transition.emit(self, States.walk)
 		else:
-			_transition.emit(self, 'idle')
+			if Input.is_action_pressed('aim'):
+				_transition.emit(self, States.aim_idle)
+			elif Input.is_action_pressed(InputManager.crouch):
+				_transition.emit(self, States.crouch_idle)
+			else:
+				_transition.emit(self, States.idle)

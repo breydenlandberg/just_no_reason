@@ -36,7 +36,7 @@ func _state_input(_event: InputEvent):
 func _state_process(_delta: float):
 	if Input.is_action_just_released(InputManager.sprint):
 		sprint_ended.emit()
-		_transition.emit(self, 'walk')
+		_transition.emit(self, States.walk)
 
 # Rename _delta to delta
 func _state_physics_process(_delta: float):
@@ -51,7 +51,7 @@ func _state_physics_process(_delta: float):
 			_transition.emit(self, States.aim_idle)
 		else:
 			sprint_ended.emit()
-			_transition.emit(self, 'idle')
+			_transition.emit(self, States.idle)
 	else:
 		if Input.is_action_pressed(InputManager.aim):
 			sprint_ended.emit()
@@ -62,4 +62,4 @@ func _state_physics_process(_delta: float):
 
 	if sprint_remaining <= 0.0:
 		sprint_ended.emit()
-		_transition.emit(self, 'walk')
+		_transition.emit(self, States.walk)

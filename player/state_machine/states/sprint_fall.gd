@@ -25,7 +25,7 @@ func _state_physics_process(_delta: float):
 				_transition.emit(self, 'crouchwalk')
 			else:
 				sprint_ended.emit()
-				_transition.emit(self, 'walk')
+				_transition.emit(self, States.walk)
 		else:
 			sprint_ended.emit()
-			_transition.emit(self, 'idle')
+			_transition.emit(self, States.idle)

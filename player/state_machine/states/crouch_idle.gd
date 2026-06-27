@@ -17,7 +17,7 @@ func _state_process(_delta: float):
 		_transition.emit(self, States.aim_idle)
 
 	if Input.is_action_just_released(InputManager.crouch):
-		_transition.emit(self, 'idle')
+		_transition.emit(self, States.idle)
 
 func _state_physics_process(_delta: float):
 	set_direction()

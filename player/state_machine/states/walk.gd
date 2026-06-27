@@ -45,7 +45,7 @@ func _state_physics_process(_delta: float):
 	replenish_sprint(_delta)
 
 	if direction == Vector3.ZERO:
-		_transition.emit(self, 'idle')
+		_transition.emit(self, States.idle)
 
 	if not is_on_floor():
 		_transition.emit(self, States.fall)

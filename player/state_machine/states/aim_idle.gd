@@ -25,7 +25,7 @@ func _state_input(_event: InputEvent):
 func _state_process(_delta: float):
 	if Input.is_action_just_released(InputManager.aim):
 		aim_exited.emit()
-		_transition.emit(self, 'idle')
+		_transition.emit(self, States.idle)
 
 func _state_physics_process(_delta: float):
 	set_direction()
