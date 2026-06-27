@@ -36,12 +36,15 @@ func _state_process(_delta: float):
 		_transition.emit(self, 'crouchidle')
 
 func _state_physics_process(_delta: float):
-	set_direction() # Do these need to be in idle?
-	calculate_velocity(base_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta) # Do these need to be in idle?
+	set_direction()
+	calculate_velocity(base_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta)
 	replenish_sprint(_delta)
 
 	if direction != Vector3.ZERO:
-		_transition.emit(self, 'walk')
+		if Input.is_action_pressed(InputManager.sprint) and sprint_remaining > PLAYER_MOVEMENT_STATS.minimum_sprint_threshold:
+			_transition.emit(self, 'sprint')
+		else:
+			_transition.emit(self, 'walk')
 
 	if not is_on_floor():
 		_transition.emit(self, 'fall')

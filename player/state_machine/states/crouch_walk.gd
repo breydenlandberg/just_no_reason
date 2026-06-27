@@ -13,11 +13,24 @@ func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
 		_transition.emit(self, 'freefly')
 
-	if Input.is_action_just_pressed(InputManager.jump):
+	if _event.is_action_pressed(InputManager.jump):
 		_transition.emit(self, 'jump')
+
+func _state_process(_delta: float):
+	if Input.is_action_pressed(InputManager.aim):
+		_transition.emit(self, 'aimwalk')
 
 	if Input.is_action_pressed(InputManager.sprint) and sprint_remaining > PLAYER_MOVEMENT_STATS.minimum_sprint_threshold:
 		_transition.emit(self, 'sprint')
 
-	if Input.is_action_pressed(InputManager.aim):
-		_transition.emit(self, 'aimwalk')
+func _state_physics_process(_delta: float):
+	set_direction()
+	calculate_velocity(base_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta)
+	_rotate_model.emit(input_dir)
+	replenish_sprint(_delta)
+
+	if direction == Vector3.ZERO:
+		_transition.emit(self, 'crouchidle')
+	else:
+		if Input.is_action_just_released(InputManager.crouch):
+			_transition.emit(self, 'walk')

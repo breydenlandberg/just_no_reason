@@ -35,6 +35,9 @@ func _state_process(_delta: float):
 	if Input.is_action_pressed(InputManager.sprint) and sprint_remaining > PLAYER_MOVEMENT_STATS.minimum_sprint_threshold:
 		_transition.emit(self, 'sprint')
 
+	if Input.is_action_pressed(InputManager.crouch):
+		_transition.emit(self, 'crouchwalk')
+
 func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_velocity(base_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta)

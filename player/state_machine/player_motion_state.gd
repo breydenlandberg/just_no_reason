@@ -17,12 +17,12 @@ const PLAYER_MOVEMENT_STATS = preload('res://player/player_movement_stats.tres')
 
 # var
 var base_speed: float
-var sprint_speed: float
 var aim_speed: float
+var sprint_speed: float
+var crouch_speed: float
 var jump_gravity: float
 var fall_gravity: float
 var jump_velocity: float
-
 var is_waiting_for_animation_signal := false
 
 static var input_dir := Vector2.ZERO
@@ -30,7 +30,6 @@ static var direction := Vector3.ZERO
 static var velocity := Vector3.ZERO
 static var sprint_remaining := 0.0
 
-# @export var
 @export var on_enter_animation: String
 
 
@@ -49,12 +48,16 @@ func _ready():
 		PLAYER_MOVEMENT_STATS.jump_distance,
 		PLAYER_MOVEMENT_STATS.time_to_jump_apex + PLAYER_MOVEMENT_STATS.time_to_land
 	)
+	aim_speed = PLAYER_MOVEMENT_STATS.get_velocity(
+		PLAYER_MOVEMENT_STATS.aim_jump_distance,
+		PLAYER_MOVEMENT_STATS.time_to_jump_apex + PLAYER_MOVEMENT_STATS.time_to_land
+	)
 	sprint_speed = PLAYER_MOVEMENT_STATS.get_velocity(
 		PLAYER_MOVEMENT_STATS.sprint_jump_distance,
 		PLAYER_MOVEMENT_STATS.time_to_jump_apex + PLAYER_MOVEMENT_STATS.time_to_land
 	)
-	aim_speed = PLAYER_MOVEMENT_STATS.get_velocity(
-		PLAYER_MOVEMENT_STATS.aim_jump_distance,
+	crouch_speed = PLAYER_MOVEMENT_STATS.get_velocity(
+		PLAYER_MOVEMENT_STATS.crouch_jump_distance,
 		PLAYER_MOVEMENT_STATS.time_to_jump_apex + PLAYER_MOVEMENT_STATS.time_to_land
 	)
 	jump_gravity = PLAYER_MOVEMENT_STATS.get_jump_gravity()
