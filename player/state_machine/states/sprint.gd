@@ -31,7 +31,7 @@ func _state_input(_event: InputEvent):
 		_transition.emit(self, States.freefly)
 
 	if _event.is_action_pressed(InputManager.jump):
-		_transition.emit(self, 'sprintjump')
+		_transition.emit(self, States.sprint_jump)
 
 func _state_process(_delta: float):
 	if Input.is_action_just_released(InputManager.sprint):
@@ -55,7 +55,7 @@ func _state_physics_process(_delta: float):
 	else:
 		if Input.is_action_pressed(InputManager.aim):
 			sprint_ended.emit()
-			_transition.emit(self, 'aimwalk')
+			_transition.emit(self, States.aim_walk)
 
 	if not is_on_floor():
 		_transition.emit(self, States.sprint_fall)

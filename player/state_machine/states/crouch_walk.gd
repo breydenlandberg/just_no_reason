@@ -18,10 +18,10 @@ func _state_input(_event: InputEvent):
 
 func _state_process(_delta: float):
 	if Input.is_action_pressed(InputManager.aim):
-		_transition.emit(self, 'aimwalk')
+		_transition.emit(self, States.aim_walk)
 
 	if Input.is_action_pressed(InputManager.sprint) and sprint_remaining > PLAYER_MOVEMENT_STATS.minimum_sprint_threshold:
-		_transition.emit(self, 'sprint')
+		_transition.emit(self, States.sprint)
 
 func _state_physics_process(_delta: float):
 	set_direction()
@@ -30,7 +30,7 @@ func _state_physics_process(_delta: float):
 	replenish_sprint(_delta)
 
 	if direction == Vector3.ZERO:
-		_transition.emit(self, 'crouchidle')
+		_transition.emit(self, States.crouch_idle)
 	else:
 		if Input.is_action_just_released(InputManager.crouch):
 			_transition.emit(self, States.walk)

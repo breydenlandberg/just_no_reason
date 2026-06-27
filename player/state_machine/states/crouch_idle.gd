@@ -26,9 +26,9 @@ func _state_physics_process(_delta: float):
 
 	if direction != Vector3.ZERO:
 		if Input.is_action_pressed(InputManager.sprint) and sprint_remaining > PLAYER_MOVEMENT_STATS.minimum_sprint_threshold:
-			_transition.emit(self, 'sprint')
+			_transition.emit(self, States.sprint)
 		else:
-			_transition.emit(self, 'crouchwalk')
+			_transition.emit(self, States.crouch_walk)
 
 	if not is_on_floor():
 		_transition.emit(self, States.fall)

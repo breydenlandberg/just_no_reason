@@ -18,11 +18,11 @@ func _state_physics_process(_delta: float):
 	if is_on_floor():
 		if direction != Vector3.ZERO:
 			if Input.is_action_pressed(InputManager.aim):
-				_transition.emit(self, 'aimwalk')
+				_transition.emit(self, States.aim_walk)
 			elif Input.is_action_pressed(InputManager.sprint):
-				_transition.emit(self, 'sprint')
+				_transition.emit(self, States.sprint)
 			elif Input.is_action_pressed(InputManager.crouch):
-				_transition.emit(self, 'crouchwalk')
+				_transition.emit(self, States.crouch_walk)
 			else:
 				sprint_ended.emit()
 				_transition.emit(self, States.walk)

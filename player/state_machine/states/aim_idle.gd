@@ -33,7 +33,7 @@ func _state_physics_process(_delta: float):
 	replenish_sprint(_delta)
 
 	if direction != Vector3.ZERO:
-		_transition.emit(self, 'aimwalk')
+		_transition.emit(self, States.aim_walk)
 
 	if not is_on_floor():
 		aim_exited.emit()
