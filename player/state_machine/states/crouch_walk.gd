@@ -25,7 +25,7 @@ func _state_process(_delta: float):
 
 func _state_physics_process(_delta: float):
 	set_direction()
-	calculate_velocity(base_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta)
+	calculate_velocity(crouch_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta)
 	_rotate_model.emit(input_dir)
 	replenish_sprint(_delta)
 

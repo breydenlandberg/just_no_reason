@@ -1,15 +1,15 @@
 class_name MovementStats extends Resource
 
 
-# @export var
+# var
 @export var freefly_speed := 32.0
 @export var time_to_jump_apex := 0.5
 @export var time_to_land := 0.5
 @export var jump_height := 2.0
 @export var jump_distance := 6.0
-@export var aim_jump_distance := 5.0
+@export var aim_jump_distance := 4.0
 @export var sprint_jump_distance := 18.0
-@export var crouch_jump_distance := 5.0
+@export var crouch_jump_distance := 4.0
 @export var acceleration := 100.0
 @export var in_air_acceleration := 50.0
 @export var sprint_duration := 6.0

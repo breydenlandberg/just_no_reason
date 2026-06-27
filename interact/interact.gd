@@ -2,7 +2,7 @@
 class_name Interaction extends Area3D
 
 
-# @export
+# var
 @export var duration: int = -1
 @export var id := '##NULL'
 @export var label := '##NULL'

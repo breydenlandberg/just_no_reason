@@ -4,7 +4,6 @@ extends ScrollContainer
 # var
 var max_scroll_length := 0
 
-# @onready
 @onready var scrollbar = get_v_scroll_bar()
 
 

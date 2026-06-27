@@ -5,7 +5,6 @@ class_name StateMachine extends Node3D
 var states: Dictionary
 var current_state: State
 
-# @export
 @export var initial_state: State
 @export var animated_model: Node3D
 

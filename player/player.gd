@@ -8,7 +8,6 @@ var is_sprinting := false
 var is_crouching := false
 var is_attacking := false
 
-# @export
 @export_group('Toggles')
 @export var can_freefly := true
 @export var can_move := true
@@ -20,10 +19,6 @@ var is_attacking := false
 @export var can_attack := true
 @export var has_gravity := true
 
-@export_group('Speeds')
-@export var base_speed := 8.0
-
-# @onready
 @onready var ui_manager := %UIManager
 @onready var camera: Node3D = $Camera
 
@@ -32,10 +27,6 @@ var is_attacking := false
 
 ## virtual
 #
-func _physics_process(_delta: float):
-	if not is_freeflying:
-		move_and_slide()
-
 func _ready():
 	check_input_mappings()
 	InteractManager.set_player(self)
@@ -46,6 +37,10 @@ func _unhandled_input(event: InputEvent):
 	# Handle interactions
 	if can_interact and event.is_action_pressed(InputManager.interact):
 		InteractManager.execute_current_interaction()
+
+func _physics_process(_delta: float):
+	if not is_freeflying:
+		move_and_slide()
 
 
 ## helper

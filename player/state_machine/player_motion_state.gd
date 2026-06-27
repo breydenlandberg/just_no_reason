@@ -7,10 +7,6 @@ signal velocity_updated(vel: Vector3)
 signal _animation_state_changed(state: String)
 @warning_ignore('unused_signal')
 signal _rotate_model(_input_dir: Vector2)
-@warning_ignore('unused_signal')
-signal sprint_started
-@warning_ignore('unused_signal')
-signal sprint_ended
 
 # const
 const PLAYER_MOVEMENT_STATS = preload('res://player/player_movement_stats.tres')
@@ -90,15 +86,13 @@ func calculate_gravity(_delta: float):
 func replenish_sprint(delta: float):
 	sprint_remaining = min(sprint_remaining + delta, PLAYER_MOVEMENT_STATS.sprint_duration)
 
-#
-# Assists in connecting and disconnecting the _animation_state_changed signal from
-# a PlayerMotionState instance, should be called upon _entry and _exit respectively.
-# This is necessary to allow animations to delay playing their on_enter_animation
-# until another animation has finished playing - animation_finished()
-# If we don't connect and disconnect the signals when entering and exiting a state,
-# it will fire the _animation_state_changed signal
-# even after the state has been exited and result in unexpected behaviour.
-#
+## Assists in connecting and disconnecting the _animation_state_changed signal from
+## a PlayerMotionState instance, should be called upon _entry and _exit respectively.
+## This is necessary to allow animations to delay playing their on_enter_animation
+## until another animation has finished playing - animation_finished().
+## If we don't connect and disconnect the signals when entering and exiting a state,
+## it will fire the _animation_state_changed signal
+## even after the state has been exited and result in unexpected behaviour.
 func handle_animation_state_changed_signal():
 	if not _animation_state_changed.is_connected(animated_model.on_state_machine_animation_state_changed):
 		_animation_state_changed.connect(animated_model.on_state_machine_animation_state_changed)

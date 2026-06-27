@@ -4,12 +4,9 @@ extends PlayerMotionState
 # var
 var player: CharacterBody3D
 
-# @export
 @export var freefly_speed := 32.0
 
-# @onready
 @onready var camera: Node3D
-#@onready var player_model: Node3D
 
 
 ### fn

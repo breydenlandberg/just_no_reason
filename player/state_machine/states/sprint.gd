@@ -2,10 +2,12 @@ extends PlayerMotionState
 
 
 # signal
-# actually a better practice to have sprint_entered and sprint_exited here so they are not exposed to other States
+signal sprint_started
+signal sprint_ended
 
 # var
-var land_after_these_states: Array[String] = ['jump', 'sprintjump', 'fall', 'sprintfall'] # i want land_move to keep playing if it's playing throughout the walk -> sprint transition
+var land_after_these_states: Array[StringName] = [States.jump, States.sprint_jump, States.fall, States.sprint_fall]
+# i want land_move to keep playing if it's playing throughout the walk -> sprint transition
 
 
 ### fn

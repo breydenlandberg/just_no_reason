@@ -1,6 +1,11 @@
 extends PlayerMotionState
 
 
+# signal
+signal sprint_started
+signal sprint_ended
+
+
 ### fn
 
 ## virtual

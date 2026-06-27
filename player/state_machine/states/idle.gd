@@ -2,7 +2,7 @@ extends PlayerMotionState
 
 
 # var
-var land_after_these_states: Array[String] = ['jump', 'sprintjump', 'fall', 'sprintfall']
+var land_after_these_states: Array[StringName] = [States.jump, States.sprint_jump, States.fall, States.sprint_fall]
 
 
 ### fn
@@ -46,5 +46,9 @@ func _state_physics_process(_delta: float):
 		else:
 			_transition.emit(self, States.walk)
 
-	if not is_on_floor():
+	# Quick and dirty fix to stop the player from entering fall state on game start,
+	# I THINK because is_on_floor() below needs gravity,
+	# but move_and_slide() is called first in player.gd
+	# ... or something close to that
+	if Engine.get_physics_frames() > 1 and not is_on_floor():
 		_transition.emit(self, States.fall)

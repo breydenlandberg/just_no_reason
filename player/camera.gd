@@ -1,14 +1,17 @@
 extends Node3D
 
 
+# enum
+enum CameraAlignment {LEFT = -1, CENTRE = 0, RIGHT = 1}
+
 # var
 var camera_rotation := Vector2.ZERO
 var camera_tween: Tween
 var max_y_rotation := 1.0
 var mouse_captured := true
 var mouse_sensitivity := 0.001
+var current_camera_alignment: int = CameraAlignment.RIGHT
 
-# @export
 @export var aim_fov := 65.0
 @export var aim_edge_spring_length := 1.0
 @export var aim_rear_spring_length := 2.0
@@ -17,14 +20,9 @@ var mouse_sensitivity := 0.001
 @export var sprint_fov := 85.0
 @export var sprint_tween_speed := 0.1			# Why does it get slower the higher the number?
 
-# @onready
 @onready var camera: Camera3D = $EdgeSpringArm/RearSpringArm/Camera3D; @onready var default_fov: float = camera.fov
 @onready var edge_spring_arm: SpringArm3D = $EdgeSpringArm;	@onready var default_edge_spring_arm_length: float = edge_spring_arm.spring_length
 @onready var rear_spring_arm: SpringArm3D = $EdgeSpringArm/RearSpringArm; @onready var default_rear_spring_arm_length: float = rear_spring_arm.spring_length
-
-# enum
-enum CameraAlignment {LEFT = -1, CENTRE = 0, RIGHT = 1}
-var current_camera_alignment: int = CameraAlignment.RIGHT
 
 
 ### fn
@@ -87,7 +85,6 @@ func exit_aim():
 func swap_camera_alignment():
 	match current_camera_alignment:
 		CameraAlignment.LEFT:
-			# set_camera_alignment('CameraAlignment.RIGHT')
 			current_camera_alignment = CameraAlignment.RIGHT
 		CameraAlignment.CENTRE:
 			return
@@ -139,14 +136,14 @@ func tween_camera_properties(properties: Dictionary, duration: float, trans := T
 
 
 # signals
-func _on_sprint_ended():
-	exit_sprint()
-
-func _on_sprint_started():
-	enter_sprint()
-
 func _on_aim_entered():
 	enter_aim()
 
 func _on_aim_exited():
 	exit_aim()
+
+func _on_sprint_ended():
+	exit_sprint()
+
+func _on_sprint_started():
+	enter_sprint()
