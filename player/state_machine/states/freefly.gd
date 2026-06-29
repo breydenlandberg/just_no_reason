@@ -23,6 +23,7 @@ func _enter():
 func _exit():
 	owner.set_collision_mask_value(1, true)
 	owner.is_freeflying = false
+	animated_model.rotation.x = 0
 
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
@@ -39,6 +40,7 @@ func _state_physics_process(_delta: float):
 	if motion == Vector3.ZERO:
 		_animation_state_changed.emit('freefly_idle')
 	else:
+		animated_model.rotation.x = -snappedf(camera.rotation.x, 0.025)
 		_animation_state_changed.emit('freefly_move')
 
 	owner.move_and_collide(motion)
