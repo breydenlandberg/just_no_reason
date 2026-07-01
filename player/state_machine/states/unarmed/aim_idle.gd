@@ -7,6 +7,7 @@ signal aim_exited
 
 ### fn
 
+
 ## virtual
 #
 func _enter():
@@ -31,6 +32,9 @@ func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_velocity(aim_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta)
 	replenish_sprint(_delta)
+
+	# Aim away from the camera (around the y axis for now)
+	animated_model.rotation_degrees.y = owner.camera.rotation_degrees.y + 180
 
 	if direction != Vector3.ZERO:
 		_transition.emit(self, States.aim_walk)

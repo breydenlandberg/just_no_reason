@@ -69,6 +69,7 @@ func release_mouse():
 
 # aim / shoulder alignment
 func enter_aim():
+	owner.is_aiming = true
 	tween_camera_properties({
 		camera: ['fov', aim_fov],
 		edge_spring_arm: ["spring_length", aim_edge_spring_length * current_camera_alignment],
@@ -76,6 +77,7 @@ func enter_aim():
 	}, aim_speed)#, Tween.TRANS_EXPO, Tween.EASE_OUT)
 
 func exit_aim():
+	owner.is_aiming = false
 	tween_camera_properties({
 		camera: ['fov', default_fov],
 		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * current_camera_alignment],

@@ -1,6 +1,9 @@
 class_name States
 
 # static var
+static var unarmed_state: StringName = 'Unarmed'
+static var armed_state: StringName = 'Armed'
+
 static var freefly: StringName = 'Freefly'
 static var idle: StringName = 'Idle'
 static var walk: StringName = 'Walk'
