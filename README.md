@@ -10,6 +10,7 @@
 
 # FYI
 - Character models are Quaternius Ultimate Modular Men
+- https://www.youtube.com/watch?v=1WJCHkHFRRA&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv and the following episodes for when you want to add another weapon and all related code
 
 
 
