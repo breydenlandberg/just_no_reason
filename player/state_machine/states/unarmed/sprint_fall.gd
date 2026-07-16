@@ -2,6 +2,7 @@ extends PlayerMotionState
 
 
 # signal
+@warning_ignore('unused_signal')
 signal sprint_started
 signal sprint_ended
 
