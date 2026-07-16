@@ -3,19 +3,21 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dw0v5futuc803"
-path="res://.godot/imported/Grab And Put Back Rifle.fbx-bf0d07d5916220d2195d5e60ad27c209.scn"
+uid="uid://c4dbxe147t267"
+path="res://.godot/imported/mixamo_reference_spacesuit.fbx-ab3cc69295c04ad29a842bfa6012af54.scn"
 
 [deps]
 
-source_file="res://assets/player_animated/fbx/Grab And Put Back Rifle.fbx"
-dest_files=["res://.godot/imported/Grab And Put Back Rifle.fbx-bf0d07d5916220d2195d5e60ad27c209.scn"]
+source_file="res://assets/player_animated/mixamo_reference_spacesuit.fbx"
+dest_files=["res://.godot/imported/mixamo_reference_spacesuit.fbx-ab3cc69295c04ad29a842bfa6012af54.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

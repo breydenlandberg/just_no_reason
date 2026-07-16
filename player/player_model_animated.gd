@@ -51,34 +51,35 @@ func load_new_weapon(weapon: Weapon):
 	right_hand.position = weapon.hand_position
 	right_hand.rotation = weapon.hand_rotation
 
-	#animation_tree.tree_root.get_node('weapon_idle_animation').set_animation(weapon.weapon_idle_animation.resource_name)
-
-	animation_tree['parameters/equip_weapon/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	equip_weapon_animation()
 
 	attach_weapon_to_hand(weapon.weapon_model)
+
+func deload_current_weapon():
+	# when we fix the animation and want to detach the weapon from the hand at the correct frame of the animation,
+	# watch https://www.youtube.com/watch?v=tcmNGIyBXzo&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv
+	unequip_weapon_animation()
 
 func attach_weapon_to_hand(scene: PackedScene):
 	var new_weapon: Node3D = scene.instantiate()
 	right_hand.add_child(new_weapon)
 
-func detach_weapon_from_hand():
+func equip_weapon_animation():
 	animation_tree['parameters/equip_weapon/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
+func unequip_weapon_animation():
+	animation_tree['parameters/unequip_weapon/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 
 ## signal
 #
-func _on_weapon_manager_weapon_changed(_weapon: Weapon):
-	load_new_weapon(_weapon)
-
 func _on_weapon_manager_started(_status: String, _weapon: Weapon):
 	on_combat_status_changed(_status)
 	load_new_weapon(_weapon)
 
-func _on_weapon_manager_finished(_status: String):
+func _on_weapon_manager_stopped(_status: String):
 	on_combat_status_changed(_status)
-	# when we fix the animation and want to detach the weapon from the hand at the correct frame of the animation,
-	# watch https://www.youtube.com/watch?v=tcmNGIyBXzo&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv
-	detach_weapon_from_hand()
+	deload_current_weapon()
 
 func _on_weapon_manager_unequip_animation_finished() -> void:
 	if right_hand.get_child_count() > 0:
