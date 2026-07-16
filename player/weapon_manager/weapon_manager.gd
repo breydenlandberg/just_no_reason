@@ -6,6 +6,7 @@ class_name WeaponManager extends Node3D
 signal weapon_changed(_status: String, _weapon: Weapon)
 signal weapon_manager_started(_status: String, _weapon: Weapon)
 signal weapon_manager_finished
+signal unequip_animation_finished
 
 # enum
 enum WeaponManagerStatus {AVAILABLE, UNAVAILABLE}
@@ -36,8 +37,7 @@ func _ready():
 func on_combat_status_changed(status: String):
 	match status:
 		'non_combat':
-			set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
-			weapon_manager_finished.emit(status)
+			stop_weapon_manager(status)
 		'combat':
 			start_weapon_manager(status)
 
@@ -51,14 +51,28 @@ func set_weapon_wait_time(weapon: Weapon):
 
 func wait_for_action_completion(wait_time: float):
 	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
-	weapon_status_timer.start(equip_weapon_wait_time)
+	weapon_status_timer.start(wait_time)
+
+func make_available_until(wait_time: float):
+	set_weapon_manager_status(WeaponManagerStatus.AVAILABLE)
+	weapon_status_timer.start(wait_time)
 
 func start_weapon_manager(status: String):
-	weapon_manager_started.emit(status, current_weapon)
-	wait_for_action_completion(current_weapon.weapon_equip_animation.length)
+	if current_weapon: #?
+		weapon_manager_started.emit(status, current_weapon)
+		wait_for_action_completion(current_weapon.weapon_equip_animation.length)
+
+func stop_weapon_manager(status: String):
+	if current_weapon:
+		weapon_manager_finished.emit(status)
+		make_available_until(current_weapon.weapon_equip_animation.length)
 
 
 ## signal
 #
 func _on_weapon_status_timer_timeout():
-	set_weapon_manager_status(WeaponManagerStatus.AVAILABLE)
+	if current_status == WeaponManagerStatus.UNAVAILABLE:
+		set_weapon_manager_status(WeaponManagerStatus.AVAILABLE)
+	else:
+		set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
+		unequip_animation_finished.emit()

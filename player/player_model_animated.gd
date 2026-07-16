@@ -64,10 +64,6 @@ func attach_weapon_to_hand(scene: PackedScene):
 func detach_weapon_from_hand():
 	animation_tree['parameters/equip_weapon/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
-	if right_hand.get_child_count() > 0:
-		var current_weapon: Node3D = right_hand.get_child(0)
-		current_weapon.queue_free()
-
 
 ## signal
 #
@@ -83,3 +79,8 @@ func _on_weapon_manager_finished(_status: String):
 	# when we fix the animation and want to detach the weapon from the hand at the correct frame of the animation,
 	# watch https://www.youtube.com/watch?v=tcmNGIyBXzo&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv
 	detach_weapon_from_hand()
+
+func _on_weapon_manager_unequip_animation_finished() -> void:
+	if right_hand.get_child_count() > 0:
+		var current_weapon: Node3D = right_hand.get_child(0)
+		current_weapon.queue_free()
