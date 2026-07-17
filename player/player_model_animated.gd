@@ -3,10 +3,10 @@ class_name PlayerModelAnimated extends Node3D
 
 # enum
 enum CombatStatus {COMBAT, NONCOMBAT}
-var current_combat_status: CombatStatus = CombatStatus.NONCOMBAT
 
 # var
-var _input_dir: Vector2
+var current_combat_status: CombatStatus = CombatStatus.NONCOMBAT
+var input_direction: Vector2
 
 @export var animation_tree: AnimationTree
 @export var right_hand: Node3D
@@ -25,18 +25,18 @@ func on_state_machine_animation_state_changed(state: String):
 			animation_tree['parameters/armed_movement/transition_request'] = state
 
 # called by rotate_model()
-func on_input_direction_changed(input_direction: Vector2):
-	if input_direction != Vector2(0, 0):
-		_input_dir = _input_dir.slerp(input_direction, turn_rate)
+func on_input_direction_changed(_input_dir: Vector2):
+	if _input_dir != Vector2(0, 0):
+		input_direction = input_direction.slerp(_input_dir, turn_rate)
 
 		match current_combat_status:
 			CombatStatus.NONCOMBAT:
 				pass
 			CombatStatus.COMBAT:
 				if owner.is_aiming:
-					animation_tree["parameters/rifle_aim_walk/blend_position"] = _input_dir
+					animation_tree["parameters/rifle_aim_walk/blend_position"] = input_direction
 
-		rotation_degrees.y = owner.camera.rotation_degrees.y - rad_to_deg(_input_dir.angle()) + 90
+		rotation_degrees.y = owner.camera.rotation_degrees.y - rad_to_deg(input_direction.angle()) + 90
 
 func on_combat_status_changed(status: String):
 	match status:
