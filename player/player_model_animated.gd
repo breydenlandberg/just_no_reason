@@ -76,12 +76,12 @@ func unequip_weapon_animation():
 
 ## signal
 #
-func _on_weapon_manager_started(_status: String, _weapon: Weapon):
-	on_combat_status_changed(_status)
+func _on_weapon_manager_started(_weapon: Weapon):
+	on_combat_status_changed('combat') # this param used to be passed all the way from weapon_manager on_combat_status_changed... i'm not sure the pros and cons of this vs that
 	load_new_weapon(_weapon)
 
-func _on_weapon_manager_stopped(_status: String):
-	on_combat_status_changed(_status)
+func _on_weapon_manager_stopped():
+	on_combat_status_changed('non_combat') # this param used to be passed all the way from weapon_manager on_combat_status_changed... i'm not sure the pros and cons of this vs that
 	deload_current_weapon()
 
 func _on_weapon_manager_unequip_animation_finished() -> void:
@@ -89,7 +89,7 @@ func _on_weapon_manager_unequip_animation_finished() -> void:
 		var current_weapon: Node3D = right_hand.get_child(0)
 		current_weapon.queue_free()
 
-func _on_weapon_manager_weapon_changed(_status: String, _weapon: Weapon):
+func _on_weapon_manager_weapon_changed(_weapon: Weapon):
 	if right_hand.get_child_count() > 0:
 		var current_weapon: Node3D = right_hand.get_child(0)
 		current_weapon.queue_free()
