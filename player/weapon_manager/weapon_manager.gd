@@ -83,7 +83,7 @@ func swap_weapon():
 	if not weapons[weapon_i] == current_weapon:
 		current_weapon = weapons[weapon_i]
 		set_weapon_wait_time(current_weapon)
-		weapon_changed.emit(=current_weapon)
+		weapon_changed.emit(current_weapon)
 		weapon_manager_unavailable_until(equip_weapon_wait_time)
 
 func shoot():
