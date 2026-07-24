@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://cyl7eow3la5ai"]
+
+[ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapon.gd" id="1_v7bdd"]
+[ext_resource type="Animation" uid="uid://buw42cx8q21mc" path="res://player/assets/animations/right_kick.res" id="2_husrn"]
+[ext_resource type="PackedScene" uid="uid://da01xxacdcyia" path="res://assets/weapons/quasar/quasar.glb" id="3_lnkn1"]
+[ext_resource type="Animation" uid="uid://dwb0s7snrrgsr" path="res://player/assets/animations/tpose.res" id="4_lnkn1"]
+[ext_resource type="Animation" uid="uid://rltobf8anitd" path="res://player/assets/animations/rifle_land.res" id="5_lnkn1"]
+
+[resource]
+script = ExtResource("1_v7bdd")
+name = "quasar"
+weapon_model = ExtResource("3_lnkn1")
+hand_position = Vector3(-12, -36, -24)
+scale = Vector3(-0.15, -0.15, -0.15)
+weapon_equip_animation = ExtResource("2_husrn")
+weapon_unequip_animation = ExtResource("5_lnkn1")
+weapon_shoot_animation = ExtResource("4_lnkn1")
+metadata/_custom_type_script = "uid://0puiy7r7kaiu"

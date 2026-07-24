@@ -53,15 +53,16 @@ func load_new_weapon(weapon: Weapon):
 
 	equip_weapon_animation()
 
-	attach_weapon_to_hand(weapon.weapon_model)
+	attach_weapon_to_hand(weapon)
 
 func deload_current_weapon():
 	# when we fix the animation and want to detach the weapon from the hand at the correct frame of the animation,
 	# watch https://www.youtube.com/watch?v=tcmNGIyBXzo&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv
 	unequip_weapon_animation()
 
-func attach_weapon_to_hand(scene: PackedScene):
-	var new_weapon: Node3D = scene.instantiate()
+func attach_weapon_to_hand(weapon: Weapon):
+	var new_weapon: Node3D = weapon.weapon_model.instantiate()
+	new_weapon.scale = weapon.scale
 	right_hand.add_child(new_weapon)
 
 func equip_weapon_animation():

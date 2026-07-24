@@ -3,7 +3,10 @@
 [ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapon.gd" id="1_4r8jf"]
 [ext_resource type="Animation" uid="uid://cvpagmer4ctbl" path="res://player/assets/animations/rifle_equip.res" id="2_folu8"]
 [ext_resource type="PackedScene" uid="uid://c1gvaajvf15di" path="res://assets/weapons/AssaultRifle.fbx" id="2_gms0i"]
+[ext_resource type="Animation" uid="uid://bvji780v0ycgl" path="res://player/assets/animations/rifle_idle.res" id="3_tgwxx"]
 [ext_resource type="Animation" uid="uid://bd5rpykc1pnfg" path="res://player/assets/animations/rifle_unequip.res" id="4_dpwos"]
+[ext_resource type="Animation" uid="uid://cymqvfi234dt7" path="res://player/assets/animations/rifle_reload.res" id="5_7eekv"]
+[ext_resource type="Animation" uid="uid://c4d4o8mgj3wjh" path="res://player/assets/animations/rifle_shoot_medium.res" id="6_1dkay"]
 
 [resource]
 script = ExtResource("1_4r8jf")
@@ -13,4 +16,7 @@ hand_position = Vector3(1.29, 7.33, 1.73)
 hand_rotation = Vector3(0.33, 3, 1.33)
 weapon_equip_animation = ExtResource("2_folu8")
 weapon_unequip_animation = ExtResource("4_dpwos")
+weapon_idle_animation = ExtResource("3_tgwxx")
+weapon_shoot_animation = ExtResource("6_1dkay")
+weapon_reload_animation = ExtResource("5_7eekv")
 metadata/_custom_type_script = "uid://0puiy7r7kaiu"

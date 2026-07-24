@@ -1,6 +1,9 @@
 class_name PlayerStateMachine extends StateMachine
 
 
+@export var weapon_manager: WeaponManager
+
+
 ### fn
 
 ## virtual
