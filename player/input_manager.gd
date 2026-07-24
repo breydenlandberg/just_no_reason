@@ -16,4 +16,4 @@ static var attack_basic := 'attack_basic'
 static var equip_unequip := 'equip_unequip'
 static var shoot := 'shoot'
 static var reload_input := 'reload' # the name reload is defined in the base Script class... leading to shadowing and downstream errors... make it reload_input instead
-static var swap_weapon := 'swap_weapon'
+static var change_weapon := 'change_weapon'

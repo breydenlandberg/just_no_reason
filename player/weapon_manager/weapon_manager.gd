@@ -38,8 +38,8 @@ func _unhandled_input(event: InputEvent):
 		if event.is_action_pressed(InputManager.reload_input):
 			reload()
 
-		if event.is_action_pressed(InputManager.swap_weapon):
-			swap_weapon()
+		if event.is_action_pressed(InputManager.change_weapon):
+			change_weapon()
 
 func _process(_delta: float):
 	if owner.is_aiming:
@@ -69,7 +69,7 @@ func stop_weapon_manager():
 		weapon_manager_stopped.emit()
 		unequip_weapon()
 
-func swap_weapon():
+func change_weapon():
 	var weapon_i: int = weapons.find(current_weapon)
 
 	if weapon_i >= weapons.size() - 1:
@@ -96,17 +96,22 @@ func set_weapon_wait_time(weapon: Weapon):
 	reload_weapon_wait_time = weapon.weapon_reload_animation.length
 
 func equip_or_change_weapon():
-	weapon_unequip_timer.stop()
+	stop_running_timers()
 	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
 	weapon_equip_change_timer.start(equip_weapon_wait_time)
 
 func unequip_weapon():
-	weapon_equip_change_timer.stop()
+	stop_running_timers()
 	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
 	weapon_unequip_timer.start(unequip_weapon_wait_time)
 
 func set_weapon_manager_status(status: WeaponManagerStatus):
 	current_status = status
+
+# stop timers from overlapping before processing a weapon equip / change / unequip
+func stop_running_timers():
+	weapon_unequip_timer.stop()
+	weapon_equip_change_timer.stop()
 
 
 ## signal
