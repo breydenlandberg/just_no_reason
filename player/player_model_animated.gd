@@ -85,3 +85,9 @@ func _on_weapon_manager_unequip_animation_finished() -> void:
 	if right_hand.get_child_count() > 0:
 		var current_weapon: Node3D = right_hand.get_child(0)
 		current_weapon.queue_free()
+
+func _on_weapon_manager_weapon_fired():
+	animation_tree['parameters/shoot/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
+func _on_weapon_manager_weapon_reload():
+	animation_tree['parameters/reload/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
