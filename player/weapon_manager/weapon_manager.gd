@@ -3,7 +3,7 @@ class_name WeaponManager extends Node3D
 
 # signal
 @warning_ignore('unused_signal')
-signal weapon_changed(_status: String, _weapon: Weapon)
+signal weapon_changed(_weapon: Weapon)
 signal weapon_manager_started(_status: String, _weapon: Weapon)
 signal weapon_manager_stopped
 signal unequip_animation_finished
@@ -18,7 +18,6 @@ var current_status: WeaponManagerStatus = WeaponManagerStatus.UNAVAILABLE
 var current_weapon: Weapon
 var equip_weapon_wait_time := 0.0
 var unequip_weapon_wait_time := 0.0
-var change_weapon_wait_time := 0.0
 var shoot_weapon_wait_time := 0.0
 var reload_weapon_wait_time := 0.0
 
@@ -30,10 +29,6 @@ var reload_weapon_wait_time := 0.0
 
 ## virtual
 #
-func _ready():
-	current_weapon = weapons[0]
-	set_weapon_wait_time(current_weapon)
-
 func _unhandled_input(event: InputEvent):
 	if current_status == WeaponManagerStatus.AVAILABLE:
 		if event.is_action_pressed(InputManager.shoot):
@@ -43,14 +38,7 @@ func _unhandled_input(event: InputEvent):
 			reload()
 
 		if event.is_action_pressed(InputManager.swap_weapon):
-			var weapon_i: int = weapons.find(current_weapon)
-
-			if weapon_i >= weapons.size() - 1:
-				weapon_i = 0
-			else:
-				weapon_i = min(weapon_i + 1, weapons.size() - 1)
-
-			change_weapon(weapon_i)
+			swap_weapon()
 
 func _process(_delta: float):
 	if owner.is_aiming:
@@ -67,46 +55,49 @@ func on_combat_status_changed(status: String):
 		'combat':
 			start_weapon_manager(status)
 
-func set_weapon_manager_status(status: WeaponManagerStatus):
-	current_status = status
-
 func set_weapon_wait_time(weapon: Weapon):
 	equip_weapon_wait_time = weapon.weapon_equip_animation.length
-	unequip_weapon_wait_time = weapon.weapon_equip_animation.length
-	#change_weapon_wait_time = weapon.weapon_change_animation.length
-	#shoot_weapon_wait_time = weapon.weapon_shoot_animation.length
-	#reload_weapon_wait_time = weapon.weapon_reload_animation.length
-
-func wait_for_action_completion(wait_time: float, availability: WeaponManagerStatus):
-	match availability:
-		WeaponManagerStatus.AVAILABLE:
-			set_weapon_manager_status(WeaponManagerStatus.AVAILABLE)
-		WeaponManagerStatus.UNAVAILABLE:
-			set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
-
-	weapon_status_timer.start(wait_time)
+	unequip_weapon_wait_time = weapon.weapon_unequip_animation.length
+	shoot_weapon_wait_time = weapon.weapon_shoot_animation.length
+	reload_weapon_wait_time = weapon.weapon_reload_animation.length
 
 func start_weapon_manager(status: String):
-	if current_weapon: #?
-		weapon_manager_started.emit(status, current_weapon)
-		wait_for_action_completion(current_weapon.weapon_equip_animation.length, WeaponManagerStatus.UNAVAILABLE)
+	current_weapon = weapons[0]
+	set_weapon_wait_time(current_weapon)
+	weapon_manager_started.emit(status, current_weapon)
+	weapon_manager_unavailable_until(equip_weapon_wait_time)
 
 func stop_weapon_manager(status: String):
 	if current_weapon:
 		weapon_manager_stopped.emit(status)
-		wait_for_action_completion(current_weapon.weapon_unequip_animation.length, WeaponManagerStatus.AVAILABLE)
+		set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
 
-func change_weapon(i: int):
-	if not weapons[i] == current_weapon:
-		current_weapon = weapons[i]
-		weapon_changed.emit('test', current_weapon)
-		wait_for_action_completion(current_weapon.weapon_equip_animation.length, WeaponManagerStatus.UNAVAILABLE)
+func swap_weapon():
+	var weapon_i: int = weapons.find(current_weapon)
+
+	if weapon_i >= weapons.size() - 1:
+		weapon_i = 0
+	else:
+		weapon_i = weapon_i + 1
+
+	if not weapons[weapon_i] == current_weapon:
+		current_weapon = weapons[weapon_i]
+		set_weapon_wait_time(current_weapon)
+		weapon_changed.emit(=current_weapon)
+		weapon_manager_unavailable_until(equip_weapon_wait_time)
 
 func shoot():
 	weapon_fired.emit()
 
 func reload():
 	weapon_reload.emit()
+
+func weapon_manager_unavailable_until(wait_time: float):
+	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
+	weapon_status_timer.start(wait_time)
+
+func set_weapon_manager_status(status: WeaponManagerStatus):
+	current_status = status
 
 
 ## signal
