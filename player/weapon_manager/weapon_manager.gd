@@ -42,6 +42,16 @@ func _unhandled_input(event: InputEvent):
 		if event.is_action_pressed(InputManager.reload_input):
 			reload()
 
+		if event.is_action_pressed(InputManager.swap_weapon):
+			var weapon_i: int = weapons.find(current_weapon)
+
+			if weapon_i >= weapons.size() - 1:
+				weapon_i = 0
+			else:
+				weapon_i = min(weapon_i + 1, weapons.size() - 1)
+
+			change_weapon(weapon_i)
+
 func _process(_delta: float):
 	if owner.is_aiming:
 		pass
@@ -63,6 +73,7 @@ func set_weapon_manager_status(status: WeaponManagerStatus):
 func set_weapon_wait_time(weapon: Weapon):
 	equip_weapon_wait_time = weapon.weapon_equip_animation.length
 	unequip_weapon_wait_time = weapon.weapon_equip_animation.length
+	#change_weapon_wait_time = weapon.weapon_change_animation.length
 	#shoot_weapon_wait_time = weapon.weapon_shoot_animation.length
 	#reload_weapon_wait_time = weapon.weapon_reload_animation.length
 
@@ -84,6 +95,12 @@ func stop_weapon_manager(status: String):
 	if current_weapon:
 		weapon_manager_stopped.emit(status)
 		wait_for_action_completion(current_weapon.weapon_unequip_animation.length, WeaponManagerStatus.AVAILABLE)
+
+func change_weapon(i: int):
+	if not weapons[i] == current_weapon:
+		current_weapon = weapons[i]
+		weapon_changed.emit('test', current_weapon)
+		wait_for_action_completion(current_weapon.weapon_equip_animation.length, WeaponManagerStatus.UNAVAILABLE)
 
 func shoot():
 	weapon_fired.emit()

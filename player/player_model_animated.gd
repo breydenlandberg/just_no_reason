@@ -58,6 +58,8 @@ func load_new_weapon(weapon: Weapon):
 func deload_current_weapon():
 	# when we fix the animation and want to detach the weapon from the hand at the correct frame of the animation,
 	# watch https://www.youtube.com/watch?v=tcmNGIyBXzo&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv
+
+	#if right_hand.get_child_count() > 0
 	unequip_weapon_animation()
 
 func attach_weapon_to_hand(weapon: Weapon):
@@ -86,6 +88,12 @@ func _on_weapon_manager_unequip_animation_finished() -> void:
 	if right_hand.get_child_count() > 0:
 		var current_weapon: Node3D = right_hand.get_child(0)
 		current_weapon.queue_free()
+
+func _on_weapon_manager_weapon_changed(_status: String, _weapon: Weapon):
+	if right_hand.get_child_count() > 0:
+		var current_weapon: Node3D = right_hand.get_child(0)
+		current_weapon.queue_free()
+	load_new_weapon(_weapon)
 
 func _on_weapon_manager_weapon_fired():
 	animation_tree['parameters/shoot/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
