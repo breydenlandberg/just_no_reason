@@ -22,8 +22,8 @@ var shoot_weapon_wait_time := 0.0
 var reload_weapon_wait_time := 0.0
 
 @export var weapons: Array[Weapon]
-@export var weapon_equip_change_timer: Timer
-@export var weapon_unequip_timer: Timer
+@export var weapon_timer: Timer # Weapon equip, change, shoot, reload - we want to make the WeaponManager unavailable during known animations
+@export var weapon_unequip_timer: Timer # Separate timer since we need to despawn the weapon specifically after unequipping
 
 
 ### fn
@@ -72,10 +72,7 @@ func stop_weapon_manager():
 func change_weapon():
 	var weapon_i: int = weapons.find(current_weapon)
 
-	if weapon_i >= weapons.size() - 1:
-		weapon_i = 0
-	else:
-		weapon_i = weapon_i + 1
+	weapon_i = wrapi(weapon_i + 1, 0, weapons.size())
 
 	if not weapons[weapon_i] == current_weapon:
 		current_weapon = weapons[weapon_i]
@@ -84,9 +81,11 @@ func change_weapon():
 		equip_or_change_weapon()
 
 func shoot():
+	weapon_manager_unavailable_for(shoot_weapon_wait_time)
 	weapon_fired.emit()
 
 func reload():
+	weapon_manager_unavailable_for(reload_weapon_wait_time)
 	weapon_reload.emit()
 
 func set_weapon_wait_time(weapon: Weapon):
@@ -96,27 +95,28 @@ func set_weapon_wait_time(weapon: Weapon):
 	reload_weapon_wait_time = weapon.weapon_reload_animation.length
 
 func equip_or_change_weapon():
-	stop_running_timers()
-	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
-	weapon_equip_change_timer.start(equip_weapon_wait_time)
+	weapon_manager_unavailable_for(equip_weapon_wait_time)
 
 func unequip_weapon():
-	stop_running_timers()
+	weapon_manager_unavailable_for(unequip_weapon_wait_time, weapon_unequip_timer)
+
+func weapon_manager_unavailable_for(wait_time: float, timer := weapon_timer):
+	stop_timers()
 	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
-	weapon_unequip_timer.start(unequip_weapon_wait_time)
+	timer.start(wait_time)
+
+# stop timers from overlapping before handling weapon manager availability during animations
+func stop_timers():
+	weapon_timer.stop()
+	weapon_unequip_timer.stop()
 
 func set_weapon_manager_status(status: WeaponManagerStatus):
 	current_status = status
 
-# stop timers from overlapping before processing a weapon equip / change / unequip
-func stop_running_timers():
-	weapon_unequip_timer.stop()
-	weapon_equip_change_timer.stop()
-
 
 ## signal
 #
-func _on_weapon_equip_change_timer_timeout():
+func _on_weapon_timer_timeout():
 	set_weapon_manager_status(WeaponManagerStatus.AVAILABLE)
 
 func _on_weapon_unequip_timer_timeout():

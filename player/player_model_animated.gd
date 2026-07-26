@@ -50,6 +50,12 @@ func on_combat_status_changed(status: String):
 func load_new_weapon(weapon: Weapon):
 	clear_weapon_from_hand()
 
+	animation_tree.tree_root.get_node('weapon_idle_animation').set_animation(weapon.weapon_idle_animation.resource_name)
+	animation_tree.tree_root.get_node('weapon_equip_animation').set_animation(weapon.weapon_equip_animation.resource_name)
+	animation_tree.tree_root.get_node('weapon_unequip_animation').set_animation(weapon.weapon_unequip_animation.resource_name)
+	animation_tree.tree_root.get_node('weapon_shoot_animation').set_animation(weapon.weapon_shoot_animation.resource_name)
+	animation_tree.tree_root.get_node('weapon_reload_animation').set_animation(weapon.weapon_reload_animation.resource_name)
+
 	right_hand.position = weapon.hand_position
 	right_hand.rotation = weapon.hand_rotation
 
@@ -85,7 +91,7 @@ func _on_weapon_manager_stopped():
 func _on_weapon_manager_weapon_changed(_weapon: Weapon):
 	load_new_weapon(_weapon)
 
-func _on_weapon_manager_unequip_animation_finished() -> void:
+func _on_weapon_manager_unequip_animation_finished():
 	clear_weapon_from_hand()
 
 func _on_weapon_manager_weapon_fired():
