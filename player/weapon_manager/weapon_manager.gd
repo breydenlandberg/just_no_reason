@@ -3,10 +3,12 @@ class_name WeaponManager extends Node3D
 
 # signal
 @warning_ignore('unused_signal')
-signal weapon_changed(_weapon: Weapon)
 signal weapon_manager_started(_weapon: Weapon)
 signal weapon_manager_stopped
 signal unequip_animation_finished
+signal weapon_changed(_weapon: Weapon)
+signal weapon_aim_entered(_weapon: Weapon)
+signal weapon_aim_exited(_weapon: Weapon)
 signal weapon_fired
 signal weapon_reload
 
@@ -41,11 +43,14 @@ func _unhandled_input(event: InputEvent):
 		if event.is_action_pressed(InputManager.change_weapon):
 			change_weapon()
 
-func _process(_delta: float):
-	if owner.is_aiming:
-		pass
-		#update current_weapon.weapon_idle_animation
 
+func _process(_delta: float):
+	if current_status == WeaponManagerStatus.AVAILABLE:
+		if Input.is_action_pressed(InputManager.aim):
+			weapon_aim_entered.emit(current_weapon)
+
+		if Input.is_action_just_released(InputManager.aim):
+			weapon_aim_exited.emit(current_weapon)
 
 ## helper
 #

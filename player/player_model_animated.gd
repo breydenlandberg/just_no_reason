@@ -77,6 +77,12 @@ func clear_weapon_from_hand():
 		for child in right_hand.get_children():
 			child.queue_free()
 
+func aim_weapon_idle_animation(weapon: Weapon):
+	animation_tree.tree_root.get_node('weapon_idle_animation').set_animation(weapon.weapon_aim_idle_animation.resource_name)
+
+func reset_weapon_idle_animation(weapon: Weapon):
+	animation_tree.tree_root.get_node('weapon_idle_animation').set_animation(weapon.weapon_idle_animation.resource_name)
+
 
 ## signal
 #
@@ -88,14 +94,20 @@ func _on_weapon_manager_stopped():
 	on_combat_status_changed('non_combat') # this param used to be passed all the way from weapon_manager on_combat_status_changed... i'm not sure the pros and cons of this vs that
 	deload_current_weapon()
 
-func _on_weapon_manager_weapon_changed(_weapon: Weapon):
+func _on_weapon_changed(_weapon: Weapon):
 	load_new_weapon(_weapon)
 
-func _on_weapon_manager_unequip_animation_finished():
+func _on_weapon_unequip_animation_finished():
 	clear_weapon_from_hand()
 
-func _on_weapon_manager_weapon_fired():
+func _on_weapon_aim_entered(_weapon: Weapon):
+	aim_weapon_idle_animation(_weapon)
+
+func _on_weapon_aim_exited(_weapon: Weapon):
+	reset_weapon_idle_animation(_weapon)
+
+func _on_weapon_fired():
 	animation_tree['parameters/shoot/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
-func _on_weapon_manager_weapon_reload():
+func _on_weapon_reloaded():
 	animation_tree['parameters/reload/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE

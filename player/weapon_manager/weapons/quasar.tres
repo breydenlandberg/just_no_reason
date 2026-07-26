@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://cyl7eow3la5ai"]
 
 [ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapon.gd" id="1_v7bdd"]
+[ext_resource type="Animation" uid="uid://dwb0s7snrrgsr" path="res://player/assets/animations/tpose.res" id="2_ewsdg"]
 [ext_resource type="Animation" uid="uid://buw42cx8q21mc" path="res://player/assets/animations/right_kick.res" id="2_husrn"]
 [ext_resource type="Animation" uid="uid://bb2nkrg26trsm" path="res://player/assets/animations/crouch.res" id="3_3iehu"]
 [ext_resource type="PackedScene" uid="uid://da01xxacdcyia" path="res://assets/weapons/quasar/quasar.glb" id="3_lnkn1"]
-[ext_resource type="Animation" uid="uid://5cjjjlfy52q4" path="res://player/assets/animations/rifle_jump.res" id="5_ewsdg"]
 [ext_resource type="Animation" uid="uid://rltobf8anitd" path="res://player/assets/animations/rifle_land.res" id="5_lnkn1"]
-[ext_resource type="Animation" uid="uid://bd5rpykc1pnfg" path="res://player/assets/animations/rifle_unequip.res" id="6_3iehu"]
+[ext_resource type="Animation" uid="uid://cvpagmer4ctbl" path="res://player/assets/animations/rifle_equip.res" id="6_ewsdg"]
+[ext_resource type="Animation" uid="uid://d6yib3agoadp" path="res://player/assets/animations/rifle_shoot_slow.res" id="7_ewsdg"]
 
 [resource]
 script = ExtResource("1_v7bdd")
@@ -15,8 +16,9 @@ weapon_model = ExtResource("3_lnkn1")
 hand_position = Vector3(-12, -36, -24)
 scale = Vector3(-0.15, -0.15, -0.15)
 weapon_idle_animation = ExtResource("3_3iehu")
+weapon_aim_idle_animation = ExtResource("2_ewsdg")
 weapon_equip_animation = ExtResource("2_husrn")
 weapon_unequip_animation = ExtResource("5_lnkn1")
-weapon_shoot_animation = ExtResource("6_3iehu")
-weapon_reload_animation = ExtResource("5_ewsdg")
+weapon_shoot_animation = ExtResource("7_ewsdg")
+weapon_reload_animation = ExtResource("6_ewsdg")
 metadata/_custom_type_script = "uid://0puiy7r7kaiu"
