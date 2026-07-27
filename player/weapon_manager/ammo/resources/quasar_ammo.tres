@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ammo" format=3 uid="uid://bnrnpy6sxgw26"]
+
+[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="1_imdtt"]
+
+[resource]
+script = ExtResource("1_imdtt")
+ammo_type = "quasar"
+ammo_count = 5
+metadata/_custom_type_script = "uid://dpu1mx01ww7be"

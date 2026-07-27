@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cxd51wq2w87nm"]
+
+[ext_resource type="Script" uid="uid://dbx7sjoppfryn" path="res://player/weapon_manager/weapons/weapon_model.gd" id="1_tkjyo"]
+[ext_resource type="PackedScene" uid="uid://c1gvaajvf15di" path="res://assets/weapons/AssaultRifle.fbx" id="2_vvita"]
+
+[node name="AssaultRifleModel" type="Node3D" unique_id=1652972880 node_paths=PackedStringArray("bullet_point")]
+script = ExtResource("1_tkjyo")
+bullet_point = NodePath("BulletPoint")
+
+[node name="AssaultRifle" parent="." unique_id=2060243808 instance=ExtResource("2_vvita")]
+
+[node name="BulletPoint" type="Marker3D" parent="." unique_id=1259062859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.78, 0.59000003, 0)

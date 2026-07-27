@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://dcgl81rrqyhkc"]
+
+[ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="1_1h7hx"]
+[ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapon.gd" id="1_h38sa"]
+[ext_resource type="Animation" uid="uid://bklq0uugdutr6" path="res://player/assets/animations/rifle_aim.res" id="2_0isgb"]
+[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="2_typht"]
+[ext_resource type="Animation" uid="uid://cvpagmer4ctbl" path="res://player/assets/animations/rifle_equip.res" id="3_1h7hx"]
+[ext_resource type="Animation" uid="uid://bvji780v0ycgl" path="res://player/assets/animations/rifle_idle.res" id="4_typht"]
+[ext_resource type="PackedScene" uid="uid://cxd51wq2w87nm" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle.tscn" id="5_m7sf6"]
+[ext_resource type="Animation" uid="uid://cymqvfi234dt7" path="res://player/assets/animations/rifle_reload.res" id="6_km2n3"]
+[ext_resource type="Animation" uid="uid://c4d4o8mgj3wjh" path="res://player/assets/animations/rifle_shoot_medium.res" id="7_soi1e"]
+[ext_resource type="Animation" uid="uid://bd5rpykc1pnfg" path="res://player/assets/animations/rifle_unequip.res" id="8_m4r0f"]
+
+[sub_resource type="Resource" id="Resource_1h7hx"]
+script = ExtResource("2_typht")
+ammo_type = "assault_rifle"
+ammo_count = 30
+metadata/_custom_type_script = "uid://dpu1mx01ww7be"
+
+[resource]
+script = ExtResource("1_h38sa")
+name = "assault_rifle"
+weapon_model = ExtResource("5_m7sf6")
+hand_position = Vector3(1.29, 7.33, 1.73)
+hand_rotation = Vector3(0.33, 3, 1.33)
+weapon_idle_animation = ExtResource("4_typht")
+weapon_aim_idle_animation = ExtResource("2_0isgb")
+weapon_equip_animation = ExtResource("3_1h7hx")
+weapon_unequip_animation = ExtResource("8_m4r0f")
+weapon_shoot_animation = ExtResource("7_soi1e")
+weapon_reload_animation = ExtResource("6_km2n3")
+current_ammo = SubResource("Resource_1h7hx")
+reserve_ammo = Array[ExtResource("2_typht")]([ExtResource("1_1h7hx"), ExtResource("1_1h7hx"), ExtResource("1_1h7hx")])
+metadata/_custom_type_script = "uid://0puiy7r7kaiu"

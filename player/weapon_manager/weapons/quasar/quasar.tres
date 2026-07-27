@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://cyl7eow3la5ai"]
+
+[ext_resource type="Resource" uid="uid://bnrnpy6sxgw26" path="res://player/weapon_manager/ammo/resources/quasar_ammo.tres" id="1_bb5mg"]
+[ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapon.gd" id="1_ycj3w"]
+[ext_resource type="Animation" uid="uid://dwb0s7snrrgsr" path="res://player/assets/animations/tpose.res" id="2_p82x8"]
+[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="2_tly1c"]
+[ext_resource type="Animation" uid="uid://buw42cx8q21mc" path="res://player/assets/animations/right_kick.res" id="3_bb5mg"]
+[ext_resource type="Animation" uid="uid://bb2nkrg26trsm" path="res://player/assets/animations/crouch.res" id="4_tly1c"]
+[ext_resource type="PackedScene" uid="uid://b57352bxoancx" path="res://player/weapon_manager/weapons/quasar/quasar.tscn" id="5_u8h2p"]
+[ext_resource type="Animation" uid="uid://cvpagmer4ctbl" path="res://player/assets/animations/rifle_equip.res" id="6_s4es1"]
+[ext_resource type="Animation" uid="uid://d6yib3agoadp" path="res://player/assets/animations/rifle_shoot_slow.res" id="7_2tlpe"]
+[ext_resource type="Animation" uid="uid://rltobf8anitd" path="res://player/assets/animations/rifle_land.res" id="8_4lr7r"]
+
+[sub_resource type="Resource" id="Resource_bb5mg"]
+script = ExtResource("2_tly1c")
+ammo_type = "quasar"
+ammo_count = 5
+metadata/_custom_type_script = "uid://dpu1mx01ww7be"
+
+[resource]
+script = ExtResource("1_ycj3w")
+name = "quasar"
+weapon_model = ExtResource("5_u8h2p")
+hand_position = Vector3(-12, -36, -24)
+scale = Vector3(-0.15, -0.15, -0.15)
+weapon_idle_animation = ExtResource("4_tly1c")
+weapon_aim_idle_animation = ExtResource("2_p82x8")
+weapon_equip_animation = ExtResource("3_bb5mg")
+weapon_unequip_animation = ExtResource("8_4lr7r")
+weapon_shoot_animation = ExtResource("7_2tlpe")
+weapon_reload_animation = ExtResource("6_s4es1")
+current_ammo = SubResource("Resource_bb5mg")
+reserve_ammo = Array[ExtResource("2_tly1c")]([ExtResource("1_bb5mg"), ExtResource("1_bb5mg"), ExtResource("1_bb5mg")])
+metadata/_custom_type_script = "uid://0puiy7r7kaiu"

@@ -27,8 +27,8 @@
 [ext_resource type="Script" uid="uid://caimphii84lpu" path="res://player/state_machine/states/armed/aim_walk.gd" id="22_knn7v"]
 [ext_resource type="Script" uid="uid://vnwpc8gx8n1d" path="res://player/weapon_manager/weapon_manager.gd" id="26_7pqkx"]
 [ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapon.gd" id="27_rptt4"]
-[ext_resource type="Resource" uid="uid://dcgl81rrqyhkc" path="res://player/weapon_manager/weapons/assault_rifle.tres" id="28_r7pn3"]
-[ext_resource type="Resource" uid="uid://cyl7eow3la5ai" path="res://player/weapon_manager/weapons/quasar.tres" id="29_r7pn3"]
+[ext_resource type="Resource" uid="uid://dcgl81rrqyhkc" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle.tres" id="28_r7pn3"]
+[ext_resource type="Resource" uid="uid://cyl7eow3la5ai" path="res://player/weapon_manager/weapons/quasar/quasar.tres" id="29_r7pn3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_boad6"]
 height = 1.85

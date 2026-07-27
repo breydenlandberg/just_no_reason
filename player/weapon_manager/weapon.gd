@@ -17,3 +17,6 @@ class_name Weapon extends Resource
 @export var weapon_unequip_animation: Animation
 @export var weapon_shoot_animation: Animation
 @export var weapon_reload_animation: Animation
+
+@export var current_ammo: Ammo
+@export var reserve_ammo: Array[Ammo]
