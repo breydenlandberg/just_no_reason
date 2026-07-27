@@ -18,9 +18,8 @@ var is_attacking := false
 @export var can_interact := true
 @export var can_attack := true
 @export var has_gravity := true
-
-@onready var ui_manager := %UIManager
-@onready var camera: Node3D = $Camera
+@export_group('Nodes')
+@export var ui_manager: CanvasLayer
 
 
 ### fn
@@ -32,6 +31,12 @@ func _ready():
 	InteractManager.set_player(self)
 	# Does below need to be a signal?
 	SignalBus._message.connect(message)
+
+	# AmmoUI
+	var ui_ammo: Control = ui_manager.get_node('AmmoUI')
+	%WeaponManager.weapon_manager_started.connect(ui_ammo.start)
+	%WeaponManager.weapon_manager_stopped.connect(ui_ammo.stop)
+	%WeaponManager.ammo_updated.connect(ui_ammo.update_ammo_text)
 
 func _unhandled_input(event: InputEvent):
 	# Handle interactions

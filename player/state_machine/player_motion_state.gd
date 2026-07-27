@@ -69,7 +69,7 @@ func is_on_floor() -> bool:
 
 func set_direction():
 	input_dir = Input.get_vector(InputManager.left, InputManager.right, InputManager.forward, InputManager.back)
-	direction = (owner.camera.transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
+	direction = (%Camera.transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
 
 func calculate_velocity(_speed: float, _direction: Vector3, _acceleration: float, _delta: float):
 	velocity.x = move_toward(velocity.x, _direction.x * _speed, _acceleration * _delta)

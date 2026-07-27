@@ -2,7 +2,6 @@ class_name WeaponManager extends Node3D
 
 
 # signal
-@warning_ignore('unused_signal')
 signal weapon_manager_started(_weapon: Weapon)
 signal weapon_manager_stopped
 signal unequip_animation_finished
@@ -11,6 +10,7 @@ signal weapon_aim_entered(_weapon: Weapon)
 signal weapon_aim_exited(_weapon: Weapon)
 signal weapon_fired
 signal weapon_reload
+signal ammo_updated(_weapon: Weapon)
 
 # enum
 enum WeaponManagerStatus {AVAILABLE, UNAVAILABLE}
@@ -83,6 +83,7 @@ func change_weapon():
 		current_weapon = weapons[weapon_i]
 		set_weapon_wait_time(current_weapon)
 		weapon_changed.emit(current_weapon)
+		ammo_updated.emit(current_weapon)
 		equip_or_change_weapon()
 
 func shoot():

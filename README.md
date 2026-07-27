@@ -4,6 +4,7 @@
 - Check Armed Walk into Unarmed Walk back into Armed Walk... animation is fucked 
 - Falling while zoomed (unarmed) is bugged
 - With quasar weapon aim then reload then unaim... bugged
+- Switch between armed and unarmed while jumping / vertical velocity... lol
 
 # TODO
 - AimFall when aiming while in Jump, Fall, SprintJump, SprintFall

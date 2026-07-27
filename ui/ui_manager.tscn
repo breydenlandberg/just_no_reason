@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://bwpmqgmcr4po7" path="res://ui/theme.tres" id="1_5tvr0"]
 [ext_resource type="Script" uid="uid://cdw02q0dx3ye2" path="res://ui/message_scroll_container.gd" id="2_i8kce"]
 [ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="2_jam4f"]
+[ext_resource type="Script" uid="uid://brb2u5vad2ytg" path="res://ui/ammo_ui.gd" id="4_kc3lm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i8kce"]
 font = ExtResource("2_jam4f")
@@ -42,3 +43,45 @@ size_flags_horizontal = 3
 size_flags_vertical = 10
 label_settings = SubResource("LabelSettings_i8kce")
 autowrap_mode = 3
+
+[node name="AmmoUI" type="Control" parent="." unique_id=1005528005]
+visible = false
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("4_kc3lm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AmmoUI" unique_id=1697879863]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 11
+
+[node name="CurrentAmmo" type="Label" parent="AmmoUI/HBoxContainer" unique_id=1213640776]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "999"
+
+[node name="Slash" type="Label" parent="AmmoUI/HBoxContainer" unique_id=416581191]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "/"
+
+[node name="ReserveAmmo" type="Label" parent="AmmoUI/HBoxContainer" unique_id=236305045]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "99999"

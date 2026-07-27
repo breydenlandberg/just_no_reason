@@ -35,7 +35,7 @@ func _state_physics_process(_delta: float):
 	replenish_sprint(_delta)
 
 	# Aim away from the camera (around the y axis for now)
-	animated_model.rotation_degrees.y = owner.camera.rotation_degrees.y + 180
+	animated_model.rotation_degrees.y = %Camera.rotation_degrees.y + 180
 
 	if direction != Vector3.ZERO:
 		_transition.emit(self, ArmedStates.aim_walk)

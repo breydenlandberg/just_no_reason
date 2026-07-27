@@ -36,7 +36,7 @@ func on_input_direction_changed(_input_dir: Vector2):
 				if owner.is_aiming:
 					animation_tree["parameters/rifle_aim_walk/blend_position"] = input_direction
 
-		rotation_degrees.y = owner.camera.rotation_degrees.y - rad_to_deg(input_direction.angle()) + 90
+		rotation_degrees.y = %Camera.rotation_degrees.y - rad_to_deg(input_direction.angle()) + 90
 
 func on_combat_status_changed(status: String):
 	match status:
