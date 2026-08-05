@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_16oa5")
 ammo_type = "assault_rifle"
-ammo_count = 30
+ammo_count = 5
 metadata/_custom_type_script = "uid://dpu1mx01ww7be"

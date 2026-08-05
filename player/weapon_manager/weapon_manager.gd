@@ -87,12 +87,35 @@ func change_weapon():
 		equip_or_change_weapon()
 
 func shoot():
-	weapon_manager_unavailable_for(shoot_weapon_wait_time)
-	weapon_fired.emit()
+	if has_current_ammo():
+		weapon_manager_unavailable_for(shoot_weapon_wait_time)
+		weapon_fired.emit()
+		reduce_ammo()
+	else:
+		reload()
 
+# This comment encompasses the logic in calculate_reload() as well
+#
+# The ammo system works on the principles that the player:
+# - Handles discrete "magazines" (i.e. Ammo Resources), which realistically retain their own ammo counts
+# - Performs "tactical" reloads
+#
+# This means that:
+# - Fully expending a magazine will cause it to be completely discarded. You will have no ammo left once you've expended all your magazines.
+# - If the player reloads before fully expending a magazine, it will be put back and retained as reserve ammo
+# - You will always reload to the largest magazine you have in reserve ammo.
+# - You will only be allowed to reload if your current magazine is smaller than your largest magazine in reserve ammo
+#
+# As a side note, it is therefore possible to have a total ammo count greater than a full magazine, but since each magazine
+# you currently have is not full, you would not be able to reload to get a full magazine.
 func reload():
-	weapon_manager_unavailable_for(reload_weapon_wait_time)
-	weapon_reload.emit()
+	if has_reserve_ammo():
+		var has_largest_ammo := current_weapon.reserve_ammo[0].ammo_count <= current_weapon.current_ammo.ammo_count
+
+		if not has_largest_ammo:
+			weapon_manager_unavailable_for(reload_weapon_wait_time)
+			weapon_reload.emit()
+			calculate_reload()
 
 func set_weapon_wait_time(weapon: Weapon):
 	equip_weapon_wait_time = weapon.weapon_equip_animation.length
@@ -111,13 +134,48 @@ func weapon_manager_unavailable_for(wait_time: float, timer := weapon_timer):
 	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
 	timer.start(wait_time)
 
-# stop timers from overlapping before handling weapon manager availability during animations
+# Stop timers from overlapping before handling weapon manager availability during animations
 func stop_timers():
 	weapon_timer.stop()
 	weapon_unequip_timer.stop()
 
 func set_weapon_manager_status(status: WeaponManagerStatus):
 	current_status = status
+
+func has_current_ammo():
+	return current_weapon.current_ammo and current_weapon.current_ammo.ammo_count > 0
+
+func has_reserve_ammo():
+	return current_weapon.reserve_ammo.size() > 0
+
+func reduce_ammo(by := 1):
+	current_weapon.current_ammo.ammo_count -= by
+	ammo_updated.emit(current_weapon)
+
+# See comment at reload()
+func calculate_reload():
+	#print('BEFORE:')
+	#print('current_ammo: ', current_weapon.current_ammo.ammo_count)
+	#print('reserve_ammo:')
+	#for ammo in current_weapon.reserve_ammo:
+		#print(ammo.ammo_count)
+	#print()
+
+	if has_current_ammo():
+		current_weapon.reserve_ammo.push_back(current_weapon.current_ammo)
+
+	if has_reserve_ammo():
+		current_weapon.current_ammo = current_weapon.reserve_ammo.pop_front().duplicate(true)
+		current_weapon.reserve_ammo.sort_custom(func(a, b): return a.ammo_count > b.ammo_count)
+
+	ammo_updated.emit(current_weapon)
+
+	#print('AFTER:')
+	#print('current_ammo: ', current_weapon.current_ammo.ammo_count)
+	#print('reserve_ammo:')
+	#for ammo in current_weapon.reserve_ammo:
+		#print(ammo.ammo_count)
+	#print()
 
 
 ## signal
