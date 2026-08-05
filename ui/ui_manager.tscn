@@ -73,15 +73,18 @@ theme_override_constants/separation = 11
 
 [node name="CurrentAmmo" type="Label" parent="AmmoUI/HBoxContainer" unique_id=1213640776]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 128
 text = "999"
 
 [node name="Slash" type="Label" parent="AmmoUI/HBoxContainer" unique_id=416581191]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "/"
 
 [node name="ReserveAmmo" type="Label" parent="AmmoUI/HBoxContainer" unique_id=236305045]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.64705884, 0.16470589, 0.16470589, 1)
 theme_override_font_sizes/font_size = 64
 text = "99999"
