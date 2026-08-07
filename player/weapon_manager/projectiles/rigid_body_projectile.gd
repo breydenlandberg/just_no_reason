@@ -2,7 +2,7 @@ class_name RigidBodyProjectile extends Projectile
 
 
 # var
-@export var project_velocity := 100
+@export var projectile_velocity := 50
 @export var expiry_time := 10
 @export var rigid_body_bullet: PackedScene
 
@@ -26,4 +26,4 @@ func launch_rigid_projectile(point: Vector3, model: WeaponModel, bullet: PackedS
 	projectile.look_at(point)
 
 	var direction: Vector3 = (point - model.bullet_point.global_position).normalized()
-	projectile.set_linear_velocity(direction * projectile.velocity)
+	projectile.set_linear_velocity(direction * projectile_velocity)

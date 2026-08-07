@@ -2,6 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="1_1h7hx"]
 [ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapon.gd" id="1_h38sa"]
+[ext_resource type="PackedScene" uid="uid://clefuf40tboqx" path="res://player/weapon_manager/projectiles/rigid_body_projectile.tscn" id="1_typht"]
 [ext_resource type="Animation" uid="uid://bklq0uugdutr6" path="res://player/assets/animations/rifle_aim.res" id="2_0isgb"]
 [ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="2_typht"]
 [ext_resource type="Animation" uid="uid://cvpagmer4ctbl" path="res://player/assets/animations/rifle_equip.res" id="3_1h7hx"]
@@ -15,6 +16,7 @@
 script = ExtResource("2_typht")
 ammo_type = "assault_rifle"
 ammo_count = 5
+projectile = ExtResource("1_typht")
 metadata/_custom_type_script = "uid://dpu1mx01ww7be"
 
 [resource]

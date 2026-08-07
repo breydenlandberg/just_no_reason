@@ -47,7 +47,7 @@ func on_combat_status_changed(status: String):
 
 	animation_tree['parameters/combat_transition/transition_request'] = status
 
-func load_new_weapon(weapon: Weapon):
+func load_new_weapon(weapon: Weapon, weapon_model: WeaponModel):
 	clear_weapon_from_hand()
 
 	animation_tree.tree_root.get_node('weapon_idle_animation').set_animation(weapon.weapon_idle_animation.resource_name)
@@ -60,17 +60,16 @@ func load_new_weapon(weapon: Weapon):
 	right_hand.rotation = weapon.hand_rotation
 
 	animation_tree['parameters/equip_weapon/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
-	attach_weapon_to_hand(weapon)
+	attach_weapon_to_hand(weapon, weapon_model)
 
 func deload_current_weapon():
 	# when we fix the animation and want to detach the weapon from the hand at the correct frame of the animation,
 	# watch https://www.youtube.com/watch?v=tcmNGIyBXzo&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv
 	animation_tree['parameters/unequip_weapon/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
-func attach_weapon_to_hand(weapon: Weapon):
-	var new_weapon: Node3D = weapon.weapon_model.instantiate()
-	new_weapon.scale = weapon.scale
-	right_hand.add_child(new_weapon)
+func attach_weapon_to_hand(weapon: Weapon, weapon_model: WeaponModel):
+	weapon_model.scale = weapon.scale
+	right_hand.add_child(weapon_model)
 
 func clear_weapon_from_hand():
 	if right_hand.get_child_count() > 0:
@@ -86,16 +85,16 @@ func reset_weapon_idle_animation(weapon: Weapon):
 
 ## signal
 #
-func _on_weapon_manager_started(_weapon: Weapon):
+func _on_weapon_manager_started(_weapon: Weapon, _weapon_model: WeaponModel):
 	on_combat_status_changed('combat') # this param used to be passed all the way from weapon_manager on_combat_status_changed... i'm not sure the pros and cons of this vs that
-	load_new_weapon(_weapon)
+	load_new_weapon(_weapon, _weapon_model)
 
 func _on_weapon_manager_stopped():
 	on_combat_status_changed('non_combat') # this param used to be passed all the way from weapon_manager on_combat_status_changed... i'm not sure the pros and cons of this vs that
 	deload_current_weapon()
 
-func _on_weapon_changed(_weapon: Weapon):
-	load_new_weapon(_weapon)
+func _on_weapon_changed(_weapon: Weapon, _weapon_model: WeaponModel):
+	load_new_weapon(_weapon, _weapon_model)
 
 func _on_weapon_unequip_animation_finished():
 	clear_weapon_from_hand()

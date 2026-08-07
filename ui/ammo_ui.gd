@@ -10,7 +10,7 @@ extends Control
 
 ## helper
 #
-func start(weapon: Weapon):
+func start(weapon: Weapon, _weapon_model: WeaponModel):
 	update_ammo_text(weapon)
 	show()
 

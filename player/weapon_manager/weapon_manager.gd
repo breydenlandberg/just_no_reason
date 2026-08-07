@@ -2,10 +2,10 @@ class_name WeaponManager extends Node3D
 
 
 # signal
-signal weapon_manager_started(_weapon: Weapon)
+signal weapon_manager_started(_weapon: Weapon, _weapon_model: WeaponModel)
 signal weapon_manager_stopped
 signal unequip_animation_finished
-signal weapon_changed(_weapon: Weapon)
+signal weapon_changed(_weapon: Weapon, _weapon_model: WeaponModel)
 signal weapon_aim_entered(_weapon: Weapon)
 signal weapon_aim_exited(_weapon: Weapon)
 signal weapon_fired
@@ -18,6 +18,7 @@ enum WeaponManagerStatus {AVAILABLE, UNAVAILABLE}
 # var
 var current_status: WeaponManagerStatus = WeaponManagerStatus.UNAVAILABLE
 var current_weapon: Weapon
+var current_weapon_model: WeaponModel
 var equip_weapon_wait_time := 0.0
 var unequip_weapon_wait_time := 0.0
 var shoot_weapon_wait_time := 0.0
@@ -66,7 +67,8 @@ func start_weapon_manager():
 		current_weapon = weapons[0]
 
 	set_weapon_wait_time(current_weapon)
-	weapon_manager_started.emit(current_weapon)
+	set_current_weapon_model(current_weapon)
+	weapon_manager_started.emit(current_weapon, current_weapon_model)
 	equip_or_change_weapon()
 
 func stop_weapon_manager():
@@ -82,7 +84,8 @@ func change_weapon():
 	if not weapons[weapon_i] == current_weapon:
 		current_weapon = weapons[weapon_i]
 		set_weapon_wait_time(current_weapon)
-		weapon_changed.emit(current_weapon)
+		set_current_weapon_model(current_weapon)
+		weapon_changed.emit(current_weapon, current_weapon_model)
 		ammo_updated.emit(current_weapon)
 		equip_or_change_weapon()
 
@@ -90,9 +93,16 @@ func shoot():
 	if has_current_ammo():
 		weapon_manager_unavailable_for(shoot_weapon_wait_time)
 		weapon_fired.emit()
+		var projectile: Projectile = get_projectile()
+		add_child(projectile)
+		projectile._set_weapon_projectile(current_weapon, current_weapon_model)
 		reduce_ammo()
 	else:
 		reload()
+
+func get_projectile() -> Projectile:
+	var projectile: Projectile = current_weapon.current_ammo.projectile.instantiate()
+	return projectile
 
 # This comment encompasses the logic in calculate_reload() as well
 #
@@ -176,6 +186,10 @@ func calculate_reload():
 	#for ammo in current_weapon.reserve_ammo:
 		#print(ammo.ammo_count)
 	#print()
+
+func set_current_weapon_model(weapon: Weapon):
+	var new_weapon_model: WeaponModel = weapon.weapon_model.instantiate()
+	current_weapon_model = new_weapon_model
 
 
 ## signal
