@@ -44,7 +44,6 @@ func _unhandled_input(event: InputEvent):
 		if event.is_action_pressed(InputManager.change_weapon):
 			change_weapon()
 
-
 func _process(_delta: float):
 	if current_status == WeaponManagerStatus.AVAILABLE:
 		if Input.is_action_pressed(InputManager.aim):
@@ -52,6 +51,7 @@ func _process(_delta: float):
 
 		if Input.is_action_just_released(InputManager.aim):
 			weapon_aim_exited.emit(current_weapon)
+
 
 ## helper
 #
@@ -64,10 +64,11 @@ func on_combat_status_changed(status: String):
 
 func start_weapon_manager():
 	if not current_weapon:
-		current_weapon = weapons[0]
+		current_weapon = weapons.front()
 
 	set_weapon_wait_time(current_weapon)
 	set_current_weapon_model(current_weapon)
+
 	weapon_manager_started.emit(current_weapon, current_weapon_model)
 	equip_or_change_weapon()
 
@@ -83,8 +84,10 @@ func change_weapon():
 
 	if not weapons[weapon_i] == current_weapon:
 		current_weapon = weapons[weapon_i]
+
 		set_weapon_wait_time(current_weapon)
 		set_current_weapon_model(current_weapon)
+
 		weapon_changed.emit(current_weapon, current_weapon_model)
 		ammo_updated.emit(current_weapon)
 		equip_or_change_weapon()
@@ -93,9 +96,11 @@ func shoot():
 	if has_current_ammo():
 		weapon_manager_unavailable_for(shoot_weapon_wait_time)
 		weapon_fired.emit()
+
 		var projectile: Projectile = get_projectile()
 		add_child(projectile)
 		projectile._set_weapon_projectile(current_weapon, current_weapon_model)
+
 		reduce_ammo()
 	else:
 		reload()
@@ -156,7 +161,7 @@ func has_current_ammo():
 	return current_weapon.current_ammo and current_weapon.current_ammo.ammo_count > 0
 
 func has_reserve_ammo():
-	return current_weapon.reserve_ammo.size() > 0
+	return current_weapon.reserve_ammo and current_weapon.reserve_ammo.size() > 0
 
 func reduce_ammo(by := 1):
 	current_weapon.current_ammo.ammo_count -= by
