@@ -155,6 +155,7 @@ change_weapon={
 3d_physics/layer_1="scaffolding"
 3d_physics/layer_2="world"
 3d_physics/layer_3="player"
+3d_physics/layer_6="damage"
 3d_physics/layer_7="interact"
 3d_physics/layer_8="killzone"
 

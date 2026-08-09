@@ -25,3 +25,7 @@ Reply
 @yukku121
 3 weeks ago
 Otherwise for each action the player can do: grab, eat, talk,... you'll need to have x2/3 states in the state machine to match with idle, walk,..."
+
+
+
+SHOUTOUT TO CHAFF GAMES

@@ -105,10 +105,6 @@ func shoot():
 	else:
 		reload()
 
-func get_projectile() -> Projectile:
-	var projectile: Projectile = current_weapon.current_ammo.projectile.instantiate()
-	return projectile
-
 # This comment encompasses the logic in calculate_reload() as well
 #
 # The ammo system works on the principles that the player:
@@ -195,6 +191,10 @@ func calculate_reload():
 func set_current_weapon_model(weapon: Weapon):
 	var new_weapon_model: WeaponModel = weapon.weapon_model.instantiate()
 	current_weapon_model = new_weapon_model
+
+func get_projectile() -> Projectile:
+	var projectile: Projectile = current_weapon.current_ammo.projectile.instantiate()
+	return projectile
 
 
 ## signal

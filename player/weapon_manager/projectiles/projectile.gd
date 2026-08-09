@@ -28,6 +28,7 @@ func camera_ray_cast(_range := 100) -> Vector3:
 
 	var new_ray_query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
 	new_ray_query.set_hit_from_inside(false) # true?
+	new_ray_query.set_collision_mask(0b0000011)
 
 	var intersection: Dictionary = get_world_3d().direct_space_state.intersect_ray(new_ray_query)
 
