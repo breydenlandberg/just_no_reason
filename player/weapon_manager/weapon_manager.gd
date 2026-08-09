@@ -19,6 +19,7 @@ enum WeaponManagerStatus {AVAILABLE, UNAVAILABLE}
 var current_status: WeaponManagerStatus = WeaponManagerStatus.UNAVAILABLE
 var current_weapon: Weapon
 var current_weapon_model: WeaponModel
+var action_queue: Callable
 var equip_weapon_wait_time := 0.0
 var unequip_weapon_wait_time := 0.0
 var shoot_weapon_wait_time := 0.0
@@ -94,7 +95,7 @@ func change_weapon():
 
 func shoot():
 	if has_current_ammo():
-		weapon_manager_unavailable_for(shoot_weapon_wait_time)
+		weapon_manager_unavailable_for(shoot_weapon_wait_time, weapon_timer, check_auto_fire)
 		weapon_fired.emit()
 
 		var projectile: Projectile = get_projectile()
@@ -124,9 +125,8 @@ func reload():
 		var has_largest_ammo := current_weapon.reserve_ammo[0].ammo_count <= current_weapon.current_ammo.ammo_count
 
 		if not has_largest_ammo:
-			weapon_manager_unavailable_for(reload_weapon_wait_time)
 			weapon_reload.emit()
-			calculate_reload()
+			weapon_manager_unavailable_for(reload_weapon_wait_time, weapon_timer, calculate_reload)
 
 func set_weapon_wait_time(weapon: Weapon):
 	equip_weapon_wait_time = weapon.weapon_equip_animation.length
@@ -140,10 +140,11 @@ func equip_or_change_weapon():
 func unequip_weapon():
 	weapon_manager_unavailable_for(unequip_weapon_wait_time, weapon_unequip_timer)
 
-func weapon_manager_unavailable_for(wait_time: float, timer := weapon_timer):
+func weapon_manager_unavailable_for(wait_time: float, timer := weapon_timer, action := Callable()):
 	stop_timers()
 	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
 	timer.start(wait_time)
+	action_queue = action
 
 # Stop timers from overlapping before handling weapon manager availability during animations
 func stop_timers():
@@ -196,11 +197,19 @@ func get_projectile() -> Projectile:
 	var projectile: Projectile = current_weapon.current_ammo.projectile.instantiate()
 	return projectile
 
+func check_auto_fire():
+	if current_weapon.auto_fire and Input.is_action_pressed(InputManager.shoot):
+		shoot()
+
 
 ## signal
 #
 func _on_weapon_timer_timeout():
 	set_weapon_manager_status(WeaponManagerStatus.AVAILABLE)
+
+	if action_queue.is_valid():
+		action_queue.call_deferred()
+		action_queue = Callable()
 
 func _on_weapon_unequip_timer_timeout():
 	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)

@@ -44,6 +44,29 @@ size_flags_vertical = 10
 label_settings = SubResource("LabelSettings_i8kce")
 autowrap_mode = 3
 
+[node name="Reticle" type="Control" parent="." unique_id=795593204]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Reticle" unique_id=917033854]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Reticle/CenterContainer" unique_id=1552440171]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+mouse_filter = 2
+
 [node name="AmmoUI" type="Control" parent="." unique_id=1005528005]
 visible = false
 layout_mode = 3

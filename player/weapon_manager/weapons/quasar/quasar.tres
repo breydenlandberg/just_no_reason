@@ -15,7 +15,7 @@
 [sub_resource type="Resource" id="Resource_bb5mg"]
 script = ExtResource("2_tly1c")
 ammo_type = "quasar"
-ammo_count = 3
+ammo_count = 5
 projectile = ExtResource("1_tly1c")
 metadata/_custom_type_script = "uid://dpu1mx01ww7be"
 
