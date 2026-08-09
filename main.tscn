@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cqin7vy65rmcv" path="res://npc/godot_plush/assets/godot_plush_model_inherited.tscn" id="7_272bh"]
 [ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://f850uti4ula1" path="res://interact/interact.tscn" id="10_4c57u"]
-[ext_resource type="PackedScene" uid="uid://cqiofva7y4sn4" path="res://enemy/grunt/grunt.tscn" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://cqiofva7y4sn4" path="res://enemies/grunt/grunt.tscn" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://dx1jttysmunls" path="res://enemies/sphere/sphere.tscn" id="13_ycdy4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
 panorama = ExtResource("1_0xm2m")
@@ -359,3 +360,6 @@ outline_size = 0
 
 [node name="Grunt" parent="Enemy" unique_id=1565200042 instance=ExtResource("12_dg77c")]
 transform = Transform3D(-0.10452843, 0, 0.99452186, 0, 1, 0, -0.99452186, 0, -0.10452843, -10.5, 0.5, 2.4)
+
+[node name="Sphere" parent="." unique_id=1513231080 instance=ExtResource("13_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5.2, 1)

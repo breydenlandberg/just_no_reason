@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://crp52pevyqtbn"]
 
-[ext_resource type="PackedScene" uid="uid://dk2cxv46yemcq" path="res://enemy/grunt/assets/grunt_model.glb" id="1_hdsrf"]
+[ext_resource type="PackedScene" uid="uid://dk2cxv46yemcq" path="res://enemies/grunt/assets/grunt_model.glb" id="1_hdsrf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxtn1"]
 albedo_color = Color(1, 0, 0, 1)

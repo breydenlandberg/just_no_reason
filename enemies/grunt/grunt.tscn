@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cqiofva7y4sn4"]
 
-[ext_resource type="PackedScene" uid="uid://crp52pevyqtbn" path="res://enemy/grunt/assets/grunt_model_inherited.tscn" id="1_bv6wf"]
+[ext_resource type="PackedScene" uid="uid://crp52pevyqtbn" path="res://enemies/grunt/assets/grunt_model_inherited.tscn" id="1_bv6wf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xr21d"]
 height = 1.7850008
