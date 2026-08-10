@@ -361,5 +361,21 @@ outline_size = 0
 [node name="Grunt" parent="Enemy" unique_id=1565200042 instance=ExtResource("12_dg77c")]
 transform = Transform3D(-0.10452843, 0, 0.99452186, 0, 1, 0, -0.99452186, 0, -0.10452843, -10.5, 0.5, 2.4)
 
-[node name="Sphere" parent="." unique_id=1513231080 instance=ExtResource("13_ycdy4")]
+[node name="Sphere" parent="Enemy" unique_id=1513231080 instance=ExtResource("13_ycdy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5.2, 1)
+
+[node name="Sphere2" parent="Enemy" unique_id=1663971837 instance=ExtResource("13_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 6.8, -8.1)
+health = 1.0
+
+[node name="Sphere3" parent="Enemy" unique_id=1573422666 instance=ExtResource("13_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.1, 13)
+health = 3.0
+
+[node name="Sphere4" parent="Enemy" unique_id=1327725116 instance=ExtResource("13_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 15, 1)
+health = 1.0
+
+[node name="Sphere5" parent="Enemy" unique_id=1914339312 instance=ExtResource("13_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 17, 21)
+health = 1.0

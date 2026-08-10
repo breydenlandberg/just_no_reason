@@ -2,8 +2,8 @@ class_name RigidBodyProjectile extends Projectile
 
 
 # var
-@export var projectile_velocity := 425
-@export var expiry_time := 10
+@export var projectile_velocity := 180
+@export var expiry_time := 12
 @export var rigid_body_bullet: PackedScene
 
 

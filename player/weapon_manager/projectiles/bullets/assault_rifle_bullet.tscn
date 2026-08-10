@@ -10,16 +10,16 @@ emission_energy_multiplier = 12.5
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m377s"]
 material = SubResource("StandardMaterial3D_3yb1s")
-radius = 0.025
-height = 0.125
+radius = 0.04
+height = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m377s"]
-radius = 0.025
-height = 0.125
+radius = 0.04
+height = 0.2
 
 [node name="AssaultRifleBullet" type="RigidBody3D" unique_id=1449559997]
 collision_layer = 32
-collision_mask = 35
+collision_mask = 3
 mass = 0.01
 continuous_cd = true
 contact_monitor = true
