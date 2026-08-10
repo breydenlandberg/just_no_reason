@@ -3,7 +3,7 @@ class_name RigidBodyProjectile extends Projectile
 
 # var
 @export var projectile_velocity := 180
-@export var expiry_time := 12
+@export var expiry_time := 2
 @export var rigid_body_bullet: PackedScene
 
 
@@ -14,6 +14,7 @@ class_name RigidBodyProjectile extends Projectile
 func _set_weapon_projectile(_weapon: Weapon, _model: WeaponModel):
 	var camera_collision: Vector3 = camera_ray_cast()
 	launch_rigid_projectile(camera_collision, _model, rigid_body_bullet)
+	get_tree().create_timer(expiry_time).timeout.connect(on_expiry_timeout)
 
 ## helper
 #
@@ -27,3 +28,6 @@ func launch_rigid_projectile(point: Vector3, model: WeaponModel, bullet: PackedS
 
 	var direction: Vector3 = (point - model.bullet_point.global_position).normalized()
 	projectile.set_linear_velocity(direction * projectile_velocity)
+
+func on_expiry_timeout():
+	queue_free()
