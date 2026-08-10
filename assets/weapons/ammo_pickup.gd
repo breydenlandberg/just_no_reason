@@ -1,4 +1,4 @@
 class_name AmmoPickup extends RigidBody3D
 
 
-@export var ammo_pickup: Array[Ammo]
+@export var internal_ammo: Array[Ammo]

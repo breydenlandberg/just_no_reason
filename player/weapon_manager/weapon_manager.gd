@@ -201,6 +201,16 @@ func check_auto_fire():
 	if current_weapon.auto_fire and Input.is_action_pressed(InputManager.shoot):
 		shoot()
 
+func add_ammo(ammo: Array[Ammo]) -> Array:
+	for i in ammo.size():
+		for weapon in weapons:
+			if ammo[i].ammo_type == weapon.name:
+				weapon.reserve_ammo.push_back(ammo.pop_at(i))
+				break
+
+	ammo_updated.emit(current_weapon)
+	return ammo
+
 
 ## signal
 #
@@ -214,3 +224,8 @@ func _on_weapon_timer_timeout():
 func _on_weapon_unequip_timer_timeout():
 	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
 	unequip_animation_finished.emit()
+
+func _on_pickup_area_ammo_detected(ammo_pickup: AmmoPickup):
+	var pickup: Array = add_ammo(ammo_pickup.internal_ammo.duplicate())
+	if pickup.is_empty():
+		ammo_pickup.queue_free()

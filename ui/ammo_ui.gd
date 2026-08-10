@@ -18,6 +18,9 @@ func stop():
 	hide()
 
 func update_ammo_text(weapon: Weapon):
+	if not weapon:
+		return
+
 	if weapon.current_ammo:
 		current_ammo_label.text = str(weapon.current_ammo.ammo_count)
 	else:
