@@ -6,6 +6,8 @@ class_name RigidBodyProjectile extends Projectile
 @export var expiry_time := 2
 @export var rigid_body_bullet: PackedScene
 
+@onready var debug_draw := $DebugDraw3D
+
 
 ### fn
 
@@ -25,6 +27,7 @@ func launch_rigid_projectile(point: Vector3, model: WeaponModel, bullet: PackedS
 
 	add_child(projectile)
 	projectile.look_at(point)
+	debug_draw.draw_line(projectile.position, point, Color.RED, 10)
 
 	var direction: Vector3 = (point - model.bullet_point.global_position).normalized()
 	projectile.set_linear_velocity(direction * projectile_velocity)
