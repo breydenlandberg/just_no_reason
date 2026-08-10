@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c1gvaajvf15di"
-path="res://.godot/imported/AssaultRifle.fbx-df2ccb0f5631051bfc517d23f77b3f52.scn"
+path="res://.godot/imported/AssaultRifle.fbx-ab39294b1dde0208dc5e5b708c8aac76.scn"
 
 [deps]
 
-source_file="res://assets/weapons/AssaultRifle.fbx"
-dest_files=["res://.godot/imported/AssaultRifle.fbx-df2ccb0f5631051bfc517d23f77b3f52.scn"]
+source_file="res://assets/weapons/assault_rifle/AssaultRifle.fbx"
+dest_files=["res://.godot/imported/AssaultRifle.fbx-ab39294b1dde0208dc5e5b708c8aac76.scn"]
 
 [params]
 

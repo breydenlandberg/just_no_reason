@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://f850uti4ula1" path="res://interact/interact.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cqiofva7y4sn4" path="res://enemies/grunt/grunt.tscn" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://dx1jttysmunls" path="res://enemies/sphere/sphere.tscn" id="13_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://dj87mkxe00tgx" path="res://assets/weapons/quasar/quasar_ammo_pickup.tscn" id="14_vivmo"]
+[ext_resource type="PackedScene" uid="uid://bhg0ayga7vc5b" path="res://assets/weapons/assault_rifle/assault_rifle_ammo.tscn" id="15_2cqfq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
 panorama = ExtResource("1_0xm2m")
@@ -379,3 +381,31 @@ health = 1.0
 [node name="Sphere5" parent="Enemy" unique_id=1914339312 instance=ExtResource("13_ycdy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 17, 21)
 health = 1.0
+
+[node name="Pickups" type="Node3D" parent="." unique_id=2036077146]
+
+[node name="Ammo" type="Node3D" parent="Pickups" unique_id=70999473]
+
+[node name="QuasarAmmoPickup" parent="Pickups/Ammo" unique_id=2079047079 instance=ExtResource("14_vivmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.75, -9.45)
+
+[node name="QuasarAmmoPickup2" parent="Pickups/Ammo" unique_id=875695955 instance=ExtResource("14_vivmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3199999, 0.75, -9.53)
+
+[node name="QuasarAmmoPickup3" parent="Pickups/Ammo" unique_id=2131011364 instance=ExtResource("14_vivmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8619999, 0.74999994, -8.830999)
+
+[node name="QuasarAmmoPickup4" parent="Pickups/Ammo" unique_id=742104244 instance=ExtResource("14_vivmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.361, 0.74999994, -8.844)
+
+[node name="AssaultRifleAmmo" parent="Pickups/Ammo" unique_id=1860755036 instance=ExtResource("15_2cqfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44099995, 0.575, -9.514999)
+
+[node name="AssaultRifleAmmo2" parent="Pickups/Ammo" unique_id=834096983 instance=ExtResource("15_2cqfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42999998, 0.575, -8.900999)
+
+[node name="AssaultRifleAmmo3" parent="Pickups/Ammo" unique_id=1026088322 instance=ExtResource("15_2cqfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302, 0.575, -8.914999)
+
+[node name="AssaultRifleAmmo4" parent="Pickups/Ammo" unique_id=903933851 instance=ExtResource("15_2cqfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28, 0.58, -9.55)

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bhg0ayga7vc5b"]
+
+[ext_resource type="Script" uid="uid://crqx64cawoa2k" path="res://assets/weapons/ammo_pickup.gd" id="1_clngm"]
+[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="2_k8481"]
+[ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="3_t35sf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_m377s"]
+size = Vector3(0.25, 0.15, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yb1s"]
+albedo_color = Color(0, 0.39215687, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_18anx"]
+size = Vector3(0.25, 0.15, 0.25)
+
+[node name="AssaultRifleAmmo" type="RigidBody3D" unique_id=1860755036]
+script = ExtResource("1_clngm")
+ammo_pickup = Array[ExtResource("2_k8481")]([ExtResource("3_t35sf")])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1966473545]
+mesh = SubResource("BoxMesh_m377s")
+surface_material_override/0 = SubResource("StandardMaterial3D_3yb1s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1367001600]
+shape = SubResource("BoxShape3D_18anx")
