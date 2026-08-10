@@ -21,3 +21,4 @@ class_name Weapon extends Resource
 
 @export var current_ammo: Ammo
 @export var reserve_ammo: Array[Ammo]
+@export var max_ammo_magazines := 2

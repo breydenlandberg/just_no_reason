@@ -34,4 +34,5 @@ weapon_shoot_animation = ExtResource("7_soi1e")
 weapon_reload_animation = ExtResource("6_km2n3")
 current_ammo = SubResource("Resource_1h7hx")
 reserve_ammo = Array[ExtResource("2_typht")]([ExtResource("1_1h7hx"), ExtResource("1_1h7hx"), ExtResource("1_1h7hx")])
+max_ammo_magazines = 6
 metadata/_custom_type_script = "uid://0puiy7r7kaiu"

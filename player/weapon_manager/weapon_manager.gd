@@ -202,12 +202,16 @@ func check_auto_fire():
 		shoot()
 
 func add_ammo(ammo: Array[Ammo]) -> Array:
+	var ammo_taken := ammo.size()
 	for i in ammo.size():
 		for weapon in weapons:
 			if ammo[i].ammo_type == weapon.name:
-				weapon.reserve_ammo.push_back(ammo.pop_at(i))
-				break
+				if weapon.reserve_ammo.size() < weapon.max_ammo_magazines or weapon.max_ammo_magazines < 0:
+					ammo_taken -= 1
+					weapon.reserve_ammo.push_back(ammo[i])
+					break
 
+	ammo.resize(ammo_taken)
 	ammo_updated.emit(current_weapon)
 	return ammo
 
