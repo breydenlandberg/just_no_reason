@@ -5,11 +5,13 @@
 - Falling while zoomed (unarmed) is bugged
 - With quasar weapon aim then reload then unaim... bugged
 - Switch between armed and unarmed while jumping / vertical velocity... lol
+- Big AssaultRifle ammo pickup seemingly works forever if not used up all in one go?
 
 # TODO
 - AimFall when aiming while in Jump, Fall, SprintJump, SprintFall
 - Interaction system should be proximity based (i.e. the closest interaction the player is facing), not a pure FIFO stack like it is now
 - https://www.youtube.com/watch?v=FvFx1R3p-aw
+- What happens if use Quasar ammo with Assault Rifle? Or vice versa and etc?... and enforce so that we can't do this...
 
 # FYI
 - Character models are Quaternius Ultimate Modular Men

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dyyuefcrdj2re"]
+
+[ext_resource type="Script" uid="uid://b7f8o5ty00yeq" path="res://assets/weapons/weapon_pickup.gd" id="1_c1ktc"]
+[ext_resource type="PackedScene" uid="uid://da01xxacdcyia" path="res://assets/weapons/quasar/quasar.glb" id="2_0lcwp"]
+[ext_resource type="Resource" uid="uid://cyl7eow3la5ai" path="res://player/weapon_manager/weapons/quasar/quasar.tres" id="2_7dnih"]
+[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="3_nekt4"]
+[ext_resource type="Resource" uid="uid://bnrnpy6sxgw26" path="res://player/weapon_manager/ammo/resources/quasar_ammo.tres" id="4_27ciu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m377s"]
+radius = 3.0
+
+[node name="QuasarPickup" type="RigidBody3D" unique_id=119255161]
+collision_layer = 16
+collision_mask = 19
+script = ExtResource("1_c1ktc")
+internal_weapon = ExtResource("2_7dnih")
+internal_ammo = Array[ExtResource("3_nekt4")]([ExtResource("4_27ciu"), ExtResource("4_27ciu")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1957080000]
+shape = SubResource("SphereShape3D_m377s")
+
+[node name="Quasar" parent="." unique_id=77098778 instance=ExtResource("2_0lcwp")]

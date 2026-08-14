@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bhg0ayga7vc5b" path="res://assets/weapons/assault_rifle/assault_rifle_ammo.tscn" id="15_2cqfq"]
 [ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="16_yaehf"]
 [ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="17_074og"]
+[ext_resource type="PackedScene" uid="uid://cdpkq6xencde6" path="res://assets/weapons/assault_rifle/assault_rifle_pickup.tscn" id="18_cegan"]
+[ext_resource type="PackedScene" uid="uid://dyyuefcrdj2re" path="res://assets/weapons/quasar/quasar_pickup.tscn" id="19_82xsv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
 panorama = ExtResource("1_0xm2m")
@@ -412,3 +414,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302, 0.575, -8.914999)
 
 [node name="AssaultRifleAmmo4" parent="Pickups/Ammo" unique_id=903933851 instance=ExtResource("15_2cqfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28, 0.58, -9.55)
+
+[node name="Weapons" type="Node3D" parent="Pickups" unique_id=1152307221]
+
+[node name="AssaultRiflePickup" parent="Pickups/Weapons" unique_id=1739229459 instance=ExtResource("18_cegan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24, 1.27, -8.43)
+internal_ammo = Array[ExtResource("16_yaehf")]([ExtResource("17_074og")])
+
+[node name="AssaultRiflePickup2" parent="Pickups/Weapons" unique_id=1179747994 instance=ExtResource("18_cegan")]
+transform = Transform3D(0.60181504, 0, -0.79863554, 0, 1, 0, 0.79863554, 0, 0.60181504, 10.29, 1.4, -7.700001)
+internal_ammo = Array[ExtResource("16_yaehf")]([ExtResource("17_074og"), ExtResource("17_074og"), ExtResource("17_074og"), ExtResource("17_074og"), ExtResource("17_074og"), ExtResource("17_074og"), ExtResource("17_074og")])
+
+[node name="QuasarPickup" parent="Pickups/Weapons" unique_id=119255161 instance=ExtResource("19_82xsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15, 3.3399997, -9.57)

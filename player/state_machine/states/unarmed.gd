@@ -16,5 +16,5 @@ func _exit():
 
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.equip_unequip):
-		if %WeaponManager.current_status == %WeaponManager.WeaponManagerStatus.UNAVAILABLE:
+		if %WeaponManager.current_status == %WeaponManager.WeaponManagerStatus.UNAVAILABLE and %WeaponManager.current_weapon:
 			_transition.emit(self, States.armed_state)

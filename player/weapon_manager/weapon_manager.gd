@@ -64,16 +64,22 @@ func on_combat_status_changed(status: String):
 			start_weapon_manager()
 
 func start_weapon_manager():
-	if not current_weapon:
+	print('Starting weapon manager')
+	print()
+
+	if not weapons.is_empty():
 		current_weapon = weapons.front()
 
-	set_weapon_wait_time(current_weapon)
-	set_current_weapon_model(current_weapon)
+		set_weapon_wait_time(current_weapon)
+		set_current_weapon_model(current_weapon)
 
-	weapon_manager_started.emit(current_weapon, current_weapon_model)
-	equip_or_change_weapon()
+		weapon_manager_started.emit(current_weapon, current_weapon_model)
+		equip_or_change_weapon()
 
 func stop_weapon_manager():
+	print('Stopping weapon manager')
+	print()
+
 	if current_weapon:
 		weapon_manager_stopped.emit()
 		unequip_weapon()
@@ -201,7 +207,8 @@ func check_auto_fire():
 	if current_weapon.auto_fire and Input.is_action_pressed(InputManager.shoot):
 		shoot()
 
-func add_ammo(ammo: Array[Ammo]) -> Array:
+# take as much ammo as allowed from a magazine and return it less what was taken from it
+func add_ammo(ammo: Array[Ammo]) -> Array[Ammo]:
 	var ammo_taken := ammo.size()
 	for i in ammo.size():
 		for weapon in weapons:
@@ -214,6 +221,15 @@ func add_ammo(ammo: Array[Ammo]) -> Array:
 	ammo.resize(ammo_taken)
 	ammo_updated.emit(current_weapon)
 	return ammo
+
+func add_weapon(_weapon: Weapon):
+	weapons.push_back(_weapon)
+
+	if not current_weapon:
+		current_weapon = weapons.front()
+
+		set_weapon_wait_time(current_weapon)
+		set_current_weapon_model(current_weapon)
 
 
 ## signal
@@ -230,6 +246,20 @@ func _on_weapon_unequip_timer_timeout():
 	unequip_animation_finished.emit()
 
 func _on_pickup_area_ammo_detected(ammo_pickup: AmmoPickup):
-	var pickup: Array = add_ammo(ammo_pickup.internal_ammo.duplicate())
+	var pickup: Array[Ammo] = add_ammo(ammo_pickup.internal_ammo.duplicate())
 	if pickup.is_empty():
 		ammo_pickup.queue_free()
+
+func _on_pickup_area_weapon_detected(weapon_pickup: WeaponPickup):
+	if not weapons.has(weapon_pickup.internal_weapon):
+		add_weapon(weapon_pickup.internal_weapon)
+		weapon_pickup.queue_free()
+	else:
+		var pickup: Array[Ammo]
+		pickup.append_array(weapon_pickup.internal_ammo)
+		pickup = add_ammo(pickup)
+
+		if pickup.is_empty():
+			weapon_pickup.queue_free()
+		else:
+			weapon_pickup.internal_ammo = pickup
