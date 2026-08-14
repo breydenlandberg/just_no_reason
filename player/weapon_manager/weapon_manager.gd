@@ -81,8 +81,12 @@ func stop_weapon_manager():
 	print()
 
 	if current_weapon:
-		weapon_manager_stopped.emit()
 		unequip_weapon()
+	#else:
+		#drop_weapon()
+	#???
+
+	weapon_manager_stopped.emit()
 
 func change_weapon():
 	var weapon_i: int = weapons.find(current_weapon)
@@ -128,7 +132,7 @@ func shoot():
 # you currently have is not full, you would not be able to reload to get a full magazine.
 func reload():
 	if has_reserve_ammo():
-		var has_largest_ammo := current_weapon.reserve_ammo[0].ammo_count <= current_weapon.current_ammo.ammo_count
+		var has_largest_ammo: bool = current_weapon.reserve_ammo.front().ammo_count <= current_weapon.current_ammo.ammo_count
 
 		if not has_largest_ammo:
 			weapon_reload.emit()
@@ -222,14 +226,46 @@ func add_ammo(ammo: Array[Ammo]) -> Array[Ammo]:
 	ammo_updated.emit(current_weapon)
 	return ammo
 
-func add_weapon(_weapon: Weapon):
-	weapons.push_back(_weapon)
+func add_weapon(weapon_pickup: WeaponPickup):
+	var new_weapon: Weapon = weapon_pickup.internal_weapon
+	new_weapon.reserve_ammo.append_array(weapon_pickup.internal_ammo)
+	if not new_weapon.reserve_ammo.is_empty():
+		new_weapon.current_ammo = new_weapon.reserve_ammo.pop_front()
+
+	weapons.push_back(new_weapon)
 
 	if not current_weapon:
 		current_weapon = weapons.front()
 
 		set_weapon_wait_time(current_weapon)
 		set_current_weapon_model(current_weapon)
+
+func drop_weapon() -> float:
+	var weapon_to_load: WeaponPickup = current_weapon.weapon_to_drop.instantiate()
+
+	weapon_to_load.internal_weapon = current_weapon
+	weapon_to_load.global_transform = current_weapon_model.global_transform
+
+	weapon_to_load.internal_ammo.append_array(current_weapon.reserve_ammo)
+	weapon_to_load.internal_ammo.append(current_weapon.current_ammo)
+
+	current_weapon.reserve_ammo.clear()
+	current_weapon.current_ammo = null
+
+	current_weapon_model.queue_free()
+	get_tree().get_root().get_node('Main/Pickups/Weapons').add_child(weapon_to_load)
+
+	var weapon_i := weapons.find(current_weapon)
+	weapons.remove_at(weapon_i)
+
+	#weapon_i = max(0, weapon_i - 1)
+	if weapons.size() <= 0:
+		current_weapon = null
+		set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
+	else:
+		change_weapon() #change_weapon(weapon_i)
+
+	return weapons.size()
 
 
 ## signal
@@ -252,7 +288,7 @@ func _on_pickup_area_ammo_detected(ammo_pickup: AmmoPickup):
 
 func _on_pickup_area_weapon_detected(weapon_pickup: WeaponPickup):
 	if not weapons.has(weapon_pickup.internal_weapon):
-		add_weapon(weapon_pickup.internal_weapon)
+		add_weapon(weapon_pickup)
 		weapon_pickup.queue_free()
 	else:
 		var pickup: Array[Ammo]

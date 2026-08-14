@@ -11,6 +11,7 @@
 [ext_resource type="Animation" uid="uid://cymqvfi234dt7" path="res://player/assets/animations/rifle_reload.res" id="6_km2n3"]
 [ext_resource type="Animation" uid="uid://c4d4o8mgj3wjh" path="res://player/assets/animations/rifle_shoot_medium.res" id="7_soi1e"]
 [ext_resource type="Animation" uid="uid://bd5rpykc1pnfg" path="res://player/assets/animations/rifle_unequip.res" id="8_m4r0f"]
+[ext_resource type="PackedScene" uid="uid://cdpkq6xencde6" path="res://assets/weapons/assault_rifle/assault_rifle_pickup.tscn" id="11_m7sf6"]
 
 [sub_resource type="Resource" id="Resource_1h7hx"]
 script = ExtResource("2_typht")
@@ -24,6 +25,7 @@ script = ExtResource("1_h38sa")
 name = "assault_rifle"
 weapon_model = ExtResource("5_m7sf6")
 auto_fire = true
+weapon_to_drop = ExtResource("11_m7sf6")
 hand_position = Vector3(1.29, 7.33, 1.73)
 hand_rotation = Vector3(0.33, 3, 1.33)
 weapon_idle_animation = ExtResource("4_typht")

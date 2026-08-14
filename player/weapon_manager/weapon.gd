@@ -5,6 +5,7 @@ class_name Weapon extends Resource
 @export var name: String
 @export var weapon_model: PackedScene
 @export var auto_fire := false
+@export var weapon_to_drop: PackedScene
 
 @export var hand_position: Vector3
 @export var hand_rotation: Vector3

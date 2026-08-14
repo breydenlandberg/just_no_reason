@@ -11,6 +11,7 @@
 [ext_resource type="Animation" uid="uid://cvpagmer4ctbl" path="res://player/assets/animations/rifle_equip.res" id="6_s4es1"]
 [ext_resource type="Animation" uid="uid://d6yib3agoadp" path="res://player/assets/animations/rifle_shoot_slow.res" id="7_2tlpe"]
 [ext_resource type="Animation" uid="uid://rltobf8anitd" path="res://player/assets/animations/rifle_land.res" id="8_4lr7r"]
+[ext_resource type="PackedScene" uid="uid://dyyuefcrdj2re" path="res://assets/weapons/quasar/quasar_pickup.tscn" id="11_u8h2p"]
 
 [sub_resource type="Resource" id="Resource_bb5mg"]
 script = ExtResource("2_tly1c")
@@ -23,6 +24,7 @@ metadata/_custom_type_script = "uid://dpu1mx01ww7be"
 script = ExtResource("1_ycj3w")
 name = "quasar"
 weapon_model = ExtResource("5_u8h2p")
+weapon_to_drop = ExtResource("11_u8h2p")
 hand_position = Vector3(-12, -36, -24)
 scale = Vector3(-0.15, -0.15, -0.15)
 weapon_idle_animation = ExtResource("4_tly1c")

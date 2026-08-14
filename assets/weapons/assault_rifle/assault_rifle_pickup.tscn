@@ -2,9 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://c1gvaajvf15di" path="res://assets/weapons/assault_rifle/AssaultRifle.fbx" id="1_fscq4"]
 [ext_resource type="Script" uid="uid://b7f8o5ty00yeq" path="res://assets/weapons/weapon_pickup.gd" id="1_ixunh"]
-[ext_resource type="Resource" uid="uid://dcgl81rrqyhkc" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle.tres" id="2_plxkw"]
-[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="3_ggs8s"]
-[ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="4_yj3p1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m377s"]
 size = Vector3(5.45, 1.5999999, 0.19999999)
@@ -13,8 +10,6 @@ size = Vector3(5.45, 1.5999999, 0.19999999)
 collision_layer = 16
 collision_mask = 19
 script = ExtResource("1_ixunh")
-internal_weapon = ExtResource("2_plxkw")
-internal_ammo = Array[ExtResource("3_ggs8s")]([ExtResource("4_yj3p1"), ExtResource("4_yj3p1")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1648626859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1150007, 0.06999993, -2.2351742e-08)
