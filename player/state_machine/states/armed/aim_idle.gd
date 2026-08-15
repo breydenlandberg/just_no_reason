@@ -17,11 +17,11 @@ func _enter():
 func _state_input(_event: InputEvent):
 	#if _event.is_action_pressed(InputManager.freefly):
 		#aim_exited.emit()
-		#_transition.emit(self, States.freefly)
+		#_transition.emit(self, UnarmedStates.freefly)
 
 	#if _event.is_action_pressed(InputManager.jump):
 		#aim_exited.emit()
-		#_transition.emit(self, States.jump)
+		#_transition.emit(self, UnarmedStates.jump)
 	pass
 
 func _state_process(_delta: float):
@@ -42,4 +42,4 @@ func _state_physics_process(_delta: float):
 
 	#if not is_on_floor():
 		#aim_exited.emit()
-		#_transition.emit(self, States.fall)
+		#_transition.emit(self, UnarmedStates.fall)

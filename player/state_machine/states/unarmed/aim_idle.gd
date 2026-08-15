@@ -17,16 +17,16 @@ func _enter():
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
 		aim_exited.emit()
-		_transition.emit(self, States.freefly)
+		_transition.emit(self, UnarmedStates.freefly)
 
 	if _event.is_action_pressed(InputManager.jump):
 		aim_exited.emit()
-		_transition.emit(self, States.jump)
+		_transition.emit(self, UnarmedStates.jump)
 
 func _state_process(_delta: float):
 	if Input.is_action_just_released(InputManager.aim):
 		aim_exited.emit()
-		_transition.emit(self, States.idle)
+		_transition.emit(self, UnarmedStates.idle)
 
 func _state_physics_process(_delta: float):
 	set_direction()
@@ -37,8 +37,8 @@ func _state_physics_process(_delta: float):
 	animated_model.rotation_degrees.y = %Camera.rotation_degrees.y + 180
 
 	if direction != Vector3.ZERO:
-		_transition.emit(self, States.aim_walk)
+		_transition.emit(self, UnarmedStates.aim_walk)
 
 	if not is_on_floor():
 		aim_exited.emit()
-		_transition.emit(self, States.fall)
+		_transition.emit(self, UnarmedStates.fall)

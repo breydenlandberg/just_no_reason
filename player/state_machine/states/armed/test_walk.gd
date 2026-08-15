@@ -7,7 +7,7 @@ extends PlayerMotionState
 #
 func _state_process(_delta: float):
 	if Input.is_action_pressed(InputManager.aim):
-		_transition.emit(self, States.aim_walk)
+		_transition.emit(self, UnarmedStates.aim_walk)
 
 func _state_physics_process(_delta: float):
 	set_direction()

@@ -2,7 +2,7 @@ extends PlayerMotionState
 
 
 # var
-var land_after_these_states: Array[StringName] = [States.jump, States.sprint_jump, States.fall, States.sprint_fall]
+var land_after_these_states: Array[StringName] = [UnarmedStates.jump, UnarmedStates.sprint_jump, UnarmedStates.fall, UnarmedStates.sprint_fall]
 
 
 ### fn
@@ -23,17 +23,17 @@ func _exit():
 
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
-		_transition.emit(self, States.freefly)
+		_transition.emit(self, UnarmedStates.freefly)
 
 	if _event.is_action_pressed(InputManager.jump):
-		_transition.emit(self, States.jump)
+		_transition.emit(self, UnarmedStates.jump)
 
 func _state_process(_delta: float):
 	if Input.is_action_pressed(InputManager.aim):
-		_transition.emit(self, States.aim_idle)
+		_transition.emit(self, UnarmedStates.aim_idle)
 
 	if Input.is_action_pressed(InputManager.crouch):
-		_transition.emit(self, States.crouch_idle)
+		_transition.emit(self, UnarmedStates.crouch_idle)
 
 func _state_physics_process(_delta: float):
 	set_direction()
@@ -42,13 +42,13 @@ func _state_physics_process(_delta: float):
 
 	if direction != Vector3.ZERO:
 		if Input.is_action_pressed(InputManager.sprint) and sprint_remaining > PLAYER_MOVEMENT_STATS.minimum_sprint_threshold:
-			_transition.emit(self, States.sprint)
+			_transition.emit(self, UnarmedStates.sprint)
 		else:
-			_transition.emit(self, States.walk)
+			_transition.emit(self, UnarmedStates.walk)
 
 	# Quick and dirty fix to stop the player from entering fall state on game start,
 	# I THINK because is_on_floor() below needs gravity,
 	# but move_and_slide() is called first in player.gd
 	# ... or something close to that
 	if Engine.get_physics_frames() > 1 and not is_on_floor():
-		_transition.emit(self, States.fall)
+		_transition.emit(self, UnarmedStates.fall)

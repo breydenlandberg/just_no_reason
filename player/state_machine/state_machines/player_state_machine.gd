@@ -19,7 +19,7 @@ func _process(_delta):
 
 func _ready():
 	for child: PlayerCombatTransitionState in get_children():
-		child._combat_status_changed.connect(%WeaponManager.on_combat_status_changed)
+		child._combat_status_changed.connect(weapon_manager.on_combat_status_changed)
 		child.process_mode = Node.PROCESS_MODE_DISABLED
 
 	_start()

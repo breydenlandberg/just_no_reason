@@ -20,6 +20,7 @@ var is_attacking := false
 @export var has_gravity := true
 @export_group('Nodes')
 @export var ui_manager: CanvasLayer
+@export var weapon_manager: WeaponManager
 
 
 ### fn
@@ -34,9 +35,9 @@ func _ready():
 
 	# AmmoUI
 	var ui_ammo: Control = ui_manager.get_node('AmmoUI')
-	%WeaponManager.weapon_manager_started.connect(ui_ammo.start)
-	%WeaponManager.weapon_manager_stopped.connect(ui_ammo.stop)
-	%WeaponManager.ammo_updated.connect(ui_ammo.update_ammo_text)
+	weapon_manager.weapon_manager_started.connect(ui_ammo.start)
+	weapon_manager.weapon_manager_stopped.connect(ui_ammo.stop)
+	weapon_manager.ammo_updated.connect(ui_ammo.update_ammo_text)
 
 func _unhandled_input(event: InputEvent):
 	# Handle interactions

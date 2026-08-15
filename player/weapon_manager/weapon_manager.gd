@@ -176,6 +176,7 @@ func reduce_ammo(by := 1):
 
 # See comment at reload()
 func calculate_reload():
+	# These print statements will illustrate how ammo is handled in this game
 	#print('BEFORE:')
 	#print('current_ammo: ', current_weapon.current_ammo.ammo_count)
 	#print('reserve_ammo:')
@@ -224,10 +225,12 @@ func add_ammo(ammo_arr: Array[Ammo]) -> Array[Ammo]:
 
 	ammo_arr.resize(ammo_taken)
 	ammo_updated.emit(current_weapon)
+
 	return ammo_arr
 
 func add_weapon(weapon_pickup: WeaponPickup):
 	var new_weapon: Weapon = weapon_pickup.internal_weapon
+
 	new_weapon.reserve_ammo.append_array(weapon_pickup.internal_ammo)
 	if not new_weapon.reserve_ammo.is_empty():
 		new_weapon.current_ammo = new_weapon.reserve_ammo.pop_front()
@@ -247,23 +250,23 @@ func drop_weapon() -> float:
 	weapon_to_load.global_transform = current_weapon_model.global_transform
 
 	weapon_to_load.internal_ammo.append_array(current_weapon.reserve_ammo)
-	weapon_to_load.internal_ammo.append(current_weapon.current_ammo)
-
 	current_weapon.reserve_ammo.clear()
+
+	weapon_to_load.internal_ammo.append(current_weapon.current_ammo)
 	current_weapon.current_ammo = null
 
 	current_weapon_model.queue_free()
-	get_tree().get_root().get_node('Main/Pickups/Weapons').add_child(weapon_to_load)
+	var weapons_node: Node3D = $Main/Pickups/Weapons
+	weapons_node.add_child(weapon_to_load)
 
 	var weapon_i := weapons.find(current_weapon)
 	weapons.remove_at(weapon_i)
 
-	#weapon_i = max(0, weapon_i - 1)
 	if weapons.size() <= 0:
 		current_weapon = null
 		set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
 	else:
-		change_weapon() #change_weapon(weapon_i)
+		change_weapon()
 
 	return weapons.size()
 

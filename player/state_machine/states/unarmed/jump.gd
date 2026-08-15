@@ -11,7 +11,7 @@ func _enter():
 
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
-		_transition.emit(self, States.freefly)
+		_transition.emit(self, UnarmedStates.freefly)
 
 func _state_physics_process(_delta: float):
 	set_direction()
@@ -20,7 +20,7 @@ func _state_physics_process(_delta: float):
 	_rotate_model.emit(input_dir)
 
 	if velocity.y <= 0.0:
-		_transition.emit(self, States.fall)
+		_transition.emit(self, UnarmedStates.fall)
 
 
 ## helper

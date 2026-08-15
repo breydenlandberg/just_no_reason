@@ -1,4 +1,4 @@
-class_name States
+class_name UnarmedStates
 
 # static var
 static var unarmed_state: StringName = 'Unarmed'
