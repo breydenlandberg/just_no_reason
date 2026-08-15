@@ -16,6 +16,7 @@
 # FYI
 - Character models are Quaternius Ultimate Modular Men
 - https://www.youtube.com/watch?v=1WJCHkHFRRA&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv and the following episodes for when you want to add another weapon and all related code
+- Make weapons' internal ammo UNIQUE at least, you don't need to bother with doing it for AmmoPickups... not 100% sure why... I think it's because we duplicate an AmmoPickup's internal ammo resource in code when taking
 
 
 

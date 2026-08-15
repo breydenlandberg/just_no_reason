@@ -212,19 +212,19 @@ func check_auto_fire():
 		shoot()
 
 # take as much ammo as allowed from a magazine and return it less what was taken from it
-func add_ammo(ammo: Array[Ammo]) -> Array[Ammo]:
-	var ammo_taken := ammo.size()
-	for i in ammo.size():
+func add_ammo(ammo_arr: Array[Ammo]) -> Array[Ammo]:
+	var ammo_taken := ammo_arr.size()
+	for ammo in ammo_arr:
 		for weapon in weapons:
-			if ammo[i].ammo_type == weapon.name:
+			if ammo.ammo_type == weapon.name:
 				if weapon.reserve_ammo.size() < weapon.max_ammo_magazines or weapon.max_ammo_magazines < 0:
 					ammo_taken -= 1
-					weapon.reserve_ammo.push_back(ammo[i])
+					weapon.reserve_ammo.push_back(ammo)
 					break
 
-	ammo.resize(ammo_taken)
+	ammo_arr.resize(ammo_taken)
 	ammo_updated.emit(current_weapon)
-	return ammo
+	return ammo_arr
 
 func add_weapon(weapon_pickup: WeaponPickup):
 	var new_weapon: Weapon = weapon_pickup.internal_weapon
