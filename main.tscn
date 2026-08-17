@@ -321,9 +321,10 @@ player = NodePath("../Player")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=169422717]
 shape = SubResource("WorldBoundaryShape3D_efxa6")
 
-[node name="Player" parent="." unique_id=685403359 node_paths=PackedStringArray("ui_manager") instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." unique_id=685403359 node_paths=PackedStringArray("ui_manager", "weapons_node") instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 ui_manager = NodePath("../UIManager")
+weapons_node = NodePath("../Pickups/Weapons")
 
 [node name="NPC" type="Node3D" parent="." unique_id=819740215]
 

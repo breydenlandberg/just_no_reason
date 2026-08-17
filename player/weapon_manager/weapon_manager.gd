@@ -24,6 +24,7 @@ var equip_weapon_wait_time := 0.0
 var unequip_weapon_wait_time := 0.0
 var shoot_weapon_wait_time := 0.0
 var reload_weapon_wait_time := 0.0
+var weapons_node: Node3D
 
 static var combat_status: StringName = 'combat'
 static var non_combat_status: StringName = 'non_combat'
@@ -243,7 +244,7 @@ func add_weapon(weapon_pickup: WeaponPickup):
 		set_weapon_wait_time(current_weapon)
 		set_current_weapon_model(current_weapon)
 
-func drop_weapon() -> float:
+func drop_weapon() -> int:
 	var weapon_to_load: WeaponPickup = current_weapon.weapon_to_drop.instantiate()
 
 	weapon_to_load.internal_weapon = current_weapon
@@ -256,7 +257,6 @@ func drop_weapon() -> float:
 	current_weapon.current_ammo = null
 
 	current_weapon_model.queue_free()
-	var weapons_node: Node3D = $Main/Pickups/Weapons
 	weapons_node.add_child(weapon_to_load)
 
 	var weapon_i := weapons.find(current_weapon)

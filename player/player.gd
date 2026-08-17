@@ -9,6 +9,7 @@ var is_crouching := false
 var is_attacking := false
 
 @export_group('Toggles')
+@export var has_gravity := true
 @export var can_freefly := true
 @export var can_move := true
 @export var can_jump := true
@@ -16,11 +17,11 @@ var is_attacking := false
 @export var can_sprint := true
 @export var can_crouch := true
 @export var can_interact := true
-@export var can_attack := true
-@export var has_gravity := true
+@export var can_use_combat := true
 @export_group('Nodes')
 @export var ui_manager: CanvasLayer
 @export var weapon_manager: WeaponManager
+@export var weapons_node: Node3D
 
 
 ### fn
@@ -32,6 +33,10 @@ func _ready():
 	InteractManager.set_player(self)
 	# Does below need to be a signal?
 	SignalBus._message.connect(message)
+
+	# Set weapons_node on weapon_manager so that we can handle WeaponPickups
+	if weapon_manager and weapons_node:
+		weapon_manager.weapons_node = weapons_node
 
 	# AmmoUI
 	var ui_ammo: Control = ui_manager.get_node('AmmoUI')
@@ -52,39 +57,37 @@ func _physics_process(_delta: float):
 ## helper
 #
 func check_input_mappings():
-	if can_freefly and not InputMap.has_action(InputManager.freefly):
-		push_error('Freefly disabled. No InputAction found for InputManager.freefly: ' + InputManager.freefly)
-		can_freefly = false
-	if can_move and not InputMap.has_action(InputManager.forward):
-		push_error('Movement disabled. No InputAction found for InputManager.forward: ' + InputManager.forward)
-		can_move = false
-	if can_move and not InputMap.has_action(InputManager.back):
-		push_error('Movement disabled. No InputAction found for InputManager.back: ' + InputManager.back)
-		can_move = false
-	if can_move and not InputMap.has_action(InputManager.left):
-		push_error('Movement disabled. No InputAction found for InputManager.left: ' + InputManager.left)
-		can_move = false
-	if can_move and not InputMap.has_action(InputManager.right):
-		push_error('Movement disabled. No InputAction found for InputManager.right: ' + InputManager.right)
-		can_move = false
-	if can_jump and not InputMap.has_action(InputManager.jump):
-		push_error('Jumping disabled. No InputAction found for InputManager.jump: ' + InputManager.jump)
-		can_jump = false
-	if can_aim and not InputMap.has_action(InputManager.aim):
-		push_error('Jumping disabled. No InputAction found for InputManager.aim: ' + InputManager.aim)
-		can_aim = false
-	if can_sprint and not InputMap.has_action(InputManager.sprint):
-		push_error('Sprinting disabled. No InputAction found for InputManager.sprint: ' + InputManager.sprint)
-		can_sprint = false
-	if can_crouch and not InputMap.has_action(InputManager.crouch):
-		push_error('Crouch disabled. No InputAction found for InputManager.crouch: ' + InputManager.crouch)
-		can_crouch = false
-	if can_interact and not InputMap.has_action(InputManager.interact):
-		push_error('Crouch disabled. No InputAction found for InputManager.interact: ' + InputManager.interact)
-		can_interact = false
-	if can_attack and not InputMap.has_action(InputManager.attack_basic):
-		push_error('Basic attack disabled. No InputAction found for InputManager.attack_basic: ' + InputManager.attack_basic)
-		can_attack = false
+	var check_action = func(_action: String, _action_type: String, _flag: String):
+		if not InputMap.has_action(_action):
+			push_error('{_action_type} disabled. No InputAction found: {_action}')
+			set(_flag, false)
+
+	var action_type := ''
+	var flag := ''
+
+	if can_freefly: check_action.call(InputManager.freefly, 'Freefly', 'can_freefly')
+	if can_move:
+		action_type = 'Movement'
+		flag = 'can_move'
+
+		check_action.call(InputManager.forward, 'Movement', 'can_move')
+		check_action.call(InputManager.back, 'Movement', 'can_move')
+		check_action.call(InputManager.left, 'Movement', 'can_move')
+		check_action.call(InputManager.right, 'Movement', 'can_move')
+	if can_jump: check_action.call(InputManager.jump, 'Jumping', 'can_jump')
+	if can_aim: check_action.call(InputManager.aim, 'Aiming', 'can_aim')
+	if can_sprint: check_action.call(InputManager.sprint, 'Sprinting', 'can_sprint')
+	if can_crouch: check_action.call(InputManager.crouch, 'Crouch', 'can_crouch')
+	if can_interact: check_action.call(InputManager.interact, 'Interaction', 'can_interact')
+	if can_use_combat:
+		action_type = 'Use combat system'
+		flag = 'can_use_combat'
+
+		check_action.call(InputManager.attack_basic, action_type, flag)
+		check_action.call(InputManager.shoot, action_type, flag)
+		check_action.call(InputManager.reload_input, action_type, flag)
+		check_action.call(InputManager.change_weapon, action_type, flag)
+		check_action.call(InputManager.drop_weapon, action_type, flag)
 
 func set_velocity_from_motion(vel: Vector3):
 	velocity = vel
