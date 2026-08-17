@@ -9,6 +9,7 @@ var current_combat_status: CombatStatus = CombatStatus.NONCOMBAT
 var input_direction: Vector2
 
 @export var animation_tree: AnimationTree
+@export var weapon_manager: WeaponManager
 @export var right_hand: Node3D
 @export var turn_rate := 0.6
 
@@ -38,12 +39,12 @@ func on_input_direction_changed(_input_dir: Vector2):
 
 		rotation_degrees.y = %Camera.rotation_degrees.y - rad_to_deg(input_direction.angle()) + 90
 
-func on_combat_status_changed(status: String):
+func on_combat_status_changed(status: StringName):
 	match status:
-		'non_combat':
-			current_combat_status = CombatStatus.NONCOMBAT
-		'combat':
+		weapon_manager.combat_status:
 			current_combat_status = CombatStatus.COMBAT
+		weapon_manager.non_combat_status:
+			current_combat_status = CombatStatus.NONCOMBAT
 
 	animation_tree['parameters/combat_transition/transition_request'] = status
 
@@ -86,11 +87,11 @@ func reset_weapon_idle_animation(weapon: Weapon):
 ## signal
 #
 func _on_weapon_manager_started(_weapon: Weapon, _weapon_model: WeaponModel):
-	on_combat_status_changed('combat') # this param used to be passed all the way from weapon_manager on_combat_status_changed... i'm not sure the pros and cons of this vs that
+	on_combat_status_changed(weapon_manager.combat_status)
 	load_new_weapon(_weapon, _weapon_model)
 
 func _on_weapon_manager_stopped():
-	on_combat_status_changed('non_combat') # this param used to be passed all the way from weapon_manager on_combat_status_changed... i'm not sure the pros and cons of this vs that
+	on_combat_status_changed(weapon_manager.non_combat_status)
 	deload_current_weapon()
 
 func _on_weapon_changed(_weapon: Weapon, _weapon_model: WeaponModel):

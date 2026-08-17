@@ -3,7 +3,7 @@ class_name WeaponManager extends Node3D
 
 # signal
 signal weapon_manager_started(_weapon: Weapon, _weapon_model: WeaponModel)
-signal weapon_manager_stopped
+signal weapon_manager_stopped()
 signal unequip_animation_finished
 signal weapon_changed(_weapon: Weapon, _weapon_model: WeaponModel)
 signal weapon_aim_entered(_weapon: Weapon)
@@ -24,6 +24,9 @@ var equip_weapon_wait_time := 0.0
 var unequip_weapon_wait_time := 0.0
 var shoot_weapon_wait_time := 0.0
 var reload_weapon_wait_time := 0.0
+
+static var combat_status: StringName = 'combat'
+static var non_combat_status: StringName = 'non_combat'
 
 @export var weapons: Array[Weapon]
 @export var weapon_timer: Timer # Weapon equip, change, shoot, reload - we want to make the WeaponManager unavailable during known animations
@@ -56,12 +59,12 @@ func _process(_delta: float):
 
 ## helper
 #
-func on_combat_status_changed(status: String):
+func on_combat_status_changed(status: StringName):
 	match status:
-		'non_combat':
-			stop_weapon_manager()
-		'combat':
+		combat_status:
 			start_weapon_manager()
+		non_combat_status:
+			stop_weapon_manager()
 
 func start_weapon_manager():
 	print('Starting weapon manager')
@@ -82,9 +85,6 @@ func stop_weapon_manager():
 
 	if current_weapon:
 		unequip_weapon()
-	#else:
-		#drop_weapon()
-	#???
 
 	weapon_manager_stopped.emit()
 
@@ -286,6 +286,7 @@ func _on_weapon_unequip_timer_timeout():
 
 func _on_pickup_area_ammo_detected(ammo_pickup: AmmoPickup):
 	var pickup: Array[Ammo] = add_ammo(ammo_pickup.internal_ammo.duplicate())
+
 	if pickup.is_empty():
 		ammo_pickup.queue_free()
 
@@ -295,6 +296,7 @@ func _on_pickup_area_weapon_detected(weapon_pickup: WeaponPickup):
 		weapon_pickup.queue_free()
 	else:
 		var pickup: Array[Ammo]
+
 		pickup.append_array(weapon_pickup.internal_ammo)
 		pickup = add_ammo(pickup)
 
