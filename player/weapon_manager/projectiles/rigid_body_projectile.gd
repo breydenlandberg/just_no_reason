@@ -5,6 +5,7 @@ class_name RigidBodyProjectile extends Projectile
 @export var projectile_velocity := 180
 @export var expiry_time := 2
 @export var rigid_body_bullet: PackedScene
+@export var test_sphere: PackedScene
 
 @onready var debug_draw := $DebugDraw3D
 
@@ -27,7 +28,11 @@ func launch_rigid_projectile(point: Vector3, model: WeaponModel, bullet: PackedS
 
 	add_child(projectile)
 	projectile.look_at(point)
+
 	debug_draw.draw_line(projectile.position, point, Color.RED, 10)
+	var test: CharacterBody3D = test_sphere.instantiate() # INSTEAD MAKE A GENERIC DEBUG SPHERE FOR POINTS
+	test.global_position = projectile.position
+	get_tree().root.get_node('Main/Enemy/').add_child(test)
 
 	var direction: Vector3 = (point - model.bullet_point.global_position).normalized()
 	projectile.set_linear_velocity(direction * projectile_velocity)

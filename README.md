@@ -12,6 +12,7 @@
 - Interaction system should be proximity based (i.e. the closest interaction the player is facing), not a pure FIFO stack like it is now
 - https://www.youtube.com/watch?v=FvFx1R3p-aw
 - What happens if use Quasar ammo with Assault Rifle? Or vice versa and etc?... and enforce so that we can't do this...
+- 'Hitbox' might want to become 'Hurtbox'
 
 # FYI
 - Character models are Quaternius Ultimate Modular Men
@@ -28,6 +29,47 @@ Reply
 @yukku121
 3 weeks ago
 Otherwise for each action the player can do: grab, eat, talk,... you'll need to have x2/3 states in the state machine to match with idle, walk,..."
+
+
+
+# CONSIDER BELOW REFACTOR
+### 5. State Machine Async Safety
+**Files:** [state.gd](file:///home/brey/Godot/just_no_reason/state_machine/state.gd), [state_machine.gd](file:///home/brey/Godot/just_no_reason/state_machine/state_machine.gd), [idle.gd](file:///home/brey/Godot/just_no_reason/player/state_machine/states/unarmed/idle.gd), [walk.gd](file:///home/brey/Godot/just_no_reason/player/state_machine/states/unarmed/walk.gd), [sprint.gd](file:///home/brey/Godot/just_no_reason/player/state_machine/states/unarmed/sprint.gd)
+
+#### Proposed Implementation
+
+##### 1. Track State Activation in `state.gd`:
+```gdscript
+var is_active := false
+```
+
+##### 2. Manage Activation in `state_machine.gd`:
+```gdscript
+func transition(state, new_state_name):
+	# ...
+	if current_state:
+		current_state._exit()
+		current_state.is_active = false
+		current_state.previous_state = null
+	# ...
+	new_state.previous_state = current_state
+	new_state.is_active = true
+	new_state._enter()
+	current_state = new_state
+```
+
+##### 3. Check State Validity on Resume (`idle.gd` / `walk.gd` / `sprint.gd`):
+```gdscript
+func _enter():
+	if previous_state_in(land_after_these_states):
+		_animation_state_changed.emit('land')
+		await animation_finished()
+		if not is_active:
+			return # Intercept thread and exit early
+
+	super._enter()
+```
+*Note: Deletes the hacky `handle_animation_state_changed_signal()` logic entirely. Checking `is_active` after an await prevents callbacks from firing in exited states (which can lead to visual bugs like the landing animation overriding subsequent states).*
 
 
 

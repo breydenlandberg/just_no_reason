@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://db7wo6gubbdw8" path="res://player/weapon_manager/projectiles/rigid_body_projectile.gd" id="1_1ng6m"]
 [ext_resource type="PackedScene" uid="uid://f8jwgq7iwmw0" path="res://player/weapon_manager/projectiles/bullets/assault_rifle_bullet.tscn" id="2_na6on"]
+[ext_resource type="PackedScene" uid="uid://dx1jttysmunls" path="res://enemies/sphere/sphere.tscn" id="3_64aul"]
 [ext_resource type="PackedScene" path="res://addons/debug_draw/debug_draw_3d.tscn" id="3_na6on"]
 
 [node name="RigidBodyProjectile" type="Node3D" unique_id=467621539]
 script = ExtResource("1_1ng6m")
 rigid_body_bullet = ExtResource("2_na6on")
+test_sphere = ExtResource("3_64aul")
 metadata/_custom_type_script = "uid://db7wo6gubbdw8"
 
 [node name="DebugDraw3D" parent="." unique_id=1882479097 instance=ExtResource("3_na6on")]
