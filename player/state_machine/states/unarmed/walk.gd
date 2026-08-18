@@ -13,7 +13,7 @@ func _enter():
 	handle_animation_state_changed_signal()
 
 	if previous_state_in(land_after_these_states):
-		_animation_state_changed.emit('land_move')
+		_animation_state_changed.emit('land_move') # instead of land, Animations.land_move
 		await animation_finished()
 
 	super._enter()
