@@ -2,7 +2,7 @@ extends PlayerMotionState
 
 
 # var
-var land_after_these_states: Array[String] = ['jump', 'sprintjump', 'fall', 'sprintfall']
+var land_after_these_states: Array[String] = ['jump', 'sprintjump', 'fall', 'sprintfall'] # use ArmedStates
 
 
 ### fn

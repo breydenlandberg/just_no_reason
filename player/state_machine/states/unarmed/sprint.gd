@@ -19,7 +19,7 @@ func _enter():
 	sprint_started.emit()
 
 	if previous_state_in(land_after_these_states):
-		_animation_state_changed.emit('land_move')
+		_animation_state_changed.emit('land_move') # instead of land, Animations.land_move
 		await animation_finished()
 
 	super._enter()
@@ -40,7 +40,6 @@ func _state_process(_delta: float):
 		sprint_ended.emit()
 		_transition.emit(self, UnarmedStates.walk)
 
-# Rename _delta to delta
 func _state_physics_process(_delta: float):
 	set_direction()
 	calculate_velocity(sprint_speed, direction, PLAYER_MOVEMENT_STATS.acceleration, _delta)

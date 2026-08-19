@@ -5,8 +5,8 @@ extends PlayerMotionState
 signal aim_entered
 signal aim_exited
 
-### fn
 
+### fn
 
 ## virtual
 #

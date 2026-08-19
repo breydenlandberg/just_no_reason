@@ -5,8 +5,8 @@ extends PlayerMotionState
 signal aim_entered
 signal aim_exited
 
-### fn
 
+### fn
 
 ## virtual
 #
@@ -15,14 +15,12 @@ func _enter():
 	super._enter()
 
 func _state_input(_event: InputEvent):
-	#if _event.is_action_pressed(InputManager.freefly):
-		#aim_exited.emit()
-		#_transition.emit(self, UnarmedStates.freefly)
+	if _event.is_action_pressed(InputManager.freefly):
+		pass
 
-	#if _event.is_action_pressed(InputManager.jump):
+	if _event.is_action_pressed(InputManager.jump):
 		#aim_exited.emit()
-		#_transition.emit(self, UnarmedStates.jump)
-	pass
+		_transition.emit(self, ArmedStates.aim_jump)
 
 func _state_process(_delta: float):
 	if Input.is_action_just_released(InputManager.aim):
@@ -40,6 +38,6 @@ func _state_physics_process(_delta: float):
 	if direction != Vector3.ZERO:
 		_transition.emit(self, ArmedStates.aim_walk)
 
-	#if not is_on_floor():
+	if not is_on_floor():
 		#aim_exited.emit()
-		#_transition.emit(self, UnarmedStates.fall)
+		_transition.emit(self, ArmedStates.aim_fall)
