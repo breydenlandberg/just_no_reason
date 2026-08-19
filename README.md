@@ -7,6 +7,7 @@
 - Switch between armed and unarmed while jumping / vertical velocity... lol
 - Big AssaultRifle ammo pickup seemingly works forever if not used up all in one go?
 - Current weapon not preserved between equip/unequip eg it will not keep the last weapon used
+- Sometimes play walking animation when in unarmed idle after switching from armed
 
 # TODO
 - AimFall when aiming while in Jump, Fall, SprintJump, SprintFall

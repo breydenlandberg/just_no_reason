@@ -19,7 +19,7 @@ func _enter():
 	sprint_started.emit()
 
 	if previous_state_in(land_after_these_states):
-		_animation_state_changed.emit('land_move') # instead of land, Animations.land_move
+		_animation_state_changed.emit('land_move') # instead of land_move, Animations.land_move
 		await animation_finished()
 
 	super._enter()
