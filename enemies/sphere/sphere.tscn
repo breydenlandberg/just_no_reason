@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dx1jttysmunls"]
 
 [ext_resource type="Script" uid="uid://ddfgk6h5tildj" path="res://enemies/sphere/sphere.gd" id="1_xcuiu"]
-[ext_resource type="PackedScene" uid="uid://ble4eak8rtfx1" path="res://enemies/hitbox/hitbox.tscn" id="2_nlrhr"]
+[ext_resource type="PackedScene" uid="uid://ble4eak8rtfx1" path="res://enemies/hurtbox/hurtbox.tscn" id="2_nlrhr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yb1s"]
 albedo_color = Color(1, 0, 0, 1)
@@ -15,13 +15,13 @@ material = SubResource("StandardMaterial3D_3yb1s")
 [sub_resource type="SphereShape3D" id="SphereShape3D_m377s"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3yb1s"]
-radius = 0.6
+radius = 0.52
 
-[node name="Sphere" type="CharacterBody3D" unique_id=1513231080 node_paths=PackedStringArray("hitbox")]
+[node name="Sphere" type="CharacterBody3D" unique_id=1513231080 node_paths=PackedStringArray("hurtbox")]
 collision_layer = 136
 collision_mask = 15
 script = ExtResource("1_xcuiu")
-hitbox = NodePath("Hitbox")
+hurtbox = NodePath("Hurtbox")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2061118964]
 mesh = SubResource("SphereMesh_m377s")
@@ -29,9 +29,9 @@ mesh = SubResource("SphereMesh_m377s")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=415748986]
 shape = SubResource("SphereShape3D_m377s")
 
-[node name="Hitbox" parent="." unique_id=594334647 instance=ExtResource("2_nlrhr")]
+[node name="Hurtbox" parent="." unique_id=594334647 instance=ExtResource("2_nlrhr")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=672817445]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=672817445]
 shape = SubResource("SphereShape3D_3yb1s")
 
-[connection signal="damage_take" from="Hitbox" to="." method="_on_hitbox_damage_take"]
+[connection signal="damage_take" from="Hurtbox" to="." method="_on_hurtbox_damage_take"]

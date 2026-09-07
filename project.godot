@@ -162,7 +162,7 @@ drop_weapon={
 3d_physics/layer_3="player"
 3d_physics/layer_4="enemies"
 3d_physics/layer_5="pickups"
-3d_physics/layer_6="damage"
+3d_physics/layer_6="projectiles"
 3d_physics/layer_7="interact"
 3d_physics/layer_8="killzone"
 

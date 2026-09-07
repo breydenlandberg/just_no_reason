@@ -14,7 +14,7 @@
 - Interaction system should be proximity based (i.e. the closest interaction the player is facing), not a pure FIFO stack like it is now
 - https://www.youtube.com/watch?v=FvFx1R3p-aw
 - What happens if use Quasar ammo with Assault Rifle? Or vice versa and etc?... and enforce so that we can't do this...
-- 'Hitbox' might want to become 'Hurtbox'
+- Rearrange 3D physics layers
 
 # FYI
 - Character models are Quaternius Ultimate Modular Men
