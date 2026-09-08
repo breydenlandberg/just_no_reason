@@ -16,11 +16,9 @@ var has_hit := false
 ## virtual
 #
 func _ready():
-	super._ready()
-	# refactor this AI shit so that names makes more sense pls
 	sweep_query = PhysicsRayQueryParameters3D.new()
-	# Scaffolding (1) + World (2) + Enemies (8) = 11 (0b0001011)
-	sweep_query.collision_mask = 0b0001011
+	# Scaffolding (1) + World (2) + Enemies (32) = 35 (0b0100011)
+	sweep_query.collision_mask = 0b0100011
 	sweep_query.collide_with_areas = true
 	sweep_query.collide_with_bodies = true
 	sweep_query.hit_from_inside = true
@@ -47,7 +45,7 @@ func _physics_process(delta: float):
 		elif 'hurtbox' in collider and collider.hurtbox is Hurtbox:
 			collider.hurtbox.damage_take.emit(damage)
 
-		print('Hit', collider, ', freeing ', bullet_instance)
+		#print('Hit', collider, ', freeing ', bullet_instance)
 		bullet_instance.queue_free()
 
 func _set_weapon_projectile(_weapon: Weapon, _model: WeaponModel):

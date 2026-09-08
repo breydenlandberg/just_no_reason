@@ -7,8 +7,8 @@
 size = Vector3(5.45, 1.5999999, 0.19999999)
 
 [node name="AssaultRiflePickup" type="RigidBody3D" unique_id=1739229459]
-collision_layer = 16
-collision_mask = 19
+collision_layer = 128
+collision_mask = 131
 script = ExtResource("1_ixunh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1648626859]

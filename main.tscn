@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://fj84wfp0ra3m" path="res://assets/materials/scaffolding.tres" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dtvjugxmlsgif" path="res://debug/debug.tscn" id="3_d13ii"]
 [ext_resource type="PackedScene" uid="uid://bdaq1v7cg2fay" path="res://killzone/killzone.tscn" id="3_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bh2tpishmathl" path="res://assets/textures/stone/shine_stone.png" id="5_272bh"]
@@ -171,6 +172,8 @@ directional_shadow_max_distance = 512.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1332608087]
 environment = SubResource("Environment_lquwl")
+
+[node name="Debug" parent="." unique_id=207610114 instance=ExtResource("3_d13ii")]
 
 [node name="Scaffolding" type="Node3D" parent="." unique_id=381982267]
 
