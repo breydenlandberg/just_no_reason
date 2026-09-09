@@ -160,7 +160,6 @@ drop_weapon={
 
 3d_physics/layer_1="scaffolding"
 3d_physics/layer_2="world"
-3d_physics/layer_3=""
 3d_physics/layer_4="interact"
 3d_physics/layer_5="player"
 3d_physics/layer_6="enemies"

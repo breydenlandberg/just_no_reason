@@ -35,9 +35,7 @@ func camera_ray_cast(_range := 100) -> Vector3:
 
 	if not intersection.is_empty():
 		var collision: Vector3 = intersection.position
-
-		DebugJnr.draw_between(ray_origin, collision, 15, true)
-
+		#DebugJnr.draw_between(ray_origin, collision, 15, true)
 		return collision
 	else:
 		return ray_end

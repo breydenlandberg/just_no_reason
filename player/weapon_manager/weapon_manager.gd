@@ -258,6 +258,7 @@ func drop_weapon() -> int:
 
 	current_weapon_model.queue_free()
 	weapons_node.add_child(weapon_to_load)
+	weapon_to_load.start_drop_cooldown()
 
 	var weapon_i := weapons.find(current_weapon)
 	weapons.remove_at(weapon_i)

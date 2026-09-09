@@ -18,3 +18,10 @@ func _on_body_entered(body: Node3D):
 	elif body is WeaponPickup:
 		if body.pickup_ready:
 			weapon_detected.emit(body)
+		else:
+			if not body.became_ready.is_connected(_on_weapon_became_ready):
+				body.became_ready.connect(_on_weapon_became_ready, CONNECT_ONE_SHOT)
+
+func _on_weapon_became_ready(weapon_pickup: WeaponPickup):
+	if overlaps_body(weapon_pickup):
+		weapon_detected.emit(weapon_pickup)
