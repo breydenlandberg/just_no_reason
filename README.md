@@ -2,11 +2,10 @@
 - Unarmed AimWalk into Armed... need to reset that fov. More broadly, we should _exit() the Unarmed/ArmedStateMachine's current_state before stopping it and starting the other.
 - Check Armed Walk into Unarmed Walk back into Armed Walk... animation is fucked 
 - Falling while zoomed (unarmed) is bugged
-- With quasar weapon aim then reload then unaim... bugged
 - Switch between armed and unarmed while jumping / vertical velocity... lol
 - Big AssaultRifle ammo pickup seemingly works forever if not used up all in one go?
 - Sometimes play walking animation when in unarmed idle after switching from armed
-- Pickup weapon then shoot few bullets... drop... pickup again... full magazine with fewer overall ammo! I believe the ammo array is being sorted leading to the weapon incorrectly having a full magazine automatically...
+- Pickup assault rifle, drop assault rifle, pick up a second one - shooting it uses so much ammo! WTF!?
 
 # TODO
 - AimFall when aiming while in Jump, Fall, SprintJump, SprintFall

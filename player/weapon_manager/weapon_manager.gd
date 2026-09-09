@@ -51,7 +51,7 @@ func _unhandled_input(event: InputEvent):
 
 func _process(_delta: float):
 	if current_status == WeaponManagerStatus.AVAILABLE:
-		if Input.is_action_pressed(InputManager.aim):
+		if Input.is_action_just_pressed(InputManager.aim):
 			weapon_aim_entered.emit(current_weapon)
 
 		if Input.is_action_just_released(InputManager.aim):
@@ -250,11 +250,12 @@ func drop_weapon() -> int:
 	weapon_to_load.internal_weapon = current_weapon
 	weapon_to_load.global_transform = current_weapon_model.global_transform
 
+	if current_weapon.current_ammo: # has_current_ammo() confusion?
+		weapon_to_load.internal_ammo.append(current_weapon.current_ammo)
+		current_weapon.current_ammo = null
+
 	weapon_to_load.internal_ammo.append_array(current_weapon.reserve_ammo)
 	current_weapon.reserve_ammo.clear()
-
-	weapon_to_load.internal_ammo.append(current_weapon.current_ammo)
-	current_weapon.current_ammo = null
 
 	current_weapon_model.queue_free()
 	weapons_node.add_child(weapon_to_load)
