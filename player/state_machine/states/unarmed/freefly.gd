@@ -12,6 +12,7 @@ extends PlayerMotionState
 func _enter():
 	owner.is_freeflying = true
 	owner.set_collision_mask_value(1, false)
+	reset_velocity()
 
 	super._enter()
 
@@ -19,6 +20,7 @@ func _exit():
 	owner.set_collision_mask_value(1, true)
 	owner.is_freeflying = false
 	animated_model.rotation.x = 0
+	reset_velocity()
 
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):

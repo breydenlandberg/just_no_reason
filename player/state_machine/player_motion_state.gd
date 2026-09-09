@@ -82,6 +82,8 @@ func calculate_gravity(_delta: float):
 			velocity.y -= jump_gravity * _delta
 		else:
 			velocity.y -= fall_gravity * _delta
+	elif velocity.y < 0:
+		velocity.y = 0.0
 
 func replenish_sprint(delta: float):
 	sprint_remaining = min(sprint_remaining + delta, PLAYER_MOVEMENT_STATS.sprint_duration)
@@ -104,3 +106,7 @@ func animation_finished():
 	is_waiting_for_animation_signal = true
 	await animated_model.animation_tree.animation_finished
 	is_waiting_for_animation_signal = false
+
+func reset_velocity():
+	velocity = Vector3.ZERO
+	velocity_updated.emit(velocity)

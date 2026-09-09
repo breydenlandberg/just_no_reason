@@ -1,5 +1,4 @@
 # BUGS
-- Gravity when falling off (not jumping) seems borked
 - Unarmed AimWalk into Armed... need to reset that fov. More broadly, we should _exit() the Unarmed/ArmedStateMachine's current_state before stopping it and starting the other.
 - Check Armed Walk into Unarmed Walk back into Armed Walk... animation is fucked 
 - Falling while zoomed (unarmed) is bugged
