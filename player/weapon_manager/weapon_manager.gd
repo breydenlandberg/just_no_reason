@@ -72,7 +72,8 @@ func start_weapon_manager():
 	print()
 
 	if not weapons.is_empty():
-		current_weapon = weapons.front()
+		if not current_weapon or not weapons.has(current_weapon):
+			current_weapon = weapons.front()
 
 		set_weapon_wait_time(current_weapon)
 		set_current_weapon_model(current_weapon)
@@ -242,7 +243,6 @@ func add_weapon(weapon_pickup: WeaponPickup):
 		current_weapon = weapons.front()
 
 		set_weapon_wait_time(current_weapon)
-		set_current_weapon_model(current_weapon)
 
 func drop_weapon() -> int:
 	var weapon_to_load: WeaponPickup = current_weapon.weapon_to_drop.instantiate()
@@ -265,6 +265,7 @@ func drop_weapon() -> int:
 
 	if weapons.size() <= 0:
 		current_weapon = null
+		stop_timers()
 		set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
 	else:
 		change_weapon()
@@ -275,11 +276,12 @@ func drop_weapon() -> int:
 ## signal
 #
 func _on_weapon_timer_timeout():
-	set_weapon_manager_status(WeaponManagerStatus.AVAILABLE)
+	if current_weapon:
+		set_weapon_manager_status(WeaponManagerStatus.AVAILABLE)
 
-	if action_queue.is_valid():
-		action_queue.call_deferred()
-		action_queue = Callable()
+		if action_queue.is_valid():
+			action_queue.call_deferred()
+			action_queue = Callable()
 
 func _on_weapon_unequip_timer_timeout():
 	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)

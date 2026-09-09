@@ -5,7 +5,6 @@
 - With quasar weapon aim then reload then unaim... bugged
 - Switch between armed and unarmed while jumping / vertical velocity... lol
 - Big AssaultRifle ammo pickup seemingly works forever if not used up all in one go?
-- Current weapon not preserved between equip/unequip eg it will not keep the last weapon used
 - Sometimes play walking animation when in unarmed idle after switching from armed
 - Pickup weapon then shoot few bullets... drop... pickup again... full magazine with fewer overall ammo! I believe the ammo array is being sorted leading to the weapon incorrectly having a full magazine automatically...
 
