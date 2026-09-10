@@ -20,6 +20,6 @@ class_name Weapon extends Resource
 @export var weapon_shoot_animation: Animation
 @export var weapon_reload_animation: Animation
 
-@export var current_ammo: Ammo
-@export var reserve_ammo: Array[Ammo]
+var current_ammo: Ammo
+var reserve_ammo: Array[Ammo]
 @export var max_ammo_magazines := 2

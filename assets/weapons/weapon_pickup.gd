@@ -13,6 +13,13 @@ var pickup_ready := true
 
 ### fn
 
+# virtual
+#
+func _ready():
+	for i in range(internal_ammo.size()):
+		internal_ammo[i] = internal_ammo[i].duplicate()
+
+
 ## helper
 #
 func start_drop_cooldown(duration := 2.5):
