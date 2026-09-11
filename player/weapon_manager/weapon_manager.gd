@@ -198,6 +198,7 @@ func calculate_reload():
 		current_weapon.current_ammo = current_weapon.reserve_ammo.pop_front()
 
 	ammo_updated.emit(current_weapon)
+	$PickupArea.check_overlapping_pickups()
 
 	#print('AFTER:')
 	#print('current_ammo: ', current_weapon.current_ammo.ammo_count)
@@ -311,6 +312,8 @@ func _on_pickup_area_weapon_detected(weapon_pickup: WeaponPickup):
 	if not weapons.has(weapon_pickup.internal_weapon):
 		add_weapon(weapon_pickup)
 		weapon_pickup.queue_free()
+		# If we decide that there's ever a scenario in which, while we're inside an ammo pickup, we also enter a weapon pickup...
+		#$PickupArea.check_overlapping_pickups()
 	else:
 		var remaining: Array[Ammo] = add_ammo(weapon_pickup.internal_ammo)
 

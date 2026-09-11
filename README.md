@@ -3,20 +3,18 @@
 - Check Armed Walk into Unarmed Walk back into Armed Walk... animation is fucked 
 - Falling while zoomed (unarmed) is bugged
 - Switch between armed and unarmed while jumping / vertical velocity... lol
-- Big AssaultRifle ammo pickup seemingly works forever if not used up all in one go?
 - Sometimes play walking animation when in unarmed idle after switching from armed
-- Pickup assault rifle, drop assault rifle, pick up a second one - shooting it uses so much ammo! WTF!?
 
 # TODO
 - AimFall when aiming while in Jump, Fall, SprintJump, SprintFall
 - Interaction system should be proximity based (i.e. the closest interaction the player is facing), not a pure FIFO stack like it is now
 - https://www.youtube.com/watch?v=FvFx1R3p-aw
-- What happens if use Quasar ammo with Assault Rifle? Or vice versa and etc?... and enforce so that we can't do this...
+- We want to be able to pick up ammo always, not just when that weapon is equipped? This probably involves a fully-fledged inventory system already...
 
 # FYI
 - Character models are Quaternius Ultimate Modular Men
 - https://www.youtube.com/watch?v=1WJCHkHFRRA&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv and the following episodes for when you want to add another weapon and all related code
-- Make weapons' internal ammo UNIQUE at least, you don't need to bother with doing it for AmmoPickups... not 100% sure why... I think it's because we duplicate an AmmoPickup's internal ammo resource in code when taking
+- Although adding different weapons' ammo to another's is impossible in game currently (ie pickups), keep in mind that we don't have specific guards against it if we did indeed set it in editor, eg quasar having AssaultRifleAmmo
 
 
 
@@ -31,44 +29,35 @@ Otherwise for each action the player can do: grab, eat, talk,... you'll need to 
 
 
 
-# CONSIDER BELOW REFACTOR
-### 5. State Machine Async Safety
-**Files:** [state.gd](file:///home/brey/Godot/just_no_reason/state_machine/state.gd), [state_machine.gd](file:///home/brey/Godot/just_no_reason/state_machine/state_machine.gd), [idle.gd](file:///home/brey/Godot/just_no_reason/player/state_machine/states/unarmed/idle.gd), [walk.gd](file:///home/brey/Godot/just_no_reason/player/state_machine/states/unarmed/walk.gd), [sprint.gd](file:///home/brey/Godot/just_no_reason/player/state_machine/states/unarmed/sprint.gd)
+# STATE MACHINE & LANDING ANIMATION REFACTOR
 
-#### Proposed Implementation
+### The Problem: Ghost Coroutines in `_enter()`
+Currently, landing animations in `idle.gd`, `walk.gd`, and `sprint.gd` call `await animation_finished()` inside `_enter()`. 
+When the player immediately moves upon landing, the state machine transitions to `walk`, but the suspended `_enter()` in `idle` wakes up once the landing animation finishes and executes `super._enter()`, snapping the player back into the `idle` animation while walking.
 
-##### 1. Track State Activation in `state.gd`:
-```gdscript
-var is_active := false
-```
+**Current Workaround:** `handle_animation_state_changed_signal()` dynamically connects and disconnects signals on every `_enter()` and `_exit()`. It functions, but spreads fragile signal-juggling across 6 separate state scripts.
 
-##### 2. Manage Activation in `state_machine.gd`:
-```gdscript
-func transition(state, new_state_name):
-	# ...
-	if current_state:
-		current_state._exit()
-		current_state.is_active = false
-		current_state.previous_state = null
-	# ...
-	new_state.previous_state = current_state
-	new_state.is_active = true
-	new_state._enter()
-	current_state = new_state
-```
+---
 
-##### 3. Check State Validity on Resume (`idle.gd` / `walk.gd` / `sprint.gd`):
-```gdscript
-func _enter():
-	if previous_state_in(land_after_these_states):
-		_animation_state_changed.emit('land')
-		await animation_finished()
-		if not is_active:
-			return # Intercept thread and exit early
+### Solutions for Future Refactor
 
-	super._enter()
-```
-*Note: Deletes the hacky `handle_animation_state_changed_signal()` logic entirely. Checking `is_active` after an await prevents callbacks from firing in exited states (which can lead to visual bugs like the landing animation overriding subsequent states).*
+#### Option 1: AnimationTree `OneShot` Node (Recommended — Idiomatic Godot)
+Treat landing as an animation-layer concern rather than a state-machine concern:
+1. In `AnimationTree`, add a `OneShot` blend node for `land` over the locomotion blend tree.
+2. When touching down from `jump`/`fall`, fire `OneShot.ONE_SHOT_REQUEST_FIRE` on the animated model.
+3. Locomotion states (`idle`, `walk`, `sprint`) remain 100% synchronous with zero `await`.
+4. Completely deletes `handle_animation_state_changed_signal()`, `animation_finished()`, and all dynamic signal connects/disconnects.
+
+#### Option 2: Dedicated `Land` State (Best if landing freezes movement)
+If hard landings are meant to briefly lock player movement:
+* Make `Land` its own discrete state in the state machine (`Fall` -> `Land` -> `Idle`/`Walk`).
+* Input is ignored while in `Land`, keeping all state transitions synchronous without coroutines inside `_enter()`.
+
+#### Option 3: `is_active` Guard (Quick patch if keeping `await`)
+If keeping `await` in `_enter()`:
+1. Add `var is_active := false` to `state.gd`, set to `true` on entry and `false` on `_exit()`.
+2. After `await animation_finished()`, check: `if not is_active: return`.
+3. Much cleaner than the current connect/disconnect hack, but still leaves asynchronous coroutines inside a synchronous state machine.
 
 
 
