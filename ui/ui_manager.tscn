@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cdw02q0dx3ye2" path="res://ui/message_scroll_container.gd" id="2_i8kce"]
 [ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="2_jam4f"]
 [ext_resource type="Script" uid="uid://brb2u5vad2ytg" path="res://ui/ammo_ui.gd" id="4_kc3lm"]
+[ext_resource type="PackedScene" uid="uid://fr8ycnjjscxq" path="res://ui/ammo_instance_graphic.tscn" id="5_iquxp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i8kce"]
 font = ExtResource("2_jam4f")
@@ -67,7 +68,7 @@ custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="AmmoUI" type="Control" parent="." unique_id=1005528005]
+[node name="AmmoUI" type="Control" parent="." unique_id=1005528005 node_paths=PackedStringArray("current_ammo_label", "reserve_ammo_label", "ammo_graphic_container")]
 visible = false
 layout_mode = 3
 anchors_preset = 3
@@ -80,8 +81,13 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("4_kc3lm")
+current_ammo_label = NodePath("VBoxContainer/AmmoCountCenter/AmmoCount/CurrentAmmo")
+reserve_ammo_label = NodePath("VBoxContainer/AmmoCountCenter/AmmoCount/ReserveAmmo")
+ammo_graphic_container = NodePath("VBoxContainer/AmmoGraphicCenter/AmmoGraphic")
+ammo_graphic = ExtResource("5_iquxp")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AmmoUI" unique_id=1697879863]
+[node name="VBoxContainer" type="VBoxContainer" parent="AmmoUI" unique_id=576335703]
+custom_minimum_size = Vector2(600, 800)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -92,21 +98,36 @@ offset_left = -450.0
 offset_top = -175.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="AmmoGraphicCenter" type="CenterContainer" parent="AmmoUI/VBoxContainer" unique_id=49861336]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+
+[node name="AmmoGraphic" type="GridContainer" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter" unique_id=43384167]
+layout_mode = 2
+columns = 3
+
+[node name="AmmoCountCenter" type="CenterContainer" parent="AmmoUI/VBoxContainer" unique_id=598541269]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="AmmoCount" type="HBoxContainer" parent="AmmoUI/VBoxContainer/AmmoCountCenter" unique_id=1697879863]
+layout_mode = 2
 theme_override_constants/separation = 11
 
-[node name="CurrentAmmo" type="Label" parent="AmmoUI/HBoxContainer" unique_id=1213640776]
+[node name="CurrentAmmo" type="Label" parent="AmmoUI/VBoxContainer/AmmoCountCenter/AmmoCount" unique_id=1213640776]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 128
 text = "999"
 
-[node name="Slash" type="Label" parent="AmmoUI/HBoxContainer" unique_id=416581191]
+[node name="Slash" type="Label" parent="AmmoUI/VBoxContainer/AmmoCountCenter/AmmoCount" unique_id=416581191]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "/"
 
-[node name="ReserveAmmo" type="Label" parent="AmmoUI/HBoxContainer" unique_id=236305045]
+[node name="ReserveAmmo" type="Label" parent="AmmoUI/VBoxContainer/AmmoCountCenter/AmmoCount" unique_id=236305045]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.64705884, 0.16470589, 0.16470589, 1)
 theme_override_font_sizes/font_size = 64

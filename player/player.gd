@@ -43,6 +43,7 @@ func _ready():
 	weapon_manager.weapon_manager_started.connect(ui_ammo.start)
 	weapon_manager.weapon_manager_stopped.connect(ui_ammo.stop)
 	weapon_manager.ammo_updated.connect(ui_ammo.update_ammo_text)
+	weapon_manager.ammo_magazines_updated.connect(ui_ammo.update_ammo_graphic)
 
 func _unhandled_input(event: InputEvent):
 	# Handle interactions

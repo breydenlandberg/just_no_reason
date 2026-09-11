@@ -11,6 +11,7 @@ signal weapon_aim_exited(_weapon: Weapon)
 signal weapon_fired
 signal weapon_reload
 signal ammo_updated(_weapon: Weapon)
+signal ammo_magazines_updated(_weapon: Weapon)
 
 # enum
 enum WeaponManagerStatus {AVAILABLE, UNAVAILABLE}
@@ -98,6 +99,7 @@ func change_weapon():
 		weapon_changed.emit(current_weapon, current_weapon_model)
 		weapon_manager_unavailable_for(current_weapon.weapon_equip_animation.length)
 		ammo_updated.emit(current_weapon)
+		ammo_magazines_updated.emit(current_weapon)
 
 func shoot():
 	if has_current_ammo():
@@ -178,6 +180,7 @@ func calculate_reload():
 		current_weapon.current_ammo = current_weapon.reserve_ammo.pop_front()
 
 	ammo_updated.emit(current_weapon)
+	ammo_magazines_updated.emit(current_weapon)
 	$PickupArea.check_overlapping_pickups()
 
 	#print('AFTER:')
@@ -214,6 +217,7 @@ func add_ammo(ammo_arr: Array[Ammo]) -> Array[Ammo]:
 			remaining_ammo.append(ammo)
 
 	ammo_updated.emit(current_weapon)
+	ammo_magazines_updated.emit(current_weapon)
 	return remaining_ammo
 
 func add_weapon(weapon_pickup: WeaponPickup):

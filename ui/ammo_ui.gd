@@ -2,8 +2,10 @@ extends Control
 
 
 # var
-@onready var current_ammo_label: Label = $HBoxContainer/CurrentAmmo
-@onready var reserve_ammo_label: Label = $HBoxContainer/ReserveAmmo
+@export var current_ammo_label: Label
+@export var reserve_ammo_label: Label
+@export var ammo_graphic_container: GridContainer
+@export var ammo_graphic: PackedScene
 
 
 ### fn
@@ -12,6 +14,7 @@ extends Control
 #
 func start(weapon: Weapon, _weapon_model: WeaponModel):
 	update_ammo_text(weapon)
+	update_ammo_graphic(weapon)
 	show()
 
 func stop():
@@ -32,3 +35,17 @@ func update_ammo_text(weapon: Weapon):
 		reserve_ammo += ammo.ammo_count
 
 	reserve_ammo_label.text = str(reserve_ammo)
+
+func update_ammo_graphic(weapon: Weapon):
+	if not weapon:
+		return
+
+	for child in ammo_graphic_container.get_children():
+		#ammo_graphic_container.remove_child(child)
+		child.queue_free()
+
+	if weapon.current_ammo:
+		ammo_graphic_container.add_child(ammo_graphic.instantiate())
+
+	for ammo in weapon.reserve_ammo:
+		ammo_graphic_container.add_child(ammo_graphic.instantiate())
