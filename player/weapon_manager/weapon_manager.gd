@@ -134,7 +134,8 @@ func shoot():
 # you currently have is not full, you would not be able to reload to get a full magazine.
 func reload():
 	if has_reserve_ammo():
-		var has_largest_ammo: bool = current_weapon.reserve_ammo.front().ammo_count <= current_weapon.current_ammo.ammo_count
+		var current_count := current_weapon.current_ammo.ammo_count if current_weapon.current_ammo else 0
+		var has_largest_ammo: bool = current_weapon.reserve_ammo.front().ammo_count <= current_count
 
 		if not has_largest_ammo:
 			weapon_reload.emit()
@@ -176,6 +177,9 @@ func reduce_ammo(by := 1):
 	current_weapon.current_ammo.ammo_count -= by
 	ammo_updated.emit(current_weapon)
 
+func sort_reserve_ammo(weapon: Weapon):
+	weapon.reserve_ammo.sort_custom(func(a: Ammo, b: Ammo): return a.ammo_count > b.ammo_count)
+
 # See comment at reload()
 func calculate_reload():
 	# These print statements will illustrate how ammo is handled in this game
@@ -190,8 +194,8 @@ func calculate_reload():
 		current_weapon.reserve_ammo.push_back(current_weapon.current_ammo)
 
 	if has_reserve_ammo():
-		current_weapon.current_ammo = current_weapon.reserve_ammo.pop_front().duplicate(true)
-		current_weapon.reserve_ammo.sort_custom(func(a, b): return a.ammo_count > b.ammo_count)
+		sort_reserve_ammo(current_weapon)
+		current_weapon.current_ammo = current_weapon.reserve_ammo.pop_front()
 
 	ammo_updated.emit(current_weapon)
 
@@ -225,6 +229,7 @@ func add_ammo(ammo_arr: Array[Ammo]) -> Array[Ammo]:
 				if weapon.reserve_ammo.size() < weapon.max_ammo_magazines or weapon.max_ammo_magazines < 0:
 					weapon.reserve_ammo.push_back(ammo)
 					collected = true
+					sort_reserve_ammo(weapon)
 					break
 		if not collected:
 			remaining_ammo.append(ammo)
@@ -242,6 +247,7 @@ func add_weapon(weapon_pickup: WeaponPickup):
 		new_weapon.current_ammo = new_weapon.reserve_ammo.pop_front()
 	else:
 		new_weapon.current_ammo = null
+	sort_reserve_ammo(new_weapon)
 
 	weapons.push_back(new_weapon)
 
@@ -294,22 +300,21 @@ func _on_weapon_unequip_timer_timeout():
 	unequip_animation_finished.emit()
 
 func _on_pickup_area_ammo_detected(ammo_pickup: AmmoPickup):
-	var pickup: Array[Ammo] = add_ammo(ammo_pickup.internal_ammo.duplicate())
+	var remaining: Array[Ammo] = add_ammo(ammo_pickup.internal_ammo)
 
-	if pickup.is_empty():
+	if remaining.is_empty():
 		ammo_pickup.queue_free()
+	else:
+		ammo_pickup.internal_ammo = remaining
 
 func _on_pickup_area_weapon_detected(weapon_pickup: WeaponPickup):
 	if not weapons.has(weapon_pickup.internal_weapon):
 		add_weapon(weapon_pickup)
 		weapon_pickup.queue_free()
 	else:
-		var pickup: Array[Ammo]
+		var remaining: Array[Ammo] = add_ammo(weapon_pickup.internal_ammo)
 
-		pickup.append_array(weapon_pickup.internal_ammo)
-		pickup = add_ammo(pickup)
-
-		if pickup.is_empty():
+		if remaining.is_empty():
 			weapon_pickup.queue_free()
 		else:
-			weapon_pickup.internal_ammo = pickup
+			weapon_pickup.internal_ammo = remaining
