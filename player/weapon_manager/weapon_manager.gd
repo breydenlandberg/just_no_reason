@@ -20,10 +20,6 @@ var current_status: WeaponManagerStatus = WeaponManagerStatus.UNAVAILABLE
 var current_weapon: Weapon
 var current_weapon_model: WeaponModel
 var action_queue: Callable
-var equip_weapon_wait_time := 0.0
-var unequip_weapon_wait_time := 0.0
-var shoot_weapon_wait_time := 0.0
-var reload_weapon_wait_time := 0.0
 var weapons_node: Node3D
 
 static var combat_status: StringName = 'combat'
@@ -75,18 +71,17 @@ func start_weapon_manager():
 		if not current_weapon or not weapons.has(current_weapon):
 			current_weapon = weapons.front()
 
-		set_weapon_wait_time(current_weapon)
 		set_current_weapon_model(current_weapon)
 
 		weapon_manager_started.emit(current_weapon, current_weapon_model)
-		equip_or_change_weapon()
+		weapon_manager_unavailable_for(current_weapon.weapon_equip_animation.length)
 
 func stop_weapon_manager():
 	print('Stopping weapon manager')
 	print()
 
 	if current_weapon:
-		unequip_weapon()
+		weapon_manager_unavailable_for(current_weapon.weapon_unequip_animation.length, weapon_unequip_timer)
 
 	weapon_manager_stopped.emit()
 
@@ -98,16 +93,15 @@ func change_weapon():
 	if not weapons[weapon_i] == current_weapon:
 		current_weapon = weapons[weapon_i]
 
-		set_weapon_wait_time(current_weapon)
 		set_current_weapon_model(current_weapon)
 
 		weapon_changed.emit(current_weapon, current_weapon_model)
+		weapon_manager_unavailable_for(current_weapon.weapon_equip_animation.length)
 		ammo_updated.emit(current_weapon)
-		equip_or_change_weapon()
 
 func shoot():
 	if has_current_ammo():
-		weapon_manager_unavailable_for(shoot_weapon_wait_time, weapon_timer, check_auto_fire)
+		weapon_manager_unavailable_for(current_weapon.weapon_shoot_animation.length, weapon_timer, check_auto_fire)
 		weapon_fired.emit()
 
 		var projectile: Projectile = get_projectile()
@@ -139,19 +133,7 @@ func reload():
 
 		if not has_largest_ammo:
 			weapon_reload.emit()
-			weapon_manager_unavailable_for(reload_weapon_wait_time, weapon_timer, calculate_reload)
-
-func set_weapon_wait_time(weapon: Weapon):
-	equip_weapon_wait_time = weapon.weapon_equip_animation.length
-	unequip_weapon_wait_time = weapon.weapon_unequip_animation.length
-	shoot_weapon_wait_time = weapon.weapon_shoot_animation.length
-	reload_weapon_wait_time = weapon.weapon_reload_animation.length
-
-func equip_or_change_weapon():
-	weapon_manager_unavailable_for(equip_weapon_wait_time)
-
-func unequip_weapon():
-	weapon_manager_unavailable_for(unequip_weapon_wait_time, weapon_unequip_timer)
+			weapon_manager_unavailable_for(current_weapon.weapon_reload_animation.length, weapon_timer, calculate_reload)
 
 func weapon_manager_unavailable_for(wait_time: float, timer := weapon_timer, action := Callable()):
 	stop_timers()
@@ -254,7 +236,6 @@ func add_weapon(weapon_pickup: WeaponPickup):
 
 	if not current_weapon:
 		current_weapon = weapons.front()
-		set_weapon_wait_time(current_weapon)
 
 func drop_weapon() -> int:
 	var weapon_to_load: WeaponPickup = current_weapon.weapon_to_drop.instantiate()
