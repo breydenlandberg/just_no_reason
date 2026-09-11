@@ -104,7 +104,7 @@ func shoot():
 		weapon_manager_unavailable_for(current_weapon.weapon_shoot_animation.length, weapon_timer, check_auto_fire)
 		weapon_fired.emit()
 
-		var projectile: Projectile = get_projectile()
+		var projectile: Projectile = current_weapon.current_ammo.projectile.instantiate()
 		add_child(projectile)
 		projectile._set_weapon_projectile(current_weapon, current_weapon_model)
 
@@ -137,7 +137,7 @@ func reload():
 
 func weapon_manager_unavailable_for(wait_time: float, timer := weapon_timer, action := Callable()):
 	stop_timers()
-	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
+	current_status = WeaponManagerStatus.UNAVAILABLE
 	timer.start(wait_time)
 	action_queue = action
 
@@ -145,9 +145,6 @@ func weapon_manager_unavailable_for(wait_time: float, timer := weapon_timer, act
 func stop_timers():
 	weapon_timer.stop()
 	weapon_unequip_timer.stop()
-
-func set_weapon_manager_status(status: WeaponManagerStatus):
-	current_status = status
 
 func has_current_ammo():
 	return current_weapon.current_ammo and current_weapon.current_ammo.ammo_count > 0
@@ -160,6 +157,7 @@ func reduce_ammo(by := 1):
 	ammo_updated.emit(current_weapon)
 
 func sort_reserve_ammo(weapon: Weapon):
+	# Largest magazine first, smallest magazine last
 	weapon.reserve_ammo.sort_custom(func(a: Ammo, b: Ammo): return a.ammo_count > b.ammo_count)
 
 # See comment at reload()
@@ -193,10 +191,6 @@ func set_current_weapon_model(weapon: Weapon):
 	var new_weapon_model: WeaponModel = weapon.weapon_model.instantiate()
 	current_weapon_model = new_weapon_model
 
-func get_projectile() -> Projectile:
-	var projectile: Projectile = current_weapon.current_ammo.projectile.instantiate()
-	return projectile
-
 func check_auto_fire():
 	if current_weapon.auto_fire and Input.is_action_pressed(InputManager.shoot):
 		shoot()
@@ -205,6 +199,8 @@ func check_auto_fire():
 func add_ammo(ammo_arr: Array[Ammo]) -> Array[Ammo]:
 	var remaining_ammo: Array[Ammo] = []
 
+	# Largest magazine first, smallest magazine last
+	ammo_arr.sort_custom(func(a: Ammo, b: Ammo): return a.ammo_count > b.ammo_count)
 	for ammo in ammo_arr:
 		var collected := false
 		for weapon in weapons:
@@ -260,7 +256,7 @@ func drop_weapon() -> int:
 	if weapons.size() <= 0:
 		current_weapon = null
 		stop_timers()
-		set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
+		current_status = WeaponManagerStatus.UNAVAILABLE
 	else:
 		change_weapon()
 
@@ -271,14 +267,14 @@ func drop_weapon() -> int:
 #
 func _on_weapon_timer_timeout():
 	if current_weapon:
-		set_weapon_manager_status(WeaponManagerStatus.AVAILABLE)
+		current_status = WeaponManagerStatus.AVAILABLE
 
 		if action_queue.is_valid():
 			action_queue.call_deferred()
 			action_queue = Callable()
 
 func _on_weapon_unequip_timer_timeout():
-	set_weapon_manager_status(WeaponManagerStatus.UNAVAILABLE)
+	current_status = WeaponManagerStatus.UNAVAILABLE
 	unequip_animation_finished.emit()
 
 func _on_pickup_area_ammo_detected(ammo_pickup: AmmoPickup):

@@ -24,5 +24,5 @@ weapon_equip_animation = ExtResource("3_1h7hx")
 weapon_unequip_animation = ExtResource("8_m4r0f")
 weapon_shoot_animation = ExtResource("7_soi1e")
 weapon_reload_animation = ExtResource("6_km2n3")
-max_ammo_magazines = 6
+max_ammo_magazines = 4
 metadata/_custom_type_script = "uid://0puiy7r7kaiu"
