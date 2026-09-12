@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_imdtt")
 ammo_type = "quasar"
-ammo_count = 3
+max_count = 3
 projectile = ExtResource("1_hen7c")
+count = 3
 metadata/_custom_type_script = "uid://dpu1mx01ww7be"

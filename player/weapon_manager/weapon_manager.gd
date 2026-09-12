@@ -11,7 +11,6 @@ signal weapon_aim_exited(_weapon: Weapon)
 signal weapon_fired
 signal weapon_reload
 signal ammo_updated(_weapon: Weapon)
-signal ammo_magazines_updated(_weapon: Weapon)
 
 # enum
 enum WeaponManagerStatus {AVAILABLE, UNAVAILABLE}
@@ -99,7 +98,6 @@ func change_weapon():
 		weapon_changed.emit(current_weapon, current_weapon_model)
 		weapon_manager_unavailable_for(current_weapon.weapon_equip_animation.length)
 		ammo_updated.emit(current_weapon)
-		ammo_magazines_updated.emit(current_weapon)
 
 func shoot():
 	if has_current_ammo():
@@ -130,8 +128,8 @@ func shoot():
 # you currently have is not full, you would not be able to reload to get a full magazine.
 func reload():
 	if has_reserve_ammo():
-		var current_count := current_weapon.current_ammo.ammo_count if current_weapon.current_ammo else 0
-		var has_largest_ammo: bool = current_weapon.reserve_ammo.front().ammo_count <= current_count
+		var current_count := current_weapon.current_ammo.count if current_weapon.current_ammo else 0
+		var has_largest_ammo: bool = current_weapon.reserve_ammo.front().count <= current_count
 
 		if not has_largest_ammo:
 			weapon_reload.emit()
@@ -149,27 +147,27 @@ func stop_timers():
 	weapon_unequip_timer.stop()
 
 func has_current_ammo():
-	return current_weapon.current_ammo and current_weapon.current_ammo.ammo_count > 0
+	return current_weapon.current_ammo and current_weapon.current_ammo.count > 0
 
 func has_reserve_ammo():
 	return current_weapon.reserve_ammo and current_weapon.reserve_ammo.size() > 0
 
 func reduce_ammo(by := 1):
-	current_weapon.current_ammo.ammo_count -= by
+	current_weapon.current_ammo.count -= by
 	ammo_updated.emit(current_weapon)
 
 func sort_reserve_ammo(weapon: Weapon):
 	# Largest magazine first, smallest magazine last
-	weapon.reserve_ammo.sort_custom(func(a: Ammo, b: Ammo): return a.ammo_count > b.ammo_count)
+	weapon.reserve_ammo.sort_custom(func(a: Ammo, b: Ammo): return a.count > b.count)
 
 # See comment at reload()
 func calculate_reload():
 	# These print statements will illustrate how ammo is handled in this game
 	#print('BEFORE:')
-	#print('current_ammo: ', current_weapon.current_ammo.ammo_count)
+	#print('current_ammo: ', current_weapon.current_ammo.count)
 	#print('reserve_ammo:')
 	#for ammo in current_weapon.reserve_ammo:
-		#print(ammo.ammo_count)
+		#print(ammo.count)
 	#print()
 
 	if has_current_ammo():
@@ -180,14 +178,13 @@ func calculate_reload():
 		current_weapon.current_ammo = current_weapon.reserve_ammo.pop_front()
 
 	ammo_updated.emit(current_weapon)
-	ammo_magazines_updated.emit(current_weapon)
 	$PickupArea.check_overlapping_pickups()
 
 	#print('AFTER:')
-	#print('current_ammo: ', current_weapon.current_ammo.ammo_count)
+	#print('current_ammo: ', current_weapon.current_ammo.count)
 	#print('reserve_ammo:')
 	#for ammo in current_weapon.reserve_ammo:
-		#print(ammo.ammo_count)
+		#print(ammo.count)
 	#print()
 
 func set_current_weapon_model(weapon: Weapon):
@@ -203,7 +200,7 @@ func add_ammo(ammo_arr: Array[Ammo]) -> Array[Ammo]:
 	var remaining_ammo: Array[Ammo] = []
 
 	# Largest magazine first, smallest magazine last
-	ammo_arr.sort_custom(func(a: Ammo, b: Ammo): return a.ammo_count > b.ammo_count)
+	ammo_arr.sort_custom(func(a: Ammo, b: Ammo): return a.count > b.count)
 	for ammo in ammo_arr:
 		var collected := false
 		for weapon in weapons:
@@ -217,7 +214,6 @@ func add_ammo(ammo_arr: Array[Ammo]) -> Array[Ammo]:
 			remaining_ammo.append(ammo)
 
 	ammo_updated.emit(current_weapon)
-	ammo_magazines_updated.emit(current_weapon)
 	return remaining_ammo
 
 func add_weapon(weapon_pickup: WeaponPickup):

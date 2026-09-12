@@ -69,7 +69,6 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="AmmoUI" type="Control" parent="." unique_id=1005528005 node_paths=PackedStringArray("current_ammo_label", "reserve_ammo_label", "ammo_graphic_container")]
-visible = false
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -106,6 +105,24 @@ layout_mode = 2
 [node name="AmmoGraphic" type="GridContainer" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter" unique_id=43384167]
 layout_mode = 2
 columns = 3
+
+[node name="AmmoInstanceGraphic" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=389276839 instance=ExtResource("5_iquxp")]
+layout_mode = 2
+
+[node name="AmmoInstanceGraphic2" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=425370985 instance=ExtResource("5_iquxp")]
+layout_mode = 2
+
+[node name="AmmoInstanceGraphic3" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=1493201248 instance=ExtResource("5_iquxp")]
+layout_mode = 2
+
+[node name="AmmoInstanceGraphic4" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=481242539 instance=ExtResource("5_iquxp")]
+layout_mode = 2
+
+[node name="AmmoInstanceGraphic5" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=2146709692 instance=ExtResource("5_iquxp")]
+layout_mode = 2
+
+[node name="AmmoInstanceGraphic6" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=1814609168 instance=ExtResource("5_iquxp")]
+layout_mode = 2
 
 [node name="AmmoCountCenter" type="CenterContainer" parent="AmmoUI/VBoxContainer" unique_id=598541269]
 custom_minimum_size = Vector2(0, 200)
