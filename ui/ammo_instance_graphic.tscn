@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://fr8ycnjjscxq"]
-
-[ext_resource type="Script" uid="uid://bpfw87m4vktrp" path="res://ui/ammo_instance_graphic.gd" id="1_xdye6"]
-
-[node name="AmmoInstanceGraphic" type="ProgressBar" unique_id=1192230919]
-offset_right = 4.0
-offset_bottom = 179.0
-theme_override_font_sizes/font_size = 128
-script = ExtResource("1_xdye6")

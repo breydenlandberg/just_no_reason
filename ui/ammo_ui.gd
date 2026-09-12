@@ -70,4 +70,6 @@ func update_ammo_graphic(weapon: Weapon):
 			children.append(bar)
 
 	for i in range(magazines.size()):
-		children[i].setup(magazines[i].count, magazines[i].max_count)
+		# Always highlight the current ammo
+		var is_current := magazines[i] == weapon.current_ammo
+		children[i].setup(magazines[i].count, magazines[i].max_count, is_current)

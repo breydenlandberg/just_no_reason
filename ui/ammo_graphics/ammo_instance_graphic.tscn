@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://fr8ycnjjscxq"]
+
+[ext_resource type="StyleBox" uid="uid://d0qhhb3do70iw" path="res://ui/ammo_graphics/ammo_instance_graphic_bg.tres" id="1_auux4"]
+[ext_resource type="StyleBox" uid="uid://cicarb8sm3avj" path="res://ui/ammo_graphics/ammo_instance_graphic_current_fill.tres" id="2_2cms7"]
+[ext_resource type="StyleBox" uid="uid://cdcvsqmjrjgug" path="res://ui/ammo_graphics/ammo_instance_graphic_reserve_fill.tres" id="2_orb3v"]
+[ext_resource type="Script" uid="uid://bpfw87m4vktrp" path="res://ui/ammo_graphics/ammo_instance_graphic.gd" id="3_orb3v"]
+
+[node name="AmmoInstanceGraphic" type="ProgressBar" unique_id=1192230919]
+custom_minimum_size = Vector2(200, 400)
+offset_right = 4.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 128
+theme_override_styles/background = ExtResource("1_auux4")
+theme_override_styles/fill = ExtResource("2_orb3v")
+value = 75.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("3_orb3v")
+current_ammo_style = ExtResource("2_2cms7")
+reserve_ammo_style = ExtResource("2_orb3v")

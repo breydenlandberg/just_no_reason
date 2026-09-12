@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cdw02q0dx3ye2" path="res://ui/message_scroll_container.gd" id="2_i8kce"]
 [ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="2_jam4f"]
 [ext_resource type="Script" uid="uid://brb2u5vad2ytg" path="res://ui/ammo_ui.gd" id="4_kc3lm"]
-[ext_resource type="PackedScene" uid="uid://fr8ycnjjscxq" path="res://ui/ammo_instance_graphic.tscn" id="5_iquxp"]
+[ext_resource type="PackedScene" uid="uid://fr8ycnjjscxq" path="res://ui/ammo_graphics/ammo_instance_graphic.tscn" id="5_iquxp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i8kce"]
 font = ExtResource("2_jam4f")
