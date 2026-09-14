@@ -1,10 +1,8 @@
 # BUGS
-- Unarmed AimWalk into Armed... need to reset that fov. More broadly, we should _exit() the Unarmed/ArmedStateMachine's current_state before stopping it and starting the other.
 - Falling while zoomed (unarmed) is bugged
-- Switch between armed and unarmed while jumping / vertical velocity... lol
-- Sometimes play walking animation when in unarmed idle after switching from armed
 
 # TODO
+- Always do direct State switches when possible. Eg not Idle into Walk into Sprint, but always Idle directly into Sprint. Ensure this is the case for all possible paths - YES I KNOW ABOUT COMBINATORIAL EXPLOSION!
 - Unify player assets and root level assets folders
 - AimFall when aiming while in Jump, Fall, SprintJump, SprintFall
 - Interaction system should be proximity based (i.e. the closest interaction the player is facing), not a pure FIFO stack like it is now

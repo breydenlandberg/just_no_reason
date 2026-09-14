@@ -6,6 +6,7 @@ class_name PlayerCombatTransitionState extends State
 signal _combat_status_changed(_status: StringName)
 
 # var
+var entry_substate: StringName = &''
 @export var state_machine: StateMachine
 @export var weapon_manager: WeaponManager
 

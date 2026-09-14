@@ -32,7 +32,7 @@ func handle_process(delta: float):
 		current_state._state_process(delta)
 
 # Used in _ready
-func _start():
+func _start(target_state_name: StringName = &''):
 	print('╔= Starting ', self)
 
 	# Set up states
@@ -42,11 +42,18 @@ func _start():
 		states[child.name] = child
 		child._transition.connect(transition)
 
-	if initial_state:
-		print('╚= Entering initial_state: ', initial_state)
+	var entry_state: State = states.get(target_state_name) if target_state_name != &'' else null
+	if not entry_state:
+		print('╠= entry_state set to initial_state: ', initial_state)
+		entry_state = initial_state
+	else:
+		print('╠= Preserving motion state from previous state machine, setting entry_state to: ', entry_state)
+
+	if entry_state:
+		print('╚= Entering entry_state: ', entry_state)
 		print()
-		initial_state._enter()
-		current_state = initial_state
+		entry_state._enter()
+		current_state = entry_state
 
 func _stop():
 	print('╔= Stopping ', self)

@@ -14,7 +14,7 @@ func _physics_process(_delta):
 func _process(_delta):
 	handle_process(_delta)
 
-func _start():
+func _start(target_state_name: StringName = &''):
 	# Connect "wires"...
 	for child: PlayerMotionState in get_children():
 		if not child._animation_state_changed.is_connected(animated_model.on_state_machine_animation_state_changed):
@@ -23,7 +23,7 @@ func _start():
 			child._rotate_model.connect(animated_model.on_input_direction_changed)
 
 	# THEN start machine
-	super._start()
+	super._start(target_state_name)
 
 func _stop():
 	# _stop() in state_machine.gd will ALWAYS _exit() the current_state, THEREFORE...

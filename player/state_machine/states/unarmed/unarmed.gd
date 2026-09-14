@@ -9,7 +9,8 @@ func _enter():
 	process_mode = Node.PROCESS_MODE_INHERIT
 	if previous_state:
 		_combat_status_changed.emit(weapon_manager.non_combat_status)
-	state_machine._start()
+	state_machine._start(entry_substate)
+	entry_substate = &''
 
 func _exit():
 	process_mode = Node.PROCESS_MODE_DISABLED
