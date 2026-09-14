@@ -19,7 +19,7 @@ var input_direction: Vector2
 ## helper
 #
 func on_state_machine_animation_state_changed(state: String): #weapon_name: String (StringName? How about on state?)
-	var transition_request: String
+	#var transition_request: String
 
 	match current_combat_status:
 		CombatStatus.NONCOMBAT:

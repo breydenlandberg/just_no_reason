@@ -44,7 +44,10 @@ func _state_physics_process(_delta: float):
 		if Input.is_action_pressed(InputManager.sprint) and sprint_remaining > PLAYER_MOVEMENT_STATS.minimum_sprint_threshold:
 			_transition.emit(self, ArmedStates.sprint)
 		else:
-			_transition.emit(self, ArmedStates.walk)
+			if Input.is_action_pressed(InputManager.aim):
+				_transition.emit(self, ArmedStates.aim_walk)
+			else:
+				_transition.emit(self, ArmedStates.walk)
 
 	# Quick and dirty fix to stop the player from entering fall state on game start,
 	# I THINK because is_on_floor() below needs gravity,
