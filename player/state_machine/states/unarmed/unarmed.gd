@@ -7,9 +7,9 @@ extends PlayerCombatTransitionState
 #
 func _enter():
 	process_mode = Node.PROCESS_MODE_INHERIT
-	state_machine._start()
 	if previous_state:
 		_combat_status_changed.emit(weapon_manager.non_combat_status)
+	state_machine._start()
 
 func _exit():
 	process_mode = Node.PROCESS_MODE_DISABLED

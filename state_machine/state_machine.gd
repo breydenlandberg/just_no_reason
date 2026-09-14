@@ -51,14 +51,21 @@ func _start():
 func _stop():
 	print('╔= Stopping ', self)
 
+	print('╠= Exit Current State: ', current_state)
+	if current_state:
+		current_state._exit()
+		current_state = null
+	print('╠= Current State set to ', current_state)
+
 	for child: State in get_children():
 		child.animated_model = null
 		states[child.name] = null
-		child._transition.disconnect(transition)
+		if child._transition.is_connected(transition):
+			child._transition.disconnect(transition)
 
-		print('╠= Clear State: ', child, ' for ', self)
+		print('╠= Clear State: ', child)
 
-	print('╚= ', self, ' States have all their signals disconnected and vars emptied. All packed up!')
+	print('╚= ', self, ' has exited its Current State, and all child States have their signals disconnected and vars emptied. All packed up!')
 	print()
 
 func transition(state, new_state_name):
