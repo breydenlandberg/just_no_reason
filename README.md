@@ -1,6 +1,7 @@
 # BUGS
 
 # TODO
+- MarginContainer inside AmmoUI (to give margin/padding between the Ammo Graphics, etc)?
 - Unify player assets and root level assets folders
 - Interaction system should be proximity based (i.e. the closest interaction the player is facing), not a pure FIFO stack like it is now
 - https://www.youtube.com/watch?v=FvFx1R3p-aw
