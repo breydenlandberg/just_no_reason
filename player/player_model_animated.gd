@@ -107,6 +107,7 @@ func _on_weapon_unequip_animation_finished():
 	clear_weapon_from_hand()
 
 func _on_weapon_aim_entered(_weapon: Weapon):
+	print('Stop emitting weapon_aim_entered signal!')
 	aim_weapon_idle_animation(_weapon)
 
 func _on_weapon_aim_exited(_weapon: Weapon):

@@ -47,7 +47,10 @@ func _unhandled_input(event: InputEvent):
 
 func _process(_delta: float):
 	if current_status == WeaponManagerStatus.AVAILABLE:
-		if Input.is_action_just_pressed(InputManager.aim):
+		if Input.is_action_pressed(InputManager.aim):
+			# is_action_pressed here instead of is_action_just_pressed allows us to detect
+			# when we are aiming in Unarmed straight into aiming while Armed...
+			# but this whole part needs to be refactored anyway, it fucking sucks
 			weapon_aim_entered.emit(current_weapon)
 
 		if Input.is_action_just_released(InputManager.aim):

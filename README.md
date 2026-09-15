@@ -1,5 +1,5 @@
 # BUGS
-- Falling while zoomed (unarmed) is bugged
+- 
 
 # TODO
 - Always do direct State switches when possible. Eg not Idle into Walk into Sprint, but always Idle directly into Sprint. Ensure this is the case for all possible paths - YES I KNOW ABOUT COMBINATORIAL EXPLOSION!
