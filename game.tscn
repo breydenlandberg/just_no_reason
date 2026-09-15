@@ -1,31 +1,31 @@
 [gd_scene format=3 uid="uid://d28k7ytseere4"]
 
-[ext_resource type="Texture2D" uid="uid://bq1gb0px7oo1h" path="res://assets/textures/Day0.exr" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://772t21cg58vo" path="res://ui/ui_manager.tscn" id="1_5vw27"]
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://player/player.tscn" id="1_ig7tw"]
-[ext_resource type="Material" uid="uid://fj84wfp0ra3m" path="res://assets/materials/scaffolding.tres" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dtvjugxmlsgif" path="res://debug/debug.tscn" id="3_d13ii"]
-[ext_resource type="PackedScene" uid="uid://bdaq1v7cg2fay" path="res://killzone/killzone.tscn" id="3_efxa6"]
-[ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="4_7mycd"]
-[ext_resource type="Texture2D" uid="uid://bh2tpishmathl" path="res://assets/textures/stone/shine_stone.png" id="5_272bh"]
-[ext_resource type="PackedScene" uid="uid://cqin7vy65rmcv" path="res://npc/godot_plush/assets/godot_plush_model_inherited.tscn" id="7_272bh"]
-[ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="9_kek77"]
-[ext_resource type="PackedScene" uid="uid://f850uti4ula1" path="res://interact/interact.tscn" id="10_4c57u"]
-[ext_resource type="PackedScene" uid="uid://cqiofva7y4sn4" path="res://enemies/grunt/grunt.tscn" id="12_dg77c"]
-[ext_resource type="PackedScene" uid="uid://dx1jttysmunls" path="res://enemies/sphere/sphere.tscn" id="13_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://dj87mkxe00tgx" path="res://assets/weapons/quasar/quasar_ammo_pickup.tscn" id="14_vivmo"]
-[ext_resource type="PackedScene" uid="uid://bhg0ayga7vc5b" path="res://assets/weapons/assault_rifle/assault_rifle_ammo.tscn" id="15_2cqfq"]
-[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="16_yaehf"]
-[ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="17_074og"]
-[ext_resource type="PackedScene" uid="uid://cdpkq6xencde6" path="res://assets/weapons/assault_rifle/assault_rifle_pickup.tscn" id="18_cegan"]
-[ext_resource type="PackedScene" uid="uid://dyyuefcrdj2re" path="res://assets/weapons/quasar/quasar_pickup.tscn" id="19_82xsv"]
-[ext_resource type="Resource" uid="uid://dcgl81rrqyhkc" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle.tres" id="19_ryguw"]
-[ext_resource type="Resource" uid="uid://cyl7eow3la5ai" path="res://player/weapon_manager/weapons/quasar/quasar.tres" id="21_d13ii"]
-[ext_resource type="Resource" uid="uid://bnrnpy6sxgw26" path="res://player/weapon_manager/ammo/resources/quasar_ammo.tres" id="22_1u8w0"]
+[ext_resource type="PackedScene" uid="uid://772t21cg58vo" path="res://ui/ui_manager.tscn" id="1_qhcbd"]
+[ext_resource type="Texture2D" uid="uid://bq1gb0px7oo1h" path="res://assets/textures/Day0.exr" id="2_f1jbl"]
+[ext_resource type="PackedScene" uid="uid://dtvjugxmlsgif" path="res://debug/debug.tscn" id="3_vaj68"]
+[ext_resource type="Material" uid="uid://fj84wfp0ra3m" path="res://assets/materials/scaffolding.tres" id="4_i2p71"]
+[ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="5_xa8c5"]
+[ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="6_5b14r"]
+[ext_resource type="Texture2D" uid="uid://bh2tpishmathl" path="res://assets/textures/stone/shine_stone.png" id="7_bnpwn"]
+[ext_resource type="PackedScene" uid="uid://bdaq1v7cg2fay" path="res://killzone/killzone.tscn" id="8_36jdj"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://player/player.tscn" id="9_xfvwf"]
+[ext_resource type="PackedScene" uid="uid://cqin7vy65rmcv" path="res://npc/godot_plush/assets/godot_plush_model_inherited.tscn" id="10_dhpj7"]
+[ext_resource type="PackedScene" uid="uid://f850uti4ula1" path="res://interact/interact.tscn" id="11_7knny"]
+[ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="12_082n1"]
+[ext_resource type="PackedScene" uid="uid://cqiofva7y4sn4" path="res://enemies/grunt/grunt.tscn" id="13_xex6t"]
+[ext_resource type="PackedScene" uid="uid://dx1jttysmunls" path="res://enemies/sphere/sphere.tscn" id="14_aa0lp"]
+[ext_resource type="PackedScene" uid="uid://dj87mkxe00tgx" path="res://assets/weapons/quasar/quasar_ammo_pickup.tscn" id="15_iu0sx"]
+[ext_resource type="PackedScene" uid="uid://bhg0ayga7vc5b" path="res://assets/weapons/assault_rifle/assault_rifle_ammo.tscn" id="16_4v2jo"]
+[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="17_l1i01"]
+[ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="18_r62pu"]
+[ext_resource type="PackedScene" uid="uid://cdpkq6xencde6" path="res://assets/weapons/assault_rifle/assault_rifle_pickup.tscn" id="19_klri6"]
+[ext_resource type="Resource" uid="uid://dcgl81rrqyhkc" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle.tres" id="20_eu6ph"]
+[ext_resource type="PackedScene" uid="uid://dyyuefcrdj2re" path="res://assets/weapons/quasar/quasar_pickup.tscn" id="21_edr7y"]
+[ext_resource type="Resource" uid="uid://cyl7eow3la5ai" path="res://player/weapon_manager/weapons/quasar/quasar.tres" id="22_kq12w"]
+[ext_resource type="Resource" uid="uid://bnrnpy6sxgw26" path="res://player/weapon_manager/ammo/resources/quasar_ammo.tres" id="23_t46w6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
-panorama = ExtResource("1_0xm2m")
+panorama = ExtResource("2_f1jbl")
 energy_multiplier = 0.25
 
 [sub_resource type="Sky" id="Sky_1bvp3"]
@@ -148,22 +148,24 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
-albedo_texture = ExtResource("3_1bvp3")
+albedo_texture = ExtResource("5_xa8c5")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
-albedo_texture = ExtResource("4_7mycd")
+albedo_texture = ExtResource("6_5b14r")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
-albedo_texture = ExtResource("5_272bh")
+albedo_texture = ExtResource("7_bnpwn")
 uv1_triplanar = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_efxa6"]
 
-[node name="Main" type="Node3D" unique_id=55940079]
+[node name="Game" type="Node3D" unique_id=55940079]
 
-[node name="UIManager" parent="." unique_id=844932442 instance=ExtResource("1_5vw27")]
+[node name="UIManager" parent="." unique_id=844932442 instance=ExtResource("1_qhcbd")]
+
+[node name="LevelManager" type="Node3D" parent="." unique_id=461055576]
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=544927907]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 100, 0)
@@ -173,13 +175,13 @@ directional_shadow_max_distance = 512.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1332608087]
 environment = SubResource("Environment_lquwl")
 
-[node name="Debug" parent="." unique_id=207610114 instance=ExtResource("3_d13ii")]
+[node name="Debug" parent="." unique_id=207610114 instance=ExtResource("3_vaj68")]
 
 [node name="Scaffolding" type="Node3D" parent="." unique_id=381982267]
 
 [node name="CollisionScaffolding" type="CSGCombiner3D" parent="Scaffolding" unique_id=459411100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-material_override = ExtResource("2_h2yge")
+material_override = ExtResource("4_i2p71")
 use_collision = true
 
 [node name="Ground" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding" unique_id=159776753]
@@ -317,24 +319,24 @@ material_override = SubResource("StandardMaterial3D_kek77")
 use_collision = true
 size = Vector3(3, 5, 9)
 
-[node name="Killzone" parent="." unique_id=35288440 node_paths=PackedStringArray("player") instance=ExtResource("3_efxa6")]
+[node name="Killzone" parent="." unique_id=35288440 node_paths=PackedStringArray("player") instance=ExtResource("8_36jdj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 player = NodePath("../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=169422717]
 shape = SubResource("WorldBoundaryShape3D_efxa6")
 
-[node name="Player" parent="." unique_id=685403359 node_paths=PackedStringArray("ui_manager", "weapons_node") instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." unique_id=685403359 node_paths=PackedStringArray("ui_manager", "weapons_node") instance=ExtResource("9_xfvwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 ui_manager = NodePath("../UIManager")
 weapons_node = NodePath("../Pickups/Weapons")
 
 [node name="NPC" type="Node3D" parent="." unique_id=819740215]
 
-[node name="MrGodot" parent="NPC" unique_id=59045274 instance=ExtResource("7_272bh")]
+[node name="MrGodot" parent="NPC" unique_id=59045274 instance=ExtResource("10_dhpj7")]
 transform = Transform3D(-0.74314487, 0, 0.6691307, 0, 1, 0, -0.6691307, 0, -0.74314487, 10.9, 10.2, 4.7999997)
 
-[node name="Interact" parent="NPC/MrGodot" unique_id=146110054 instance=ExtResource("10_4c57u")]
+[node name="Interact" parent="NPC/MrGodot" unique_id=146110054 instance=ExtResource("11_7knny")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.6999998, 0)
 duration = 10
 id = "mr_godot"
@@ -346,14 +348,14 @@ transform = Transform3D(0.2, 0, 0, 0, 0.19999999, 0, 0, 0, 0.2, 0, 0.29999995, 0
 layers = 2
 billboard = 1
 no_depth_test = true
-font = ExtResource("9_kek77")
+font = ExtResource("12_082n1")
 font_size = 96
 outline_size = 0
 
-[node name="MrGodot2" parent="NPC" unique_id=1646889940 instance=ExtResource("7_272bh")]
+[node name="MrGodot2" parent="NPC" unique_id=1646889940 instance=ExtResource("10_dhpj7")]
 transform = Transform3D(-0.65605927, 0, -0.7547097, 0, 1, 0, 0.7547097, 0, -0.65605927, 13.899999, 10.2, 5.0000005)
 
-[node name="Interact" parent="NPC/MrGodot2" unique_id=880575212 instance=ExtResource("10_4c57u")]
+[node name="Interact" parent="NPC/MrGodot2" unique_id=880575212 instance=ExtResource("11_7knny")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.6999998, 0)
 duration = 5
 id = "mr_godot_2"
@@ -365,31 +367,31 @@ transform = Transform3D(0.2, 0, 0, 0, 0.19999999, 0, 0, 0, 0.2, 0, 0.29999995, 0
 layers = 2
 billboard = 1
 no_depth_test = true
-font = ExtResource("9_kek77")
+font = ExtResource("12_082n1")
 font_size = 96
 outline_size = 0
 
 [node name="Enemy" type="Node3D" parent="." unique_id=300713747]
 
-[node name="Grunt" parent="Enemy" unique_id=1565200042 instance=ExtResource("12_dg77c")]
+[node name="Grunt" parent="Enemy" unique_id=1565200042 instance=ExtResource("13_xex6t")]
 transform = Transform3D(-0.10452843, 0, 0.99452186, 0, 1, 0, -0.99452186, 0, -0.10452843, -10.5, 0.5, 2.4)
 
-[node name="Sphere" parent="Enemy" unique_id=1513231080 instance=ExtResource("13_ycdy4")]
+[node name="Sphere" parent="Enemy" unique_id=1513231080 instance=ExtResource("14_aa0lp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5.2, 1)
 
-[node name="Sphere2" parent="Enemy" unique_id=1663971837 instance=ExtResource("13_ycdy4")]
+[node name="Sphere2" parent="Enemy" unique_id=1663971837 instance=ExtResource("14_aa0lp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 6.8, -8.1)
 health = 1.0
 
-[node name="Sphere3" parent="Enemy" unique_id=1573422666 instance=ExtResource("13_ycdy4")]
+[node name="Sphere3" parent="Enemy" unique_id=1573422666 instance=ExtResource("14_aa0lp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.1, 13)
 health = 3.0
 
-[node name="Sphere4" parent="Enemy" unique_id=1327725116 instance=ExtResource("13_ycdy4")]
+[node name="Sphere4" parent="Enemy" unique_id=1327725116 instance=ExtResource("14_aa0lp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 15, 1)
 health = 1.0
 
-[node name="Sphere5" parent="Enemy" unique_id=1914339312 instance=ExtResource("13_ycdy4")]
+[node name="Sphere5" parent="Enemy" unique_id=1914339312 instance=ExtResource("14_aa0lp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 17, 21)
 health = 1.0
 
@@ -397,44 +399,44 @@ health = 1.0
 
 [node name="Ammo" type="Node3D" parent="Pickups" unique_id=70999473]
 
-[node name="QuasarAmmoPickup" parent="Pickups/Ammo" unique_id=2079047079 instance=ExtResource("14_vivmo")]
+[node name="QuasarAmmoPickup" parent="Pickups/Ammo" unique_id=2079047079 instance=ExtResource("15_iu0sx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.75, -9.45)
 
-[node name="QuasarAmmoPickup2" parent="Pickups/Ammo" unique_id=875695955 instance=ExtResource("14_vivmo")]
+[node name="QuasarAmmoPickup2" parent="Pickups/Ammo" unique_id=875695955 instance=ExtResource("15_iu0sx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3199999, 0.75, -9.53)
 
-[node name="QuasarAmmoPickup3" parent="Pickups/Ammo" unique_id=2131011364 instance=ExtResource("14_vivmo")]
+[node name="QuasarAmmoPickup3" parent="Pickups/Ammo" unique_id=2131011364 instance=ExtResource("15_iu0sx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8619999, 0.74999994, -8.830999)
 
-[node name="QuasarAmmoPickup4" parent="Pickups/Ammo" unique_id=742104244 instance=ExtResource("14_vivmo")]
+[node name="QuasarAmmoPickup4" parent="Pickups/Ammo" unique_id=742104244 instance=ExtResource("15_iu0sx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.361, 0.74999994, -8.844)
 
-[node name="AssaultRifleAmmo" parent="Pickups/Ammo" unique_id=1860755036 instance=ExtResource("15_2cqfq")]
+[node name="AssaultRifleAmmo" parent="Pickups/Ammo" unique_id=1860755036 instance=ExtResource("16_4v2jo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44099995, 0.575, -9.514999)
 
-[node name="AssaultRifleAmmo2" parent="Pickups/Ammo" unique_id=834096983 instance=ExtResource("15_2cqfq")]
+[node name="AssaultRifleAmmo2" parent="Pickups/Ammo" unique_id=834096983 instance=ExtResource("16_4v2jo")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.43, 0.6, -8.9)
-internal_ammo = Array[ExtResource("16_yaehf")]([ExtResource("17_074og"), ExtResource("17_074og"), ExtResource("17_074og")])
+internal_ammo = Array[ExtResource("17_l1i01")]([ExtResource("18_r62pu"), ExtResource("18_r62pu"), ExtResource("18_r62pu")])
 
-[node name="AssaultRifleAmmo3" parent="Pickups/Ammo" unique_id=1026088322 instance=ExtResource("15_2cqfq")]
+[node name="AssaultRifleAmmo3" parent="Pickups/Ammo" unique_id=1026088322 instance=ExtResource("16_4v2jo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302, 0.575, -8.914999)
 
-[node name="AssaultRifleAmmo4" parent="Pickups/Ammo" unique_id=903933851 instance=ExtResource("15_2cqfq")]
+[node name="AssaultRifleAmmo4" parent="Pickups/Ammo" unique_id=903933851 instance=ExtResource("16_4v2jo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28, 0.58, -9.55)
 
 [node name="Weapons" type="Node3D" parent="Pickups" unique_id=1152307221]
 
-[node name="AssaultRiflePickup" parent="Pickups/Weapons" unique_id=1739229459 instance=ExtResource("18_cegan")]
+[node name="AssaultRiflePickup" parent="Pickups/Weapons" unique_id=1739229459 instance=ExtResource("19_klri6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24, 1.27, -8.43)
-internal_weapon = ExtResource("19_ryguw")
-internal_ammo = Array[ExtResource("16_yaehf")]([ExtResource("17_074og")])
+internal_weapon = ExtResource("20_eu6ph")
+internal_ammo = Array[ExtResource("17_l1i01")]([ExtResource("18_r62pu")])
 
-[node name="AssaultRiflePickup2" parent="Pickups/Weapons" unique_id=1179747994 instance=ExtResource("18_cegan")]
+[node name="AssaultRiflePickup2" parent="Pickups/Weapons" unique_id=1179747994 instance=ExtResource("19_klri6")]
 transform = Transform3D(0.60181504, 0, -0.79863554, 0, 1, 0, 0.79863554, 0, 0.60181504, 10.29, 1.4, -7.700001)
-internal_weapon = ExtResource("19_ryguw")
-internal_ammo = Array[ExtResource("16_yaehf")]([ExtResource("17_074og"), ExtResource("17_074og"), ExtResource("17_074og"), ExtResource("17_074og")])
+internal_weapon = ExtResource("20_eu6ph")
+internal_ammo = Array[ExtResource("17_l1i01")]([ExtResource("18_r62pu"), ExtResource("18_r62pu"), ExtResource("18_r62pu"), ExtResource("18_r62pu")])
 
-[node name="QuasarPickup" parent="Pickups/Weapons" unique_id=119255161 instance=ExtResource("19_82xsv")]
+[node name="QuasarPickup" parent="Pickups/Weapons" unique_id=119255161 instance=ExtResource("21_edr7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15, 3.3399997, -9.57)
-internal_weapon = ExtResource("21_d13ii")
-internal_ammo = Array[ExtResource("16_yaehf")]([ExtResource("22_1u8w0"), ExtResource("22_1u8w0")])
+internal_weapon = ExtResource("22_kq12w")
+internal_ammo = Array[ExtResource("17_l1i01")]([ExtResource("23_t46w6"), ExtResource("23_t46w6")])
