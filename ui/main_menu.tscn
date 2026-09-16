@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://beddb0322vxuw"]
 
+[ext_resource type="Script" uid="uid://dhtpddlmtct5r" path="res://ui/main_menu.gd" id="1_t7e0r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0q7"]
+bg_color = Color(0.60784316, 1, 0.5882353, 1)
+
 [node name="MainMenu" type="CanvasLayer" unique_id=1309340498]
+script = ExtResource("1_t7e0r")
+initial_scene = &"uid://dy2c45y78kwwp"
 
 [node name="Control" type="Control" parent="." unique_id=889811727]
 layout_mode = 3
@@ -32,6 +39,47 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=1995063861]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2116381206]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gl0q7")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/PanelContainer" unique_id=1695941700]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/CenterContainer" unique_id=1577049512]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 172
+text = " J.
+      N.
+             R."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1366954675]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="PlayButton" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1592875785]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1833089809]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1275986065]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Quit"
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=206970453]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dbg4oeiysyv5n"]
+
+[ext_resource type="Script" uid="uid://b782ic2eubwla" path="res://ui/loading_screen.gd" id="1_pojjl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tw77d"]
+bg_color = Color(0.11764706, 0, 0.05882353, 1)
+
+[sub_resource type="Animation" id="Animation_pojjl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tw77d"]
+resource_name = "fade_in"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pojjl"]
+_data = {
+&"RESET": SubResource("Animation_pojjl"),
+&"fade_in": SubResource("Animation_tw77d")
+}
+
+[node name="LoadingScreen" type="CanvasLayer" unique_id=1619823633 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_pojjl")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Panel" type="Panel" parent="." unique_id=298863347]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tw77d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=513136286]
+libraries/ = SubResource("AnimationLibrary_pojjl")
+autoplay = &"fade_in"

@@ -1,7 +1,9 @@
 # BUGS
 
 # TODO
+- Extract UIManager and Player out of Level0 into root Game? IMPORTANT NOTE - actually, current SceneLoader implementation frees the current scene (ie Game) and replaces it with Level0 (or whatever), so an architectural design decision must be made here.
 - MarginContainer inside AmmoUI (to give margin/padding between the Ammo Graphics, etc)?
+- Explicitly return void?
 - Unify player assets and root level assets folders
 - Interaction system should be proximity based (i.e. the closest interaction the player is facing), not a pure FIFO stack like it is now
 - https://www.youtube.com/watch?v=FvFx1R3p-aw

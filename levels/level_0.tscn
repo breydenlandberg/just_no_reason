@@ -1,0 +1,437 @@
+[gd_scene format=3 uid="uid://dy2c45y78kwwp"]
+
+[ext_resource type="Texture2D" uid="uid://bq1gb0px7oo1h" path="res://assets/textures/Day0.exr" id="1_58gyl"]
+[ext_resource type="PackedScene" uid="uid://772t21cg58vo" path="res://ui/ui_manager.tscn" id="1_ggct0"]
+[ext_resource type="Material" uid="uid://fj84wfp0ra3m" path="res://assets/materials/scaffolding.tres" id="2_ggct0"]
+[ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="3_8mki0"]
+[ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="4_gxks1"]
+[ext_resource type="Texture2D" uid="uid://bh2tpishmathl" path="res://assets/textures/stone/shine_stone.png" id="5_osodt"]
+[ext_resource type="PackedScene" uid="uid://bdaq1v7cg2fay" path="res://killzone/killzone.tscn" id="6_vfwqd"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://player/player.tscn" id="7_juy1h"]
+[ext_resource type="PackedScene" uid="uid://cqin7vy65rmcv" path="res://npc/godot_plush/assets/godot_plush_model_inherited.tscn" id="8_7di2q"]
+[ext_resource type="PackedScene" uid="uid://f850uti4ula1" path="res://interact/interact.tscn" id="9_2sfss"]
+[ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="10_x1db4"]
+[ext_resource type="PackedScene" uid="uid://cqiofva7y4sn4" path="res://enemies/grunt/grunt.tscn" id="11_x8hdd"]
+[ext_resource type="PackedScene" uid="uid://dx1jttysmunls" path="res://enemies/sphere/sphere.tscn" id="12_jwc5o"]
+[ext_resource type="PackedScene" uid="uid://dj87mkxe00tgx" path="res://assets/weapons/quasar/quasar_ammo_pickup.tscn" id="13_1hnym"]
+[ext_resource type="PackedScene" uid="uid://bhg0ayga7vc5b" path="res://assets/weapons/assault_rifle/assault_rifle_ammo.tscn" id="14_w633q"]
+[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="15_q6gno"]
+[ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="16_lf4l6"]
+[ext_resource type="PackedScene" uid="uid://cdpkq6xencde6" path="res://assets/weapons/assault_rifle/assault_rifle_pickup.tscn" id="17_m8bfh"]
+[ext_resource type="Resource" uid="uid://dcgl81rrqyhkc" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle.tres" id="18_g1jay"]
+[ext_resource type="PackedScene" uid="uid://dyyuefcrdj2re" path="res://assets/weapons/quasar/quasar_pickup.tscn" id="19_2fv0q"]
+[ext_resource type="Resource" uid="uid://cyl7eow3la5ai" path="res://player/weapon_manager/weapons/quasar/quasar.tres" id="20_jawnq"]
+[ext_resource type="Resource" uid="uid://bnrnpy6sxgw26" path="res://player/weapon_manager/ammo/resources/quasar_ammo.tres" id="21_66alr"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
+panorama = ExtResource("1_58gyl")
+energy_multiplier = 0.25
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("PanoramaSkyMaterial_h2yge")
+
+[sub_resource type="Environment" id="Environment_lquwl"]
+background_mode = 2
+sky = SubResource("Sky_1bvp3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prop2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.8, 11.7, 16.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prop3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5.7, 14, -6.3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Prop3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.7453293, 0.17453292)]
+}
+
+[sub_resource type="Animation" id="Animation_272bh"]
+resource_name = "hoverspin"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prop2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-8.8, 16, 16.4), Vector3(-8.8, 16.5, 16.4), Vector3(-8.8, 16, 16.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6666667, 5, 7.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0), Vector3(0, 3.1415927, 0), Vector3(0, 4.712389, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prop3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(5.7, 14, -6.3), Vector3(5.7, 15, -6.3), Vector3(5.7, 15, -6.3), Vector3(5.7, 14, -6.3), Vector3(5.7, 14, -6.3), Vector3(5.7, 15, -6.3), Vector3(5.7, 15, -6.3), Vector3(5.7, 14, -6.3), Vector3(5.7, 14, -6.3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Prop3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5, 5.1, 6.9, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.7453293, 0), Vector3(0, 1.7453293, 0), Vector3(0, 1.7453293, 0.08726646), Vector3(0, 1.7453293, 0.08726646), Vector3(0, 1.7453293, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vw27"]
+_data = {
+&"RESET": SubResource("Animation_7mycd"),
+&"hoverspin": SubResource("Animation_272bh")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_texture = ExtResource("3_8mki0")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+albedo_texture = ExtResource("4_gxks1")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
+albedo_texture = ExtResource("5_osodt")
+uv1_triplanar = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_efxa6"]
+
+[node name="Level0" type="Node3D" unique_id=541665628]
+
+[node name="UIManager" parent="." unique_id=844932442 instance=ExtResource("1_ggct0")]
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1013402081]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 100, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 512.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1420688381]
+environment = SubResource("Environment_lquwl")
+
+[node name="Scaffolding" type="Node3D" parent="." unique_id=1743302156]
+
+[node name="CollisionScaffolding" type="CSGCombiner3D" parent="Scaffolding" unique_id=2017301721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+material_override = ExtResource("2_ggct0")
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding" unique_id=1462739968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+material_override = SubResource("StandardMaterial3D_h2yge")
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="Walls1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=1307061552]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=645515297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, -15)
+size = Vector3(37.5, 75, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=318403184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.25, 37, 7)
+size = Vector3(1, 75, 45)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=1506782088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.25, 37, 7)
+size = Vector3(1, 75, 45)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=1557818860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, 29)
+size = Vector3(37.5, 75, 1)
+
+[node name="Pipe1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=861148989]
+transform = Transform3D(-0.362573, -0.7115894, -0.6018149, 0.7028469, -0.6328417, 0.32483426, -0.61200225, -0.30520767, 0.72958976, 0, 7.1000004, 18.800001)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Scaffolding/CollisionScaffolding/Pipe1" unique_id=106460791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+radius = 2.0
+height = 20.0
+sides = 32
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Scaffolding/CollisionScaffolding/Pipe1" unique_id=411750267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+operation = 2
+radius = 1.5
+height = 21.0
+sides = 32
+
+[node name="Floor1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=1540469087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.9, 7)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor1" unique_id=952198651]
+size = Vector3(37.5, 1, 43)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor1" unique_id=1607888395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.000001, 0, 12.699999)
+operation = 2
+size = Vector3(7, 1, 4.7000003)
+
+[node name="Stairs1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=1814003340]
+transform = Transform3D(-0.15624261, -0.05615105, -0.9861214, -0.68451154, 0.7259053, 0.06712118, 0.7120617, 0.6854988, -0.1518535, -11.3, 13.800001, -5.2999988)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=254548628]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0, 0.05000019, 0)
+size = Vector3(0.3, 12.8, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1088889619]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.0017976761, -4.863449, -0.91788197)
+size = Vector3(0.3, 0.2, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1589313572]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.033122063, -4.1929827, 0.9571676)
+size = Vector3(0.3, 0.5, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=551167835]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.06701183, -2.667314, -0.9717989)
+size = Vector3(0.3, 0.90000004, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1574953418]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.05652523, -1.4540777, 0.97469044)
+size = Vector3(0.3, 1.2, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=114999551]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.01645565, 0.3619032, -0.9306164)
+size = Vector3(0.3, 0.2, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1017984135]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.016991615, 1.4397097, 0.9819727)
+size = Vector3(0.3, 0.90000004, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=879987000]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.04536724, 2.7830935, -0.9300432)
+size = Vector3(0.3, 0.5, 1)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1348998652]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.019266129, 4.040719, 0.91782856)
+size = Vector3(0.3, 0.1, 1)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=511217585]
+transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.031110764, 4.837264, -0.943346)
+size = Vector3(0.3, 0.5, 1)
+
+[node name="Floor2" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=342794500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 7)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor2" unique_id=1629861432]
+size = Vector3(37.5, 1, 43)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor2" unique_id=596156089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.800002, 0, 14.9)
+operation = 2
+size = Vector3(7, 1, 2.7)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor2" unique_id=544866580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.349998, 0, -14.750002)
+operation = 2
+size = Vector3(10.900001, 1, 13.6)
+
+[node name="Props" type="Node3D" parent="Scaffolding/CollisionScaffolding" unique_id=1824029876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scaffolding/CollisionScaffolding/Props" unique_id=588874014]
+libraries/ = SubResource("AnimationLibrary_5vw27")
+autoplay = &"hoverspin"
+
+[node name="Prop1" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=881252449]
+transform = Transform3D(0.7880108, 0, -0.6156615, 0, 1, 0, 0.6156615, 0, 0.7880108, 11.3, 14.200001, 9.1)
+material_override = SubResource("StandardMaterial3D_lquwl")
+use_collision = true
+size = Vector3(10, 8, 5)
+
+[node name="Prop2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=888085969]
+transform = Transform3D(0.9999995, 0, 0, 0, 1, 0, 0, 0, 0.9999995, -8.8, 11.7, 16.4)
+material_override = SubResource("StandardMaterial3D_5vw27")
+use_collision = true
+size = Vector3(10, 3, 9)
+
+[node name="Prop3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=1652166185]
+transform = Transform3D(-0.17100923, 0.030153677, 0.98480725, 0.17364731, 0.98480725, 0, -0.9698414, 0.17100999, -0.1736481, 5.7, 14, -6.3)
+material_override = SubResource("StandardMaterial3D_kek77")
+use_collision = true
+size = Vector3(3, 5, 9)
+
+[node name="Killzone" parent="." unique_id=35288440 node_paths=PackedStringArray("player") instance=ExtResource("6_vfwqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+player = NodePath("../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=4247257]
+shape = SubResource("WorldBoundaryShape3D_efxa6")
+
+[node name="Player" parent="." unique_id=685403359 node_paths=PackedStringArray("ui_manager", "weapons_node") instance=ExtResource("7_juy1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+ui_manager = NodePath("../UIManager")
+weapons_node = NodePath("../Pickups/Weapons")
+
+[node name="NPC" type="Node3D" parent="." unique_id=1462680777]
+
+[node name="MrGodot" parent="NPC" unique_id=59045274 instance=ExtResource("8_7di2q")]
+transform = Transform3D(-0.74314487, 0, 0.6691307, 0, 1, 0, -0.6691307, 0, -0.74314487, 10.9, 10.2, 4.7999997)
+
+[node name="Interact" parent="NPC/MrGodot" unique_id=146110054 instance=ExtResource("9_2sfss")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.6999998, 0)
+duration = 10
+id = "mr_godot"
+label = "[E] Talk"
+value = "Mr Godot is gooning!"
+
+[node name="InteractLabel" type="Label3D" parent="NPC/MrGodot/Interact" unique_id=1407915429]
+transform = Transform3D(0.2, 0, 0, 0, 0.19999999, 0, 0, 0, 0.2, 0, 0.29999995, 0)
+layers = 2
+billboard = 1
+no_depth_test = true
+font = ExtResource("10_x1db4")
+font_size = 96
+outline_size = 0
+
+[node name="MrGodot2" parent="NPC" unique_id=690538684 instance=ExtResource("8_7di2q")]
+transform = Transform3D(-0.65605927, 0, -0.7547097, 0, 1, 0, 0.7547097, 0, -0.65605927, 13.899999, 10.2, 5.0000005)
+
+[node name="Interact" parent="NPC/MrGodot2" unique_id=1029642426 instance=ExtResource("9_2sfss")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.6999998, 0)
+duration = 5
+id = "mr_godot_2"
+label = "[E] Talk"
+value = "Mr Godot 2 is bingchilling!"
+
+[node name="InteractLabel" type="Label3D" parent="NPC/MrGodot2/Interact" unique_id=654596435]
+transform = Transform3D(0.2, 0, 0, 0, 0.19999999, 0, 0, 0, 0.2, 0, 0.29999995, 0)
+layers = 2
+billboard = 1
+no_depth_test = true
+font = ExtResource("10_x1db4")
+font_size = 96
+outline_size = 0
+
+[node name="Enemy" type="Node3D" parent="." unique_id=2099937265]
+
+[node name="Grunt" parent="Enemy" unique_id=1739248134 instance=ExtResource("11_x8hdd")]
+transform = Transform3D(-0.10452843, 0, 0.99452186, 0, 1, 0, -0.99452186, 0, -0.10452843, -10.5, 0.5, 2.4)
+
+[node name="Sphere" parent="Enemy" unique_id=1513231080 instance=ExtResource("12_jwc5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5.2, 1)
+
+[node name="Sphere2" parent="Enemy" unique_id=2104636026 instance=ExtResource("12_jwc5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 6.8, -8.1)
+health = 1.0
+
+[node name="Sphere3" parent="Enemy" unique_id=123460139 instance=ExtResource("12_jwc5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.1, 13)
+health = 3.0
+
+[node name="Sphere4" parent="Enemy" unique_id=78939452 instance=ExtResource("12_jwc5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 15, 1)
+health = 1.0
+
+[node name="Sphere5" parent="Enemy" unique_id=272555763 instance=ExtResource("12_jwc5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 17, 21)
+health = 1.0
+
+[node name="Pickups" type="Node3D" parent="." unique_id=181375694]
+
+[node name="Ammo" type="Node3D" parent="Pickups" unique_id=2102950518]
+
+[node name="QuasarAmmoPickup" parent="Pickups/Ammo" unique_id=2079047079 instance=ExtResource("13_1hnym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.75, -9.45)
+
+[node name="QuasarAmmoPickup2" parent="Pickups/Ammo" unique_id=1314799995 instance=ExtResource("13_1hnym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3199999, 0.75, -9.53)
+
+[node name="QuasarAmmoPickup3" parent="Pickups/Ammo" unique_id=820847425 instance=ExtResource("13_1hnym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8619999, 0.74999994, -8.830999)
+
+[node name="QuasarAmmoPickup4" parent="Pickups/Ammo" unique_id=700312585 instance=ExtResource("13_1hnym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.361, 0.74999994, -8.844)
+
+[node name="AssaultRifleAmmo" parent="Pickups/Ammo" unique_id=1860755036 instance=ExtResource("14_w633q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44099995, 0.575, -9.514999)
+
+[node name="AssaultRifleAmmo2" parent="Pickups/Ammo" unique_id=1775064081 instance=ExtResource("14_w633q")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.43, 0.6, -8.9)
+internal_ammo = Array[ExtResource("15_q6gno")]([ExtResource("16_lf4l6"), ExtResource("16_lf4l6"), ExtResource("16_lf4l6")])
+
+[node name="AssaultRifleAmmo3" parent="Pickups/Ammo" unique_id=1100267999 instance=ExtResource("14_w633q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302, 0.575, -8.914999)
+
+[node name="AssaultRifleAmmo4" parent="Pickups/Ammo" unique_id=1583869861 instance=ExtResource("14_w633q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28, 0.58, -9.55)
+
+[node name="Weapons" type="Node3D" parent="Pickups" unique_id=466073623]
+
+[node name="AssaultRiflePickup" parent="Pickups/Weapons" unique_id=1739229459 instance=ExtResource("17_m8bfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24, 1.27, -8.43)
+internal_weapon = ExtResource("18_g1jay")
+internal_ammo = Array[ExtResource("15_q6gno")]([ExtResource("16_lf4l6")])
+
+[node name="AssaultRiflePickup2" parent="Pickups/Weapons" unique_id=1275956681 instance=ExtResource("17_m8bfh")]
+transform = Transform3D(0.60181504, 0, -0.79863554, 0, 1, 0, 0.79863554, 0, 0.60181504, 10.29, 1.4, -7.700001)
+internal_weapon = ExtResource("18_g1jay")
+internal_ammo = Array[ExtResource("15_q6gno")]([ExtResource("16_lf4l6"), ExtResource("16_lf4l6"), ExtResource("16_lf4l6"), ExtResource("16_lf4l6")])
+
+[node name="QuasarPickup" parent="Pickups/Weapons" unique_id=119255161 instance=ExtResource("19_2fv0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15, 3.3399997, -9.57)
+internal_weapon = ExtResource("20_jawnq")
+internal_ammo = Array[ExtResource("15_q6gno")]([ExtResource("21_66alr"), ExtResource("21_66alr")])
