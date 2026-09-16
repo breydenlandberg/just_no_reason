@@ -2,7 +2,8 @@ extends Node
 
 
 # signal
-signal progress_changed(progress)
+signal progress_changed(progress: float)
+signal scene_loaded(loaded_scene: PackedScene)
 signal load_finished
 
 
@@ -31,7 +32,7 @@ func _process(_delta: float):
 			set_process(false)
 		ResourceLoader.THREAD_LOAD_LOADED:
 			loaded_resource = ResourceLoader.load_threaded_get(scene_path)
-			get_tree().change_scene_to_packed(loaded_resource)
+			scene_loaded.emit(loaded_resource)
 			load_finished.emit()
 			set_process(false)
 

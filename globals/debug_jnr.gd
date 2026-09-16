@@ -2,7 +2,7 @@ extends Node
 
 
 # var, const
-var debug_node # Used to add debug nodes (eg DebugSphere) live in game
+var debug_node: Node3D # Used to add debug nodes (eg DebugSphere) live in game RENAME TO debug_container
 var current_lines: Array[Dictionary]
 
 @onready var debug_sphere: PackedScene = preload('res://debug/debug_sphere.tscn')
@@ -41,7 +41,7 @@ func draw_between(origin: Vector3, end: Vector3, duration := 1.0, spawn_spheres_
 	var line_dict: Dictionary = {'origin': origin, 'end': end, 'time_remaining': duration}
 	current_lines.append(line_dict)
 
-	if spawn_spheres_at_origin_and_end and debug_node:
+	if spawn_spheres_at_origin_and_end and is_instance_valid(debug_node):
 		var origin_sphere := debug_sphere.instantiate()
 		origin_sphere.global_position = origin
 
