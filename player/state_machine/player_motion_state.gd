@@ -9,7 +9,7 @@ signal _animation_state_changed(state: String)
 signal _rotate_model(_input_dir: Vector2)
 
 # const
-const PLAYER_MOVEMENT_STATS = preload('res://player/player_movement_stats.tres')
+const PLAYER_MOVEMENT_STATS = preload('res://player/player_movement_stats.tres') # consider preloading the uid
 
 # var
 var base_speed: float
