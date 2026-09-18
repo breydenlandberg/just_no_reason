@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d28k7ytseere4"]
 
 [ext_resource type="Script" uid="uid://c6f8i4763ujxe" path="res://game.gd" id="1_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://beddb0322vxuw" path="res://ui/main_menu.tscn" id="1_feb5d"]
+[ext_resource type="PackedScene" uid="uid://beddb0322vxuw" path="res://ui/main_menu/main_menu.tscn" id="1_feb5d"]
 
 [node name="Game" type="Node3D" unique_id=55940079 node_paths=PackedStringArray("debug_container", "main_menu", "current_level_container")]
 script = ExtResource("1_fc0e3")
