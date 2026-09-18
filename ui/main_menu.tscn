@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://beddb0322vxuw"]
 
 [ext_resource type="Script" uid="uid://dhtpddlmtct5r" path="res://ui/main_menu.gd" id="1_t7e0r"]
+[ext_resource type="PackedScene" uid="uid://biehhfkkx4ax4" path="res://ui/level_selection.tscn" id="2_0dkrt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0q7"]
 bg_color = Color(0.60784316, 1, 0.5882353, 1)
 
-[node name="MainMenu" type="CanvasLayer" unique_id=1309340498]
+[node name="MainMenu" type="CanvasLayer" unique_id=1309340498 node_paths=PackedStringArray("current_menu_selection_context_container")]
 script = ExtResource("1_t7e0r")
-initial_scene = &"uid://dy2c45y78kwwp"
+current_menu_selection_context_container = NodePath("Control/MarginContainer/HBoxContainer/CurrentMenuSelectionContext")
+level_selection_menu = ExtResource("2_0dkrt")
 
 [node name="Control" type="Control" parent="." unique_id=889811727]
 layout_mode = 3
@@ -77,9 +79,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Quit"
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=206970453]
+[node name="CurrentMenuSelectionContext" type="Control" parent="Control/MarginContainer/HBoxContainer" unique_id=312691040]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
 [connection signal="pressed" from="Control/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

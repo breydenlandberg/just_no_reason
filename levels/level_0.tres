@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://b4vexh485fl7t"]
+
+[ext_resource type="Script" uid="uid://bp85qlaf0s3wi" path="res://levels/level_data.gd" id="1_0qfaj"]
+[ext_resource type="PackedScene" uid="uid://dy2c45y78kwwp" path="res://levels/level_0.tscn" id="1_huoqp"]
+
+[resource]
+script = ExtResource("1_0qfaj")
+display_name = "Level 0 - Gyms, Zoos, and Museums"
+level_scene = ExtResource("1_huoqp")
+metadata/_custom_type_script = "uid://bp85qlaf0s3wi"

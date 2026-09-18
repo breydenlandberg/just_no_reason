@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://biehhfkkx4ax4"]
+
+[ext_resource type="Script" uid="uid://cx1vgxto4ei5e" path="res://ui/level_selection.gd" id="1_yrslp"]
+[ext_resource type="Script" uid="uid://bp85qlaf0s3wi" path="res://levels/level_data.gd" id="2_ewtwy"]
+[ext_resource type="Resource" uid="uid://b4vexh485fl7t" path="res://levels/level_0.tres" id="3_4is8i"]
+[ext_resource type="PackedScene" uid="uid://cvc675sgtn0n" path="res://ui/level_button.tscn" id="4_1du6l"]
+[ext_resource type="Resource" uid="uid://b7ydoyubjsn6j" path="res://levels/level_1.tres" id="4_bsd36"]
+
+[node name="LevelSelection" type="Control" unique_id=642427245 node_paths=PackedStringArray("level_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yrslp")
+levels = Array[ExtResource("2_ewtwy")]([ExtResource("3_4is8i"), ExtResource("4_bsd36")])
+level_container = NodePath("VBoxContainer")
+level_button = ExtResource("4_1du6l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=574632893]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

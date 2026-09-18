@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://b7ydoyubjsn6j"]
+
+[ext_resource type="Script" uid="uid://bp85qlaf0s3wi" path="res://levels/level_data.gd" id="1_8g6tw"]
+[ext_resource type="PackedScene" uid="uid://dmt0ut3s325nh" path="res://levels/level_1.tscn" id="1_fwm1l"]
+
+[resource]
+script = ExtResource("1_8g6tw")
+display_name = "Level 1 - The Reason"
+level_scene = ExtResource("1_fwm1l")
+metadata/_custom_type_script = "uid://bp85qlaf0s3wi"

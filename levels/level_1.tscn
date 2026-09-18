@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dmt0ut3s325nh"]
+
+[node name="Level1" type="Node3D" unique_id=1979030579]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=542995572]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=987239604]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11764706, 0, 0.05882353, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1665182756]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer" unique_id=754966036]
+layout_mode = 2
+theme_override_font_sizes/font_size = 172
+text = "Coming soon..."
