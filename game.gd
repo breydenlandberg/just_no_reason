@@ -15,6 +15,7 @@ extends Node3D
 func _ready():
 	DebugJnr.set_debug_container(debug_container)
 	SceneLoader.scene_loaded.connect(_on_level_loaded)
+	PauseManager.pause_requested.connect(_on_pause_requested)
 
 func _on_level_loaded(level_packed_scene: PackedScene) -> void:
 	# clear out our current level
@@ -30,7 +31,9 @@ func _on_level_loaded(level_packed_scene: PackedScene) -> void:
 			child.queue_free()
 
 	# hide main menu
-	main_menu.hide()
+	#main_menu.hide()
+	# DESTROY MAIN MENU!
+	main_menu.queue_free()
 
 	# instantiate and mount new level
 	var new_level = level_packed_scene.instantiate()
@@ -40,3 +43,12 @@ func _on_level_loaded(level_packed_scene: PackedScene) -> void:
 	#var spawn_point = level_instance.player_spawn
 	#if spawn_point and player:
 	#	player.global_transform = spawn_point.global_transform
+
+	PauseManager.can_pause = true
+	# remember to set can_pause = false, currently_paused = false when going back to MainMenu ie deloading a level
+
+func _on_pause_requested() -> void:
+	if PauseManager.currently_paused:
+		current_level_container.process_mode = PROCESS_MODE_DISABLED
+	else:
+		current_level_container.process_mode = PROCESS_MODE_INHERIT

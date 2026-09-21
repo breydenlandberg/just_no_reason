@@ -12,6 +12,7 @@ var mouse_captured := true
 var mouse_sensitivity := 0.001
 var current_camera_alignment: int = CameraAlignment.RIGHT
 
+@export var player: CharacterBody3D
 @export var aim_fov := 65.0
 @export var aim_edge_spring_length := 1.0
 @export var aim_rear_spring_length := 2.0
@@ -31,13 +32,9 @@ var current_camera_alignment: int = CameraAlignment.RIGHT
 #
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	PauseManager.pause_requested.connect(handle_mouse_pause)
 
 func _unhandled_input(event: InputEvent):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		capture_mouse()
-	if Input.is_key_pressed(KEY_ESCAPE):
-		release_mouse()
-
 	if mouse_captured and event is InputEventMouseMotion:
 		var mouse_event: Vector2 = event.screen_relative * mouse_sensitivity
 		camera_look(mouse_event)
@@ -59,6 +56,13 @@ func camera_look(mouse_movement: Vector2):
 	camera_rotation.y = clampf(camera_rotation.y, -max_y_rotation, max_y_rotation)
 
 # capture / release mouse
+
+func handle_mouse_pause():
+	if PauseManager.currently_paused:
+		release_mouse()
+	else:
+		capture_mouse()
+
 func capture_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_captured = true
