@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cvc675sgtn0n"]
 
-[ext_resource type="Script" uid="uid://dati8xg4v4upv" path="res://ui/level_selection/level_button.gd" id="1_b6ka3"]
+[ext_resource type="Script" uid="uid://dati8xg4v4upv" path="res://ui/menus/level_selection/level_button.gd" id="1_b6ka3"]
 
 [node name="LevelButton" type="Button" unique_id=1168576950]
 anchors_preset = 15

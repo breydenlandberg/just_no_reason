@@ -3,7 +3,9 @@ extends Node3D
 
 # var
 @export var debug_container: Node3D
+@export var current_menu_container: Node
 @export var main_menu: CanvasLayer
+@export var pause_menu: PackedScene
 @export var current_level_container: Node3D
 #@export var player: CharacterBody3D
 
@@ -50,5 +52,14 @@ func _on_level_loaded(level_packed_scene: PackedScene) -> void:
 func _on_pause_requested() -> void:
 	if PauseManager.currently_paused:
 		current_level_container.process_mode = PROCESS_MODE_DISABLED
+
+		if current_menu_container:
+			var pause_menu_instance = pause_menu.instantiate()
+			current_menu_container.add_child(pause_menu_instance)
 	else:
 		current_level_container.process_mode = PROCESS_MODE_INHERIT
+
+		if current_menu_container:
+			for child in current_menu_container.get_children():
+				current_menu_container.remove_child(child)
+				child.queue_free()

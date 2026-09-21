@@ -1,4 +1,5 @@
 # BUGS
+- Relatively trivial, but bullets despawn when game is paused
 
 # TODO
 - Consider where and when we are doing "level" loading vs "scene" loading - this is about keeping language consistent and sensible.
