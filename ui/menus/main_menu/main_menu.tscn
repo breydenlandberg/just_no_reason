@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhtpddlmtct5r" path="res://ui/menus/main_menu/main_menu.gd" id="1_t7e0r"]
 [ext_resource type="PackedScene" uid="uid://biehhfkkx4ax4" path="res://ui/menus/level_selection/level_selection.tscn" id="2_0dkrt"]
+[ext_resource type="Theme" uid="uid://227inv3kcex4" path="res://ui/menus/menu_theme.tres" id="3_ioe73"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0q7"]
 bg_color = Color(0.60784316, 1, 0.5882353, 1)
@@ -19,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_ioe73")
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=645200385]
 layout_mode = 1
@@ -60,16 +62,16 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 172
-text = " J.
-      N.
-             R."
+text = " J,
+     N,
+                  R."
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer" unique_id=56039449]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-theme_override_constants/margin_left = 48
-theme_override_constants/margin_right = 48
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1366954675]
 layout_mode = 2

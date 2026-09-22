@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://227inv3kcex4"]
+
+[ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="1_xad2o"]
+
+[resource]
+Button/colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+Button/font_sizes/font_size = 128
+Button/fonts/font = ExtResource("1_xad2o")
+Label/fonts/font = ExtResource("1_xad2o")
+VBoxContainer/constants/separation = 32
