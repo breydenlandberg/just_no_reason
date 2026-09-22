@@ -1,6 +1,11 @@
 extends Node
 
 
+### Right now, this file is essentially coupled to loading levels specifically, as in this scene_loader
+### is more like a "level_loader". SceneLoader.scene_loaded.connect(_on_level_loaded) is the culprit.
+### Intentional? Decouple?
+
+
 # signal
 signal progress_changed(progress: float)
 signal scene_loaded(loaded_scene: PackedScene)

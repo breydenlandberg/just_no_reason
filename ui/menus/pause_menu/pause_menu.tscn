@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://cjplmadinv70l"]
 
+[ext_resource type="Script" uid="uid://ct7j6ok4fawxa" path="res://ui/menus/pause_menu/pause_menu.gd" id="1_3a2ww"]
+
 [node name="PauseMenu" type="CanvasLayer" unique_id=984683794]
 process_mode = 3
+script = ExtResource("1_3a2ww")
 
 [node name="Control" type="Control" parent="." unique_id=1615442607]
 layout_mode = 3
@@ -19,3 +22,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.39215687)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=1885305209]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer" unique_id=258899206]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="Control/CenterContainer/VBoxContainer" unique_id=411757577]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="Control/CenterContainer/VBoxContainer" unique_id=165287837]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Options"
+
+[node name="ReturnToTitleButton" type="Button" parent="Control/CenterContainer/VBoxContainer" unique_id=81362897]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Return to title"
+
+[node name="QuitButton" type="Button" parent="Control/CenterContainer/VBoxContainer" unique_id=1973882112]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Quit Game"
+
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/ReturnToTitleButton" to="." method="_on_return_to_title_button_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

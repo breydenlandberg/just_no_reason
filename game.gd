@@ -3,10 +3,10 @@ extends Node3D
 
 # var
 @export var debug_container: Node3D
-@export var current_menu_container: Node
-@export var main_menu: CanvasLayer
-@export var pause_menu: PackedScene
+@export var current_ui_container: Node
 @export var current_level_container: Node3D
+@export var main_menu: PackedScene
+@export var pause_menu: PackedScene
 #@export var player: CharacterBody3D
 
 
@@ -18,28 +18,57 @@ func _ready():
 	DebugJnr.set_debug_container(debug_container)
 	SceneLoader.scene_loaded.connect(_on_level_loaded)
 	PauseManager.pause_requested.connect(_on_pause_requested)
+	PauseManager.return_to_title_requested.connect(_on_return_to_title_requested)
 
-func _on_level_loaded(level_packed_scene: PackedScene) -> void:
-	# clear out our current level
+	# Load Main Menu when we start the Game
+	load_ui(main_menu)
+
+
+## helper
+#
+func load_ui(ui_scene: PackedScene) -> void:
+	clear_ui() # Should this be here or in _on_level_loaded?
+	if current_ui_container:
+		var ui_instance = ui_scene.instantiate()
+		current_ui_container.add_child(ui_instance)
+
+func clear_ui() -> void:
+	if current_ui_container:
+		for child in current_ui_container.get_children():
+			current_ui_container.remove_child(child)
+			child.queue_free()
+
+func load_current_level(level_scene: PackedScene) -> void:
+	clear_current_level()
 	if current_level_container:
+		current_level_container.process_mode = PROCESS_MODE_INHERIT
+		var new_level = level_scene.instantiate()
+		current_level_container.add_child(new_level)
+
+func clear_current_level() -> void:
+	if current_level_container:
+		current_level_container.process_mode = PROCESS_MODE_INHERIT
 		for child in current_level_container.get_children():
 			current_level_container.remove_child(child)
 			child.queue_free()
 
-	# clear accumulated debug nodes
+	InteractManager.reset() # This will be deleted from here one day
+
+func clear_debug() -> void:
 	if debug_container:
 		for child in debug_container.get_children():
-			#debug_container.remove_child(child)
+			debug_container.remove_child(child)
 			child.queue_free()
 
-	# hide main menu
-	#main_menu.hide()
-	# DESTROY MAIN MENU!
-	main_menu.queue_free()
 
-	# instantiate and mount new level
-	var new_level = level_packed_scene.instantiate()
-	current_level_container.add_child(new_level)
+## signal
+#
+func _on_level_loaded(level_packed_scene: PackedScene) -> void:
+	clear_debug()
+	clear_ui()
+
+	load_current_level(level_packed_scene)
+	#later on: load_ui(ingame_hud)
 
 	# position player at spawn point
 	#var spawn_point = level_instance.player_spawn
@@ -47,19 +76,17 @@ func _on_level_loaded(level_packed_scene: PackedScene) -> void:
 	#	player.global_transform = spawn_point.global_transform
 
 	PauseManager.can_pause = true
-	# remember to set can_pause = false, currently_paused = false when going back to MainMenu ie deloading a level
 
 func _on_pause_requested() -> void:
 	if PauseManager.currently_paused:
 		current_level_container.process_mode = PROCESS_MODE_DISABLED
-
-		if current_menu_container:
-			var pause_menu_instance = pause_menu.instantiate()
-			current_menu_container.add_child(pause_menu_instance)
+		load_ui(pause_menu)
 	else:
 		current_level_container.process_mode = PROCESS_MODE_INHERIT
+		clear_ui()
+		#later on: load_ui(ingame_hud) ?
 
-		if current_menu_container:
-			for child in current_menu_container.get_children():
-				current_menu_container.remove_child(child)
-				child.queue_free()
+func _on_return_to_title_requested() -> void:
+	clear_current_level()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	load_ui(main_menu)

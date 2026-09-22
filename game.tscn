@@ -4,18 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://beddb0322vxuw" path="res://ui/menus/main_menu/main_menu.tscn" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cjplmadinv70l" path="res://ui/menus/pause_menu/pause_menu.tscn" id="2_feb5d"]
 
-[node name="Game" type="Node3D" unique_id=55940079 node_paths=PackedStringArray("debug_container", "current_menu_container", "main_menu", "current_level_container")]
+[node name="Game" type="Node3D" unique_id=55940079 node_paths=PackedStringArray("debug_container", "current_ui_container", "current_level_container")]
 script = ExtResource("1_fc0e3")
 debug_container = NodePath("Debug")
-current_menu_container = NodePath("CurrentMenu")
-main_menu = NodePath("CurrentMenu/MainMenu")
-pause_menu = ExtResource("2_feb5d")
+current_ui_container = NodePath("CurrentUI")
 current_level_container = NodePath("CurrentLevel")
+main_menu = ExtResource("1_feb5d")
+pause_menu = ExtResource("2_feb5d")
 
 [node name="Debug" type="Node3D" parent="." unique_id=2138891633]
 
-[node name="CurrentMenu" type="Node" parent="." unique_id=1133512848]
-
-[node name="MainMenu" parent="CurrentMenu" unique_id=1309340498 instance=ExtResource("1_feb5d")]
+[node name="CurrentUI" type="Node" parent="." unique_id=1133512848]
 
 [node name="CurrentLevel" type="Node3D" parent="." unique_id=1577217900]
