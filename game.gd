@@ -16,7 +16,7 @@ extends Node3D
 #
 func _ready():
 	DebugJnr.set_debug_container(debug_container)
-	SceneLoader.scene_loaded.connect(_on_level_loaded)
+	LevelLoader.scene_loaded.connect(_on_level_loaded)
 	PauseManager.pause_requested.connect(_on_pause_requested)
 	PauseManager.return_to_title_requested.connect(_on_return_to_title_requested)
 

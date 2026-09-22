@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 DebugJnr="*uid://cruxe8jeywfwy"
 SignalBus="*uid://bqu88ygmdygue"
 InteractManager="*uid://bctr4isvl8cjk"
-SceneLoader="*uid://c3h017rgyq0il"
+LevelLoader="*uid://c3h017rgyq0il"
 PauseManager="*uid://by5w1s7nrghgb"
 
 [display]
