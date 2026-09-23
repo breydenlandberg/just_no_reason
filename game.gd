@@ -51,12 +51,17 @@ func clear_hud() -> void:
 			current_hud_container.remove_child(child)
 			child.queue_free()
 
-func load_current_level(level_scene: PackedScene) -> void:
+func load_current_level(level_scene: PackedScene) -> Level:
 	clear_current_level()
+
 	if current_level_container:
 		current_level_container.process_mode = PROCESS_MODE_INHERIT
 		var level_instance = level_scene.instantiate()
 		current_level_container.add_child(level_instance)
+
+		return level_instance as Level
+
+	return null
 
 func clear_current_level() -> void:
 	if current_level_container:
@@ -73,6 +78,11 @@ func clear_debug() -> void:
 			debug_container.remove_child(child)
 			child.queue_free()
 
+func spawn_player(spawn_transform: Transform3D) -> void:
+	if player:
+		player.velocity = Vector3.ZERO
+		player.global_transform = spawn_transform
+
 
 ## signal
 #
@@ -80,14 +90,12 @@ func _on_level_loaded(level_packed_scene: PackedScene) -> void:
 	clear_debug()
 	clear_menu()
 
-	load_current_level(level_packed_scene)
 	if game_hud:
 		load_hud(game_hud)
 
-	# position player at spawn point
-	#var spawn_point = level_instance.player_spawn
-	#if spawn_point and player:
-	#	player.global_transform = spawn_point.global_transform
+	var current_level = load_current_level(level_packed_scene)
+	if current_level and current_level.player_spawn:
+		spawn_player(current_level.player_spawn.global_transform)
 
 	PauseManager.can_pause = true
 
