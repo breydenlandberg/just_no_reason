@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://227inv3kcex4" path="res://ui/menus/menu_theme.tres" id="3_ioe73"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0q7"]
-bg_color = Color(0.60784316, 1, 0.5882353, 1)
+bg_color = Color(0.5882353, 0.98039216, 0.5882353, 1)
 
 [node name="MainMenu" type="CanvasLayer" unique_id=1309340498 node_paths=PackedStringArray("current_menu_selection_context_container")]
 layer = 10
@@ -60,7 +60,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/CenterContainer" unique_id=1577049512]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.019607844, 0.039215688, 0.05882353, 1)
 theme_override_font_sizes/font_size = 172
 text = " J,
      N,
@@ -80,17 +80,14 @@ size_flags_stretch_ratio = 2.0
 
 [node name="PlayButton" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1592875785]
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1833089809]
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1275986065]
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
 text = "Quit"
 
 [node name="CurrentMenuSelectionContext" type="Control" parent="Control/MarginContainer/HBoxContainer" unique_id=312691040]

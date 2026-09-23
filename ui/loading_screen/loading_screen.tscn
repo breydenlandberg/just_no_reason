@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b782ic2eubwla" path="res://ui/loading_screen/loading_screen.gd" id="1_pojjl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tw77d"]
-bg_color = Color(0.11764706, 0, 0.05882353, 1)
+bg_color = Color(0, 0.05882353, 0.11764706, 1)
 
 [sub_resource type="Animation" id="Animation_pojjl"]
 length = 0.001

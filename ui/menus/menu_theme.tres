@@ -2,9 +2,25 @@
 
 [ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="1_xad2o"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xad2o"]
+bg_color = Color(0.49019608, 0, 0.39215687, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57ky2"]
+bg_color = Color(0.5882353, 0, 0.49019608, 0.6862745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nulr8"]
+bg_color = Color(0.39215687, 0, 0.29411766, 0.88235295)
+
 [resource]
-Button/colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+Button/colors/font_color = Color(0.98039216, 0.9607843, 0.9411765, 1)
+Button/colors/font_hover_color = Color(0.92156863, 0.9019608, 0.88235295, 0.98039216)
+Button/colors/font_hover_pressed_color = Color(0.92156863, 0.9019608, 0.88235295, 0.98039216)
+Button/colors/font_pressed_color = Color(0.8627451, 0.84313726, 0.8235294, 0.9607843)
 Button/font_sizes/font_size = 128
 Button/fonts/font = ExtResource("1_xad2o")
+Button/styles/hover = SubResource("StyleBoxFlat_xad2o")
+Button/styles/normal = SubResource("StyleBoxFlat_57ky2")
+Button/styles/pressed = SubResource("StyleBoxFlat_nulr8")
+Label/colors/font_color = Color(0.98039216, 0.9607843, 0.9411765, 1)
 Label/fonts/font = ExtResource("1_xad2o")
 VBoxContainer/constants/separation = 32

@@ -87,6 +87,7 @@ func _on_pause_requested() -> void:
 		#later on: load_ui(ingame_hud) ?
 
 func _on_return_to_title_requested() -> void:
+	clear_debug()
 	clear_current_level()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	load_ui(main_menu)
