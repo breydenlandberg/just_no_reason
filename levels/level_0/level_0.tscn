@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dy2c45y78kwwp"]
 
 [ext_resource type="Script" uid="uid://dxsryej3nlkg" path="res://levels/level.gd" id="1_v3mv3"]
+[ext_resource type="Material" uid="uid://c6v30peo0qbcu" path="res://scaffolding/scaffolding_material.tres" id="3_j6sme"]
 [ext_resource type="Texture2D" uid="uid://bq1gb0px7oo1h" path="res://assets/textures/Day0.exr" id="3_l7xvt"]
-[ext_resource type="Material" uid="uid://fj84wfp0ra3m" path="res://assets/materials/scaffolding.tres" id="4_qiv53"]
 [ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="5_3e5dw"]
 [ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="6_ti4gw"]
 [ext_resource type="Texture2D" uid="uid://bh2tpishmathl" path="res://assets/textures/stone/shine_stone.png" id="7_0gdxf"]
@@ -33,7 +33,8 @@ sky_material = SubResource("PanoramaSkyMaterial_h2yge")
 background_mode = 2
 sky = SubResource("Sky_1bvp3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m377s"]
+albedo_color = Color(0.98039216, 0.9607843, 0.9411765, 1)
 
 [sub_resource type="Animation" id="Animation_7mycd"]
 length = 10.0
@@ -175,141 +176,142 @@ environment = SubResource("Environment_lquwl")
 
 [node name="Scaffolding" type="Node3D" parent="." unique_id=1743302156]
 
-[node name="CollisionScaffolding" type="CSGCombiner3D" parent="Scaffolding" unique_id=2017301721]
+[node name="Ground" type="CSGBox3D" parent="Scaffolding" unique_id=1462739968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+material_override = SubResource("StandardMaterial3D_m377s")
+use_collision = true
+size = Vector3(500, 1, 100)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Scaffolding" unique_id=921176046]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-material_override = ExtResource("4_qiv53")
+material_override = ExtResource("3_j6sme")
 use_collision = true
 
-[node name="Ground" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding" unique_id=1462739968]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
-material_override = SubResource("StandardMaterial3D_h2yge")
-use_collision = true
-size = Vector3(100, 1, 100)
+[node name="Building1" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D" unique_id=2052177239]
 
-[node name="Walls1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=1307061552]
+[node name="Walls1" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D/Building1" unique_id=1307061552]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=645515297]
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=645515297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, -15)
 size = Vector3(37.5, 75, 1)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=318403184]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=318403184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.25, 37, 7)
 size = Vector3(1, 75, 45)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=1506782088]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=1506782088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.25, 37, 7)
 size = Vector3(1, 75, 45)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Walls1" unique_id=1557818860]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=1557818860]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, 29)
 size = Vector3(37.5, 75, 1)
 
-[node name="Pipe1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=861148989]
+[node name="Pipe1" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D/Building1" unique_id=861148989]
 transform = Transform3D(-0.362573, -0.7115894, -0.6018149, 0.7028469, -0.6328417, 0.32483426, -0.61200225, -0.30520767, 0.72958976, 0, 7.1000004, 18.800001)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Scaffolding/CollisionScaffolding/Pipe1" unique_id=106460791]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Scaffolding/CSGCombiner3D/Building1/Pipe1" unique_id=106460791]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
 radius = 2.0
 height = 20.0
 sides = 32
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Scaffolding/CollisionScaffolding/Pipe1" unique_id=411750267]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Scaffolding/CSGCombiner3D/Building1/Pipe1" unique_id=411750267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
 operation = 2
 radius = 1.5
 height = 21.0
 sides = 32
 
-[node name="Floor1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=1540469087]
+[node name="Floor1" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D/Building1" unique_id=1540469087]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.9, 7)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor1" unique_id=952198651]
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Floor1" unique_id=952198651]
 size = Vector3(37.5, 1, 43)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor1" unique_id=1607888395]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Floor1" unique_id=1607888395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.000001, 0, 12.699999)
 operation = 2
 size = Vector3(7, 1, 4.7000003)
 
-[node name="Stairs1" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=1814003340]
+[node name="Stairs1" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D/Building1" unique_id=1814003340]
 transform = Transform3D(-0.15624261, -0.05615105, -0.9861214, -0.68451154, 0.7259053, 0.06712118, 0.7120617, 0.6854988, -0.1518535, -11.3, 13.800001, -5.2999988)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=254548628]
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=254548628]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0, 0.05000019, 0)
 size = Vector3(0.3, 12.8, 1)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1088889619]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1088889619]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.0017976761, -4.863449, -0.91788197)
 size = Vector3(0.3, 0.2, 1)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1589313572]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1589313572]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.033122063, -4.1929827, 0.9571676)
 size = Vector3(0.3, 0.5, 1)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=551167835]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=551167835]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.06701183, -2.667314, -0.9717989)
 size = Vector3(0.3, 0.90000004, 1)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1574953418]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1574953418]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.05652523, -1.4540777, 0.97469044)
 size = Vector3(0.3, 1.2, 1)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=114999551]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=114999551]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.01645565, 0.3619032, -0.9306164)
 size = Vector3(0.3, 0.2, 1)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1017984135]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1017984135]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.016991615, 1.4397097, 0.9819727)
 size = Vector3(0.3, 0.90000004, 1)
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=879987000]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=879987000]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.04536724, 2.7830935, -0.9300432)
 size = Vector3(0.3, 0.5, 1)
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=1348998652]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1348998652]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.019266129, 4.040719, 0.91782856)
 size = Vector3(0.3, 0.1, 1)
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Stairs1" unique_id=511217585]
+[node name="CSGBox3D10" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=511217585]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.031110764, 4.837264, -0.943346)
 size = Vector3(0.3, 0.5, 1)
 
-[node name="Floor2" type="CSGCombiner3D" parent="Scaffolding/CollisionScaffolding" unique_id=342794500]
+[node name="Floor2" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D/Building1" unique_id=342794500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 7)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor2" unique_id=1629861432]
+[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Floor2" unique_id=1629861432]
 size = Vector3(37.5, 1, 43)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor2" unique_id=596156089]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Floor2" unique_id=596156089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.800002, 0, 14.9)
 operation = 2
 size = Vector3(7, 1, 2.7)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Floor2" unique_id=544866580]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Floor2" unique_id=544866580]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.349998, 0, -14.750002)
 operation = 2
 size = Vector3(10.900001, 1, 13.6)
 
-[node name="Props" type="Node3D" parent="Scaffolding/CollisionScaffolding" unique_id=1824029876]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+[node name="Props" type="Node3D" parent="Scaffolding" unique_id=1824029876]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Scaffolding/CollisionScaffolding/Props" unique_id=588874014]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scaffolding/Props" unique_id=588874014]
 libraries/ = SubResource("AnimationLibrary_5vw27")
 autoplay = &"hoverspin"
 
-[node name="Prop1" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=881252449]
+[node name="Prop1" type="CSGBox3D" parent="Scaffolding/Props" unique_id=881252449]
 transform = Transform3D(0.7880108, 0, -0.6156615, 0, 1, 0, 0.6156615, 0, 0.7880108, 11.3, 14.200001, 9.1)
 material_override = SubResource("StandardMaterial3D_lquwl")
 use_collision = true
 size = Vector3(10, 8, 5)
 
-[node name="Prop2" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=888085969]
+[node name="Prop2" type="CSGBox3D" parent="Scaffolding/Props" unique_id=888085969]
 transform = Transform3D(0.9999995, 0, 0, 0, 1, 0, 0, 0, 0.9999995, -8.8, 11.7, 16.4)
 material_override = SubResource("StandardMaterial3D_5vw27")
 use_collision = true
 size = Vector3(10, 3, 9)
 
-[node name="Prop3" type="CSGBox3D" parent="Scaffolding/CollisionScaffolding/Props" unique_id=1652166185]
+[node name="Prop3" type="CSGBox3D" parent="Scaffolding/Props" unique_id=1652166185]
 transform = Transform3D(-0.17100923, 0.030153677, 0.98480725, 0.17364731, 0.98480725, 0, -0.9698414, 0.17100999, -0.1736481, 5.7, 14, -6.3)
 material_override = SubResource("StandardMaterial3D_kek77")
 use_collision = true
