@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://772t21cg58vo"]
 
-[ext_resource type="Theme" uid="uid://bwpmqgmcr4po7" path="res://ui/theme.tres" id="1_5tvr0"]
-[ext_resource type="Script" uid="uid://cdw02q0dx3ye2" path="res://ui/message_scroll_container.gd" id="2_i8kce"]
-[ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="2_jam4f"]
-[ext_resource type="Script" uid="uid://brb2u5vad2ytg" path="res://ui/hud/ammo/ammo_ui.gd" id="4_kc3lm"]
-[ext_resource type="PackedScene" uid="uid://fr8ycnjjscxq" path="res://ui/hud/ammo/ammo_graphics/ammo_instance_graphic.tscn" id="5_iquxp"]
+[ext_resource type="Theme" uid="uid://bwpmqgmcr4po7" path="res://ui/theme.tres" id="1_gumd8"]
+[ext_resource type="Script" uid="uid://cdw02q0dx3ye2" path="res://ui/message_scroll_container.gd" id="2_j6nqj"]
+[ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="3_4wo4e"]
+[ext_resource type="Script" uid="uid://brb2u5vad2ytg" path="res://ui/hud/ammo/ammo_ui.gd" id="4_7et0a"]
+[ext_resource type="PackedScene" uid="uid://fr8ycnjjscxq" path="res://ui/hud/ammo/ammo_graphics/ammo_instance_graphic.tscn" id="5_87udq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i8kce"]
-font = ExtResource("2_jam4f")
+font = ExtResource("3_4wo4e")
 font_size = 48
 font_color = Color(1, 1, 0.9607843, 1)
 
-[node name="UIManager" type="CanvasLayer" unique_id=844932442]
+[node name="GameplayHUD" type="CanvasLayer" unique_id=844932442]
 
 [node name="MasterContainer" type="AspectRatioContainer" parent="." unique_id=1037313288]
 anchors_preset = 2
@@ -24,7 +24,7 @@ grow_vertical = 0
 [node name="PanelContainer" type="PanelContainer" parent="MasterContainer" unique_id=2101024838]
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 2
-theme = ExtResource("1_5tvr0")
+theme = ExtResource("1_gumd8")
 
 [node name="MarginContainer" type="MarginContainer" parent="MasterContainer/PanelContainer" unique_id=505083126]
 layout_mode = 2
@@ -35,7 +35,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MasterContainer/PanelContainer/MarginContainer" unique_id=907220266]
 layout_mode = 2
-script = ExtResource("2_i8kce")
+script = ExtResource("2_j6nqj")
 
 [node name="Messages" type="Label" parent="MasterContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=1525539931]
 custom_minimum_size = Vector2(1, 1)
@@ -79,11 +79,11 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-script = ExtResource("4_kc3lm")
+script = ExtResource("4_7et0a")
 current_ammo_label = NodePath("VBoxContainer/AmmoCountCenter/AmmoCount/CurrentAmmo")
 reserve_ammo_label = NodePath("VBoxContainer/AmmoCountCenter/AmmoCount/ReserveAmmo")
 ammo_graphic_container = NodePath("VBoxContainer/AmmoGraphicCenter/AmmoGraphic")
-ammo_graphic = ExtResource("5_iquxp")
+ammo_graphic = ExtResource("5_87udq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AmmoUI" unique_id=576335703]
 custom_minimum_size = Vector2(600, 800)
@@ -106,22 +106,22 @@ layout_mode = 2
 layout_mode = 2
 columns = 3
 
-[node name="AmmoInstanceGraphic" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=389276839 instance=ExtResource("5_iquxp")]
+[node name="AmmoInstanceGraphic" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=389276839 instance=ExtResource("5_87udq")]
 layout_mode = 2
 
-[node name="AmmoInstanceGraphic2" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=425370985 instance=ExtResource("5_iquxp")]
+[node name="AmmoInstanceGraphic2" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=425370985 instance=ExtResource("5_87udq")]
 layout_mode = 2
 
-[node name="AmmoInstanceGraphic3" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=1493201248 instance=ExtResource("5_iquxp")]
+[node name="AmmoInstanceGraphic3" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=1493201248 instance=ExtResource("5_87udq")]
 layout_mode = 2
 
-[node name="AmmoInstanceGraphic4" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=481242539 instance=ExtResource("5_iquxp")]
+[node name="AmmoInstanceGraphic4" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=481242539 instance=ExtResource("5_87udq")]
 layout_mode = 2
 
-[node name="AmmoInstanceGraphic5" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=2146709692 instance=ExtResource("5_iquxp")]
+[node name="AmmoInstanceGraphic5" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=2146709692 instance=ExtResource("5_87udq")]
 layout_mode = 2
 
-[node name="AmmoInstanceGraphic6" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=1814609168 instance=ExtResource("5_iquxp")]
+[node name="AmmoInstanceGraphic6" parent="AmmoUI/VBoxContainer/AmmoGraphicCenter/AmmoGraphic" unique_id=1814609168 instance=ExtResource("5_87udq")]
 layout_mode = 2
 
 [node name="AmmoCountCenter" type="CenterContainer" parent="AmmoUI/VBoxContainer" unique_id=598541269]

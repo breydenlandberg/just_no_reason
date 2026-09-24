@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c6f8i4763ujxe" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://beddb0322vxuw" path="res://ui/menus/main_menu/main_menu.tscn" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cjplmadinv70l" path="res://ui/menus/pause_menu/pause_menu.tscn" id="2_feb5d"]
-[ext_resource type="PackedScene" uid="uid://772t21cg58vo" path="res://ui/ui_manager.tscn" id="4_7jktm"]
+[ext_resource type="PackedScene" uid="uid://772t21cg58vo" path="res://ui/hud/gameplay_hud.tscn" id="4_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://player/player.tscn" id="4_fc0e3"]
 
 [node name="Game" type="Node3D" unique_id=55940079 node_paths=PackedStringArray("debug_container", "current_menu_container", "current_hud_container", "current_level_container", "player")]
