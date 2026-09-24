@@ -2,8 +2,6 @@
 - Relatively trivial, but bullets despawn when game is paused
 
 # TODO
-- Consider where and when we are doing "level" loading vs "scene" loading - this is about keeping language consistent and sensible.
-- Extract UIManager and Player out of Level0 into root Game?
 - MarginContainer inside AmmoUI (to give margin/padding between the Ammo Graphics, etc)?
 - Explicitly return void?
 - Underscoring _functions is not ONLY for virtual functions, but for "private" / "internal" functions that function as signal callbacks. While invoked by different entities (virtual invoked by C++ engine loop, signal callbacks invokved by signal emitter), philosophically, both are because of Inversion of Control. Reflect this throughout the project, and also consider how it relates to our "helper" functions.

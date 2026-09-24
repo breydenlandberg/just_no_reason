@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SphereSpecies" format=3 uid="uid://34dr5gxwu5c7"]
+
+[ext_resource type="Script" uid="uid://cowckgspppibi" path="res://enemies/sphere/species/sphere_species.gd" id="1_1mq3y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1mq3y"]
+albedo_color = Color(0.9607843, 0.078431375, 0.039215688, 1)
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.9607843, 0.078431375, 0.039215688, 1)
+emission_energy_multiplier = 0.25
+
+[resource]
+script = ExtResource("1_1mq3y")
+health = 7.0
+appearance = SubResource("StandardMaterial3D_1mq3y")
+metadata/_custom_type_script = "uid://cowckgspppibi"

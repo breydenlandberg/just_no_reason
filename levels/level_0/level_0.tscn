@@ -364,29 +364,25 @@ font = ExtResource("12_6h1n3")
 font_size = 96
 outline_size = 0
 
-[node name="Enemy" type="Node3D" parent="." unique_id=2099937265]
+[node name="Enemies" type="Node3D" parent="." unique_id=2099937265]
 
-[node name="Grunt" parent="Enemy" unique_id=1739248134 instance=ExtResource("13_2dnbt")]
+[node name="Grunt" parent="Enemies" unique_id=1739248134 instance=ExtResource("13_2dnbt")]
 transform = Transform3D(-0.10452843, 0, 0.99452186, 0, 1, 0, -0.99452186, 0, -0.10452843, -10.5, 0.5, 2.4)
 
-[node name="Sphere" parent="Enemy" unique_id=1513231080 instance=ExtResource("14_dp5o0")]
+[node name="Sphere" parent="Enemies" unique_id=1513231080 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5.2, 1)
 
-[node name="Sphere2" parent="Enemy" unique_id=2104636026 instance=ExtResource("14_dp5o0")]
+[node name="Sphere2" parent="Enemies" unique_id=2104636026 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 6.8, -8.1)
-health = 1.0
 
-[node name="Sphere3" parent="Enemy" unique_id=123460139 instance=ExtResource("14_dp5o0")]
+[node name="Sphere3" parent="Enemies" unique_id=123460139 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.1, 13)
-health = 3.0
 
-[node name="Sphere4" parent="Enemy" unique_id=78939452 instance=ExtResource("14_dp5o0")]
+[node name="Sphere4" parent="Enemies" unique_id=78939452 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 15, 1)
-health = 1.0
 
-[node name="Sphere5" parent="Enemy" unique_id=272555763 instance=ExtResource("14_dp5o0")]
+[node name="Sphere5" parent="Enemies" unique_id=272555763 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 17, 21)
-health = 1.0
 
 [node name="Pickups" type="Node3D" parent="." unique_id=181375694]
 

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SphereSpecies" format=3 uid="uid://dxd5oswmr1rfr"]
+
+[ext_resource type="Script" uid="uid://cowckgspppibi" path="res://enemies/sphere/species/sphere_species.gd" id="1_74tic"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2om0"]
+albedo_color = Color(0.5882353, 0.98039216, 0.5882353, 1)
+
+[resource]
+script = ExtResource("1_74tic")
+health = 3.0
+appearance = SubResource("StandardMaterial3D_e2om0")
+metadata/_custom_type_script = "uid://cowckgspppibi"
