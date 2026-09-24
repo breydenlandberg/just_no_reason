@@ -2,8 +2,6 @@ extends Area3D
 
 
 # var
-@export var player: CharacterBody3D
-
 @onready var timer := $Timer
 
 
@@ -11,8 +9,8 @@ extends Area3D
 
 ## signals
 #
-func _on_body_entered(body: CharacterBody3D):
-	if body == player:
+func _on_body_entered(body: Node3D):
+	if body is Player:
 		SignalBus._message.emit('You killed yourself')
 		timer.start()
 	else:

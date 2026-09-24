@@ -9,6 +9,7 @@ extends Node3D
 @export var main_menu: PackedScene
 @export var pause_menu: PackedScene
 @export var game_hud: PackedScene
+@export var player: Player
 
 
 ### fn
@@ -94,7 +95,7 @@ func _on_level_loaded(level_packed_scene: PackedScene) -> void:
 		load_hud(game_hud)
 
 	var current_level = load_current_level(level_packed_scene)
-	if current_level and current_level.player_spawn:
+	if current_level and current_level.player_spawn and player:
 		spawn_player(current_level.player_spawn.global_transform)
 
 	PauseManager.can_pause = true

@@ -1,14 +1,12 @@
 [gd_scene format=3 uid="uid://dy2c45y78kwwp"]
 
 [ext_resource type="Script" uid="uid://dxsryej3nlkg" path="res://levels/level.gd" id="1_v3mv3"]
-[ext_resource type="PackedScene" uid="uid://772t21cg58vo" path="res://ui/ui_manager.tscn" id="2_3slpx"]
 [ext_resource type="Texture2D" uid="uid://bq1gb0px7oo1h" path="res://assets/textures/Day0.exr" id="3_l7xvt"]
 [ext_resource type="Material" uid="uid://fj84wfp0ra3m" path="res://assets/materials/scaffolding.tres" id="4_qiv53"]
 [ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="5_3e5dw"]
 [ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="6_ti4gw"]
 [ext_resource type="Texture2D" uid="uid://bh2tpishmathl" path="res://assets/textures/stone/shine_stone.png" id="7_0gdxf"]
 [ext_resource type="PackedScene" uid="uid://bdaq1v7cg2fay" path="res://killzone/killzone.tscn" id="8_ssg5x"]
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://player/player.tscn" id="9_s6rvk"]
 [ext_resource type="PackedScene" uid="uid://cqin7vy65rmcv" path="res://npc/godot_plush/assets/godot_plush_model_inherited.tscn" id="10_oxxmn"]
 [ext_resource type="PackedScene" uid="uid://f850uti4ula1" path="res://interact/interact.tscn" id="11_u460r"]
 [ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="12_6h1n3"]
@@ -161,12 +159,11 @@ uv1_triplanar = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_efxa6"]
 
-[node name="Level0" type="Node3D" unique_id=1919438153 node_paths=PackedStringArray("player_spawn")]
+[node name="Level0" type="Node3D" unique_id=1919438153 node_paths=PackedStringArray("player_spawn", "dropped_weapons_container")]
 script = ExtResource("1_v3mv3")
 player_spawn = NodePath("PlayerSpawnPoint")
+dropped_weapons_container = NodePath("Pickups/Weapons")
 metadata/_custom_type_script = "uid://dxsryej3nlkg"
-
-[node name="UIManager" parent="." unique_id=844932442 instance=ExtResource("2_3slpx")]
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=1013402081]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 100, 0)
@@ -318,19 +315,14 @@ material_override = SubResource("StandardMaterial3D_kek77")
 use_collision = true
 size = Vector3(3, 5, 9)
 
-[node name="Killzone" parent="." unique_id=35288440 node_paths=PackedStringArray("player") instance=ExtResource("8_ssg5x")]
+[node name="Killzone" parent="." unique_id=35288440 instance=ExtResource("8_ssg5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-player = NodePath("../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=4247257]
 shape = SubResource("WorldBoundaryShape3D_efxa6")
 
 [node name="PlayerSpawnPoint" type="Marker3D" parent="." unique_id=610131212]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="Player" parent="." unique_id=685403359 node_paths=PackedStringArray("ui_manager", "weapons_node") instance=ExtResource("9_s6rvk")]
-ui_manager = NodePath("../UIManager")
-weapons_node = NodePath("../Pickups/Weapons")
 
 [node name="NPC" type="Node3D" parent="." unique_id=1462680777]
 

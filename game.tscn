@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://c6f8i4763ujxe" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://beddb0322vxuw" path="res://ui/menus/main_menu/main_menu.tscn" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cjplmadinv70l" path="res://ui/menus/pause_menu/pause_menu.tscn" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://772t21cg58vo" path="res://ui/ui_manager.tscn" id="4_7jktm"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://player/player.tscn" id="4_fc0e3"]
 
-[node name="Game" type="Node3D" unique_id=55940079 node_paths=PackedStringArray("debug_container", "current_menu_container", "current_hud_container", "current_level_container")]
+[node name="Game" type="Node3D" unique_id=55940079 node_paths=PackedStringArray("debug_container", "current_menu_container", "current_hud_container", "current_level_container", "player")]
 script = ExtResource("1_fc0e3")
 debug_container = NodePath("Debug")
 current_menu_container = NodePath("CurrentMenu")
@@ -12,6 +14,8 @@ current_hud_container = NodePath("CurrentHUD")
 current_level_container = NodePath("CurrentLevel")
 main_menu = ExtResource("1_feb5d")
 pause_menu = ExtResource("2_feb5d")
+game_hud = ExtResource("4_7jktm")
+player = NodePath("Player")
 
 [node name="Debug" type="Node3D" parent="." unique_id=2138891633]
 
@@ -20,3 +24,5 @@ pause_menu = ExtResource("2_feb5d")
 [node name="CurrentHUD" type="Node" parent="." unique_id=1652757092]
 
 [node name="CurrentLevel" type="Node3D" parent="." unique_id=1577217900]
+
+[node name="Player" parent="." unique_id=685403359 instance=ExtResource("4_fc0e3")]

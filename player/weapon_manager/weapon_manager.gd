@@ -20,7 +20,6 @@ var current_status: WeaponManagerStatus = WeaponManagerStatus.UNAVAILABLE
 var current_weapon: Weapon
 var current_weapon_model: WeaponModel
 var action_queue: Callable
-var weapons_node: Node3D
 
 static var combat_status: StringName = 'combat'
 static var non_combat_status: StringName = 'non_combat'
@@ -250,7 +249,7 @@ func drop_weapon() -> int:
 	current_weapon.reserve_ammo.clear()
 
 	current_weapon_model.queue_free()
-	weapons_node.add_child(weapon_to_load)
+	SignalBus.weapon_dropped.emit(weapon_to_load)
 	weapon_to_load.start_drop_cooldown()
 
 	var weapon_i := weapons.find(current_weapon)

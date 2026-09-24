@@ -18,6 +18,10 @@ func _ready():
 	for child in ammo_graphic_container.get_children():
 		child.queue_free()
 
+	SignalBus.weapon_manager_started.connect(start)
+	SignalBus.weapon_manager_stopped.connect(stop)
+	SignalBus.ammo_updated.connect(update_ammo_ui)
+
 
 ## helper
 #
