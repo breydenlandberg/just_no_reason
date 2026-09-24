@@ -8,7 +8,7 @@ enum CameraAlignment {LEFT = -1, CENTRE = 0, RIGHT = 1}
 var camera_rotation := Vector2.ZERO
 var camera_tween: Tween
 var max_y_rotation := 1.0
-var mouse_captured := true
+var mouse_captured := false
 var mouse_sensitivity := 0.001
 var current_camera_alignment: int = CameraAlignment.RIGHT
 
@@ -31,7 +31,6 @@ var current_camera_alignment: int = CameraAlignment.RIGHT
 ## virtual
 #
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	PauseManager.pause_requested.connect(handle_mouse_pause)
 
 func _unhandled_input(event: InputEvent):

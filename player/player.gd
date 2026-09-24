@@ -49,6 +49,23 @@ func _physics_process(_delta: float):
 
 ## helper
 #
+func activate(spawn_transform: Transform3D) -> void:
+	process_mode = Node.PROCESS_MODE_INHERIT
+	show()
+
+	velocity = Vector3.ZERO
+	global_transform = spawn_transform
+
+	if %Camera:
+		%Camera.capture_mouse()
+
+func deactivate() -> void:
+	process_mode = Node.PROCESS_MODE_DISABLED
+	hide()
+
+	if %Camera:
+		%Camera.release_mouse()
+
 func check_input_mappings():
 	var check_action = func(_action: String, _action_type: String, _flag: String):
 		if not InputMap.has_action(_action):

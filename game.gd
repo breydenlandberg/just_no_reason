@@ -22,6 +22,10 @@ func _ready():
 	PauseManager.pause_requested.connect(_on_pause_requested)
 	PauseManager.return_to_title_requested.connect(_on_return_to_title_requested)
 
+	# Disable Player when we start the Game
+	if player:
+		player.deactivate()
+
 	# Load Main Menu when we start the Game
 	load_menu(main_menu)
 
@@ -81,8 +85,7 @@ func clear_debug() -> void:
 
 func spawn_player(spawn_transform: Transform3D) -> void:
 	if player:
-		player.velocity = Vector3.ZERO
-		player.global_transform = spawn_transform
+		player.activate(spawn_transform)
 
 
 ## signal
@@ -102,15 +105,24 @@ func _on_level_loaded(level_packed_scene: PackedScene) -> void:
 
 func _on_pause_requested() -> void:
 	if PauseManager.currently_paused:
-		current_level_container.process_mode = PROCESS_MODE_DISABLED
+		if current_level_container:
+			current_level_container.process_mode = PROCESS_MODE_DISABLED
+		if player:
+			player.process_mode = PROCESS_MODE_DISABLED
 		load_menu(pause_menu)
 	else:
-		current_level_container.process_mode = PROCESS_MODE_INHERIT
+		if current_level_container:
+			current_level_container.process_mode = PROCESS_MODE_INHERIT
+		if player:
+			player.process_mode = PROCESS_MODE_INHERIT
 		clear_menu()
 
 func _on_return_to_title_requested() -> void:
 	clear_debug()
 	clear_hud()
 	clear_current_level()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+	if player:
+		player.deactivate()
+
 	load_menu(main_menu)
