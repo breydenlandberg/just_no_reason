@@ -3,7 +3,7 @@ extends Node
 
 # signal
 signal progress_changed(progress: float)
-signal scene_loaded(loaded_scene: PackedScene)
+signal level_loaded(loaded_scene: PackedScene)
 signal load_finished
 signal load_failed(_scene_path: String)
 
@@ -31,7 +31,7 @@ func _process(_delta: float):
 
 	match load_status:
 		ResourceLoader.THREAD_LOAD_INVALID_RESOURCE, ResourceLoader.THREAD_LOAD_FAILED:
-			printerr('Something went wrong trying to load scene: ', scene_path)
+			printerr('Something went wrong trying to load level: ', scene_path)
 			is_loading = false
 			set_process(false)
 
@@ -40,7 +40,7 @@ func _process(_delta: float):
 			load_failed.emit(scene_path)
 		ResourceLoader.THREAD_LOAD_LOADED:
 			loaded_resource = ResourceLoader.load_threaded_get(scene_path)
-			scene_loaded.emit(loaded_resource)
+			level_loaded.emit(loaded_resource)
 			load_finished.emit()
 
 			is_loading = false
@@ -49,7 +49,7 @@ func _process(_delta: float):
 
 ## helper
 #
-func load_scene(_scene_path: String) -> void:
+func load_level(_scene_path: String) -> void:
 	if is_loading:
 		return
 

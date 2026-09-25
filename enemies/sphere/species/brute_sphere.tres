@@ -13,4 +13,5 @@ emission_energy_multiplier = 0.25
 script = ExtResource("1_1mq3y")
 health = 7.0
 appearance = SubResource("StandardMaterial3D_1mq3y")
+scale = 1.8
 metadata/_custom_type_script = "uid://cowckgspppibi"

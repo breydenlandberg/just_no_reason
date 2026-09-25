@@ -15,8 +15,11 @@ var _health := 1.0
 func _ready():
 	if species:
 		_health = species.health
+
 		if species.appearance:
 			mesh.material_override = species.appearance.duplicate()
+
+		scale = Vector3.ONE * species.scale
 
 
 ## signal

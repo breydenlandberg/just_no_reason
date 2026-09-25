@@ -9,4 +9,5 @@ albedo_color = Color(0.5882353, 0.98039216, 0.5882353, 1)
 script = ExtResource("1_74tic")
 health = 3.0
 appearance = SubResource("StandardMaterial3D_e2om0")
+scale = 1.3
 metadata/_custom_type_script = "uid://cowckgspppibi"

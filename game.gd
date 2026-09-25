@@ -6,6 +6,7 @@ extends Node3D
 @export var current_menu_container: Node
 @export var current_hud_container: Node
 @export var current_level_container: Node3D
+@export var autostart_level: PackedScene # This is used to instantly load a level on Game start if desired - leave empty to go to Main Menu
 @export var main_menu: PackedScene
 @export var pause_menu: PackedScene
 @export var game_hud: PackedScene
@@ -18,7 +19,7 @@ extends Node3D
 #
 func _ready():
 	DebugJnr.set_debug_container(debug_container)
-	LevelLoader.scene_loaded.connect(_on_level_loaded)
+	LevelLoader.level_loaded.connect(_on_level_loaded)
 	PauseManager.pause_requested.connect(_on_pause_requested)
 	PauseManager.return_to_title_requested.connect(_on_return_to_title_requested)
 
@@ -26,8 +27,11 @@ func _ready():
 	if player:
 		player.deactivate()
 
-	# Load Main Menu when we start the Game
-	load_menu(main_menu)
+	# Load Main Menu when we start the Game, IF we don't have a desired autostart_level that we want to go straight into
+	if autostart_level:
+		LevelLoader.load_level(autostart_level.resource_path)
+	else:
+		load_menu(main_menu)
 
 
 ## helper
@@ -56,8 +60,8 @@ func clear_hud() -> void:
 			current_hud_container.remove_child(child)
 			child.queue_free()
 
-func load_current_level(level_scene: PackedScene) -> Level:
-	clear_current_level()
+func load_level(level_scene: PackedScene) -> Level:
+	clear_level()
 
 	if current_level_container:
 		current_level_container.process_mode = PROCESS_MODE_INHERIT
@@ -68,7 +72,7 @@ func load_current_level(level_scene: PackedScene) -> Level:
 
 	return null
 
-func clear_current_level() -> void:
+func clear_level() -> void:
 	if current_level_container:
 		current_level_container.process_mode = PROCESS_MODE_INHERIT
 		for child in current_level_container.get_children():
@@ -97,7 +101,7 @@ func _on_level_loaded(level_packed_scene: PackedScene) -> void:
 	if game_hud:
 		load_hud(game_hud)
 
-	var current_level = load_current_level(level_packed_scene)
+	var current_level = load_level(level_packed_scene)
 	if current_level and current_level.player_spawn and player:
 		spawn_player(current_level.player_spawn.global_transform)
 
@@ -120,7 +124,7 @@ func _on_pause_requested() -> void:
 func _on_return_to_title_requested() -> void:
 	clear_debug()
 	clear_hud()
-	clear_current_level()
+	clear_level()
 
 	if player:
 		player.deactivate()

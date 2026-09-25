@@ -17,4 +17,4 @@ func setup(display_name: String, path: String):
 #
 func _on_pressed():
 	if not level_path.is_empty():
-		LevelLoader.load_scene(level_path)
+		LevelLoader.load_level(level_path)

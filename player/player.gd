@@ -117,8 +117,8 @@ func set_velocity_from_motion(vel: Vector3):
 # interact
 func _on_interact_area_entered(interaction: Interaction):
 	InteractManager.push_front(interaction)
-	InteractManager.update_interact_label()
+	#InteractManager.update_interact_label()
 
 func _on_interact_area_exited(interaction: Interaction):
 	InteractManager.erase(interaction)
-	InteractManager.update_interact_label()
+	#InteractManager.update_interact_label()

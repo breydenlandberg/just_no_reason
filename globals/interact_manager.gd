@@ -50,7 +50,7 @@ func execute_current_interaction():
 
 				current_interaction = next_interaction
 
-			update_interact_label()
+			#update_interact_label()
 
 			await get_tree().create_timer(current_interaction_temp.duration).timeout
 
@@ -78,7 +78,7 @@ func execute_current_interaction():
 					#print('\n')
 
 					current_interaction = interactions[first_not_executed_i]
-					update_interact_label()
+					#update_interact_label()
 
 				#print('InteractManager.execute_current_interaction() after ', current_interaction_temp.duration, 's timeout')
 				#print('interactions: ', interactions)
@@ -129,8 +129,8 @@ func set_player(player_param: CharacterBody3D):
 	#print('player: ', player)
 	#print('\n')
 
-func update_interact_label():
-	if current_interaction and not executed_interactions.has(current_interaction):
-		interact_label.text = current_interaction.label
-	else:
-		interact_label.text = ''
+#func update_interact_label():
+	#if current_interaction and not executed_interactions.has(current_interaction):
+		#interact_label.text = current_interaction.label
+	#else:
+		#interact_label.text = ''
