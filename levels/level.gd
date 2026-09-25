@@ -13,6 +13,9 @@ class_name Level extends Node3D
 func _ready():
 	SignalBus.weapon_dropped.connect(_on_weapon_dropped)
 
+	if not dropped_weapons_container:
+		dropped_weapons_container = get_node_or_null('DroppedWeapons')
+
 
 ## signal
 #

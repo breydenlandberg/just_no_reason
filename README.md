@@ -1,4 +1,5 @@
 # BUGS
+- Dropping weapon is broken atm
 - Relatively trivial, but bullets despawn when game is paused
 
 # TODO

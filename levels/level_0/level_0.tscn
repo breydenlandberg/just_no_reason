@@ -162,10 +162,48 @@ uv1_triplanar = true
 albedo_texture = ExtResource("7_0gdxf")
 uv1_triplanar = true
 
+[sub_resource type="Animation" id="Animation_3slpx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sphere:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-30, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v3mv3"]
+resource_name = "default"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sphere:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5, 7.5000005),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-30, 0, 0), Vector3(-40, 0, 10), Vector3(-40, 10, 0), Vector3(-40, -5, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3slpx"]
+_data = {
+&"RESET": SubResource("Animation_3slpx"),
+&"default": SubResource("Animation_v3mv3")
+}
+
 [node name="Level0" type="Node3D" unique_id=1919438153 node_paths=PackedStringArray("player_spawn", "dropped_weapons_container")]
 script = ExtResource("1_v3mv3")
 player_spawn = NodePath("PlayerSpawnPoint")
-dropped_weapons_container = NodePath("Building2/Pickups/Weapons")
+dropped_weapons_container = NodePath("DroppedWeapons")
 metadata/_custom_type_script = "uid://dxsryej3nlkg"
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=1013402081]
@@ -190,6 +228,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, -1, 0)
 material_override = SubResource("StandardMaterial3D_m377s")
 use_collision = true
 size = Vector3(500, 1, 100)
+
+[node name="DroppedWeapons" type="Node3D" parent="." unique_id=1042479897]
 
 [node name="Building2" type="Node3D" parent="." unique_id=1403035672]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 49.5, -17)
@@ -459,29 +499,33 @@ outline_size = 0
 [node name="Grunt" parent="Enemies" unique_id=1739248134 instance=ExtResource("13_2dnbt")]
 transform = Transform3D(-0.8660252, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, -0.8660252, -1.8, 0, 3)
 
-[node name="FloatingEnemySphereGroup1" type="Node3D" parent="." unique_id=238213674]
+[node name="FloatingEnemySphereGroup" type="Node3D" parent="." unique_id=238213674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -120)
 
-[node name="Sphere" parent="FloatingEnemySphereGroup1" unique_id=1822973008 instance=ExtResource("14_dp5o0")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FloatingEnemySphereGroup" unique_id=1602200112]
+libraries/ = SubResource("AnimationLibrary_3slpx")
+autoplay = &"default"
+
+[node name="Sphere" parent="FloatingEnemySphereGroup" unique_id=1822973008 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
 
-[node name="Sphere2" parent="FloatingEnemySphereGroup1" unique_id=340157156 instance=ExtResource("14_dp5o0")]
+[node name="Sphere2" parent="FloatingEnemySphereGroup" unique_id=340157156 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
 species = ExtResource("22_pxy07")
 
-[node name="Sphere3" parent="FloatingEnemySphereGroup1" unique_id=2021134027 instance=ExtResource("14_dp5o0")]
+[node name="Sphere3" parent="FloatingEnemySphereGroup" unique_id=2021134027 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 species = ExtResource("23_v3mv3")
 
-[node name="Sphere4" parent="FloatingEnemySphereGroup1" unique_id=1751143787 instance=ExtResource("14_dp5o0")]
+[node name="Sphere4" parent="FloatingEnemySphereGroup" unique_id=1751143787 instance=ExtResource("14_dp5o0")]
 
-[node name="Sphere5" parent="FloatingEnemySphereGroup1" unique_id=61044571 instance=ExtResource("14_dp5o0")]
+[node name="Sphere5" parent="FloatingEnemySphereGroup" unique_id=61044571 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 species = ExtResource("22_pxy07")
 
-[node name="Sphere6" parent="FloatingEnemySphereGroup1" unique_id=1338820940 instance=ExtResource("14_dp5o0")]
+[node name="Sphere6" parent="FloatingEnemySphereGroup" unique_id=1338820940 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 species = ExtResource("23_v3mv3")
 
-[node name="Sphere7" parent="FloatingEnemySphereGroup1" unique_id=1402876256 instance=ExtResource("14_dp5o0")]
+[node name="Sphere7" parent="FloatingEnemySphereGroup" unique_id=1402876256 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
