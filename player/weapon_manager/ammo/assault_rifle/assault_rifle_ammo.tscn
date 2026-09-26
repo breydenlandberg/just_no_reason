@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhg0ayga7vc5b"]
 
-[ext_resource type="Script" uid="uid://crqx64cawoa2k" path="res://assets/weapons/ammo_pickup.gd" id="1_clngm"]
+[ext_resource type="Script" uid="uid://crqx64cawoa2k" path="res://player/weapon_manager/ammo/ammo_pickup.gd" id="1_clngm"]
 [ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="2_k8481"]
 [ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="3_t35sf"]
 

@@ -236,7 +236,8 @@ func add_weapon(weapon_pickup: WeaponPickup):
 		current_weapon = weapons.front()
 
 func drop_weapon() -> int:
-	var weapon_to_load: WeaponPickup = current_weapon.weapon_to_drop.instantiate()
+	var pickup_scene: PackedScene = load(current_weapon.weapon_to_drop)
+	var weapon_to_load: WeaponPickup = pickup_scene.instantiate()
 
 	weapon_to_load.internal_weapon = current_weapon
 	weapon_to_load.global_transform = current_weapon_model.global_transform
@@ -288,6 +289,10 @@ func _on_pickup_area_ammo_detected(ammo_pickup: AmmoPickup):
 		ammo_pickup.internal_ammo = remaining
 
 func _on_pickup_area_weapon_detected(weapon_pickup: WeaponPickup):
+	if not weapon_pickup.internal_weapon:
+		push_error(weapon_pickup, ' has no internal_weapon assigned')
+		return
+
 	if not weapons.has(weapon_pickup.internal_weapon):
 		add_weapon(weapon_pickup)
 		weapon_pickup.queue_free()

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://da01xxacdcyia"
-path="res://.godot/imported/quasar.glb-3599b354db1cfdd5df40403e50546485.scn"
+path="res://.godot/imported/quasar.glb-ddf0ecef20881ccbc75229165c7ce7ab.scn"
 
 [deps]
 
-source_file="res://assets/weapons/quasar/quasar.glb"
-dest_files=["res://.godot/imported/quasar.glb-3599b354db1cfdd5df40403e50546485.scn"]
+source_file="res://player/weapon_manager/weapons/quasar/assets/quasar.glb"
+dest_files=["res://.godot/imported/quasar.glb-ddf0ecef20881ccbc75229165c7ce7ab.scn"]
 
 [params]
 

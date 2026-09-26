@@ -20,7 +20,7 @@ func _ready():
 ## signal
 #
 func _on_weapon_dropped(pickup: WeaponPickup):
-	var drop_transform = pickup.global_transform
+	var drop_transform = pickup.transform
 
 	if dropped_weapons_container:
 		dropped_weapons_container.add_child(pickup)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dj87mkxe00tgx"]
 
-[ext_resource type="Script" uid="uid://crqx64cawoa2k" path="res://assets/weapons/ammo_pickup.gd" id="1_gb1xy"]
+[ext_resource type="Script" uid="uid://crqx64cawoa2k" path="res://player/weapon_manager/ammo/ammo_pickup.gd" id="1_gb1xy"]
 [ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="2_kye6y"]
 [ext_resource type="Resource" uid="uid://bnrnpy6sxgw26" path="res://player/weapon_manager/ammo/resources/quasar_ammo.tres" id="3_370jm"]
 

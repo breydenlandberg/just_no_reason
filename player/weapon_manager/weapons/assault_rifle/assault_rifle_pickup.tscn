@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cdpkq6xencde6"]
+
+[ext_resource type="Script" uid="uid://b7f8o5ty00yeq" path="res://player/weapon_manager/weapons/weapon_pickup.gd" id="1_gpkfi"]
+[ext_resource type="Resource" uid="uid://dcgl81rrqyhkc" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle.tres" id="2_xe42m"]
+[ext_resource type="PackedScene" uid="uid://c1gvaajvf15di" path="res://player/weapon_manager/weapons/assault_rifle/assets/AssaultRifle.fbx" id="3_s5o02"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m377s"]
+size = Vector3(1.1, 0.32999998, 1)
+
+[node name="AssaultRiflePickup" type="RigidBody3D" unique_id=1739229459]
+collision_layer = 128
+collision_mask = 131
+script = ExtResource("1_gpkfi")
+internal_weapon = ExtResource("2_xe42m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1648626859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22000004, 0.0150000155, 0)
+shape = SubResource("BoxShape3D_m377s")
+
+[node name="AssaultRifle" parent="." unique_id=412511384 instance=ExtResource("3_s5o02")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
