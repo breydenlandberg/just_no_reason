@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://cdpkq6xencde6" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle_pickup.tscn" id="19_leqqj"]
 [ext_resource type="PackedScene" uid="uid://dyyuefcrdj2re" path="res://player/weapon_manager/weapons/quasar/quasar_pickup.tscn" id="21_im8cc"]
 [ext_resource type="Resource" uid="uid://dxd5oswmr1rfr" path="res://enemies/sphere/species/grunt_sphere.tres" id="22_pxy07"]
-[ext_resource type="Resource" uid="uid://cyl7eow3la5ai" path="res://player/weapon_manager/weapons/quasar/quasar.tres" id="22_tifty"]
 [ext_resource type="Resource" uid="uid://34dr5gxwu5c7" path="res://enemies/sphere/species/brute_sphere.tres" id="23_v3mv3"]
 [ext_resource type="Resource" uid="uid://bnrnpy6sxgw26" path="res://player/weapon_manager/ammo/resources/quasar_ammo.tres" id="23_wie3q"]
 
@@ -302,240 +301,256 @@ size = Vector3(500, 1, 100)
 
 [node name="DroppedWeapons" type="Node3D" parent="." unique_id=1042479897]
 
-[node name="Building2" type="Node3D" parent="." unique_id=1403035672]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 49.5, -17)
+[node name="LevelData" type="Node3D" parent="." unique_id=1412284672]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Building2" unique_id=112799481]
+[node name="WeaponRack" type="CSGCombiner3D" parent="LevelData" unique_id=1277720425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10)
 material_override = ExtResource("3_j6sme")
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Building2/CSGCombiner3D" unique_id=2083576073]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelData/WeaponRack" unique_id=169299772]
+size = Vector3(5, 2, 2)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelData/WeaponRack" unique_id=540322100]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5, 0, 0)
+operation = 2
+polygon = PackedVector2Array(0, -1, 1, 1, 1, -1)
+depth = 5.0
+
+[node name="Building2" type="Node3D" parent="LevelData" unique_id=1403035672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 49.5, -17)
+visible = false
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelData/Building2" unique_id=112799481]
+material_override = ExtResource("3_j6sme")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelData/Building2/CSGCombiner3D" unique_id=2083576073]
 size = Vector3(50, 100, 50)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Building2/CSGCombiner3D" unique_id=304012536]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelData/Building2/CSGCombiner3D" unique_id=304012536]
 operation = 2
 size = Vector3(48, 100, 48)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Building2/CSGCombiner3D" unique_id=688250910]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelData/Building2/CSGCombiner3D" unique_id=688250910]
 transform = Transform3D(-8.217741e-08, -0.99999994, 0, 1.88, -4.3711385e-08, 0, 0, 0, 1, -24.500004, -50, 0)
 operation = 2
 radius = 3.0
 height = 1.1
 sides = 32
 
-[node name="Enemies" type="Node3D" parent="Building2" unique_id=405537502]
+[node name="Enemies" type="Node3D" parent="LevelData/Building2" unique_id=405537502]
 
-[node name="Sphere" parent="Building2/Enemies" unique_id=1513231080 instance=ExtResource("14_dp5o0")]
+[node name="Sphere" parent="LevelData/Building2/Enemies" unique_id=1513231080 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, -44.3, 18)
 
-[node name="Sphere2" parent="Building2/Enemies" unique_id=2104636026 instance=ExtResource("14_dp5o0")]
+[node name="Sphere2" parent="LevelData/Building2/Enemies" unique_id=2104636026 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8, -42.7, 8.9)
 
-[node name="Sphere3" parent="Building2/Enemies" unique_id=123460139 instance=ExtResource("14_dp5o0")]
+[node name="Sphere3" parent="LevelData/Building2/Enemies" unique_id=123460139 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, -46.4, 30)
 
-[node name="Sphere4" parent="Building2/Enemies" unique_id=78939452 instance=ExtResource("14_dp5o0")]
+[node name="Sphere4" parent="LevelData/Building2/Enemies" unique_id=78939452 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, -34.5, 18)
 
-[node name="Sphere5" parent="Building2/Enemies" unique_id=272555763 instance=ExtResource("14_dp5o0")]
+[node name="Sphere5" parent="LevelData/Building2/Enemies" unique_id=272555763 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, -32.5, 38)
 
-[node name="Pickups" type="Node3D" parent="Building2" unique_id=181375694]
+[node name="Pickups" type="Node3D" parent="LevelData/Building2" unique_id=181375694]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, -49.5, 17)
 
-[node name="Ammo" type="Node3D" parent="Building2/Pickups" unique_id=2102950518]
+[node name="Ammo" type="Node3D" parent="LevelData/Building2/Pickups" unique_id=2102950518]
 
-[node name="QuasarAmmoPickup" parent="Building2/Pickups/Ammo" unique_id=2079047079 instance=ExtResource("15_j8vpj")]
+[node name="QuasarAmmoPickup" parent="LevelData/Building2/Pickups/Ammo" unique_id=2079047079 instance=ExtResource("15_j8vpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.75, -9.45)
 
-[node name="QuasarAmmoPickup2" parent="Building2/Pickups/Ammo" unique_id=1314799995 instance=ExtResource("15_j8vpj")]
+[node name="QuasarAmmoPickup2" parent="LevelData/Building2/Pickups/Ammo" unique_id=1314799995 instance=ExtResource("15_j8vpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3199999, 0.75, -9.53)
 
-[node name="QuasarAmmoPickup3" parent="Building2/Pickups/Ammo" unique_id=820847425 instance=ExtResource("15_j8vpj")]
+[node name="QuasarAmmoPickup3" parent="LevelData/Building2/Pickups/Ammo" unique_id=820847425 instance=ExtResource("15_j8vpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8619999, 0.74999994, -8.830999)
 
-[node name="QuasarAmmoPickup4" parent="Building2/Pickups/Ammo" unique_id=700312585 instance=ExtResource("15_j8vpj")]
+[node name="QuasarAmmoPickup4" parent="LevelData/Building2/Pickups/Ammo" unique_id=700312585 instance=ExtResource("15_j8vpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.361, 0.74999994, -8.844)
 
-[node name="AssaultRifleAmmo" parent="Building2/Pickups/Ammo" unique_id=1860755036 instance=ExtResource("16_ar2qe")]
+[node name="AssaultRifleAmmo" parent="LevelData/Building2/Pickups/Ammo" unique_id=1860755036 instance=ExtResource("16_ar2qe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44099995, 0.575, -9.514999)
 
-[node name="AssaultRifleAmmo2" parent="Building2/Pickups/Ammo" unique_id=1775064081 instance=ExtResource("16_ar2qe")]
+[node name="AssaultRifleAmmo2" parent="LevelData/Building2/Pickups/Ammo" unique_id=1775064081 instance=ExtResource("16_ar2qe")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.43, 0.6, -8.9)
 internal_ammo = Array[ExtResource("17_lnyl4")]([ExtResource("18_aqexy"), ExtResource("18_aqexy"), ExtResource("18_aqexy")])
 
-[node name="AssaultRifleAmmo3" parent="Building2/Pickups/Ammo" unique_id=1100267999 instance=ExtResource("16_ar2qe")]
+[node name="AssaultRifleAmmo3" parent="LevelData/Building2/Pickups/Ammo" unique_id=1100267999 instance=ExtResource("16_ar2qe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302, 0.575, -8.914999)
 
-[node name="AssaultRifleAmmo4" parent="Building2/Pickups/Ammo" unique_id=1583869861 instance=ExtResource("16_ar2qe")]
+[node name="AssaultRifleAmmo4" parent="LevelData/Building2/Pickups/Ammo" unique_id=1583869861 instance=ExtResource("16_ar2qe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28, 0.58, -9.55)
 
-[node name="Weapons" type="Node3D" parent="Building2/Pickups" unique_id=466073623]
+[node name="Weapons" type="Node3D" parent="LevelData/Building2/Pickups" unique_id=466073623]
 
-[node name="AssaultRiflePickup" parent="Building2/Pickups/Weapons" unique_id=1739229459 instance=ExtResource("19_leqqj")]
+[node name="AssaultRiflePickup" parent="LevelData/Building2/Pickups/Weapons" unique_id=1739229459 instance=ExtResource("19_leqqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24, 1.27, -8.43)
 internal_ammo = Array[ExtResource("17_lnyl4")]([ExtResource("18_aqexy")])
 
-[node name="AssaultRiflePickup2" parent="Building2/Pickups/Weapons" unique_id=1275956681 instance=ExtResource("19_leqqj")]
+[node name="AssaultRiflePickup2" parent="LevelData/Building2/Pickups/Weapons" unique_id=1275956681 instance=ExtResource("19_leqqj")]
 transform = Transform3D(0.60181504, 0, -0.79863554, 0, 1, 0, 0.79863554, 0, 0.60181504, 10.29, 1.4, -7.700001)
 internal_ammo = Array[ExtResource("17_lnyl4")]([ExtResource("18_aqexy"), ExtResource("18_aqexy"), ExtResource("18_aqexy"), ExtResource("18_aqexy")])
 
-[node name="QuasarPickup" parent="Building2/Pickups/Weapons" unique_id=119255161 instance=ExtResource("21_im8cc")]
+[node name="QuasarPickup" parent="LevelData/Building2/Pickups/Weapons" unique_id=119255161 instance=ExtResource("21_im8cc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15, 3.3399997, -9.57)
-internal_weapon = ExtResource("22_tifty")
 internal_ammo = Array[ExtResource("17_lnyl4")]([ExtResource("23_wie3q"), ExtResource("23_wie3q")])
 
-[node name="Props" type="Node3D" parent="Building2" unique_id=1824029876]
+[node name="Props" type="Node3D" parent="LevelData/Building2" unique_id=1824029876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, -49.5, 17)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Building2/Props" unique_id=588874014]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelData/Building2/Props" unique_id=588874014]
 libraries/ = SubResource("AnimationLibrary_5vw27")
 autoplay = &"hoverspin"
 
-[node name="Prop1" type="CSGBox3D" parent="Building2/Props" unique_id=881252449]
+[node name="Prop1" type="CSGBox3D" parent="LevelData/Building2/Props" unique_id=881252449]
 transform = Transform3D(0.7880108, 0, -0.6156615, 0, 1, 0, 0.6156615, 0, 0.7880108, 11.3, 14.200001, 9.1)
 material_override = SubResource("StandardMaterial3D_lquwl")
 use_collision = true
 size = Vector3(10, 8, 5)
 
-[node name="Prop2" type="CSGBox3D" parent="Building2/Props" unique_id=888085969]
+[node name="Prop2" type="CSGBox3D" parent="LevelData/Building2/Props" unique_id=888085969]
 transform = Transform3D(0.9999995, 0, 0, 0, 1, 0, 0, 0, 0.9999995, -8.8, 11.7, 16.4)
 material_override = SubResource("StandardMaterial3D_5vw27")
 use_collision = true
 size = Vector3(10, 3, 9)
 
-[node name="Prop3" type="CSGBox3D" parent="Building2/Props" unique_id=1652166185]
+[node name="Prop3" type="CSGBox3D" parent="LevelData/Building2/Props" unique_id=1652166185]
 transform = Transform3D(-0.17100923, 0.030153677, 0.98480725, 0.17364731, 0.98480725, 0, -0.9698414, 0.17100999, -0.1736481, 5.7, 14, -6.3)
 material_override = SubResource("StandardMaterial3D_kek77")
 use_collision = true
 size = Vector3(3, 5, 9)
 
-[node name="Scaffolding" type="Node3D" parent="." unique_id=1743302156]
+[node name="Scaffolding" type="Node3D" parent="LevelData" unique_id=1743302156]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Scaffolding" unique_id=921176046]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelData/Scaffolding" unique_id=921176046]
 material_override = ExtResource("3_j6sme")
 use_collision = true
 
-[node name="Building1" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D" unique_id=2052177239]
+[node name="Building1" type="CSGCombiner3D" parent="LevelData/Scaffolding/CSGCombiner3D" unique_id=2052177239]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0, 18)
 
-[node name="Walls1" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D/Building1" unique_id=1307061552]
+[node name="Walls1" type="CSGCombiner3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1" unique_id=1307061552]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=645515297]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=645515297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, -15)
 size = Vector3(37.5, 75, 1)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=318403184]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=318403184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.25, 37, 7)
 size = Vector3(1, 75, 45)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=1506782088]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=1506782088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.25, 37, 7)
 size = Vector3(1, 75, 45)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=1557818860]
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Walls1" unique_id=1557818860]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, 29)
 size = Vector3(37.5, 75, 1)
 
-[node name="Pipe1" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D/Building1" unique_id=861148989]
+[node name="Pipe1" type="CSGCombiner3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1" unique_id=861148989]
 transform = Transform3D(-0.362573, -0.7115894, -0.6018149, 0.7028469, -0.6328417, 0.32483426, -0.61200225, -0.30520767, 0.72958976, 0, 7.1000004, 18.800001)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Scaffolding/CSGCombiner3D/Building1/Pipe1" unique_id=106460791]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Pipe1" unique_id=106460791]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
 radius = 2.0
 height = 20.0
 sides = 32
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Scaffolding/CSGCombiner3D/Building1/Pipe1" unique_id=411750267]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Pipe1" unique_id=411750267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
 operation = 2
 radius = 1.5
 height = 21.0
 sides = 32
 
-[node name="Floor1" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D/Building1" unique_id=1540469087]
+[node name="Floor1" type="CSGCombiner3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1" unique_id=1540469087]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.9, 7)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Floor1" unique_id=952198651]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Floor1" unique_id=952198651]
 size = Vector3(37.5, 1, 43)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Floor1" unique_id=1607888395]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Floor1" unique_id=1607888395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.000001, 0, 12.699999)
 operation = 2
 size = Vector3(7, 1, 4.7000003)
 
-[node name="Stairs1" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D/Building1" unique_id=1814003340]
+[node name="Stairs1" type="CSGCombiner3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1" unique_id=1814003340]
 transform = Transform3D(-0.15624261, -0.05615105, -0.9861214, -0.68451154, 0.7259053, 0.06712118, 0.7120617, 0.6854988, -0.1518535, -11.3, 13.800001, -5.2999988)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=254548628]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=254548628]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0, 0.05000019, 0)
 size = Vector3(0.3, 12.8, 1)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1088889619]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1088889619]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.0017976761, -4.863449, -0.91788197)
 size = Vector3(0.3, 0.2, 1)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1589313572]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1589313572]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.033122063, -4.1929827, 0.9571676)
 size = Vector3(0.3, 0.5, 1)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=551167835]
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=551167835]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.06701183, -2.667314, -0.9717989)
 size = Vector3(0.3, 0.90000004, 1)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1574953418]
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1574953418]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.05652523, -1.4540777, 0.97469044)
 size = Vector3(0.3, 1.2, 1)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=114999551]
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=114999551]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.01645565, 0.3619032, -0.9306164)
 size = Vector3(0.3, 0.2, 1)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1017984135]
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1017984135]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.016991615, 1.4397097, 0.9819727)
 size = Vector3(0.3, 0.90000004, 1)
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=879987000]
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=879987000]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.04536724, 2.7830935, -0.9300432)
 size = Vector3(0.3, 0.5, 1)
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1348998652]
+[node name="CSGBox3D9" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=1348998652]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.019266129, 4.040719, 0.91782856)
 size = Vector3(0.3, 0.1, 1)
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=511217585]
+[node name="CSGBox3D10" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Stairs1" unique_id=511217585]
 transform = Transform3D(0.99999964, -1.3411045e-06, 0, 0, 1.0000021, -7.4505806e-08, -7.450581e-09, 0, 1.0000004, 0.031110764, 4.837264, -0.943346)
 size = Vector3(0.3, 0.5, 1)
 
-[node name="Floor2" type="CSGCombiner3D" parent="Scaffolding/CSGCombiner3D/Building1" unique_id=342794500]
+[node name="Floor2" type="CSGCombiner3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1" unique_id=342794500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 7)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Floor2" unique_id=1629861432]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Floor2" unique_id=1629861432]
 size = Vector3(37.5, 1, 43)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Floor2" unique_id=596156089]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Floor2" unique_id=596156089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.800002, 0, 14.9)
 operation = 2
 size = Vector3(7, 1, 2.7)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Scaffolding/CSGCombiner3D/Building1/Floor2" unique_id=544866580]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelData/Scaffolding/CSGCombiner3D/Building1/Floor2" unique_id=544866580]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.349998, 0, -14.750002)
 operation = 2
 size = Vector3(10.900001, 1, 13.6)
 
-[node name="NPC" type="Node3D" parent="." unique_id=1462680777]
+[node name="NPC" type="Node3D" parent="LevelData" unique_id=1462680777]
 
-[node name="MrGodot" parent="NPC" unique_id=59045274 instance=ExtResource("10_oxxmn")]
+[node name="MrGodot" parent="LevelData/NPC" unique_id=59045274 instance=ExtResource("10_oxxmn")]
 transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, 1.84, -0.5, 2.61)
 
-[node name="Interact" parent="NPC/MrGodot" unique_id=146110054 instance=ExtResource("11_u460r")]
+[node name="Interact" parent="LevelData/NPC/MrGodot" unique_id=146110054 instance=ExtResource("11_u460r")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.6999998, 0)
 duration = 10
 id = "mr_godot"
 label = "[E] Talk"
 value = "Mr Godot is gooning!"
 
-[node name="InteractLabel" type="Label3D" parent="NPC/MrGodot/Interact" unique_id=1407915429]
+[node name="InteractLabel" type="Label3D" parent="LevelData/NPC/MrGodot/Interact" unique_id=1407915429]
 transform = Transform3D(0.2, 0, 0, 0, 0.19999999, 0, 0, 0, 0.2, 0, 0.29999995, 0)
 layers = 2
 billboard = 1
@@ -544,17 +559,17 @@ font = ExtResource("12_6h1n3")
 font_size = 96
 outline_size = 0
 
-[node name="MrGodot2" parent="NPC" unique_id=690538684 instance=ExtResource("10_oxxmn")]
+[node name="MrGodot2" parent="LevelData/NPC" unique_id=690538684 instance=ExtResource("10_oxxmn")]
 transform = Transform3D(-1.0000002, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1.0000002, 0, -0.5, 3.09)
 
-[node name="Interact" parent="NPC/MrGodot2" unique_id=1029642426 instance=ExtResource("11_u460r")]
+[node name="Interact" parent="LevelData/NPC/MrGodot2" unique_id=1029642426 instance=ExtResource("11_u460r")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.6999998, 0)
 duration = 5
 id = "mr_godot_2"
 label = "[E] Talk"
 value = "Mr Godot 2 is bingchilling!"
 
-[node name="InteractLabel" type="Label3D" parent="NPC/MrGodot2/Interact" unique_id=654596435]
+[node name="InteractLabel" type="Label3D" parent="LevelData/NPC/MrGodot2/Interact" unique_id=654596435]
 transform = Transform3D(0.2, 0, 0, 0, 0.19999999, 0, 0, 0, 0.2, 0, 0.29999995, 0)
 layers = 2
 billboard = 1
@@ -563,38 +578,38 @@ font = ExtResource("12_6h1n3")
 font_size = 96
 outline_size = 0
 
-[node name="Enemies" type="Node3D" parent="." unique_id=2099937265]
+[node name="Enemies" type="Node3D" parent="LevelData" unique_id=2099937265]
 
-[node name="Grunt" parent="Enemies" unique_id=1739248134 instance=ExtResource("13_2dnbt")]
+[node name="Grunt" parent="LevelData/Enemies" unique_id=1739248134 instance=ExtResource("13_2dnbt")]
 transform = Transform3D(-0.8660252, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, -0.8660252, -1.8, 0, 3)
 
-[node name="FloatingEnemySphereGroup" type="Node3D" parent="." unique_id=238213674]
+[node name="FloatingEnemySphereGroup" type="Node3D" parent="LevelData" unique_id=238213674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -120)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FloatingEnemySphereGroup" unique_id=1602200112]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelData/FloatingEnemySphereGroup" unique_id=1602200112]
 libraries/ = SubResource("AnimationLibrary_3slpx")
 autoplay = &"default"
 
-[node name="Sphere" parent="FloatingEnemySphereGroup" unique_id=1822973008 instance=ExtResource("14_dp5o0")]
+[node name="Sphere" parent="LevelData/FloatingEnemySphereGroup" unique_id=1822973008 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
 
-[node name="Sphere2" parent="FloatingEnemySphereGroup" unique_id=340157156 instance=ExtResource("14_dp5o0")]
+[node name="Sphere2" parent="LevelData/FloatingEnemySphereGroup" unique_id=340157156 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
 species = ExtResource("22_pxy07")
 
-[node name="Sphere3" parent="FloatingEnemySphereGroup" unique_id=2021134027 instance=ExtResource("14_dp5o0")]
+[node name="Sphere3" parent="LevelData/FloatingEnemySphereGroup" unique_id=2021134027 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 species = ExtResource("23_v3mv3")
 
-[node name="Sphere4" parent="FloatingEnemySphereGroup" unique_id=1751143787 instance=ExtResource("14_dp5o0")]
+[node name="Sphere4" parent="LevelData/FloatingEnemySphereGroup" unique_id=1751143787 instance=ExtResource("14_dp5o0")]
 
-[node name="Sphere5" parent="FloatingEnemySphereGroup" unique_id=61044571 instance=ExtResource("14_dp5o0")]
+[node name="Sphere5" parent="LevelData/FloatingEnemySphereGroup" unique_id=61044571 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 species = ExtResource("22_pxy07")
 
-[node name="Sphere6" parent="FloatingEnemySphereGroup" unique_id=1338820940 instance=ExtResource("14_dp5o0")]
+[node name="Sphere6" parent="LevelData/FloatingEnemySphereGroup" unique_id=1338820940 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
 species = ExtResource("23_v3mv3")
 
-[node name="Sphere7" parent="FloatingEnemySphereGroup" unique_id=1402876256 instance=ExtResource("14_dp5o0")]
+[node name="Sphere7" parent="LevelData/FloatingEnemySphereGroup" unique_id=1402876256 instance=ExtResource("14_dp5o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)

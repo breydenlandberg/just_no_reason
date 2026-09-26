@@ -240,7 +240,15 @@ func drop_weapon() -> int:
 	var weapon_to_load: WeaponPickup = pickup_scene.instantiate()
 
 	weapon_to_load.internal_weapon = current_weapon
-	weapon_to_load.global_transform = current_weapon_model.global_transform
+	# Currently, the Mixamo armature applied to the Player, and specifically the RightHandAttachment,
+	# have a scale factor of 0.1 which gets applied to the AssaultRifleModel when the player is equipping it.
+	# When we drop a weapon, we want the global rotation and position from the hand, but not the scale of 0.1.
+	# That is the purpose of below code. Set the transform to one which contains the global rotation and position
+	# (but not scale!) of the current_weapon_model
+	weapon_to_load.transform = Transform3D(
+		Basis(current_weapon_model.global_basis.get_rotation_quaternion()),
+		current_weapon_model.global_position
+	)
 
 	if current_weapon.current_ammo: # has_current_ammo() confusion?
 		weapon_to_load.internal_ammo.append(current_weapon.current_ammo)

@@ -1,5 +1,109 @@
 # Antigravity Changes & Refactors Roadmap
 
+<!-- 
+HANDOVER RULE:
+The "## Next Change" section is strictly for the single upcoming handover task.
+NEVER edit, modify, or accumulate completed items here. 
+When the task is complete, either CLEAR it (set to None) or POPULATE it with the next active task.
+-->
+## Next Change
+
+> [!IMPORTANT]
+> **Handover Protocol:** This slot is reserved for the immediate active task. **NEVER edit or append to past notes here**—either **clear** this section once finished or **populate** it with the next single task.
+
+### Automatic Weapon Pickup Scale (Live Hand Scale & `get_world_scale`)
+- **Problem:**
+  The in-hand weapon model scale is compounded by the player rig: `RightHandAttachment` (`0.01` Mixamo bone scale) $\times$ `RightHand` node (`18.0` scale) $\times$ `Weapon.scale` (`1.0` in `assault_rifle.tres`), resulting in an effective world scale of `0.01 * 18.0 * 1.0 = 0.18`. Ground pickups (e.g. [`assault_rifle_pickup.tscn`](file:///home/brey/Godot/just_no_reason/player/weapon_manager/weapons/assault_rifle/assault_rifle_pickup.tscn)) exist outside this bone hierarchy and have hardcoded mesh scales (e.g. `0.25`, which is ~39% larger than in-hand). This requires guessing magic numbers for every pickup scene.
+
+- **Solution:**
+  1. **Canonical fallback in [`weapon.gd`](file:///home/brey/Godot/just_no_reason/player/weapon_manager/weapon.gd):** Define `const HAND_RIG_SCALE := Vector3(0.18, 0.18, 0.18)` and helper `func get_world_scale() -> Vector3: return scale * HAND_RIG_SCALE` as the single source of truth for pre-placed level loot.
+  2. **Auto-detection & scaling in [`weapon_pickup.gd`](file:///home/brey/Godot/just_no_reason/player/weapon_manager/weapons/weapon_pickup.gd):** Add `@export var visual_node: Node3D` and `set_visual_scale()`. In `_ready()`, auto-detect the visual mesh child (skipping `CollisionShape3D`) and apply the scale (`custom_visual_scale` if set by drop, or `internal_weapon.get_world_scale()`).
+  3. **Live engine scale transfer in [`weapon_manager.gd`](file:///home/brey/Godot/just_no_reason/player/weapon_manager/weapon_manager.gd):** When dropping a weapon in `drop_weapon()`, pass `current_weapon_model.global_basis.get_scale()` directly to `weapon_to_load.set_visual_scale()`. This queries Godot's engine transform matrix directly—guaranteeing 100% exact in-hand parity with zero magic numbers.
+  4. Reset mesh scales in pickup scenes (e.g. [`assault_rifle_pickup.tscn`](file:///home/brey/Godot/just_no_reason/player/weapon_manager/weapons/assault_rifle/assault_rifle_pickup.tscn)) back to standard `Vector3(1, 1, 1)`.
+
+- **The Diffs:**
+  ##### 1. `player/weapon_manager/weapon.gd`
+  ```diff
+  --- a/player/weapon_manager/weapon.gd
+  +++ b/player/weapon_manager/weapon.gd
+  @@ -1,6 +1,9 @@
+   class_name Weapon extends Resource
+   
+   
+  +# Rig scale factor: 0.01 (Mixamo bone) * 18.0 (RightHand node) = 0.18
+  +const HAND_RIG_SCALE := Vector3(0.18, 0.18, 0.18)
+  +
+   # var
+   @export var name: String
+   @export var weapon_model: PackedScene
+  @@ -25,3 +28,6 @@
+   var current_ammo: Ammo
+   var reserve_ammo: Array[Ammo]
+   @export var max_ammo_magazines := 2
+  +
+  +func get_world_scale() -> Vector3:
+  +	return scale * HAND_RIG_SCALE
+  ```
+  ##### 2. `player/weapon_manager/weapons/weapon_pickup.gd`
+  ```diff
+  --- a/player/weapon_manager/weapons/weapon_pickup.gd
+  +++ b/player/weapon_manager/weapons/weapon_pickup.gd
+  @@ -8,7 +8,9 @@
+   @export var internal_weapon: Weapon
+   @export var internal_ammo: Array[Ammo]
+  +@export var visual_node: Node3D
+   
+   var pickup_ready := true
+  +var custom_visual_scale := Vector3.ZERO
+   
+   
+   ### fn
+  @@ -18,6 +20,29 @@
+   func _ready():
+   	for i in range(internal_ammo.size()):
+   		internal_ammo[i] = internal_ammo[i].duplicate()
+  +	_apply_visual_scale()
+  +
+  +func _apply_visual_scale():
+  +	_find_visual_node()
+  +	if visual_node:
+  +		if custom_visual_scale != Vector3.ZERO:
+  +			visual_node.scale = custom_visual_scale
+  +		elif internal_weapon:
+  +			visual_node.scale = internal_weapon.get_world_scale()
+  +
+  +func set_visual_scale(target_scale: Vector3):
+  +	custom_visual_scale = target_scale
+  +	_find_visual_node()
+  +	if visual_node:
+  +		visual_node.scale = target_scale
+  +
+  +func _find_visual_node():
+  +	if not visual_node:
+  +		for child in get_children():
+  +			if child is Node3D and not child is CollisionShape3D:
+  +				visual_node = child
+  +				break
+   
+   
+   ## helper
+  ```
+  ##### 3. `player/weapon_manager/weapon_manager.gd`
+  ```diff
+  --- a/player/weapon_manager/weapon_manager.gd
+  +++ b/player/weapon_manager/weapon_manager.gd
+  @@ -250,6 +250,7 @@
+   		Basis(current_weapon_model.global_basis.get_rotation_quaternion()),
+   		current_weapon_model.global_position
+   	)
+  +	weapon_to_load.set_visual_scale(current_weapon_model.global_basis.get_scale())
+   
+   	if current_weapon.current_ammo: # has_current_ammo() confusion?
+   		weapon_to_load.internal_ammo.append(current_weapon.current_ammo)
+  ```
+
+---
+
 ## Minor Refactors
 
 ### 1. Single Source of Truth for Aim (Decouple `WeaponManager`)

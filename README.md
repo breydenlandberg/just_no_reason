@@ -2,6 +2,7 @@
 - Relatively trivial, but bullets despawn when game is paused
 
 # TODO
+- Just make a custom Scaffolding CSGCombiner3D / etc so you don't have Material Override on all of them
 - MarginContainer inside AmmoUI (to give margin/padding between the Ammo Graphics, etc)?
 - Explicitly return void?
 - Underscoring _functions is not ONLY for virtual functions, but for "private" / "internal" functions that function as signal callbacks. While invoked by different entities (virtual invoked by C++ engine loop, signal callbacks invokved by signal emitter), philosophically, both are because of Inversion of Control. Reflect this throughout the project, and also consider how it relates to our "helper" functions.
