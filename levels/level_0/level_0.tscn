@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cdpkq6xencde6" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle_pickup.tscn" id="19_leqqj"]
 [ext_resource type="PackedScene" uid="uid://dyyuefcrdj2re" path="res://player/weapon_manager/weapons/quasar/quasar_pickup.tscn" id="21_im8cc"]
 [ext_resource type="Resource" uid="uid://dxd5oswmr1rfr" path="res://enemies/sphere/species/grunt_sphere.tres" id="22_pxy07"]
+[ext_resource type="PackedScene" uid="uid://dntywopo4nbyu" path="res://scaffolding/weapon_rack.tscn" id="22_v3mv3"]
 [ext_resource type="Resource" uid="uid://34dr5gxwu5c7" path="res://enemies/sphere/species/brute_sphere.tres" id="23_v3mv3"]
 [ext_resource type="Resource" uid="uid://bnrnpy6sxgw26" path="res://player/weapon_manager/ammo/resources/quasar_ammo.tres" id="23_wie3q"]
 
@@ -303,19 +304,8 @@ size = Vector3(500, 1, 100)
 
 [node name="LevelData" type="Node3D" parent="." unique_id=1412284672]
 
-[node name="WeaponRack" type="CSGCombiner3D" parent="LevelData" unique_id=1277720425]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10)
-material_override = ExtResource("3_j6sme")
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelData/WeaponRack" unique_id=169299772]
-size = Vector3(5, 2, 2)
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelData/WeaponRack" unique_id=540322100]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5, 0, 0)
-operation = 2
-polygon = PackedVector2Array(0, -1, 1, 1, 1, -1)
-depth = 5.0
+[node name="WeaponRack" parent="LevelData" unique_id=894834646 instance=ExtResource("22_v3mv3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -15)
 
 [node name="Building2" type="Node3D" parent="LevelData" unique_id=1403035672]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 49.5, -17)
