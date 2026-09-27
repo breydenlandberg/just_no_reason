@@ -16,3 +16,4 @@
 - Character models are Quaternius Ultimate Modular Men
 - https://www.youtube.com/watch?v=1WJCHkHFRRA&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv and the following episodes for when you want to add another weapon and all related code
 - Although adding different weapons' ammo to another's is impossible in game currently (ie pickups), keep in mind that we don't have specific guards against it if we did indeed set it in editor, eg quasar having AssaultRifleAmmo
+- 0.01 is the standard Mixamo bone unit scale, so we have to perform some additional calculations to scale 3D models correctly, keep this in mind when you are looking code in this domain or see '0.01' in partially magical ways

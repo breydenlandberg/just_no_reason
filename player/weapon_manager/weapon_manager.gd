@@ -249,6 +249,7 @@ func drop_weapon() -> int:
 		Basis(current_weapon_model.global_basis.get_rotation_quaternion()),
 		current_weapon_model.global_position
 	)
+	weapon_to_load.set_visual_scale(current_weapon_model.global_basis.get_scale())
 
 	if current_weapon.current_ammo: # has_current_ammo() confusion?
 		weapon_to_load.internal_ammo.append(current_weapon.current_ammo)

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://dcgl81rrqyhkc"]
 
-[ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapon.gd" id="1_h38sa"]
+[ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapons/weapon.gd" id="1_h38sa"]
 [ext_resource type="Animation" uid="uid://bklq0uugdutr6" path="res://player/assets/animations/rifle_aim.res" id="2_0isgb"]
 [ext_resource type="Animation" uid="uid://cvpagmer4ctbl" path="res://player/assets/animations/rifle_equip.res" id="3_1h7hx"]
 [ext_resource type="Animation" uid="uid://bvji780v0ycgl" path="res://player/assets/animations/rifle_idle.res" id="4_typht"]
@@ -17,6 +17,7 @@ auto_fire = true
 weapon_to_drop = "uid://cdpkq6xencde6"
 hand_position = Vector3(1.29, 7.33, 1.73)
 hand_rotation = Vector3(0.33, 3, 1.33)
+scale_value = 18.0
 weapon_idle_animation = ExtResource("4_typht")
 weapon_aim_idle_animation = ExtResource("2_0isgb")
 weapon_equip_animation = ExtResource("3_1h7hx")

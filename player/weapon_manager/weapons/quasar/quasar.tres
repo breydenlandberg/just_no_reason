@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://cyl7eow3la5ai"]
 
-[ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapon.gd" id="1_ycj3w"]
+[ext_resource type="Script" uid="uid://0puiy7r7kaiu" path="res://player/weapon_manager/weapons/weapon.gd" id="1_ycj3w"]
 [ext_resource type="Animation" uid="uid://dwb0s7snrrgsr" path="res://player/assets/animations/tpose.res" id="2_p82x8"]
 [ext_resource type="Animation" uid="uid://buw42cx8q21mc" path="res://player/assets/animations/right_kick.res" id="3_bb5mg"]
 [ext_resource type="Animation" uid="uid://bb2nkrg26trsm" path="res://player/assets/animations/crouch.res" id="4_tly1c"]
@@ -15,7 +15,7 @@ name = "quasar"
 weapon_model = ExtResource("5_u8h2p")
 weapon_to_drop = "uid://dyyuefcrdj2re"
 hand_position = Vector3(-12, -36, -24)
-scale = Vector3(-0.15, -0.15, -0.15)
+scale_value = 3.0
 weapon_idle_animation = ExtResource("4_tly1c")
 weapon_aim_idle_animation = ExtResource("2_p82x8")
 weapon_equip_animation = ExtResource("3_bb5mg")

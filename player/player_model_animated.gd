@@ -13,11 +13,26 @@ var input_direction: Vector2
 @export var right_hand: Node3D
 @export var turn_rate := 0.6
 
+static var cached_hand_rig_scale := Vector3.ZERO
+
 
 ### fn
 
+## virtual
+#
+func _ready():
+	if not weapon_manager:
+		push_error('WeaponManager not assigned to PlayerModelAnimated!')
+
+	if right_hand:
+		cached_hand_rig_scale = right_hand.global_basis.get_scale().abs()
+
+
 ## helper
 #
+static func get_hand_rig_scale() -> Vector3:
+	return cached_hand_rig_scale if cached_hand_rig_scale != Vector3.ZERO else Vector3.ONE * 0.01 # 0.01 is the standard Mixamo bone unit scale
+
 func on_state_machine_animation_state_changed(state: String): #weapon_name: String (StringName? How about on state?)
 	#var transition_request: String
 
@@ -75,7 +90,7 @@ func deload_current_weapon():
 	animation_tree['parameters/unequip_weapon/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 func attach_weapon_to_hand(weapon: Weapon, weapon_model: WeaponModel):
-	weapon_model.scale = weapon.scale
+	weapon_model.scale = Vector3.ONE * weapon.scale_value
 	right_hand.add_child(weapon_model)
 
 func clear_weapon_from_hand():

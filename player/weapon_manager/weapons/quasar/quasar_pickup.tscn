@@ -5,15 +5,17 @@
 [ext_resource type="Resource" uid="uid://cyl7eow3la5ai" path="res://player/weapon_manager/weapons/quasar/quasar.tres" id="2_52sf3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m377s"]
-radius = 3.0
+radius = 0.1
 
-[node name="QuasarPickup" type="RigidBody3D" unique_id=119255161]
+[node name="QuasarPickup" type="RigidBody3D" unique_id=119255161 node_paths=PackedStringArray("visual_node")]
 collision_layer = 128
 collision_mask = 131
 script = ExtResource("1_c1ktc")
 internal_weapon = ExtResource("2_52sf3")
+visual_node = NodePath("Quasar")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1957080000]
 shape = SubResource("SphereShape3D_m377s")
 
 [node name="Quasar" parent="." unique_id=77098778 instance=ExtResource("2_0lcwp")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)

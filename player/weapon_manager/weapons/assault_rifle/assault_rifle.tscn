@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dbx7sjoppfryn" path="res://player/weapon_manager/weapons/weapon_model.gd" id="1_tkjyo"]
 [ext_resource type="PackedScene" uid="uid://c1gvaajvf15di" path="res://player/weapon_manager/weapons/assault_rifle/assets/AssaultRifle.fbx" id="2_vvita"]
 
-[node name="AssaultRifleModel" type="Node3D" unique_id=1652972880 node_paths=PackedStringArray("bullet_point")]
+[node name="AssaultRifleInstance" type="Node3D" unique_id=1652972880 node_paths=PackedStringArray("bullet_point")]
 script = ExtResource("1_tkjyo")
 bullet_point = NodePath("BulletPoint")
 
