@@ -1,4 +1,5 @@
 # BUGS
+- I can pick up more of the same weapon while I already have it and have no ammo!?
 - Relatively trivial, but bullets despawn when game is paused
 
 # TODO

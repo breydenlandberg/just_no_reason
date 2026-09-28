@@ -2,38 +2,161 @@
 
 [ext_resource type="Material" uid="uid://c6v30peo0qbcu" path="res://scaffolding/scaffolding_material.tres" id="1_dwnn4"]
 [ext_resource type="PackedScene" uid="uid://cdpkq6xencde6" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle_pickup.tscn" id="2_od7jb"]
-[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="3_322pb"]
-[ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="4_r74cm"]
 [ext_resource type="PackedScene" uid="uid://dyyuefcrdj2re" path="res://player/weapon_manager/weapons/quasar/quasar_pickup.tscn" id="5_r74cm"]
+[ext_resource type="PackedScene" uid="uid://bhg0ayga7vc5b" path="res://player/weapon_manager/ammo/assault_rifle/assault_rifle_ammo_small.tscn" id="7_31spn"]
+[ext_resource type="PackedScene" uid="uid://byfxorrt16cj0" path="res://player/weapon_manager/ammo/assault_rifle/assault_rifle_ammo_medium.tscn" id="8_q7plg"]
+[ext_resource type="PackedScene" uid="uid://8yr3gk0rog87" path="res://player/weapon_manager/ammo/assault_rifle/assault_rifle_ammo_large.tscn" id="9_18x7e"]
+[ext_resource type="PackedScene" uid="uid://dj87mkxe00tgx" path="res://player/weapon_manager/ammo/quasar/quasar_ammo_pickup.tscn" id="10_i8043"]
 
 [node name="WeaponRack" type="CSGCombiner3D" unique_id=894834646]
 material_override = ExtResource("1_dwnn4")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=883035477]
-size = Vector3(5, 2, 2)
+size = Vector3(10, 2, 2)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=823477965]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, 0)
 operation = 2
-polygon = PackedVector2Array(0, -0.6, 1, 1, 1, -0.5)
-depth = 5.0
+polygon = PackedVector2Array(0.65, 1, 1, 1, 1, -1)
+depth = 10.0
 
-[node name="AssaultRiflePickup" parent="." unique_id=1739229459 instance=ExtResource("2_od7jb")]
-transform = Transform3D(-4.3711392e-08, -1, 1.1924879e-08, -0.10452849, 1.6428643e-08, 0.99452204, -0.99452204, 4.222545e-08, -0.10452849, -2.3, -0.5, 0.76)
-internal_ammo = Array[ExtResource("3_322pb")]([ExtResource("4_r74cm")])
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="." unique_id=940403861]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, -1.651)
+operation = 2
+polygon = PackedVector2Array(0.65, 1, 1, -1, 0.65, -1)
+depth = 10.0
 
-[node name="AssaultRiflePickup2" parent="." unique_id=1406187347 instance=ExtResource("2_od7jb")]
-transform = Transform3D(-4.3711392e-08, -1, 1.1924879e-08, -0.10452849, 1.6428643e-08, 0.99452204, -0.99452204, 4.222545e-08, -0.10452849, -1.9, -0.5, 0.76)
-internal_ammo = Array[ExtResource("3_322pb")]([ExtResource("4_r74cm"), ExtResource("4_r74cm"), ExtResource("4_r74cm"), ExtResource("4_r74cm")])
+[node name="AssaultRifleRack" type="CSGCombiner3D" parent="." unique_id=498922946]
+transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, -4.5, -0.5, 1.15)
 
-[node name="AssaultRiflePickup3" parent="." unique_id=296860537 instance=ExtResource("2_od7jb")]
-transform = Transform3D(-4.3711392e-08, -1, 1.1924879e-08, -0.10452849, 1.6428643e-08, 0.99452204, -0.99452204, 4.222545e-08, -0.10452849, -1.5, -0.5, 0.76)
-internal_ammo = Array[ExtResource("3_322pb")]([ExtResource("4_r74cm"), ExtResource("4_r74cm"), ExtResource("4_r74cm"), ExtResource("4_r74cm")])
+[node name="CSGBox3D2" type="CSGBox3D" parent="AssaultRifleRack" unique_id=1025574017]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+size = Vector3(0.05, 0.05, 0.5)
 
-[node name="AssaultRiflePickup4" parent="." unique_id=269756072 instance=ExtResource("2_od7jb")]
-transform = Transform3D(-4.3711392e-08, -1, 1.1924879e-08, -0.10452849, 1.6428643e-08, 0.99452204, -0.99452204, 4.222545e-08, -0.10452849, -1.1, -0.5, 0.76)
-internal_ammo = Array[ExtResource("3_322pb")]([ExtResource("4_r74cm"), ExtResource("4_r74cm"), ExtResource("4_r74cm"), ExtResource("4_r74cm"), ExtResource("4_r74cm"), ExtResource("4_r74cm")])
+[node name="AssaultRiflePickup" parent="AssaultRifleRack" unique_id=1739229459 instance=ExtResource("2_od7jb")]
+transform = Transform3D(-4.9743925e-08, -1, 9.716316e-09, 0.90630835, -4.0977007e-08, 0.4226185, -0.4226185, 2.9828676e-08, 0.90630835, 0.04, 0.3, 0.07)
 
-[node name="QuasarPickup" parent="." unique_id=119255161 instance=ExtResource("5_r74cm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, -0.45, 0.57)
+[node name="AssaultRifleRack2" type="CSGCombiner3D" parent="." unique_id=531004767]
+transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, -3.5, -0.5, 1.15)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="AssaultRifleRack2" unique_id=877935290]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+size = Vector3(0.05, 0.05, 0.5)
+
+[node name="AssaultRiflePickup2" parent="AssaultRifleRack2" unique_id=219419589 instance=ExtResource("2_od7jb")]
+transform = Transform3D(-4.8242196e-08, -1, 9.716331e-09, 0.9063079, -3.961597e-08, 0.42261833, -0.42261833, 2.9194016e-08, 0.9063079, 0.04, 0.3, 0.07)
+
+[node name="AssaultRifleRack3" type="CSGCombiner3D" parent="." unique_id=1924178193]
+transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, -2.5, -0.5, 1.15)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="AssaultRifleRack3" unique_id=1048846923]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+size = Vector3(0.05, 0.05, 0.5)
+
+[node name="AssaultRiflePickup3" parent="AssaultRifleRack3" unique_id=1317833709 instance=ExtResource("2_od7jb")]
+transform = Transform3D(-4.8242196e-08, -1, 9.716331e-09, 0.9063079, -3.961597e-08, 0.42261833, -0.42261833, 2.9194016e-08, 0.9063079, 0.04, 0.3, 0.07)
+
+[node name="QuasarRack" type="CSGCombiner3D" parent="." unique_id=1830744039]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -1.5, -0.5, 1.15)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="QuasarRack" unique_id=1554661843]
+transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, 0, 0, 0)
+size = Vector3(0.05, 0.05, 0.5)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="QuasarRack" unique_id=938600031]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0.087700754, 0.26193738)
+radius = 0.075
+radial_segments = 24
+rings = 12
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="QuasarRack" unique_id=2080743360]
+transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000004, 0, 0.12119752, 0.26066458)
+operation = 2
+size = Vector3(0.16, 0.11, 0.16)
+
+[node name="QuasarPickup" parent="QuasarRack" unique_id=119255161 instance=ExtResource("5_r74cm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.26)
+
+[node name="QuasarRack2" type="CSGCombiner3D" parent="." unique_id=217826593]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -0.5, -0.5, 1.15)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="QuasarRack2" unique_id=1098747836]
+transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, 0, 0, 0)
+size = Vector3(0.05, 0.05, 0.5)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="QuasarRack2" unique_id=411281627]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0.087700754, 0.26193738)
+radius = 0.075
+radial_segments = 24
+rings = 12
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="QuasarRack2" unique_id=27578751]
+transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000004, 0, 0.12119752, 0.26066458)
+operation = 2
+size = Vector3(0.16, 0.11, 0.16)
+
+[node name="QuasarPickup" parent="QuasarRack2" unique_id=1032318669 instance=ExtResource("5_r74cm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.26)
+
+[node name="QuasarRack3" type="CSGCombiner3D" parent="." unique_id=329734529]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.5, -0.5, 1.15)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="QuasarRack3" unique_id=1677615333]
+transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, 0, 0, 0)
+size = Vector3(0.05, 0.05, 0.5)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="QuasarRack3" unique_id=423430788]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0.087700754, 0.26193738)
+radius = 0.075
+radial_segments = 24
+rings = 12
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="QuasarRack3" unique_id=1548566701]
+transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000004, 0, 0.12119752, 0.26066458)
+operation = 2
+size = Vector3(0.16, 0.11, 0.16)
+
+[node name="QuasarPickup" parent="QuasarRack3" unique_id=1290477527 instance=ExtResource("5_r74cm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.26)
+
+[node name="AssaultRifleAmmo" type="Node3D" parent="." unique_id=2144810782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.78000003, -1)
+
+[node name="AssaultRifleAmmoSmall" parent="AssaultRifleAmmo" unique_id=1860755036 instance=ExtResource("7_31spn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.14999998, 0)
+
+[node name="AssaultRifleAmmoMedium" parent="AssaultRifleAmmo" unique_id=608430918 instance=ExtResource("8_q7plg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.06999999, 0)
+
+[node name="AssaultRifleAmmoLarge2" parent="AssaultRifleAmmo" unique_id=1320909951 instance=ExtResource("9_18x7e")]
+
+[node name="AssaultRifleAmmoSmall2" parent="AssaultRifleAmmo" unique_id=485282097 instance=ExtResource("7_31spn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.14999998, 0)
+
+[node name="AssaultRifleAmmoMedium2" parent="AssaultRifleAmmo" unique_id=2029899744 instance=ExtResource("8_q7plg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.06999999, 0)
+
+[node name="AssaultRifleAmmoLarge" parent="AssaultRifleAmmo" unique_id=590215007 instance=ExtResource("9_18x7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+
+[node name="QuasarAmmo" type="Node3D" parent="." unique_id=368382356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.78, -1)
+
+[node name="QuasarAmmoPickup" parent="QuasarAmmo" unique_id=2079047079 instance=ExtResource("10_i8043")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.060000002, 0)
+
+[node name="QuasarAmmoPickup2" parent="QuasarAmmo" unique_id=512430552 instance=ExtResource("10_i8043")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.060000002, 0)
+
+[node name="QuasarAmmoPickup3" parent="QuasarAmmo" unique_id=1153030291 instance=ExtResource("10_i8043")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.060000002, 0)
+
+[node name="QuasarAmmoPickup4" parent="QuasarAmmo" unique_id=1208178008 instance=ExtResource("10_i8043")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.060000002, 0)
+
+[node name="QuasarAmmoPickup5" parent="QuasarAmmo" unique_id=1684840248 instance=ExtResource("10_i8043")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.060000002, 0)
+
+[node name="QuasarAmmoPickup6" parent="QuasarAmmo" unique_id=907232046 instance=ExtResource("10_i8043")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.060000002, 0)

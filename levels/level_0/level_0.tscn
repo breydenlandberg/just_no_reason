@@ -12,16 +12,9 @@
 [ext_resource type="FontFile" uid="uid://dqhto4gnh2h03" path="res://assets/fonts/DungeonFont.ttf" id="12_6h1n3"]
 [ext_resource type="PackedScene" uid="uid://cqiofva7y4sn4" path="res://enemies/grunt/grunt.tscn" id="13_2dnbt"]
 [ext_resource type="PackedScene" uid="uid://dx1jttysmunls" path="res://enemies/sphere/sphere.tscn" id="14_dp5o0"]
-[ext_resource type="PackedScene" uid="uid://dj87mkxe00tgx" path="res://player/weapon_manager/ammo/quasar/quasar_ammo_pickup.tscn" id="15_j8vpj"]
-[ext_resource type="PackedScene" uid="uid://bhg0ayga7vc5b" path="res://player/weapon_manager/ammo/assault_rifle/assault_rifle_ammo.tscn" id="16_ar2qe"]
-[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="17_lnyl4"]
-[ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="18_aqexy"]
-[ext_resource type="PackedScene" uid="uid://cdpkq6xencde6" path="res://player/weapon_manager/weapons/assault_rifle/assault_rifle_pickup.tscn" id="19_leqqj"]
-[ext_resource type="PackedScene" uid="uid://dyyuefcrdj2re" path="res://player/weapon_manager/weapons/quasar/quasar_pickup.tscn" id="21_im8cc"]
 [ext_resource type="Resource" uid="uid://dxd5oswmr1rfr" path="res://enemies/sphere/species/grunt_sphere.tres" id="22_pxy07"]
 [ext_resource type="PackedScene" uid="uid://dntywopo4nbyu" path="res://scaffolding/weapon_rack.tscn" id="22_v3mv3"]
 [ext_resource type="Resource" uid="uid://34dr5gxwu5c7" path="res://enemies/sphere/species/brute_sphere.tres" id="23_v3mv3"]
-[ext_resource type="Resource" uid="uid://bnrnpy6sxgw26" path="res://player/weapon_manager/ammo/resources/quasar_ammo.tres" id="23_wie3q"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
 panorama = ExtResource("3_l7xvt")
@@ -305,7 +298,7 @@ size = Vector3(500, 1, 100)
 [node name="LevelData" type="Node3D" parent="." unique_id=1412284672]
 
 [node name="WeaponRack" parent="LevelData" unique_id=894834646 instance=ExtResource("22_v3mv3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10)
 
 [node name="Building2" type="Node3D" parent="LevelData" unique_id=1403035672]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 49.5, -17)
@@ -327,67 +320,6 @@ operation = 2
 radius = 3.0
 height = 1.1
 sides = 32
-
-[node name="Enemies" type="Node3D" parent="LevelData/Building2" unique_id=405537502]
-
-[node name="Sphere" parent="LevelData/Building2/Enemies" unique_id=1513231080 instance=ExtResource("14_dp5o0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, -44.3, 18)
-
-[node name="Sphere2" parent="LevelData/Building2/Enemies" unique_id=2104636026 instance=ExtResource("14_dp5o0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8, -42.7, 8.9)
-
-[node name="Sphere3" parent="LevelData/Building2/Enemies" unique_id=123460139 instance=ExtResource("14_dp5o0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, -46.4, 30)
-
-[node name="Sphere4" parent="LevelData/Building2/Enemies" unique_id=78939452 instance=ExtResource("14_dp5o0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, -34.5, 18)
-
-[node name="Sphere5" parent="LevelData/Building2/Enemies" unique_id=272555763 instance=ExtResource("14_dp5o0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, -32.5, 38)
-
-[node name="Pickups" type="Node3D" parent="LevelData/Building2" unique_id=181375694]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, -49.5, 17)
-
-[node name="Ammo" type="Node3D" parent="LevelData/Building2/Pickups" unique_id=2102950518]
-
-[node name="QuasarAmmoPickup" parent="LevelData/Building2/Pickups/Ammo" unique_id=2079047079 instance=ExtResource("15_j8vpj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.75, -9.45)
-
-[node name="QuasarAmmoPickup2" parent="LevelData/Building2/Pickups/Ammo" unique_id=1314799995 instance=ExtResource("15_j8vpj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3199999, 0.75, -9.53)
-
-[node name="QuasarAmmoPickup3" parent="LevelData/Building2/Pickups/Ammo" unique_id=820847425 instance=ExtResource("15_j8vpj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8619999, 0.74999994, -8.830999)
-
-[node name="QuasarAmmoPickup4" parent="LevelData/Building2/Pickups/Ammo" unique_id=700312585 instance=ExtResource("15_j8vpj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.361, 0.74999994, -8.844)
-
-[node name="AssaultRifleAmmo" parent="LevelData/Building2/Pickups/Ammo" unique_id=1860755036 instance=ExtResource("16_ar2qe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44099995, 0.575, -9.514999)
-
-[node name="AssaultRifleAmmo2" parent="LevelData/Building2/Pickups/Ammo" unique_id=1775064081 instance=ExtResource("16_ar2qe")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.43, 0.6, -8.9)
-internal_ammo = Array[ExtResource("17_lnyl4")]([ExtResource("18_aqexy"), ExtResource("18_aqexy"), ExtResource("18_aqexy")])
-
-[node name="AssaultRifleAmmo3" parent="LevelData/Building2/Pickups/Ammo" unique_id=1100267999 instance=ExtResource("16_ar2qe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302, 0.575, -8.914999)
-
-[node name="AssaultRifleAmmo4" parent="LevelData/Building2/Pickups/Ammo" unique_id=1583869861 instance=ExtResource("16_ar2qe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28, 0.58, -9.55)
-
-[node name="Weapons" type="Node3D" parent="LevelData/Building2/Pickups" unique_id=466073623]
-
-[node name="AssaultRiflePickup" parent="LevelData/Building2/Pickups/Weapons" unique_id=1739229459 instance=ExtResource("19_leqqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24, 1.27, -8.43)
-internal_ammo = Array[ExtResource("17_lnyl4")]([ExtResource("18_aqexy")])
-
-[node name="AssaultRiflePickup2" parent="LevelData/Building2/Pickups/Weapons" unique_id=1275956681 instance=ExtResource("19_leqqj")]
-transform = Transform3D(0.60181504, 0, -0.79863554, 0, 1, 0, 0.79863554, 0, 0.60181504, 10.29, 1.4, -7.700001)
-internal_ammo = Array[ExtResource("17_lnyl4")]([ExtResource("18_aqexy"), ExtResource("18_aqexy"), ExtResource("18_aqexy"), ExtResource("18_aqexy")])
-
-[node name="QuasarPickup" parent="LevelData/Building2/Pickups/Weapons" unique_id=119255161 instance=ExtResource("21_im8cc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15, -0.1900003, -9.57)
-internal_ammo = Array[ExtResource("17_lnyl4")]([ExtResource("23_wie3q"), ExtResource("23_wie3q")])
 
 [node name="Props" type="Node3D" parent="LevelData/Building2" unique_id=1824029876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, -49.5, 17)

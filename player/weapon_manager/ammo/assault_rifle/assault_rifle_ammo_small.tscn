@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://bhg0ayga7vc5b"]
 
-[ext_resource type="Script" uid="uid://crqx64cawoa2k" path="res://player/weapon_manager/ammo/ammo_pickup.gd" id="1_clngm"]
-[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="2_k8481"]
-[ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/resources/assault_rifle_ammo.tres" id="3_t35sf"]
+[ext_resource type="Script" uid="uid://crqx64cawoa2k" path="res://player/weapon_manager/ammo/ammo_pickup.gd" id="1_kxkwl"]
+[ext_resource type="Script" uid="uid://dpu1mx01ww7be" path="res://player/weapon_manager/ammo/ammo.gd" id="2_54qrl"]
+[ext_resource type="Resource" uid="uid://bfhbvhk62xl0j" path="res://player/weapon_manager/ammo/assault_rifle/assault_rifle_ammo.tres" id="3_g5aja"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_m377s"]
 size = Vector3(0.25, 0.15, 0.25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yb1s"]
-albedo_color = Color(0, 0.39215687, 0, 1)
+albedo_color = Color(0, 0.1764706, 0.23529412, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_18anx"]
 size = Vector3(0.25, 0.15, 0.25)
 
-[node name="AssaultRifleAmmo" type="RigidBody3D" unique_id=1860755036]
+[node name="AssaultRifleAmmoSmall" type="RigidBody3D" unique_id=1860755036]
 collision_layer = 128
 collision_mask = 131
-script = ExtResource("1_clngm")
-internal_ammo = Array[ExtResource("2_k8481")]([ExtResource("3_t35sf")])
+script = ExtResource("1_kxkwl")
+internal_ammo = Array[ExtResource("2_54qrl")]([ExtResource("3_g5aja")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1966473545]
 mesh = SubResource("BoxMesh_m377s")
