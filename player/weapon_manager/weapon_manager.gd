@@ -6,8 +6,6 @@ signal weapon_manager_started(_weapon: Weapon, _weapon_model: WeaponModel)
 signal weapon_manager_stopped()
 signal unequip_animation_finished
 signal weapon_changed(_weapon: Weapon, _weapon_model: WeaponModel)
-signal weapon_aim_entered(_weapon: Weapon)
-signal weapon_aim_exited(_weapon: Weapon)
 signal weapon_fired
 signal weapon_reload
 signal ammo_updated(_weapon: Weapon)
@@ -43,17 +41,6 @@ func _unhandled_input(event: InputEvent):
 
 		if event.is_action_pressed(InputManager.change_weapon):
 			change_weapon()
-
-func _process(_delta: float):
-	if current_status == WeaponManagerStatus.AVAILABLE:
-		if Input.is_action_pressed(InputManager.aim):
-			# is_action_pressed here instead of is_action_just_pressed allows us to detect
-			# when we are aiming in Unarmed straight into aiming while Armed...
-			# but this whole part needs to be refactored anyway, it fucking sucks
-			weapon_aim_entered.emit(current_weapon)
-
-		if Input.is_action_just_released(InputManager.aim):
-			weapon_aim_exited.emit(current_weapon)
 
 
 ## helper

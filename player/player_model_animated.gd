@@ -72,7 +72,11 @@ func on_combat_status_changed(status: StringName):
 func load_new_weapon(weapon: Weapon, weapon_model: WeaponModel):
 	clear_weapon_from_hand()
 
-	animation_tree.tree_root.get_node('weapon_idle_animation').set_animation(weapon.weapon_idle_animation.resource_name)
+	if owner and owner.is_aiming:
+		aim_weapon_idle_animation(weapon)
+	else:
+		reset_weapon_idle_animation(weapon)
+
 	animation_tree.tree_root.get_node('weapon_equip_animation').set_animation(weapon.weapon_equip_animation.resource_name)
 	animation_tree.tree_root.get_node('weapon_unequip_animation').set_animation(weapon.weapon_unequip_animation.resource_name)
 	animation_tree.tree_root.get_node('weapon_shoot_animation').set_animation(weapon.weapon_shoot_animation.resource_name)
@@ -121,12 +125,13 @@ func _on_weapon_changed(_weapon: Weapon, _weapon_model: WeaponModel):
 func _on_weapon_unequip_animation_finished():
 	clear_weapon_from_hand()
 
-func _on_weapon_aim_entered(_weapon: Weapon):
-	print('Stop emitting weapon_aim_entered signal!')
-	aim_weapon_idle_animation(_weapon)
+func _on_aim_entered() -> void:
+	if weapon_manager and weapon_manager.current_weapon:
+		aim_weapon_idle_animation(weapon_manager.current_weapon)
 
-func _on_weapon_aim_exited(_weapon: Weapon):
-	reset_weapon_idle_animation(_weapon)
+func _on_aim_exited() -> void:
+	if weapon_manager and weapon_manager.current_weapon:
+		reset_weapon_idle_animation(weapon_manager.current_weapon)
 
 func _on_weapon_fired():
 	animation_tree['parameters/shoot/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
