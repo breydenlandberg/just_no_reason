@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://ddfgk6h5tildj" path="res://enemies/sphere/sphere.gd" id="1_xcuiu"]
 [ext_resource type="PackedScene" uid="uid://ble4eak8rtfx1" path="res://enemies/hurtbox/hurtbox.tscn" id="2_nlrhr"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j48jl"]
+albedo_color = Color(0.8627451, 0.84313726, 0.8235294, 0.9607843)
+
 [sub_resource type="SphereMesh" id="SphereMesh_m377s"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m377s"]
@@ -18,6 +21,7 @@ mesh = NodePath("MeshInstance3D")
 hurtbox = NodePath("Hurtbox")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2061118964]
+material_override = SubResource("StandardMaterial3D_j48jl")
 mesh = SubResource("SphereMesh_m377s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=415748986]
