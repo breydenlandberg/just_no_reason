@@ -321,8 +321,13 @@ radius = 3.0
 height = 1.1
 sides = 32
 
+[node name="CSGBox3D3" type="CSGPolygon3D" parent="LevelData/Building2/CSGCombiner3D" unique_id=1614865714]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25, -45, 15)
+polygon = PackedVector2Array(-10, -5, -10, 5, 10, -5)
+depth = 5.0
+
 [node name="Props" type="Node3D" parent="LevelData/Building2" unique_id=1824029876]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, -49.5, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.04, -21.66, 17)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LevelData/Building2/Props" unique_id=588874014]
 libraries/ = SubResource("AnimationLibrary_5vw27")
@@ -347,6 +352,7 @@ use_collision = true
 size = Vector3(3, 5, 9)
 
 [node name="Scaffolding" type="Node3D" parent="LevelData" unique_id=1743302156]
+visible = false
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelData/Scaffolding" unique_id=921176046]
 material_override = ExtResource("3_j6sme")
