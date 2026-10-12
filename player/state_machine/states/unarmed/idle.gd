@@ -41,7 +41,9 @@ func _state_physics_process(_delta: float):
 	replenish_sprint(_delta)
 
 	if direction != Vector3.ZERO:
-		if Input.is_action_pressed(InputManager.sprint) and sprint_remaining > PLAYER_MOVEMENT_STATS.minimum_sprint_threshold:
+		if Input.is_action_pressed(InputManager.aim):
+			_transition.emit(self, UnarmedStates.aim_walk)
+		elif Input.is_action_pressed(InputManager.sprint) and sprint_remaining > PLAYER_MOVEMENT_STATS.minimum_sprint_threshold:
 			_transition.emit(self, UnarmedStates.sprint)
 		else:
 			_transition.emit(self, UnarmedStates.walk)

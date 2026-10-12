@@ -15,21 +15,17 @@ None
 
 ## Minor Refactors and Changes
 
-### 1. Direct State Transitions (Avoid Intermediate Hops)
-- **Goal:** Always perform direct State switches when possible (e.g. Idle directly into Sprint or AimWalk, rather than Idle -> Walk -> Sprint/AimWalk). Ensure this across all paths in both Armed and Unarmed machines.
-- **Immediate Fix:** In [`unarmed/idle.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/states/unarmed/idle.gd), moving while aiming currently transitions to `Walk` first and only on the next frame to `AimWalk` (unlike `armed/idle.gd` which already transitions directly). Check `Input.is_action_pressed(aim)` on movement in `unarmed/idle.gd` to transition directly into `AimWalk`.
-
-### 2. Centralize Aim & Sprint Events (Eliminate Scene Spaghetti)
+### 1. Centralize Aim & Sprint Events (Eliminate Scene Spaghetti)
 - **Problem:** [`player.tscn`](file:///home/brey/Godot/just_no_reason/player/player.tscn) contains 10+ manual inspector wires from leaf states (`Unarmed/AimIdle`, `Unarmed/AimWalk`, `Armed/AimIdle`, `Armed/AimWalk`, `Sprint`, `SprintFall`) directly to `Camera`. `Camera` mutates `owner.is_aiming` as a side effect.
 - **Solution:**
   Expose `signal aim_changed(is_aiming: bool)` and `signal sprint_changed(is_sprinting: bool)` on [`player.gd`](file:///home/brey/Godot/just_no_reason/player/player.gd). States update `owner.set_aiming(true/false)`. `Camera` and `PlayerModelAnimated` connect to `Player` once in `_ready()`, deleting 10+ fragile wires from `player.tscn`.
 
-### 3. Deduplicate Sub-State Machines (`ArmedStateMachine` & `UnarmedStateMachine`)
+### 2. Deduplicate Sub-State Machines (`ArmedStateMachine` & `UnarmedStateMachine`)
 - **Problem:** [`armed_state_machine.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/state_machines/armed_state_machine.gd) and [`unarmed_state_machine.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/state_machines/unarmed_state_machine.gd) contain 100% duplicate code for connecting/disconnecting `_animation_state_changed` and `_rotate_model` loops.
 - **Solution:**
   Extract a common `PlayerSubStateMachine extends StateMachine` base class with this wiring logic and have both machines inherit from it.
 
-### 4. Clean Up Zombie State Flags on `Player`
+### 3. Clean Up Zombie State Flags on `Player`
 - **Problem:** `is_sprinting`, `is_crouching`, and `is_attacking` in [`player.gd`](file:///home/brey/Godot/just_no_reason/player/player.gd) are dead variables that are never updated or read.
 - **Solution:**
   Connect `is_sprinting` to the sprint state event and prune unneeded dead flags to eliminate confusion over actual player state.
