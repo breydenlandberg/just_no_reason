@@ -48,7 +48,7 @@ func _physics_process(delta: float):
 		#print('Hit', collider, ', freeing ', bullet_instance)
 		bullet_instance.queue_free()
 
-func _set_weapon_projectile(_weapon: Weapon, _model: WeaponModel):
+func _set_weapon_projectile(_weapon: Weapon, _model: WeaponModel) -> void:
 	var camera_collision: Vector3 = camera_ray_cast()
 	launch_rigid_projectile(camera_collision, _model, rigid_body_bullet)
 	get_tree().create_timer(expiry_time).timeout.connect(on_expiry_timeout)

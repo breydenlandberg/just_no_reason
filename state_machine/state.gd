@@ -34,6 +34,7 @@ func _state_process(_delta: float):
 func _state_physics_process(_delta: float):
 	pass
 
+
 ## helper
 #
 func previous_state_in(state_names: Array[StringName]) -> bool:

@@ -1,14 +1,15 @@
 extends Node
 
 
-# var, const
+# consts
+const DEBUG_DRAW_3D_SCENE: PackedScene = preload('res://addons/debug_draw/debug_draw_3d.tscn') # consider preloading the uid
+
+# vars
 var debug_container: Node3D
 var current_lines: Array[Dictionary]
+var debug_draw_3d: DebugDraw3D
 
 @onready var debug_sphere: PackedScene = preload('res://debug/debug_sphere.tscn') # consider preloading the uid
-
-const DEBUG_DRAW_3D_SCENE: PackedScene = preload('res://addons/debug_draw/debug_draw_3d.tscn') # consider preloading the uid
-var debug_draw_3d: DebugDraw3D
 
 
 ### fn
@@ -34,10 +35,10 @@ func _process(delta: float):
 
 ## helper
 #
-func set_debug_container(container: Node3D):
+func set_debug_container(container: Node3D) -> void:
 	debug_container = container
 
-func draw_between(origin: Vector3, end: Vector3, duration := 1.0, spawn_spheres_at_origin_and_end := false):
+func draw_between(origin: Vector3, end: Vector3, duration := 1.0, spawn_spheres_at_origin_and_end := false) -> void:
 	var line_dict: Dictionary = {'origin': origin, 'end': end, 'time_remaining': duration}
 	current_lines.append(line_dict)
 

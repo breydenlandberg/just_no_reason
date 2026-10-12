@@ -1,12 +1,17 @@
 class_name AmmoInstanceGraphic extends ProgressBar
 
 
+# vars
 @export var current_ammo_style: StyleBoxFlat
 @export var reserve_ammo_style: StyleBoxFlat
 @export var low_ammo_style: StyleBoxFlat
 
 
-func setup(count: int, max_count: int, is_current := false):
+### fn
+
+## helper
+#
+func setup(count: int, max_count: int, is_current := false) -> void:
 	max_value = max_count
 	value = count
 	if is_current:

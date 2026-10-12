@@ -3,7 +3,7 @@ extends CanvasLayer
 
 ### fn
 
-## signal
+## signals
 #
 func _on_resume_button_pressed() -> void:
 	PauseManager.pause_requested.emit()

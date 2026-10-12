@@ -62,6 +62,7 @@ func _ready():
 
 	sprint_remaining = PLAYER_MOVEMENT_STATS.sprint_duration
 
+
 ## movement & physics
 #
 func is_on_floor() -> bool:

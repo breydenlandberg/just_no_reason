@@ -1,6 +1,7 @@
 class_name InputManager
 
-# static var
+
+# static vars
 static var escape := 'escape'
 static var freefly := 'freefly'
 static var forward := 'up'

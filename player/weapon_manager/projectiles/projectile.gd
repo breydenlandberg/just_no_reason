@@ -5,7 +5,7 @@ class_name Projectile extends Node3D
 
 ## virtual
 #
-func _set_weapon_projectile(_weapon: Weapon, _model: WeaponModel):
+func _set_weapon_projectile(_weapon: Weapon, _model: WeaponModel) -> void:
 	pass
 
 

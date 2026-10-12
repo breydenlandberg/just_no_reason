@@ -2,6 +2,7 @@
 extends CharacterBody3D
 
 
+# vars
 @export var species: SphereSpecies = preload("uid://cpscedpei1tgq"):
 	set(value):
 		species = value
@@ -14,7 +15,7 @@ var _health := 1.0
 
 ### fn
 
-## virtual / private
+## virtual
 #
 func _ready():
 	_update_visuals()
@@ -25,6 +26,9 @@ func _ready():
 	if species:
 		_health = species.health
 
+
+## internal
+#
 func _update_visuals() -> void:
 	# if not is_inside_tree() is there to prevent crashing. This occurs because the species set() function is called
 	# immediately right after the scene is _init(). At this point, the node isn't inside the tree, so let's not do a visual update
@@ -44,9 +48,9 @@ func _update_visuals() -> void:
 		scale = Vector3.ONE
 
 
-## signal
+## signals
 #
-func _on_hurtbox_damage_take(_damage: float):
+func _on_hurtbox_damage_take(_damage: float) -> void:
 	_health -= _damage
 	if _health <= 0:
 		#print(self, ' is out of health. DIE!')
