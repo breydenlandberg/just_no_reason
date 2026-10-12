@@ -1,7 +1,7 @@
 class_name StateMachine extends Node3D
 
 
-# var
+# vars
 var states: Dictionary
 var current_state: State
 
@@ -11,28 +11,31 @@ var current_state: State
 
 ### fn
 
-##
+## event delegation
 #
 # To be used in child StateMachines that inherit from this parent class, e.g. PlayerStateMachine,
 # ???StateMachine, etc.
 #
 # Used in _input
-func handle_input(event: InputEvent):
+func handle_input(event: InputEvent) -> void:
 	if current_state:
 		current_state._state_input(event)
 
 # Used in _physics_process
-func handle_physics_process(delta: float):
+func handle_physics_process(delta: float) -> void:
 	if current_state:
 		current_state._state_physics_process(delta)
 
 # Used in _process
-func handle_process(delta: float):
+func handle_process(delta: float) -> void:
 	if current_state:
 		current_state._state_process(delta)
 
+
+## lifecycle
+#
 # Used in _ready
-func _start(target_state_name: StringName = &''):
+func _start(target_state_name: StringName = &'') -> void:
 	print('╔= Starting ', self)
 
 	# Set up states
@@ -55,7 +58,7 @@ func _start(target_state_name: StringName = &''):
 		entry_state._enter()
 		current_state = entry_state
 
-func _stop():
+func _stop() -> void:
 	print('╔= Stopping ', self)
 
 	print('╠= Exit Current State: ', current_state)
@@ -75,7 +78,10 @@ func _stop():
 	print('╚= ', self, ' has exited its Current State, and all child States have their signals disconnected and vars emptied. All packed up!')
 	print()
 
-func transition(state, new_state_name):
+
+## state transitions
+#
+func transition(state, new_state_name) -> void:
 	if state != current_state:
 		push_warning('⛶ Passed state \'' + state.name + '\' does not equal current state \'' + current_state.name + '\'')
 		return

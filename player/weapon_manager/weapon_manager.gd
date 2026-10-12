@@ -1,7 +1,7 @@
 class_name WeaponManager extends Node3D
 
 
-# signal
+# signals
 signal weapon_manager_started(_weapon: Weapon, _weapon_model: WeaponModel)
 signal weapon_manager_stopped()
 signal unequip_animation_finished
@@ -10,10 +10,10 @@ signal weapon_fired
 signal weapon_reload
 signal ammo_updated(_weapon: Weapon)
 
-# enum
+# enums
 enum WeaponManagerStatus {AVAILABLE, UNAVAILABLE}
 
-# var
+# vars
 var current_status: WeaponManagerStatus = WeaponManagerStatus.UNAVAILABLE
 var current_weapon: Weapon
 var current_weapon_model: WeaponModel
@@ -43,16 +43,16 @@ func _unhandled_input(event: InputEvent):
 			change_weapon()
 
 
-## helper
+## lifecycle & combat state
 #
-func on_combat_status_changed(status: StringName):
+func on_combat_status_changed(status: StringName) -> void:
 	match status:
 		combat_status:
 			start_weapon_manager()
 		non_combat_status:
 			stop_weapon_manager()
 
-func start_weapon_manager():
+func start_weapon_manager() -> void:
 	print('Starting weapon manager')
 	print()
 
@@ -65,7 +65,7 @@ func start_weapon_manager():
 		weapon_manager_started.emit(current_weapon, current_weapon_model)
 		weapon_manager_unavailable_for(current_weapon.weapon_equip_animation.length)
 
-func stop_weapon_manager():
+func stop_weapon_manager() -> void:
 	print('Stopping weapon manager')
 	print()
 
@@ -74,7 +74,21 @@ func stop_weapon_manager():
 
 	weapon_manager_stopped.emit()
 
-func change_weapon():
+func weapon_manager_unavailable_for(wait_time: float, timer := weapon_timer, action := Callable()) -> void:
+	stop_timers()
+	current_status = WeaponManagerStatus.UNAVAILABLE
+	timer.start(wait_time)
+	action_queue = action
+
+# Stop timers from overlapping before handling weapon manager availability during animations
+func stop_timers() -> void:
+	weapon_timer.stop()
+	weapon_unequip_timer.stop()
+
+
+## weapons & combat
+#
+func change_weapon() -> void:
 	var weapon_i: int = weapons.find(current_weapon)
 
 	weapon_i = wrapi(weapon_i + 1, 0, weapons.size())
@@ -88,7 +102,7 @@ func change_weapon():
 		weapon_manager_unavailable_for(current_weapon.weapon_equip_animation.length)
 		ammo_updated.emit(current_weapon)
 
-func shoot():
+func shoot() -> void:
 	if has_current_ammo():
 		weapon_manager_unavailable_for(current_weapon.weapon_shoot_animation.length, weapon_timer, check_auto_fire)
 		weapon_fired.emit()
@@ -101,111 +115,15 @@ func shoot():
 	else:
 		reload()
 
-# This comment encompasses the logic in calculate_reload() as well
-#
-# The ammo system works on the principles that the player:
-# - Handles discrete "magazines" (i.e. Ammo Resources), which realistically retain their own ammo counts
-# - Performs "tactical" reloads
-#
-# This means that:
-# - Fully expending a magazine will cause it to be completely discarded. You will have no ammo left once you've expended all your magazines.
-# - If the player reloads before fully expending a magazine, it will be put back and retained as reserve ammo
-# - You will always reload to the largest magazine you have in reserve ammo.
-# - You will only be allowed to reload if your current magazine is smaller than your largest magazine in reserve ammo
-#
-# As a side note, it is therefore possible to have a total ammo count greater than a full magazine, but since each magazine
-# you currently have is not full, you would not be able to reload to get a full magazine.
-func reload():
-	if has_reserve_ammo():
-		var current_count := current_weapon.current_ammo.count if current_weapon.current_ammo else 0
-		var has_largest_ammo: bool = current_weapon.reserve_ammo.front().count <= current_count
-
-		if not has_largest_ammo:
-			weapon_reload.emit()
-			weapon_manager_unavailable_for(current_weapon.weapon_reload_animation.length, weapon_timer, calculate_reload)
-
-func weapon_manager_unavailable_for(wait_time: float, timer := weapon_timer, action := Callable()):
-	stop_timers()
-	current_status = WeaponManagerStatus.UNAVAILABLE
-	timer.start(wait_time)
-	action_queue = action
-
-# Stop timers from overlapping before handling weapon manager availability during animations
-func stop_timers():
-	weapon_timer.stop()
-	weapon_unequip_timer.stop()
-
-func has_current_ammo():
-	return current_weapon.current_ammo and current_weapon.current_ammo.count > 0
-
-func has_reserve_ammo():
-	return current_weapon.reserve_ammo and current_weapon.reserve_ammo.size() > 0
-
-func reduce_ammo(by := 1):
-	current_weapon.current_ammo.count -= by
-	ammo_updated.emit(current_weapon)
-
-func sort_reserve_ammo(weapon: Weapon):
-	# Largest magazine first, smallest magazine last
-	weapon.reserve_ammo.sort_custom(func(a: Ammo, b: Ammo): return a.count > b.count)
-
-# See comment at reload()
-func calculate_reload():
-	# These print statements will illustrate how ammo is handled in this game
-	#print('BEFORE:')
-	#print('current_ammo: ', current_weapon.current_ammo.count)
-	#print('reserve_ammo:')
-	#for ammo in current_weapon.reserve_ammo:
-		#print(ammo.count)
-	#print()
-
-	if has_current_ammo():
-		current_weapon.reserve_ammo.push_back(current_weapon.current_ammo)
-
-	if has_reserve_ammo():
-		sort_reserve_ammo(current_weapon)
-		current_weapon.current_ammo = current_weapon.reserve_ammo.pop_front()
-
-	ammo_updated.emit(current_weapon)
-	$PickupArea.check_overlapping_pickups()
-
-	#print('AFTER:')
-	#print('current_ammo: ', current_weapon.current_ammo.count)
-	#print('reserve_ammo:')
-	#for ammo in current_weapon.reserve_ammo:
-		#print(ammo.count)
-	#print()
-
-func set_current_weapon_model(weapon: Weapon):
-	var new_weapon_model: WeaponModel = weapon.weapon_model.instantiate()
-	current_weapon_model = new_weapon_model
-
-func check_auto_fire():
+func check_auto_fire() -> void:
 	if current_weapon.auto_fire and Input.is_action_pressed(InputManager.shoot):
 		shoot()
 
-# take as much ammo as allowed from a magazine and return it less what was taken from it
-func add_ammo(ammo_arr: Array[Ammo]) -> Array[Ammo]:
-	var remaining_ammo: Array[Ammo] = []
+func set_current_weapon_model(weapon: Weapon) -> void:
+	var new_weapon_model: WeaponModel = weapon.weapon_model.instantiate()
+	current_weapon_model = new_weapon_model
 
-	# Largest magazine first, smallest magazine last
-	ammo_arr.sort_custom(func(a: Ammo, b: Ammo): return a.count > b.count)
-	for ammo in ammo_arr:
-		var collected := false
-		for weapon in weapons:
-			if ammo.ammo_type == weapon.name:
-				if weapon.reserve_ammo.size() < weapon.max_ammo_magazines or weapon.max_ammo_magazines < 0:
-					weapon.reserve_ammo.push_back(ammo)
-					collected = true
-					sort_reserve_ammo(weapon)
-					break
-		if not collected:
-			remaining_ammo.append(ammo)
-
-	ammo_updated.emit(current_weapon)
-	return remaining_ammo
-
-func add_weapon(weapon_pickup: WeaponPickup):
+func add_weapon(weapon_pickup: WeaponPickup) -> void:
 	var new_weapon: Weapon = weapon_pickup.internal_weapon
 
 	new_weapon.reserve_ammo.clear()
@@ -262,9 +180,97 @@ func drop_weapon() -> int:
 	return weapons.size()
 
 
-## signal
+## ammo & reload
 #
-func _on_weapon_timer_timeout():
+# This comment encompasses the logic in calculate_reload() as well
+#
+# The ammo system works on the principles that the player:
+# - Handles discrete "magazines" (i.e. Ammo Resources), which realistically retain their own ammo counts
+# - Performs "tactical" reloads
+#
+# This means that:
+# - Fully expending a magazine will cause it to be completely discarded. You will have no ammo left once you've expended all your magazines.
+# - If the player reloads before fully expending a magazine, it will be put back and retained as reserve ammo
+# - You will always reload to the largest magazine you have in reserve ammo.
+# - You will only be allowed to reload if your current magazine is smaller than your largest magazine in reserve ammo
+#
+# As a side note, it is therefore possible to have a total ammo count greater than a full magazine, but since each magazine
+# you currently have is not full, you would not be able to reload to get a full magazine.
+func reload() -> void:
+	if has_reserve_ammo():
+		var current_count := current_weapon.current_ammo.count if current_weapon.current_ammo else 0
+		var has_largest_ammo: bool = current_weapon.reserve_ammo.front().count <= current_count
+
+		if not has_largest_ammo:
+			weapon_reload.emit()
+			weapon_manager_unavailable_for(current_weapon.weapon_reload_animation.length, weapon_timer, calculate_reload)
+
+func has_current_ammo() -> bool:
+	return current_weapon.current_ammo and current_weapon.current_ammo.count > 0
+
+func has_reserve_ammo() -> bool:
+	return current_weapon.reserve_ammo and current_weapon.reserve_ammo.size() > 0
+
+func reduce_ammo(by := 1) -> void:
+	current_weapon.current_ammo.count -= by
+	ammo_updated.emit(current_weapon)
+
+func sort_reserve_ammo(weapon: Weapon) -> void:
+	# Largest magazine first, smallest magazine last
+	weapon.reserve_ammo.sort_custom(func(a: Ammo, b: Ammo): return a.count > b.count)
+
+# See comment at reload()
+func calculate_reload() -> void:
+	# These print statements will illustrate how ammo is handled in this game
+	#print('BEFORE:')
+	#print('current_ammo: ', current_weapon.current_ammo.count)
+	#print('reserve_ammo:')
+	#for ammo in current_weapon.reserve_ammo:
+		#print(ammo.count)
+	#print()
+
+	if has_current_ammo():
+		current_weapon.reserve_ammo.push_back(current_weapon.current_ammo)
+
+	if has_reserve_ammo():
+		sort_reserve_ammo(current_weapon)
+		current_weapon.current_ammo = current_weapon.reserve_ammo.pop_front()
+
+	ammo_updated.emit(current_weapon)
+	$PickupArea.check_overlapping_pickups()
+
+	#print('AFTER:')
+	#print('current_ammo: ', current_weapon.current_ammo.count)
+	#print('reserve_ammo:')
+	#for ammo in current_weapon.reserve_ammo:
+		#print(ammo.count)
+	#print()
+
+# take as much ammo as allowed from a magazine and return it less what was taken from it
+func add_ammo(ammo_arr: Array[Ammo]) -> Array[Ammo]:
+	var remaining_ammo: Array[Ammo] = []
+
+	# Largest magazine first, smallest magazine last
+	ammo_arr.sort_custom(func(a: Ammo, b: Ammo): return a.count > b.count)
+	for ammo in ammo_arr:
+		var collected := false
+		for weapon in weapons:
+			if ammo.ammo_type == weapon.name:
+				if weapon.reserve_ammo.size() < weapon.max_ammo_magazines or weapon.max_ammo_magazines < 0:
+					weapon.reserve_ammo.push_back(ammo)
+					collected = true
+					sort_reserve_ammo(weapon)
+					break
+		if not collected:
+			remaining_ammo.append(ammo)
+
+	ammo_updated.emit(current_weapon)
+	return remaining_ammo
+
+
+## signals
+#
+func _on_weapon_timer_timeout() -> void:
 	if current_weapon:
 		current_status = WeaponManagerStatus.AVAILABLE
 
@@ -272,19 +278,11 @@ func _on_weapon_timer_timeout():
 			action_queue.call_deferred()
 			action_queue = Callable()
 
-func _on_weapon_unequip_timer_timeout():
+func _on_weapon_unequip_timer_timeout() -> void:
 	current_status = WeaponManagerStatus.UNAVAILABLE
 	unequip_animation_finished.emit()
 
-func _on_pickup_area_ammo_detected(ammo_pickup: AmmoPickup):
-	var remaining: Array[Ammo] = add_ammo(ammo_pickup.internal_ammo)
-
-	if remaining.is_empty():
-		ammo_pickup.queue_free()
-	else:
-		ammo_pickup.internal_ammo = remaining
-
-func _on_pickup_area_weapon_detected(weapon_pickup: WeaponPickup):
+func _on_pickup_area_weapon_detected(weapon_pickup: WeaponPickup) -> void:
 	if not weapon_pickup.internal_weapon:
 		push_error(weapon_pickup, ' has no internal_weapon assigned')
 		return
@@ -301,3 +299,11 @@ func _on_pickup_area_weapon_detected(weapon_pickup: WeaponPickup):
 			weapon_pickup.queue_free()
 		else:
 			weapon_pickup.internal_ammo = remaining
+
+func _on_pickup_area_ammo_detected(ammo_pickup: AmmoPickup) -> void:
+	var remaining: Array[Ammo] = add_ammo(ammo_pickup.internal_ammo)
+
+	if remaining.is_empty():
+		ammo_pickup.queue_free()
+	else:
+		ammo_pickup.internal_ammo = remaining

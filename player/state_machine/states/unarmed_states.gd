@@ -1,7 +1,7 @@
 class_name UnarmedStates
 
 
-# var
+# vars
 static var unarmed_state: StringName = 'Unarmed'
 
 static var freefly: StringName = 'Freefly'

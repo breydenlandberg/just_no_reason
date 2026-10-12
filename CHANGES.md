@@ -8,7 +8,35 @@ When the task is complete, either CLEAR it (set to None) or POPULATE it with the
 -->
 ## Next Change
 
-None
+### Part 1: Final Lint Conformances & Minor Cleanups
+- **Goal:** Finish remaining edge cases identified during the project-wide lint re-evaluation pass.
+- **Files, Lines & Tasks:**
+  - [`enemies/sphere/species/sphere_species.gd`](file:///home/brey/Godot/just_no_reason/enemies/sphere/species/sphere_species.gd#L3): Add `# vars` header above exports.
+  - [`enemies/sphere/sphere.gd`](file:///home/brey/Godot/just_no_reason/enemies/sphere/sphere.gd#L3): Add `# vars` header above exports.
+  - [`enemies/sphere/sphere.gd`](file:///home/brey/Godot/just_no_reason/enemies/sphere/sphere.gd#L17): Change `## virtual / private` to `## virtual`.
+  - [`enemies/sphere/sphere.gd`](file:///home/brey/Godot/just_no_reason/enemies/sphere/sphere.gd#L47): Change singular `## signal` to `## signals`.
+  - [`enemies/sphere/sphere.gd`](file:///home/brey/Godot/just_no_reason/enemies/sphere/sphere.gd#L49): Add `-> void` return type to `_on_hurtbox_damage_take(_damage: float)`.
+  - [`globals/debug_jnr.gd`](file:///home/brey/Godot/just_no_reason/globals/debug_jnr.gd#L4): Separate combined `# var, const` into `# consts` and `# vars`.
+  - [`globals/debug_jnr.gd`](file:///home/brey/Godot/just_no_reason/globals/debug_jnr.gd#L37): Add `-> void` return type to `set_debug_container(container: Node3D)`.
+  - [`globals/debug_jnr.gd`](file:///home/brey/Godot/just_no_reason/globals/debug_jnr.gd#L40): Add `-> void` return type to `draw_between(...)`.
+  - [`player/input_manager.gd`](file:///home/brey/Godot/just_no_reason/player/input_manager.gd#L1-L3): Ensure 2 blank lines after `class_name InputManager` and change `# static var` to `# static vars`.
+  - [`player/state_machine/player_motion_state.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/player_motion_state.gd#L64): Ensure 2 blank lines before `## movement & physics`.
+  - [`player/weapon_manager/projectiles/bullets/assault_rifle_bullet.gd`](file:///home/brey/Godot/just_no_reason/player/weapon_manager/projectiles/bullets/assault_rifle_bullet.gd#L3): Add `# vars` header above export.
+  - [`player/weapon_manager/projectiles/projectile.gd`](file:///home/brey/Godot/just_no_reason/player/weapon_manager/projectiles/projectile.gd#L8): Add `-> void` return type to custom method `_set_weapon_projectile(...)`.
+  - [`player/weapon_manager/projectiles/rigid_body_projectile.gd`](file:///home/brey/Godot/just_no_reason/player/weapon_manager/projectiles/rigid_body_projectile.gd#L51): Add `-> void` return type to `_set_weapon_projectile(...)`.
+  - [`player/weapon_manager/weapons/weapon_model.gd`](file:///home/brey/Godot/just_no_reason/player/weapon_manager/weapons/weapon_model.gd#L1-L3): Ensure 2 blank lines after `class_name WeaponModel extends Node3D` and add `# vars` header.
+  - [`state_machine/state.gd`](file:///home/brey/Godot/just_no_reason/state_machine/state.gd#L36): Ensure 2 blank lines before `## helper`.
+  - [`ui/hud/ammo/ammo_graphics/ammo_instance_graphic.gd`](file:///home/brey/Godot/just_no_reason/ui/hud/ammo/ammo_graphics/ammo_instance_graphic.gd#L3-L9): Add `# vars` header, `### fn`, `## helper`, and `-> void` to `setup(...)`.
+  - [`ui/menus/pause_menu/pause_menu.gd`](file:///home/brey/Godot/just_no_reason/ui/menus/pause_menu/pause_menu.gd#L6): Change singular `## signal` to `## signals`.
+
+### Part 2: Standardize Variable Ordering within `# vars` across Codebase
+- **Goal:** Audit and systematically organize variable declarations within `# vars` across all files once Part 1 completes.
+- **Approaches to choose from:**
+  - **Option A (Type / Lifecycle Order):** `@export` vars &rarr; regular state vars &rarr; internal `_` vars &rarr; `static var` &rarr; `@onready var`.
+  - **Option B (Feature / Domain Grouping):** Group variables by feature domain (e.g., look/camera &rarr; stance [aim before sprint] &rarr; inventory [weapons before ammo]), keeping related exports/onready vars together with domain headers.
+- **Safety Precaution:** Check `@onready` top-to-bottom dependency order and Godot Inspector export layouts during the pass.
+- **Underscore Naming Convention (`_`) for Internal Variables:** Review and standardize the use of leading underscores on variables (similar to internal functions) — prefixing private/internal state variables with `_` while leaving public contracts clean.
+- **Update Documentation:** Update [`CONVENTION.md`](file:///home/brey/Godot/just_no_reason/CONVENTION.md) upon completing this pass to document the finalized variable ordering standard and internal variable underscore convention.
 
 
 ---

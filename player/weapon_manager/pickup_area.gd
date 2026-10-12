@@ -1,23 +1,23 @@
 class_name PickupArea extends Area3D
 
 
-# signal
-@warning_ignore('unused_signal')
-signal ammo_detected(ammo_pickup: AmmoPickup)
+# signals
 @warning_ignore('unused_signal')
 signal weapon_detected(weapon_pickup: WeaponPickup)
+@warning_ignore('unused_signal')
+signal ammo_detected(ammo_pickup: AmmoPickup)
 
 
 ### fn
-##
 
-# helper
-func check_overlapping_pickups():
+## helper
+#
+func check_overlapping_pickups() -> void:
 	for body in get_overlapping_bodies():
 		if is_instance_valid(body) and not body.is_queued_for_deletion():
 			detect_pickup(body)
 
-func detect_pickup(body: Node3D):
+func detect_pickup(body: Node3D) -> void:
 	if body is WeaponPickup:
 		if body.pickup_ready:
 			weapon_detected.emit(body)
@@ -27,10 +27,12 @@ func detect_pickup(body: Node3D):
 	elif body is AmmoPickup:
 		ammo_detected.emit(body)
 
-# signal
-func _on_body_entered(body: Node3D):
+
+## signals
+#
+func _on_body_entered(body: Node3D) -> void:
 	detect_pickup(body)
 
-func _on_weapon_became_ready(weapon_pickup: WeaponPickup):
+func _on_weapon_became_ready(weapon_pickup: WeaponPickup) -> void:
 	if overlaps_body(weapon_pickup):
 		weapon_detected.emit(weapon_pickup)

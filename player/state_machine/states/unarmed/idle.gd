@@ -1,7 +1,7 @@
 extends PlayerMotionState
 
 
-# var
+# vars
 var land_after_these_states: Array[StringName] = [UnarmedStates.jump, UnarmedStates.sprint_jump, UnarmedStates.fall, UnarmedStates.sprint_fall]
 
 

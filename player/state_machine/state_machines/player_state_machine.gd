@@ -1,7 +1,7 @@
 class_name PlayerStateMachine extends StateMachine
 
 
-# var
+# vars
 @export var weapon_manager: WeaponManager
 
 
@@ -12,10 +12,10 @@ class_name PlayerStateMachine extends StateMachine
 func _input(_event: InputEvent):
 	handle_input(_event)
 
-func _physics_process(_delta):
+func _physics_process(_delta: float):
 	handle_physics_process(_delta)
 
-func _process(_delta):
+func _process(_delta: float):
 	handle_process(_delta)
 
 func _ready():
@@ -25,8 +25,11 @@ func _ready():
 
 	_start()
 
+
+## state transitions
+#
 # This allows us to go straight from eg Unarmed/AimWalk -> Armed/AimWalk and the reverse when equipping / unequipping weapon
-func transition(state, new_state_name):
+func transition(state, new_state_name) -> void:
 	var motion_state_to_preserve: StringName = &''
 
 	if current_state is PlayerCombatTransitionState and current_state.state_machine:

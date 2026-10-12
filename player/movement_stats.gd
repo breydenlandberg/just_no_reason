@@ -1,7 +1,7 @@
 class_name MovementStats extends Resource
 
 
-# var
+# vars
 @export var freefly_speed := 32.0
 @export var time_to_jump_apex := 0.5
 @export var time_to_land := 0.5

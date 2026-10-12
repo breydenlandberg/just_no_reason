@@ -1,10 +1,10 @@
 class_name WeaponPickup extends RigidBody3D
 
 
-# signal
+# signals
 signal became_ready(weapon_pickup: WeaponPickup)
 
-# var
+# vars
 @export var internal_weapon: Weapon
 @export var internal_ammo: Array[Ammo]
 @export var visual_node: Node3D
@@ -15,7 +15,7 @@ var custom_visual_scale := Vector3.ZERO
 
 ### fn
 
-# virtual / private
+## virtual
 #
 func _ready():
 	if internal_ammo:
@@ -27,6 +27,9 @@ func _ready():
 	else:
 		push_error('visual_node not assigned in ', self)
 
+
+## internal
+#
 func _apply_visual_scale() -> void:
 	if not visual_node:
 		return
@@ -37,7 +40,7 @@ func _apply_visual_scale() -> void:
 		visual_node.scale = internal_weapon.get_world_scale()
 
 
-## helper
+## public
 #
 func start_drop_cooldown(duration := 2.5) -> void:
 	pickup_ready = false

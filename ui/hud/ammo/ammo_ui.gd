@@ -1,7 +1,7 @@
 extends Control
 
 
-# var
+# vars
 @export var current_ammo_label: Label
 @export var reserve_ammo_label: Label
 @export var ammo_graphic_container: GridContainer
@@ -25,21 +25,21 @@ func _ready():
 
 ## helper
 #
-func start(weapon: Weapon, _weapon_model: WeaponModel):
+func start(weapon: Weapon, _weapon_model: WeaponModel) -> void:
 	update_ammo_ui(weapon)
 	show()
 
-func stop():
+func stop() -> void:
 	hide()
 
-func update_ammo_ui(weapon: Weapon):
+func update_ammo_ui(weapon: Weapon) -> void:
 	if not weapon:
 		return
 
 	update_ammo_text(weapon)
 	update_ammo_graphic(weapon)
 
-func update_ammo_text(weapon: Weapon):
+func update_ammo_text(weapon: Weapon) -> void:
 	if weapon.current_ammo:
 		current_ammo_label.text = str(weapon.current_ammo.count)
 	else:
@@ -53,7 +53,7 @@ func update_ammo_text(weapon: Weapon):
 
 	reserve_ammo_label.text = str(reserve_ammo)
 
-func update_ammo_graphic(weapon: Weapon):
+func update_ammo_graphic(weapon: Weapon) -> void:
 	var magazines: Array[Ammo] = []
 	if weapon.current_ammo:
 		magazines.append(weapon.current_ammo)

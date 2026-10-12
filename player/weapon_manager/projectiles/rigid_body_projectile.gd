@@ -1,7 +1,7 @@
 class_name RigidBodyProjectile extends Projectile
 
 
-# var
+# vars
 @export var projectile_velocity := 180
 @export var expiry_time := 2
 @export var rigid_body_bullet: PackedScene
@@ -56,7 +56,7 @@ func _set_weapon_projectile(_weapon: Weapon, _model: WeaponModel):
 
 ## helper
 #
-func launch_rigid_projectile(point: Vector3, model: WeaponModel, bullet: PackedScene):
+func launch_rigid_projectile(point: Vector3, model: WeaponModel, bullet: PackedScene) -> void:
 	var projectile: RigidBody3D = bullet.instantiate()
 	projectile.top_level = true
 	projectile.position = model.bullet_point.global_position
@@ -69,6 +69,5 @@ func launch_rigid_projectile(point: Vector3, model: WeaponModel, bullet: PackedS
 
 	bullet_instance = projectile
 
-
-func on_expiry_timeout():
+func on_expiry_timeout() -> void:
 	queue_free()

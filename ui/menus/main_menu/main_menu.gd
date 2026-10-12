@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-# var
+# vars
 @export var current_menu_selection_context_container: Control
 @export var level_selection_menu: PackedScene
 
@@ -22,13 +22,13 @@ func set_context(new_scene: PackedScene) -> void:
 		current_menu_selection_context_container.add_child(active_context_node)
 
 
-## signal
+## signals
 #
-func _on_play_button_pressed():
+func _on_play_button_pressed() -> void:
 	if active_context_node and active_context_node.scene_file_path == level_selection_menu.resource_path:
 		set_context(null)
 	else:
 		set_context(level_selection_menu)
 
-func _on_quit_button_pressed():
+func _on_quit_button_pressed() -> void:
 	get_tree().quit()

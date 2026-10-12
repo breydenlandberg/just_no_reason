@@ -1,7 +1,7 @@
 extends PlayerMotionState
 
 
-# var
+# vars
 @export var freefly_speed := 32.0
 
 

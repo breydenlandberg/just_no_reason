@@ -1,7 +1,7 @@
 extends Node
 
 
-# var
+# vars
 var current_interaction: Interaction
 var executed_interactions: Array[Interaction]
 var interactions: Array[Interaction]
@@ -13,7 +13,7 @@ var player: CharacterBody3D
 
 ## helper
 #
-func erase(interaction: Interaction):
+func erase(interaction: Interaction) -> void:
 	interactions.erase(interaction)
 	current_interaction = interactions.front()
 
@@ -22,7 +22,7 @@ func erase(interaction: Interaction):
 	#print('current_interaction: ', current_interaction)
 	#print('\n')
 
-func execute_current_interaction():
+func execute_current_interaction() -> void:
 	if current_interaction:
 		var current_interaction_temp = current_interaction
 
@@ -89,7 +89,7 @@ func execute_current_interaction():
 		#print('No current interaction')
 		#print('\n')
 
-func push_front(interaction: Interaction):
+func push_front(interaction: Interaction) -> void:
 	interactions.push_front(interaction)
 	current_interaction = interactions.front()
 
@@ -98,7 +98,7 @@ func push_front(interaction: Interaction):
 	#print('current_interaction: ', current_interaction)
 	#print('\n')
 
-func reset():
+func reset() -> void:
 	current_interaction = null
 	executed_interactions.clear()
 	interactions.clear()
@@ -115,7 +115,7 @@ func reset():
 	#print('player: ', player)
 	#print('\n')
 
-func set_player(player_param: CharacterBody3D):
+func set_player(player_param: CharacterBody3D) -> void:
 	player = player_param
 	interact_label = player.get_node('Interact/InteractLabel')
 

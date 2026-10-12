@@ -1,20 +1,20 @@
 class_name PlayerCombatTransitionState extends State
 
 
-# signal
+# signals
 @warning_ignore('unused_signal')
 signal _combat_status_changed(_status: StringName)
 
-# var
+# vars
 var entry_substate: StringName = &''
 @export var state_machine: StateMachine
 @export var weapon_manager: WeaponManager
 
 
 ### fn
-##
 
-# helper
+## helper
+#
 func weapon_manager_available() -> bool:
 	return weapon_manager.current_status == weapon_manager.WeaponManagerStatus.AVAILABLE
 

@@ -5,7 +5,7 @@ class_name Player extends CharacterBody3D
 signal aim_changed(is_aiming: bool)
 signal sprint_changed(is_sprinting: bool)
 
-# var
+# vars
 var is_freeflying := false
 var is_aiming := false
 var is_sprinting := false
@@ -33,7 +33,7 @@ var is_attacking := false
 ## virtual
 #
 func _ready():
-	check_input_mappings()
+	_check_input_mappings()
 	InteractManager.set_player(self)
 	# Does below need to be a signal?
 	#SignalBus._message.connect(message)
@@ -60,7 +60,7 @@ func _physics_process(_delta: float):
 		move_and_slide()
 
 
-## helper
+## public
 #
 func activate(spawn_transform: Transform3D) -> void:
 	process_mode = Node.PROCESS_MODE_INHERIT
@@ -79,7 +79,27 @@ func deactivate() -> void:
 	if camera:
 		camera.release_mouse()
 
-func check_input_mappings():
+func set_velocity_from_motion(vel: Vector3) -> void:
+	velocity = vel
+
+func set_aiming(value: bool) -> void:
+	if is_aiming == value:
+		return
+
+	is_aiming = value
+	aim_changed.emit(is_aiming)
+
+func set_sprinting(value: bool) -> void:
+	if is_sprinting == value:
+		return
+
+	is_sprinting = value
+	sprint_changed.emit(is_sprinting)
+
+
+## internal
+#
+func _check_input_mappings() -> void:
 	var check_action = func(_action: String, _action_type: String, _flag: String):
 		if not InputMap.has_action(_action):
 			push_error('{_action_type} disabled. No InputAction found: {_action}')
@@ -112,22 +132,6 @@ func check_input_mappings():
 		check_action.call(InputManager.change_weapon, action_type, flag)
 		check_action.call(InputManager.drop_weapon, action_type, flag)
 
-func set_velocity_from_motion(vel: Vector3) -> void:
-	velocity = vel
-
-func set_aiming(value: bool) -> void:
-	if is_aiming == value:
-		return
-
-	is_aiming = value
-	aim_changed.emit(is_aiming)
-
-func set_sprinting(value: bool) -> void:
-	if is_sprinting == value:
-		return
-
-	is_sprinting = value
-	sprint_changed.emit(is_sprinting)
 
 ## SignalBus
 #
@@ -142,10 +146,10 @@ func set_sprinting(value: bool) -> void:
 
 ## signals
 # interact
-func _on_interact_area_entered(interaction: Interaction):
+func _on_interact_area_entered(interaction: Interaction) -> void:
 	InteractManager.push_front(interaction)
 	#InteractManager.update_interact_label()
 
-func _on_interact_area_exited(interaction: Interaction):
+func _on_interact_area_exited(interaction: Interaction) -> void:
 	InteractManager.erase(interaction)
 	#InteractManager.update_interact_label()

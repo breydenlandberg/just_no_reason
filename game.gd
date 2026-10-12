@@ -1,7 +1,7 @@
 extends Node3D
 
 
-# var
+# vars
 @export var debug_container: Node3D
 @export var current_menu_container: Node
 @export var current_hud_container: Node
@@ -15,7 +15,7 @@ extends Node3D
 
 ### fn
 
-## virtual / private
+## virtual
 #
 func _ready():
 	DebugJnr.set_debug_container(debug_container)
@@ -92,7 +92,7 @@ func spawn_player(spawn_transform: Transform3D) -> void:
 		player.activate(spawn_transform)
 
 
-## signal
+## signals
 #
 func _on_level_loaded(level_packed_scene: PackedScene) -> void:
 	clear_debug()

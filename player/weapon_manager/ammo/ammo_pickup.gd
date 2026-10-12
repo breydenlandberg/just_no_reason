@@ -1,13 +1,13 @@
 class_name AmmoPickup extends RigidBody3D
 
 
-# var
+# vars
 @export var internal_ammo: Array[Ammo]
 
 
 ### fn
 
-## helper
+## virtual
 #
 func _ready():
 	for i in range(internal_ammo.size()):

@@ -1,14 +1,13 @@
 extends Node
 
 
-# signal
+# signals
 signal progress_changed(progress: float)
 signal level_loaded(loaded_scene: PackedScene)
 signal load_finished
 signal load_failed(_scene_path: String)
 
-
-# var
+# vars
 var loading_screen: PackedScene = preload('uid://dbg4oeiysyv5n')
 var current_loading_screen: CanvasLayer
 var loaded_resource: PackedScene

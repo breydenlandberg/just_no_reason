@@ -26,5 +26,5 @@ func _state_physics_process(_delta: float):
 
 ## helper
 #
-func jump():
+func jump() -> void:
 	velocity.y = jump_velocity

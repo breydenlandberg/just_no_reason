@@ -5,7 +5,7 @@ class_name State extends Node3D
 @warning_ignore('unused_signal')
 signal _transition(state, new_state)
 
-# var
+# vars
 var previous_state: State
 var animated_model: Node3D
 

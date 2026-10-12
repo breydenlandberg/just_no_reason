@@ -1,7 +1,7 @@
 extends PlayerMotionState
 
 
-# var
+# vars
 var land_after_these_states: Array[StringName] = [ArmedStates.jump, ArmedStates.sprint_jump, ArmedStates.fall, ArmedStates.sprint_fall]
 # i want land_move to keep playing if it's playing throughout the walk -> sprint transition
 

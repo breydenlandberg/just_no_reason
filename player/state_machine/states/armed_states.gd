@@ -1,13 +1,13 @@
 class_name ArmedStates
 
 
-# var
+# vars
 static var armed_state: StringName = 'Armed'
 
 static var idle: StringName = 'Idle'
 static var walk: StringName = 'Walk'
-static var jump: StringName	= 'Jump'
-static var fall: StringName	= 'Fall'
+static var jump: StringName = 'Jump'
+static var fall: StringName = 'Fall'
 static var aim_idle: StringName = 'AimIdle'
 static var aim_walk: StringName = 'AimWalk'
 static var sprint: StringName = 'Sprint'

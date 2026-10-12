@@ -8,13 +8,16 @@ class_name ArmedStateMachine extends StateMachine
 func _input(_event: InputEvent):
 	handle_input(_event)
 
-func _physics_process(_delta):
+func _physics_process(_delta: float):
 	handle_physics_process(_delta)
 
-func _process(_delta):
+func _process(_delta: float):
 	handle_process(_delta)
 
-func _start(target_state_name: StringName = &''):
+
+## lifecycle
+#
+func _start(target_state_name: StringName = &'') -> void:
 	# Connect "wires"...
 	for child: PlayerMotionState in get_children():
 		if not child._animation_state_changed.is_connected(animated_model.on_state_machine_animation_state_changed):
@@ -25,11 +28,11 @@ func _start(target_state_name: StringName = &''):
 	# THEN start machine
 	super._start(target_state_name)
 
-func _stop():
+func _stop() -> void:
 	# _stop() in state_machine.gd will ALWAYS _exit() the current_state, THEREFORE...
 	# Stop machine...
 	super._stop()
-	
+
 	# THEN disconnect "wires"
 	for child: PlayerMotionState in get_children():
 		if child._animation_state_changed.is_connected(animated_model.on_state_machine_animation_state_changed):

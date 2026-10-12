@@ -8,14 +8,14 @@ signal pause_requested
 signal return_to_title_requested
 
 
-# var
+# vars
 var currently_paused := false
 var can_pause := false
 
 
 ### fn
 
-## virtual / private
+## virtual
 #
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -29,15 +29,15 @@ func _unhandled_input(event: InputEvent):
 
 ## helper
 #
-func reset():
+func reset() -> void:
 	currently_paused = false
 	can_pause = false
 
 
-## signal
+## signals
 #
-func _on_pause_requested():
+func _on_pause_requested() -> void:
 	currently_paused = not currently_paused
 
-func _on_return_to_title_requested():
+func _on_return_to_title_requested() -> void:
 	reset()

@@ -1,7 +1,7 @@
 class_name LevelButton extends Button
 
 
-# var
+# vars
 @export var level_path: String = ''
 
 
@@ -9,12 +9,13 @@ class_name LevelButton extends Button
 
 ## helper
 #
-func setup(display_name: String, path: String):
+func setup(display_name: String, path: String) -> void:
 	text = display_name
 	level_path = path
 
-## signal
+
+## signals
 #
-func _on_pressed():
+func _on_pressed() -> void:
 	if not level_path.is_empty():
 		LevelLoader.load_level(level_path)

@@ -1,7 +1,7 @@
 class_name Weapon extends Resource
 
 
-# var
+# vars
 @export var name: String
 @export var weapon_model: PackedScene
 @export var auto_fire := false

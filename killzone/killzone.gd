@@ -1,7 +1,7 @@
 extends Area3D
 
 
-# var
+# vars
 @onready var timer := $Timer
 
 
@@ -9,7 +9,7 @@ extends Area3D
 
 ## signals
 #
-func _on_body_entered(body: Node3D):
+func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
 		SignalBus._message.emit('You killed yourself')
 		timer.start()
@@ -20,6 +20,6 @@ func _on_body_entered(body: Node3D):
 
 	print('\n')
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	InteractManager.reset()
 	get_tree().reload_current_scene()

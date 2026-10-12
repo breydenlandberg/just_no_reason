@@ -1,7 +1,7 @@
 extends Control
 
 
-# var
+# vars
 @export var levels: Array[LevelData]
 @export var level_container: Control
 @export var level_button: PackedScene
@@ -9,7 +9,7 @@ extends Control
 
 ### fn
 
-## virtual / private
+## virtual
 #
 func _ready():
 	for level in levels:

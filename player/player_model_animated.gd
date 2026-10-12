@@ -1,10 +1,10 @@
 class_name PlayerModelAnimated extends Node3D
 
 
-# enum
+# enums
 enum CombatStatus {COMBAT, NONCOMBAT}
 
-# var
+# vars
 var current_combat_status: CombatStatus = CombatStatus.NONCOMBAT
 var input_direction: Vector2
 
@@ -28,11 +28,8 @@ func _ready():
 		cached_hand_rig_scale = right_hand.global_basis.get_scale().abs()
 
 
-## helper
+## animation & movement
 #
-static func get_hand_rig_scale() -> Vector3:
-	return cached_hand_rig_scale if cached_hand_rig_scale != Vector3.ZERO else Vector3.ONE * 0.01 # 0.01 is the standard Mixamo bone unit scale
-
 func on_state_machine_animation_state_changed(state: String) -> void: #weapon_name: String (StringName? How about on state?)
 	#var transition_request: String
 
@@ -59,6 +56,12 @@ func on_input_direction_changed(_input_dir: Vector2) -> void:
 					animation_tree["parameters/rifle_aim_walk/blend_position"] = input_direction
 
 		rotation_degrees.y = %Camera.rotation_degrees.y - rad_to_deg(input_direction.angle()) + 90
+
+
+## weapon handling
+#
+static func get_hand_rig_scale() -> Vector3:
+	return cached_hand_rig_scale if cached_hand_rig_scale != Vector3.ZERO else Vector3.ONE * 0.01 # 0.01 is the standard Mixamo bone unit scale
 
 func on_combat_status_changed(status: StringName) -> void:
 	match status:
@@ -109,20 +112,20 @@ func reset_weapon_idle_animation(weapon: Weapon) -> void:
 	animation_tree.tree_root.get_node('weapon_idle_animation').set_animation(weapon.weapon_idle_animation.resource_name)
 
 
-## signal
+## signals
 #
-func _on_weapon_manager_started(_weapon: Weapon, _weapon_model: WeaponModel):
+func _on_weapon_manager_started(_weapon: Weapon, _weapon_model: WeaponModel) -> void:
 	on_combat_status_changed(weapon_manager.combat_status)
 	load_new_weapon(_weapon, _weapon_model)
 
-func _on_weapon_manager_stopped():
+func _on_weapon_manager_stopped() -> void:
 	on_combat_status_changed(weapon_manager.non_combat_status)
 	deload_current_weapon()
 
-func _on_weapon_changed(_weapon: Weapon, _weapon_model: WeaponModel):
+func _on_weapon_changed(_weapon: Weapon, _weapon_model: WeaponModel) -> void:
 	load_new_weapon(_weapon, _weapon_model)
 
-func _on_weapon_unequip_animation_finished():
+func _on_weapon_unequip_animation_finished() -> void:
 	clear_weapon_from_hand()
 
 func _on_aim_changed(is_aiming: bool) -> void:
@@ -132,8 +135,8 @@ func _on_aim_changed(is_aiming: bool) -> void:
 		else:
 			reset_weapon_idle_animation(weapon_manager.current_weapon)
 
-func _on_weapon_fired():
+func _on_weapon_fired() -> void:
 	animation_tree['parameters/shoot/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
-func _on_weapon_reloaded():
+func _on_weapon_reloaded() -> void:
 	animation_tree['parameters/reload/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
