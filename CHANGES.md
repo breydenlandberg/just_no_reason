@@ -8,10 +8,7 @@ When the task is complete, either CLEAR it (set to None) or POPULATE it with the
 -->
 ## Next Change
 
-### Deduplicate Sub-State Machines (`ArmedStateMachine` & `UnarmedStateMachine`)
-- **Problem:** [`armed_state_machine.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/state_machines/armed_state_machine.gd) and [`unarmed_state_machine.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/state_machines/unarmed_state_machine.gd) contain 100% duplicate code for connecting/disconnecting `_animation_state_changed` and `_rotate_model` loops.
-- **Solution:**
-  Extract a common `PlayerSubStateMachine extends StateMachine` base class with this wiring logic and have both machines inherit from it.
+None
 
 
 ---
