@@ -8,29 +8,17 @@ When the task is complete, either CLEAR it (set to None) or POPULATE it with the
 -->
 ## Next Change
 
-### Standardize Variable Ordering within `# vars` across Codebase
-- **Goal:** Audit and systematically organize variable declarations within `# vars` across all files once Part 1 completes.
-- **Approaches to choose from:**
-  - **Option A (Type / Lifecycle Order):** `@export` vars &rarr; regular state vars &rarr; internal `_` vars &rarr; `static var` &rarr; `@onready var`.
-  - **Option B (Feature / Domain Grouping):** Group variables by feature domain (e.g., look/camera &rarr; stance [aim before sprint] &rarr; inventory [weapons before ammo]), keeping related exports/onready vars together with domain headers.
-- **Safety Precaution:** Check `@onready` top-to-bottom dependency order and Godot Inspector export layouts during the pass.
-- **Underscore Naming Convention (`_`) for Internal Variables:** Review and standardize the use of leading underscores on variables (similar to internal functions) — prefixing private/internal state variables with `_` while leaving public contracts clean.
-- **Update Documentation:** Update [`CONVENTION.md`](file:///home/brey/Godot/just_no_reason/CONVENTION.md) upon completing this pass to document the finalized variable ordering standard and internal variable underscore convention.
+### Deduplicate Sub-State Machines (`ArmedStateMachine` & `UnarmedStateMachine`)
+- **Problem:** [`armed_state_machine.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/state_machines/armed_state_machine.gd) and [`unarmed_state_machine.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/state_machines/unarmed_state_machine.gd) contain 100% duplicate code for connecting/disconnecting `_animation_state_changed` and `_rotate_model` loops.
+- **Solution:**
+  Extract a common `PlayerSubStateMachine extends StateMachine` base class with this wiring logic and have both machines inherit from it.
 
 
 ---
 
 ## Minor Refactors and Changes
 
-### 1. Deduplicate Sub-State Machines (`ArmedStateMachine` & `UnarmedStateMachine`)
-- **Problem:** [`armed_state_machine.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/state_machines/armed_state_machine.gd) and [`unarmed_state_machine.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/state_machines/unarmed_state_machine.gd) contain 100% duplicate code for connecting/disconnecting `_animation_state_changed` and `_rotate_model` loops.
-- **Solution:**
-  Extract a common `PlayerSubStateMachine extends StateMachine` base class with this wiring logic and have both machines inherit from it.
-
-### 2. Clean Up Zombie State Flags on `Player`
-- **Problem:** `is_sprinting`, `is_crouching`, and `is_attacking` in [`player.gd`](file:///home/brey/Godot/just_no_reason/player/player.gd) are dead variables that are never updated or read.
-- **Solution:**
-  Connect `is_sprinting` to the sprint state event and prune unneeded dead flags to eliminate confusion over actual player state.
+None
 
 ---
 

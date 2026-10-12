@@ -13,11 +13,12 @@ var mouse_sensitivity := 0.001
 var current_camera_alignment: int = CameraAlignment.RIGHT
 
 @export var player: CharacterBody3D
+@export var camera_alignment_duration := 0.1
+
 @export var aim_fov := 65.0
 @export var aim_edge_spring_length := 1.0
 @export var aim_rear_spring_length := 2.0
 @export var aim_duration := 0.075
-@export var camera_alignment_duration := 0.1
 @export var sprint_fov := 85.0
 @export var sprint_tween_duration := 0.1
 

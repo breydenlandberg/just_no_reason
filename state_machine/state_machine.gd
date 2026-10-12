@@ -2,11 +2,11 @@ class_name StateMachine extends Node3D
 
 
 # vars
-var states: Dictionary
-var current_state: State
-
 @export var initial_state: State
 @export var animated_model: PlayerModelAnimated
+
+var states: Dictionary
+var current_state: State
 
 
 ### fn

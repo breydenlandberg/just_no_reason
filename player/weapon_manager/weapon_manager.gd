@@ -14,6 +14,10 @@ signal ammo_updated(_weapon: Weapon)
 enum WeaponManagerStatus {AVAILABLE, UNAVAILABLE}
 
 # vars
+@export var weapons: Array[Weapon]
+@export var weapon_timer: Timer # Weapon equip, change, shoot, reload - we want to make the WeaponManager unavailable during known animations
+@export var weapon_unequip_timer: Timer # Separate timer since we need to despawn the weapon specifically after unequipping
+
 var current_status: WeaponManagerStatus = WeaponManagerStatus.UNAVAILABLE
 var current_weapon: Weapon
 var current_weapon_model: WeaponModel
@@ -21,10 +25,6 @@ var action_queue: Callable
 
 static var combat_status: StringName = 'combat'
 static var non_combat_status: StringName = 'non_combat'
-
-@export var weapons: Array[Weapon]
-@export var weapon_timer: Timer # Weapon equip, change, shoot, reload - we want to make the WeaponManager unavailable during known animations
-@export var weapon_unequip_timer: Timer # Separate timer since we need to despawn the weapon specifically after unequipping
 
 
 ### fn

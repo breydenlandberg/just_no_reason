@@ -6,12 +6,6 @@ signal aim_changed(is_aiming: bool)
 signal sprint_changed(is_sprinting: bool)
 
 # vars
-var is_freeflying := false
-var is_aiming := false
-var is_sprinting := false
-var is_crouching := false
-var is_attacking := false
-
 @export_group('Toggles')
 @export var has_gravity := true
 @export var can_freefly := true
@@ -22,10 +16,17 @@ var is_attacking := false
 @export var can_crouch := true
 @export var can_interact := true
 @export var can_use_combat := true
+
 @export_group('Nodes')
 @export var player_model_animated: PlayerModelAnimated
 @export var camera: Node3D # un-unique name Camera pls
 @export var weapon_manager: WeaponManager
+
+var is_freeflying := false
+var is_aiming := false
+var is_sprinting := false
+var is_crouching := false # Unmanaged placeholder atm
+var is_attacking := false # Unmanaged placeholder atm
 
 
 ### fn

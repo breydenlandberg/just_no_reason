@@ -12,6 +12,8 @@ signal _rotate_model(_input_dir: Vector2)
 const PLAYER_MOVEMENT_STATS = preload('res://player/player_movement_stats.tres') # consider preloading the uid
 
 # vars
+@export var on_enter_animation: String
+
 var base_speed: float
 var aim_speed: float
 var sprint_speed: float
@@ -25,8 +27,6 @@ static var input_dir := Vector2.ZERO
 static var direction := Vector3.ZERO
 static var velocity := Vector3.ZERO
 static var sprint_remaining := 0.0
-
-@export var on_enter_animation: String
 
 
 ### fn
