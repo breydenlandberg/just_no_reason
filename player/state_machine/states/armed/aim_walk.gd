@@ -19,8 +19,8 @@ func _state_input(_event: InputEvent):
 		pass
 
 	if _event.is_action_pressed(InputManager.jump):
-		#aim_exited.emit()
-		_transition.emit(self, ArmedStates.aim_jump)
+		aim_exited.emit()
+		_transition.emit(self, ArmedStates.jump)
 
 func _state_process(_delta: float):
 	if Input.is_action_just_released(InputManager.aim):
@@ -40,5 +40,5 @@ func _state_physics_process(_delta: float):
 		_transition.emit(self, ArmedStates.aim_idle)
 
 	if not is_on_floor():
-		#aim_exited.emit()
-		_transition.emit(self, ArmedStates.aim_fall)
+		aim_exited.emit()
+		_transition.emit(self, ArmedStates.fall)

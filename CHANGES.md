@@ -15,26 +15,21 @@ None
 
 ## Minor Refactors and Changes
 
-### 1. Fix Empty Stub States Freezing Player in Mid-Air (`AimJump` & `AimFall`)
-- **Problem:** In [`Armed/aim_walk.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/states/armed/aim_walk.gd) and `aim_idle.gd`, jumping or stepping off a ledge transitions to `ArmedStates.aim_jump` and `ArmedStates.aim_fall`. But [`aim_jump.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/states/armed/aim_jump.gd) and [`aim_fall.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/states/armed/aim_fall.gd) are empty 2-line stub scripts. The character freezes mid-air with no gravity or exit condition.
-- **Solution:**
-  Adopt `Unarmed`'s pattern: jumping or falling while aiming emits `aim_exited` and transitions to `jump` or `fall`. When landing, [`fall.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/states/armed/fall.gd) already checks `Input.is_action_pressed(aim)` to seamlessly re-enter `AimWalk` or `AimIdle`.
-
-### 2. Direct State Transitions (Avoid Intermediate Hops)
+### 1. Direct State Transitions (Avoid Intermediate Hops)
 - **Goal:** Always perform direct State switches when possible (e.g. Idle directly into Sprint or AimWalk, rather than Idle -> Walk -> Sprint/AimWalk). Ensure this across all paths in both Armed and Unarmed machines.
 - **Immediate Fix:** In [`unarmed/idle.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/states/unarmed/idle.gd), moving while aiming currently transitions to `Walk` first and only on the next frame to `AimWalk` (unlike `armed/idle.gd` which already transitions directly). Check `Input.is_action_pressed(aim)` on movement in `unarmed/idle.gd` to transition directly into `AimWalk`.
 
-### 3. Centralize Aim & Sprint Events (Eliminate Scene Spaghetti)
+### 2. Centralize Aim & Sprint Events (Eliminate Scene Spaghetti)
 - **Problem:** [`player.tscn`](file:///home/brey/Godot/just_no_reason/player/player.tscn) contains 10+ manual inspector wires from leaf states (`Unarmed/AimIdle`, `Unarmed/AimWalk`, `Armed/AimIdle`, `Armed/AimWalk`, `Sprint`, `SprintFall`) directly to `Camera`. `Camera` mutates `owner.is_aiming` as a side effect.
 - **Solution:**
   Expose `signal aim_changed(is_aiming: bool)` and `signal sprint_changed(is_sprinting: bool)` on [`player.gd`](file:///home/brey/Godot/just_no_reason/player/player.gd). States update `owner.set_aiming(true/false)`. `Camera` and `PlayerModelAnimated` connect to `Player` once in `_ready()`, deleting 10+ fragile wires from `player.tscn`.
 
-### 4. Deduplicate Sub-State Machines (`ArmedStateMachine` & `UnarmedStateMachine`)
+### 3. Deduplicate Sub-State Machines (`ArmedStateMachine` & `UnarmedStateMachine`)
 - **Problem:** [`armed_state_machine.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/state_machines/armed_state_machine.gd) and [`unarmed_state_machine.gd`](file:///home/brey/Godot/just_no_reason/player/state_machine/state_machines/unarmed_state_machine.gd) contain 100% duplicate code for connecting/disconnecting `_animation_state_changed` and `_rotate_model` loops.
 - **Solution:**
   Extract a common `PlayerSubStateMachine extends StateMachine` base class with this wiring logic and have both machines inherit from it.
 
-### 5. Clean Up Zombie State Flags on `Player`
+### 4. Clean Up Zombie State Flags on `Player`
 - **Problem:** `is_sprinting`, `is_crouching`, and `is_attacking` in [`player.gd`](file:///home/brey/Godot/just_no_reason/player/player.gd) are dead variables that are never updated or read.
 - **Solution:**
   Connect `is_sprinting` to the sprint state event and prune unneeded dead flags to eliminate confusion over actual player state.

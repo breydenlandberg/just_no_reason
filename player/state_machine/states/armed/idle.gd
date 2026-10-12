@@ -25,7 +25,7 @@ func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
 		pass
 
-	if Input.is_action_pressed(InputManager.jump):
+	if _event.is_action_pressed(InputManager.jump):
 		_transition.emit(self, ArmedStates.jump)
 
 func _state_process(_delta: float):
