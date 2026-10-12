@@ -1,31 +1,26 @@
 extends PlayerMotionState
 
 
-# signal
-signal aim_entered
-signal aim_exited
-
-
 ### fn
 
 ## virtual
 #
 func _enter():
-	aim_entered.emit()
+	set_aiming(true)
 	super._enter()
 
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
-		aim_exited.emit()
+		set_aiming(false)
 		_transition.emit(self, UnarmedStates.freefly)
 
 	if _event.is_action_pressed(InputManager.jump):
-		aim_exited.emit()
+		set_aiming(false)
 		_transition.emit(self, UnarmedStates.jump)
 
 func _state_process(_delta: float):
 	if Input.is_action_just_released(InputManager.aim):
-		aim_exited.emit()
+		set_aiming(false)
 		_transition.emit(self, UnarmedStates.walk)
 
 func _state_physics_process(_delta: float):
@@ -38,5 +33,5 @@ func _state_physics_process(_delta: float):
 		_transition.emit(self, UnarmedStates.aim_idle)
 
 	if not is_on_floor():
-		aim_exited.emit()
+		set_aiming(false)
 		_transition.emit(self, UnarmedStates.fall)

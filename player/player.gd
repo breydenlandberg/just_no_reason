@@ -1,6 +1,10 @@
 class_name Player extends CharacterBody3D
 
 
+# signals
+signal aim_changed(is_aiming: bool)
+signal sprint_changed(is_sprinting: bool)
+
 # var
 var is_freeflying := false
 var is_aiming := false
@@ -19,6 +23,8 @@ var is_attacking := false
 @export var can_interact := true
 @export var can_use_combat := true
 @export_group('Nodes')
+@export var player_model_animated: PlayerModelAnimated
+@export var camera: Node3D # un-unique name Camera pls
 @export var weapon_manager: WeaponManager
 
 
@@ -31,6 +37,13 @@ func _ready():
 	InteractManager.set_player(self)
 	# Does below need to be a signal?
 	#SignalBus._message.connect(message)
+
+	if player_model_animated:
+		aim_changed.connect(player_model_animated._on_aim_changed)
+
+	if camera:
+		aim_changed.connect(camera._on_aim_changed)
+		sprint_changed.connect(camera._on_sprint_changed)
 
 	if weapon_manager:
 		weapon_manager.weapon_manager_started.connect(SignalBus.weapon_manager_started.emit)
@@ -56,15 +69,15 @@ func activate(spawn_transform: Transform3D) -> void:
 	velocity = Vector3.ZERO
 	global_transform = spawn_transform
 
-	if %Camera:
-		%Camera.capture_mouse()
+	if camera:
+		camera.capture_mouse()
 
 func deactivate() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 	hide()
 
-	if %Camera:
-		%Camera.release_mouse()
+	if camera:
+		camera.release_mouse()
 
 func check_input_mappings():
 	var check_action = func(_action: String, _action_type: String, _flag: String):
@@ -99,8 +112,22 @@ func check_input_mappings():
 		check_action.call(InputManager.change_weapon, action_type, flag)
 		check_action.call(InputManager.drop_weapon, action_type, flag)
 
-func set_velocity_from_motion(vel: Vector3):
+func set_velocity_from_motion(vel: Vector3) -> void:
 	velocity = vel
+
+func set_aiming(value: bool) -> void:
+	if is_aiming == value:
+		return
+
+	is_aiming = value
+	aim_changed.emit(is_aiming)
+
+func set_sprinting(value: bool) -> void:
+	if is_sprinting == value:
+		return
+
+	is_sprinting = value
+	sprint_changed.emit(is_sprinting)
 
 ## SignalBus
 #

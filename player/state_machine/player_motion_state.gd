@@ -67,7 +67,7 @@ func _ready():
 func is_on_floor() -> bool:
 	return owner.is_on_floor()
 
-func set_direction():
+func set_direction() -> void:
 	input_dir = Input.get_vector(InputManager.left, InputManager.right, InputManager.forward, InputManager.back)
 	direction = (%Camera.transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
 
@@ -76,7 +76,7 @@ func calculate_velocity(_speed: float, _direction: Vector3, _acceleration: float
 	velocity.z = move_toward(velocity.z, _direction.z * _speed, _acceleration * _delta)
 	velocity_updated.emit(velocity)
 
-func calculate_gravity(_delta: float):
+func calculate_gravity(_delta: float) -> void:
 	if not is_on_floor():
 		if velocity.y > 0:
 			velocity.y -= jump_gravity * _delta
@@ -85,7 +85,13 @@ func calculate_gravity(_delta: float):
 	elif velocity.y < 0:
 		velocity.y = 0.0
 
-func replenish_sprint(delta: float):
+func set_aiming(value: bool) -> void:
+	owner.set_aiming(value)
+
+func set_sprinting(value: bool) -> void:
+	owner.set_sprinting(value)
+
+func replenish_sprint(delta: float) -> void:
 	sprint_remaining = min(sprint_remaining + delta, PLAYER_MOVEMENT_STATS.sprint_duration)
 
 ## Assists in connecting and disconnecting the _animation_state_changed signal from
@@ -95,18 +101,18 @@ func replenish_sprint(delta: float):
 ## If we don't connect and disconnect the signals when entering and exiting a state,
 ## it will fire the _animation_state_changed signal
 ## even after the state has been exited and result in unexpected behaviour.
-func handle_animation_state_changed_signal():
+func handle_animation_state_changed_signal() -> void:
 	if not _animation_state_changed.is_connected(animated_model.on_state_machine_animation_state_changed):
 		_animation_state_changed.connect(animated_model.on_state_machine_animation_state_changed)
 	else:
 		if is_waiting_for_animation_signal:
 			_animation_state_changed.disconnect(animated_model.on_state_machine_animation_state_changed)
 
-func animation_finished():
+func animation_finished() -> void:
 	is_waiting_for_animation_signal = true
 	await animated_model.animation_tree.animation_finished
 	is_waiting_for_animation_signal = false
 
-func reset_velocity():
+func reset_velocity() -> void:
 	velocity = Vector3.ZERO
 	velocity_updated.emit(velocity)

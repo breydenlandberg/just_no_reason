@@ -1,10 +1,6 @@
 extends PlayerMotionState
 
 
-# signal
-signal sprint_started
-signal sprint_ended
-
 # var
 var land_after_these_states: Array[StringName] = [UnarmedStates.jump, UnarmedStates.sprint_jump, UnarmedStates.fall, UnarmedStates.sprint_fall]
 # i want land_move to keep playing if it's playing throughout the walk -> sprint transition
@@ -16,7 +12,7 @@ var land_after_these_states: Array[StringName] = [UnarmedStates.jump, UnarmedSta
 #
 func _enter():
 	handle_animation_state_changed_signal()
-	sprint_started.emit()
+	set_sprinting(true)
 
 	if previous_state_in(land_after_these_states):
 		_animation_state_changed.emit('land_move') # instead of land_move, Animations.land_move
@@ -29,7 +25,7 @@ func _exit():
 
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
-		sprint_ended.emit()
+		set_sprinting(false)
 		_transition.emit(self, UnarmedStates.freefly)
 
 	if _event.is_action_pressed(InputManager.jump):
@@ -37,7 +33,7 @@ func _state_input(_event: InputEvent):
 
 func _state_process(_delta: float):
 	if Input.is_action_just_released(InputManager.sprint):
-		sprint_ended.emit()
+		set_sprinting(false)
 		_transition.emit(self, UnarmedStates.walk)
 
 func _state_physics_process(_delta: float):
@@ -48,19 +44,19 @@ func _state_physics_process(_delta: float):
 
 	if direction == Vector3.ZERO:
 		if Input.is_action_pressed(InputManager.aim):
-			sprint_ended.emit()
+			set_sprinting(false)
 			_transition.emit(self, UnarmedStates.aim_idle)
 		else:
-			sprint_ended.emit()
+			set_sprinting(false)
 			_transition.emit(self, UnarmedStates.idle)
 	else:
 		if Input.is_action_pressed(InputManager.aim):
-			sprint_ended.emit()
+			set_sprinting(false)
 			_transition.emit(self, UnarmedStates.aim_walk)
 
 	if not is_on_floor():
 		_transition.emit(self, UnarmedStates.sprint_fall)
 
 	if sprint_remaining <= 0.0:
-		sprint_ended.emit()
+		set_sprinting(false)
 		_transition.emit(self, UnarmedStates.walk)

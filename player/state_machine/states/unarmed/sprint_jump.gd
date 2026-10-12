@@ -6,11 +6,13 @@ extends PlayerMotionState
 ## virtual
 #
 func _enter():
+	set_sprinting(true)
 	jump()
 	super._enter()
 
 func _state_input(_event: InputEvent):
 	if _event.is_action_pressed(InputManager.freefly):
+		set_sprinting(false)
 		_transition.emit(self, UnarmedStates.freefly)
 
 func _state_physics_process(_delta: float):

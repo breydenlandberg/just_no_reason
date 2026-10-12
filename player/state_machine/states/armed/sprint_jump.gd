@@ -6,6 +6,7 @@ extends PlayerMotionState
 ## virtual
 #
 func _enter():
+	set_sprinting(true)
 	jump()
 	super._enter()
 

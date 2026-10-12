@@ -33,7 +33,7 @@ func _ready():
 static func get_hand_rig_scale() -> Vector3:
 	return cached_hand_rig_scale if cached_hand_rig_scale != Vector3.ZERO else Vector3.ONE * 0.01 # 0.01 is the standard Mixamo bone unit scale
 
-func on_state_machine_animation_state_changed(state: String): #weapon_name: String (StringName? How about on state?)
+func on_state_machine_animation_state_changed(state: String) -> void: #weapon_name: String (StringName? How about on state?)
 	#var transition_request: String
 
 	match current_combat_status:
@@ -47,7 +47,7 @@ func on_state_machine_animation_state_changed(state: String): #weapon_name: Stri
 			animation_tree['parameters/armed_movement/transition_request'] = state
 
 # called by rotate_model()
-func on_input_direction_changed(_input_dir: Vector2):
+func on_input_direction_changed(_input_dir: Vector2) -> void:
 	if _input_dir != Vector2(0, 0):
 		input_direction = input_direction.slerp(_input_dir, turn_rate)
 
@@ -60,7 +60,7 @@ func on_input_direction_changed(_input_dir: Vector2):
 
 		rotation_degrees.y = %Camera.rotation_degrees.y - rad_to_deg(input_direction.angle()) + 90
 
-func on_combat_status_changed(status: StringName):
+func on_combat_status_changed(status: StringName) -> void:
 	match status:
 		weapon_manager.combat_status:
 			current_combat_status = CombatStatus.COMBAT
@@ -69,7 +69,7 @@ func on_combat_status_changed(status: StringName):
 
 	animation_tree['parameters/combat_transition/transition_request'] = status
 
-func load_new_weapon(weapon: Weapon, weapon_model: WeaponModel):
+func load_new_weapon(weapon: Weapon, weapon_model: WeaponModel) -> void:
 	clear_weapon_from_hand()
 
 	if owner and owner.is_aiming:
@@ -88,24 +88,24 @@ func load_new_weapon(weapon: Weapon, weapon_model: WeaponModel):
 	animation_tree['parameters/equip_weapon/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	attach_weapon_to_hand(weapon, weapon_model)
 
-func deload_current_weapon():
+func deload_current_weapon() -> void:
 	# when we fix the animation and want to detach the weapon from the hand at the correct frame of the animation,
 	# watch https://www.youtube.com/watch?v=tcmNGIyBXzo&list=PLhnGgh9GDmn6Cf4_ut7I0VJNHh9Vbfkjv
 	animation_tree['parameters/unequip_weapon/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
-func attach_weapon_to_hand(weapon: Weapon, weapon_model: WeaponModel):
+func attach_weapon_to_hand(weapon: Weapon, weapon_model: WeaponModel) -> void:
 	weapon_model.scale = Vector3.ONE * weapon.scale_value
 	right_hand.add_child(weapon_model)
 
-func clear_weapon_from_hand():
+func clear_weapon_from_hand() -> void:
 	if right_hand.get_child_count() > 0:
 		for child in right_hand.get_children():
 			child.queue_free()
 
-func aim_weapon_idle_animation(weapon: Weapon):
+func aim_weapon_idle_animation(weapon: Weapon) -> void:
 	animation_tree.tree_root.get_node('weapon_idle_animation').set_animation(weapon.weapon_aim_idle_animation.resource_name)
 
-func reset_weapon_idle_animation(weapon: Weapon):
+func reset_weapon_idle_animation(weapon: Weapon) -> void:
 	animation_tree.tree_root.get_node('weapon_idle_animation').set_animation(weapon.weapon_idle_animation.resource_name)
 
 
@@ -125,13 +125,12 @@ func _on_weapon_changed(_weapon: Weapon, _weapon_model: WeaponModel):
 func _on_weapon_unequip_animation_finished():
 	clear_weapon_from_hand()
 
-func _on_aim_entered() -> void:
+func _on_aim_changed(is_aiming: bool) -> void:
 	if weapon_manager and weapon_manager.current_weapon:
-		aim_weapon_idle_animation(weapon_manager.current_weapon)
-
-func _on_aim_exited() -> void:
-	if weapon_manager and weapon_manager.current_weapon:
-		reset_weapon_idle_animation(weapon_manager.current_weapon)
+		if is_aiming:
+			aim_weapon_idle_animation(weapon_manager.current_weapon)
+		else:
+			reset_weapon_idle_animation(weapon_manager.current_weapon)
 
 func _on_weapon_fired():
 	animation_tree['parameters/shoot/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE

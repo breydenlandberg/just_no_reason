@@ -1,10 +1,10 @@
 extends Node3D
 
 
-# enum
+# enums
 enum CameraAlignment {LEFT = -1, CENTRE = 0, RIGHT = 1}
 
-# var
+# vars
 var camera_rotation := Vector2.ZERO
 var camera_tween: Tween
 var max_y_rotation := 1.0
@@ -72,7 +72,6 @@ func release_mouse():
 
 # aim / shoulder alignment
 func enter_aim():
-	owner.is_aiming = true
 	tween_camera_properties({
 		camera: ['fov', aim_fov],
 		edge_spring_arm: ["spring_length", aim_edge_spring_length * current_camera_alignment],
@@ -80,7 +79,6 @@ func enter_aim():
 	}, aim_duration)#, Tween.TRANS_EXPO, Tween.EASE_OUT)
 
 func exit_aim():
-	owner.is_aiming = false
 	tween_camera_properties({
 		camera: ['fov', default_fov],
 		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * current_camera_alignment],
@@ -141,14 +139,14 @@ func tween_camera_properties(properties: Dictionary, duration: float, trans := T
 
 
 # signals
-func _on_aim_entered():
-	enter_aim()
+func _on_aim_changed(is_aiming: bool):
+	if is_aiming:
+		enter_aim()
+	else:
+		exit_aim()
 
-func _on_aim_exited():
-	exit_aim()
-
-func _on_sprint_ended():
-	exit_sprint()
-
-func _on_sprint_started():
-	enter_sprint()
+func _on_sprint_changed(is_sprinting: bool):
+	if is_sprinting:
+		enter_sprint()
+	else:
+		exit_sprint()
