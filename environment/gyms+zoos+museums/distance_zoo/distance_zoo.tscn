@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cd068vk3icid0"]
+
+[ext_resource type="PackedScene" uid="uid://deqdrb033v5o7" path="res://environment/gyms+zoos+museums/distance_zoo/one_metre_cube.tscn" id="1_edd0i"]
+[ext_resource type="PackedScene" uid="uid://dbvuwykdi3ros" path="res://environment/gyms+zoos+museums/distance_zoo/two_metre_slab.tscn" id="2_bbc1t"]
+[ext_resource type="PackedScene" uid="uid://c7glylf4ys1xm" path="res://environment/gyms+zoos+museums/distance_zoo/three_metre_slab.tscn" id="3_fjk53"]
+
+[node name="DistanceZoo" type="Node3D" unique_id=406319967]
+
+[node name="Floor" type="Node3D" parent="." unique_id=1468630956]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Floor" unique_id=1979292197]
+use_collision = true
+
+[node name="OneMetreCube" parent="Floor/CSGCombiner3D" unique_id=870663662 instance=ExtResource("1_edd0i")]
+
+[node name="OneMetreCube2" parent="Floor/CSGCombiner3D" unique_id=541193904 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="OneMetreCube3" parent="Floor/CSGCombiner3D" unique_id=1117340880 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="TwoMetreSlab" parent="Floor/CSGCombiner3D" unique_id=1502963373 instance=ExtResource("2_bbc1t")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.5, 0, -3.5)
+
+[node name="OneMetreCube4" parent="Floor/CSGCombiner3D" unique_id=1884517685 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="ThreeMetreSlab" parent="Floor/CSGCombiner3D" unique_id=1104887090 instance=ExtResource("3_fjk53")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1, 0, -7)
+
+[node name="OneMetreHigh" type="Node3D" parent="." unique_id=1808144216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="OneMetreCube" parent="OneMetreHigh" unique_id=1879674742 instance=ExtResource("1_edd0i")]
+
+[node name="TwoMetresHigh" type="Node3D" parent="." unique_id=1687410892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="TwoMetresHigh" unique_id=124240487]
+use_collision = true
+
+[node name="OneMetreCube" parent="TwoMetresHigh/CSGCombiner3D" unique_id=1925260784 instance=ExtResource("1_edd0i")]
+
+[node name="OneMetreCube2" parent="TwoMetresHigh/CSGCombiner3D" unique_id=625835987 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ThreeMetresHigh" type="Node3D" parent="." unique_id=706312961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="ThreeMetresHigh" unique_id=966899964]
+use_collision = true
+
+[node name="OneMetreCube" parent="ThreeMetresHigh/CSGCombiner3D" unique_id=474221852 instance=ExtResource("1_edd0i")]
+
+[node name="OneMetreCube2" parent="ThreeMetresHigh/CSGCombiner3D" unique_id=408103205 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="OneMetreCube3" parent="ThreeMetresHigh/CSGCombiner3D" unique_id=1238507254 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="FourMetresHigh" type="Node3D" parent="." unique_id=1489602158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -9)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="FourMetresHigh" unique_id=91694758]
+use_collision = true
+
+[node name="OneMetreCube" parent="FourMetresHigh/CSGCombiner3D" unique_id=754413988 instance=ExtResource("1_edd0i")]
+
+[node name="OneMetreCube2" parent="FourMetresHigh/CSGCombiner3D" unique_id=107275106 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="OneMetreCube3" parent="FourMetresHigh/CSGCombiner3D" unique_id=1388049280 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="OneMetreCube4" parent="FourMetresHigh/CSGCombiner3D" unique_id=712418684 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="FiveMetresHigh" type="Node3D" parent="." unique_id=436019937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -14)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="FiveMetresHigh" unique_id=1293268779]
+use_collision = true
+
+[node name="OneMetreCube" parent="FiveMetresHigh/CSGCombiner3D" unique_id=1726274598 instance=ExtResource("1_edd0i")]
+
+[node name="OneMetreCube2" parent="FiveMetresHigh/CSGCombiner3D" unique_id=539699072 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="OneMetreCube3" parent="FiveMetresHigh/CSGCombiner3D" unique_id=946958464 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="OneMetreCube4" parent="FiveMetresHigh/CSGCombiner3D" unique_id=2071364080 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="OneMetreCube5" parent="FiveMetresHigh/CSGCombiner3D" unique_id=418584774 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)

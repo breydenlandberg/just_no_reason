@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c7glylf4ys1xm"]
+
+[ext_resource type="Material" uid="uid://bwenuv51o8c6u" path="res://environment/gyms+zoos+museums/distance_zoo/three_metre_slab.tres" id="1_sbsga"]
+
+[node name="ThreeMetreSlab" type="CSGBox3D" unique_id=870663662]
+use_collision = true
+size = Vector3(3, 3, 1)
+material = ExtResource("1_sbsga")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=95528968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 1.35, 0.55)
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "3m"
+
+[node name="Label3D2" type="Label3D" parent="." unique_id=1363652262]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.55, 1.35, -0.1)
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "1m x 3m"
+
+[node name="Label3D3" type="Label3D" parent="." unique_id=1395180295]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.3, 1.35, -0.55)
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "3m"
+
+[node name="Label3D4" type="Label3D" parent="." unique_id=1789065357]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.55, 1.35, 0.1)
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "1m x 3m"
+
+[node name="Label3D5" type="Label3D" parent="." unique_id=662130502]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, -1.1, 1.55, -0.35)
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "1m x 3m"
+
+[node name="Label3D6" type="Label3D" parent="." unique_id=1888331076]
+transform = Transform3D(1, 0, 0, 0, 1.192488e-08, -0.99999994, 0, 0.99999994, 1.192488e-08, -1.1, -1.55, 0.35)
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "1m x 3m"
