@@ -33,17 +33,17 @@ depth = 10.0
 transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, -4.5, -0.5, 1.15)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/AssaultRifleRack" unique_id=1025574017]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.05, 0.05, 0.5)
 
 [node name="AssaultRiflePickup" parent="CSGCombiner3D/AssaultRifleRack" unique_id=1739229459 instance=ExtResource("2_od7jb")]
-transform = Transform3D(-4.9743925e-08, -1, 9.716316e-09, 0.90630835, -4.0977007e-08, 0.4226185, -0.4226185, 2.9828676e-08, 0.90630835, 0.04, 0.3, 0.07)
+transform = Transform3D(-4.8242196e-08, -1, 9.716331e-09, 0.9063079, -3.961597e-08, 0.42261833, -0.42261833, 2.9194016e-08, 0.9063079, 0.04, 0.3, 0.07)
 
 [node name="AssaultRifleRack2" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=531004767]
 transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, -3.5, -0.5, 1.15)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/AssaultRifleRack2" unique_id=877935290]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.05, 0.05, 0.5)
 
 [node name="AssaultRiflePickup2" parent="CSGCombiner3D/AssaultRifleRack2" unique_id=219419589 instance=ExtResource("2_od7jb")]
@@ -53,27 +53,27 @@ transform = Transform3D(-4.8242196e-08, -1, 9.716331e-09, 0.9063079, -3.961597e-
 transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, -2.5, -0.5, 1.15)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/AssaultRifleRack3" unique_id=1048846923]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.05, 0.05, 0.5)
 
 [node name="AssaultRiflePickup3" parent="CSGCombiner3D/AssaultRifleRack3" unique_id=1317833709 instance=ExtResource("2_od7jb")]
 transform = Transform3D(-4.8242196e-08, -1, 9.716331e-09, 0.9063079, -3.961597e-08, 0.42261833, -0.42261833, 2.9194016e-08, 0.9063079, 0.04, 0.3, 0.07)
 
 [node name="QuasarRack" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=1830744039]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -1.5, -0.5, 1.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 1.15)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D/QuasarRack" unique_id=1554661843]
 transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, 0, 0, 0)
 size = Vector3(0.05, 0.05, 0.5)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D/QuasarRack" unique_id=938600031]
-transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0.087700754, 0.26193738)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.087700754, 0.26193738)
 radius = 0.075
 radial_segments = 24
 rings = 12
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D/QuasarRack" unique_id=2080743360]
-transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000004, 0, 0.12119752, 0.26066458)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12119752, 0.26066458)
 operation = 2
 size = Vector3(0.16, 0.11, 0.16)
 
@@ -81,20 +81,20 @@ size = Vector3(0.16, 0.11, 0.16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.26)
 
 [node name="QuasarRack2" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=217826593]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -0.5, -0.5, 1.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 1.15)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D/QuasarRack2" unique_id=1098747836]
 transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, 0, 0, 0)
 size = Vector3(0.05, 0.05, 0.5)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D/QuasarRack2" unique_id=411281627]
-transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0.087700754, 0.26193738)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.087700754, 0.26193738)
 radius = 0.075
 radial_segments = 24
 rings = 12
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D/QuasarRack2" unique_id=27578751]
-transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000004, 0, 0.12119752, 0.26066458)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12119752, 0.26066458)
 operation = 2
 size = Vector3(0.16, 0.11, 0.16)
 
@@ -102,20 +102,20 @@ size = Vector3(0.16, 0.11, 0.16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.26)
 
 [node name="QuasarRack3" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=329734529]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.5, -0.5, 1.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 1.15)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D/QuasarRack3" unique_id=1677615333]
 transform = Transform3D(1, 0, 0, 0, 0.9848076, 0.17364816, 0, -0.17364816, 0.9848076, 0, 0, 0)
 size = Vector3(0.05, 0.05, 0.5)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D/QuasarRack3" unique_id=423430788]
-transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0.087700754, 0.26193738)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.087700754, 0.26193738)
 radius = 0.075
 radial_segments = 24
 rings = 12
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D/QuasarRack3" unique_id=1548566701]
-transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000004, 0, 0.12119752, 0.26066458)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12119752, 0.26066458)
 operation = 2
 size = Vector3(0.16, 0.11, 0.16)
 
@@ -123,21 +123,21 @@ size = Vector3(0.16, 0.11, 0.16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.26)
 
 [node name="AssaultRifleAmmo" type="Node3D" parent="CSGCombiner3D" unique_id=2144810782]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.78000003, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.78, -1)
 
 [node name="AssaultRifleAmmoSmall" parent="CSGCombiner3D/AssaultRifleAmmo" unique_id=1860755036 instance=ExtResource("7_31spn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.14999998, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.15, 0)
 
 [node name="AssaultRifleAmmoMedium" parent="CSGCombiner3D/AssaultRifleAmmo" unique_id=608430918 instance=ExtResource("8_q7plg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.06999999, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.07, 0)
 
 [node name="AssaultRifleAmmoLarge2" parent="CSGCombiner3D/AssaultRifleAmmo" unique_id=1320909951 instance=ExtResource("9_18x7e")]
 
 [node name="AssaultRifleAmmoSmall2" parent="CSGCombiner3D/AssaultRifleAmmo" unique_id=485282097 instance=ExtResource("7_31spn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.14999998, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.15, 0)
 
 [node name="AssaultRifleAmmoMedium2" parent="CSGCombiner3D/AssaultRifleAmmo" unique_id=2029899744 instance=ExtResource("8_q7plg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.06999999, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.07, 0)
 
 [node name="AssaultRifleAmmoLarge" parent="CSGCombiner3D/AssaultRifleAmmo" unique_id=590215007 instance=ExtResource("9_18x7e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
@@ -146,19 +146,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.78, -1)
 
 [node name="QuasarAmmoPickup" parent="CSGCombiner3D/QuasarAmmo" unique_id=2079047079 instance=ExtResource("10_i8043")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.060000002, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.06, 0)
 
 [node name="QuasarAmmoPickup2" parent="CSGCombiner3D/QuasarAmmo" unique_id=512430552 instance=ExtResource("10_i8043")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.060000002, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.06, 0)
 
 [node name="QuasarAmmoPickup3" parent="CSGCombiner3D/QuasarAmmo" unique_id=1153030291 instance=ExtResource("10_i8043")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.060000002, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
 
 [node name="QuasarAmmoPickup4" parent="CSGCombiner3D/QuasarAmmo" unique_id=1208178008 instance=ExtResource("10_i8043")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.060000002, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.06, 0)
 
 [node name="QuasarAmmoPickup5" parent="CSGCombiner3D/QuasarAmmo" unique_id=1684840248 instance=ExtResource("10_i8043")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.060000002, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.06, 0)
 
 [node name="QuasarAmmoPickup6" parent="CSGCombiner3D/QuasarAmmo" unique_id=907232046 instance=ExtResource("10_i8043")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.060000002, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.06, 0)

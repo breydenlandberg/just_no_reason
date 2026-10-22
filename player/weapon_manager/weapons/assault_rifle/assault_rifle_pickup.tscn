@@ -15,7 +15,7 @@ internal_weapon = ExtResource("2_xe42m")
 visual_node = NodePath("AssaultRifle")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1648626859]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999993, 0.014999956, 1.4901161e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.015, 0)
 shape = SubResource("BoxShape3D_m377s")
 
 [node name="AssaultRifle" parent="." unique_id=412511384 instance=ExtResource("3_s5o02")]
