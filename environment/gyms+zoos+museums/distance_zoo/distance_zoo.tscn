@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c7glylf4ys1xm" path="res://environment/gyms+zoos+museums/distance_zoo/3_metre_slab.tscn" id="3_fjk53"]
 [ext_resource type="PackedScene" uid="uid://diwd63dvrgcwv" path="res://environment/gyms+zoos+museums/distance_zoo/4_metre_slab.tscn" id="4_yp2ja"]
 [ext_resource type="PackedScene" uid="uid://csxwdstvlx8v7" path="res://environment/gyms+zoos+museums/distance_zoo/5_metre_slab.tscn" id="5_v11fn"]
+[ext_resource type="Material" uid="uid://cdfccr75548di" path="res://environment/gyms+zoos+museums/distance_zoo/structure.tres" id="6_a1b45"]
 
 [node name="DistanceZoo" type="Node3D" unique_id=406319967]
 
@@ -12,6 +13,73 @@
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Floor" unique_id=1979292197]
 use_collision = true
+
+[node name="Structure" type="CSGCombiner3D" parent="Floor/CSGCombiner3D" unique_id=940618482]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=1668832475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -32.5)
+size = Vector3(23, 1, 68)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=257120376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -32.5)
+operation = 2
+size = Vector3(21, 1, 66)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=413377473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -0.5)
+size = Vector3(20, 1, 2)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=388105857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -2)
+size = Vector3(20, 1, 1)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=143282362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -5)
+size = Vector3(20, 1, 1)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=1134948060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -9)
+size = Vector3(20, 1, 1)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=343903177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -14)
+size = Vector3(20, 1, 1)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=180265889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -20)
+size = Vector3(20, 1, 1)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=507302177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -27)
+size = Vector3(20, 1, 1)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=1982417371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -35)
+size = Vector3(20, 1, 1)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=623458441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -44)
+size = Vector3(20, 1, 1)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=2127930947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -54)
+size = Vector3(20, 1, 1)
+material = ExtResource("6_a1b45")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Floor/CSGCombiner3D/Structure" unique_id=273207293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -65)
+size = Vector3(20, 1, 1)
+material = ExtResource("6_a1b45")
 
 [node name="Section1m" type="CSGCombiner3D" parent="Floor/CSGCombiner3D" unique_id=1000000001]
 
@@ -845,3 +913,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="1MetreCube6" parent="6MetresHigh6/CSGCombiner3D" unique_id=532668639 instance=ExtResource("1_edd0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="1MetreCube" parent="." unique_id=1969905235 instance=ExtResource("1_edd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 0)
