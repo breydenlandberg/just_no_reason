@@ -23,6 +23,8 @@ sky_material = SubResource("PanoramaSkyMaterial_h2yge")
 [sub_resource type="Environment" id="Environment_lquwl"]
 background_mode = 2
 sky = SubResource("Sky_1bvp3")
+glow_enabled = true
+glow_intensity = 1.5
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_efxa6"]
 

@@ -26,7 +26,10 @@ func _process(delta: float):
 
 	for i in range(current_lines.size() - 1, -1, -1):
 		var line: Dictionary = current_lines[i]
-		if line['time_remaining'] > 0.0:
+
+		if line['permanent']:
+			debug_draw_3d.draw_line(line['origin'], line['end'], Color.BLUE, 3.0)
+		elif line['time_remaining'] > 0.0:
 			debug_draw_3d.draw_line(line['origin'], line['end'], Color.RED, 2.0)
 			line['time_remaining'] -= delta
 		else:
@@ -38,8 +41,13 @@ func _process(delta: float):
 func set_debug_container(container: Node3D) -> void:
 	debug_container = container
 
-func draw_between(origin: Vector3, end: Vector3, duration := 1.0, spawn_spheres_at_origin_and_end := false) -> void:
-	var line_dict: Dictionary = {'origin': origin, 'end': end, 'time_remaining': duration}
+func draw_between(origin: Vector3, end: Vector3, duration := 0.0, spawn_spheres_at_origin_and_end := false) -> void:
+	var line_dict: Dictionary = {
+		'origin': origin,
+		'end': end,
+		'time_remaining': duration,
+		'permanent': duration <= 0.0,
+	}
 	current_lines.append(line_dict)
 
 	if spawn_spheres_at_origin_and_end and is_instance_valid(debug_container):

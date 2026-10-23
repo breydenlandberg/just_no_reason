@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://cd068vk3icid0"]
 
-[ext_resource type="PackedScene" uid="uid://deqdrb033v5o7" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/1_metre_cube.tscn" id="1_edd0i"]
-[ext_resource type="PackedScene" uid="uid://dbvuwykdi3ros" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/2_metre_slab.tscn" id="2_bbc1t"]
-[ext_resource type="PackedScene" uid="uid://c7glylf4ys1xm" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/3_metre_slab.tscn" id="3_fjk53"]
-[ext_resource type="PackedScene" uid="uid://diwd63dvrgcwv" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/4_metre_slab.tscn" id="4_yp2ja"]
-[ext_resource type="PackedScene" uid="uid://csxwdstvlx8v7" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/5_metre_slab.tscn" id="5_v11fn"]
-[ext_resource type="Material" uid="uid://cdfccr75548di" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/structure.tres" id="6_a1b45"]
+[ext_resource type="PackedScene" uid="uid://deqdrb033v5o7" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/scenes/1_metre_cube.tscn" id="1_edd0i"]
+[ext_resource type="PackedScene" uid="uid://dbvuwykdi3ros" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/scenes/2_metre_slab.tscn" id="2_bbc1t"]
+[ext_resource type="PackedScene" uid="uid://c7glylf4ys1xm" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/scenes/3_metre_slab.tscn" id="3_fjk53"]
+[ext_resource type="PackedScene" uid="uid://diwd63dvrgcwv" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/scenes/4_metre_slab.tscn" id="4_yp2ja"]
+[ext_resource type="PackedScene" uid="uid://csxwdstvlx8v7" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/scenes/5_metre_slab.tscn" id="5_v11fn"]
+[ext_resource type="Material" uid="uid://cdfccr75548di" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/materials/structure.tres" id="6_a1b45"]
+[ext_resource type="Material" uid="uid://bokpfen24nn38" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/materials/distance_bar.tres" id="7_d6ii1"]
 
 [node name="DistanceZooMovementGym" type="Node3D" unique_id=406319967]
 
@@ -1182,3 +1183,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 5, -22)
 
 [node name="5MetreSlab" parent="Playground/CSGCombiner3D/Section5" unique_id=1633738672 instance=ExtResource("5_v11fn")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 14, 3, -24)
+
+[node name="TotalWidth" type="Node3D" parent="." unique_id=680016951]
+
+[node name="Label3D2" type="Label3D" parent="TotalWidth" unique_id=1043661900]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 19.5, 1.75, 1)
+text = "23m"
+font_size = 128
+
+[node name="Width" type="CSGBox3D" parent="TotalWidth" unique_id=191184828]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 10, 1.25, 2)
+size = Vector3(0.1, 0.1, 23)
+material = ExtResource("7_d6ii1")
+
+[node name="Width2" type="CSGBox3D" parent="TotalWidth" unique_id=1427304644]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 10, 2.25, 2)
+size = Vector3(0.1, 0.1, 23)
+material = ExtResource("7_d6ii1")
+
+[node name="TotalLength" type="Node3D" parent="." unique_id=444748723]
+
+[node name="Label3D2" type="Label3D" parent="TotalLength" unique_id=1743002595]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 21, 1.75, -0.5)
+text = "68m"
+font_size = 128
+
+[node name="Length" type="CSGBox3D" parent="TotalLength" unique_id=683747012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1.25, -32.5)
+size = Vector3(0.1, 0.1, 68)
+material = ExtResource("7_d6ii1")
+
+[node name="Length2" type="CSGBox3D" parent="TotalLength" unique_id=1781009213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.25, -32.5)
+size = Vector3(0.1, 0.1, 68)
+material = ExtResource("7_d6ii1")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1243502905]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 17.5, 0.55, -0.5)
+text = "=====>
+======>
+=======>
+======>
+=====>"
+font_size = 128

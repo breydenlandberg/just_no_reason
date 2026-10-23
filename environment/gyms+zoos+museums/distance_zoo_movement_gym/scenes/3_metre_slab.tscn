@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c7glylf4ys1xm"]
 
-[ext_resource type="Material" uid="uid://bwenuv51o8c6u" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/3_metre_slab.tres" id="1_srpua"]
+[ext_resource type="Material" uid="uid://bwenuv51o8c6u" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/materials/3_metre_slab.tres" id="1_8tfyh"]
 
 [node name="3MetreSlab" type="CSGBox3D" unique_id=870663662]
 use_collision = true
 size = Vector3(3, 3, 1)
-material = ExtResource("1_srpua")
+material = ExtResource("1_8tfyh")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=95528968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 1.35, 0.55)

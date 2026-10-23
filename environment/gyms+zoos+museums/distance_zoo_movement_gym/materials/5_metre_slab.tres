@@ -1,5 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dqou6mm8c3k6f"]
 
 [resource]
-transparency = 4
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
 albedo_color = Color(0.09803922, 0, 0.19607843, 0.92156863)

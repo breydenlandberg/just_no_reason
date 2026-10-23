@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://diwd63dvrgcwv"]
 
-[ext_resource type="Material" uid="uid://cfk7bko86bpvg" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/4_metre_slab.tres" id="1_x8wxv"]
+[ext_resource type="Material" uid="uid://cfk7bko86bpvg" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/materials/4_metre_slab.tres" id="1_x8wxv"]
 
 [node name="4MetreSlab" type="CSGBox3D" unique_id=870663662]
 use_collision = true
