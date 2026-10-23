@@ -2,13 +2,23 @@ class_name Teleporter extends Node3D
 
 
 # vars
+@export_group('Nodes')
 @export var teleport_exit: Marker3D
+@export var label: Label3D
+@export_group('Settings')
 @export var target_teleporter: Teleporter
+@export var label_text := ''
 
 var timeout := false
 
 
 ### fn
+
+## virtual
+#
+func _ready():
+	label.text = label_text
+
 
 ## public
 #

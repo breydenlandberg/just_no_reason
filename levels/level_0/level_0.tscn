@@ -30,7 +30,7 @@ glow_intensity = 1.5
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_efxa6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m377s"]
-albedo_color = Color(0.98039216, 0.9607843, 0.9411765, 1)
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_3slpx"]
 length = 0.001
@@ -287,15 +287,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=4247257]
 shape = SubResource("WorldBoundaryShape3D_efxa6")
 
-[node name="Ground" type="CSGBox3D" parent="." unique_id=1462739968]
+[node name="DroppedWeapons" type="Node3D" parent="." unique_id=1042479897]
+
+[node name="LevelData" type="Node3D" parent="." unique_id=1412284672]
+
+[node name="Ground" type="CSGBox3D" parent="LevelData" unique_id=1462739968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, -1, 0)
 material_override = SubResource("StandardMaterial3D_m377s")
 use_collision = true
 size = Vector3(500, 1, 100)
-
-[node name="DroppedWeapons" type="Node3D" parent="." unique_id=1042479897]
-
-[node name="LevelData" type="Node3D" parent="." unique_id=1412284672]
 
 [node name="Enemies" type="Node3D" parent="LevelData" unique_id=2099937265]
 
@@ -333,11 +333,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 [node name="WeaponRack" parent="LevelData" unique_id=894834646 instance=ExtResource("22_v3mv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10)
 
-[node name="DistanceZooMovementGym" parent="LevelData" unique_id=406319967 instance=ExtResource("8_ya36b")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 17.5)
-
 [node name="Building2" type="Node3D" parent="LevelData" unique_id=1403035672]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 49.5, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 49.5, -17)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelData/Building2" unique_id=112799481]
 material_override = ExtResource("3_j6sme")
@@ -387,10 +384,27 @@ material_override = SubResource("StandardMaterial3D_kek77")
 use_collision = true
 size = Vector3(3, 5, 9)
 
-[node name="Teleporter" parent="LevelData" unique_id=1951845624 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72, -0.5, 5.22)
-target_teleporter = NodePath("../Teleporter2")
+[node name="Building2TeleporterExit" parent="LevelData" unique_id=810522326 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370, -0.5, -38)
+target_teleporter = NodePath("../DZMG/DZMGTeleporterEntry")
 
-[node name="Teleporter2" parent="LevelData" unique_id=810522326 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 438.38, -0.5, 21.81)
-target_teleporter = NodePath("../Teleporter")
+[node name="DZMG" type="Node3D" parent="LevelData" unique_id=225832260]
+
+[node name="DZMGTeleporterEntry" parent="LevelData/DZMG" unique_id=1951845624 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 5)
+target_teleporter = NodePath("../DZMGTeleporterExit")
+label_text = "Teleport to Distance Zoo & Movement Gym"
+
+[node name="Ground" type="CSGBox3D" parent="LevelData/DZMG" unique_id=123701465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 200)
+material_override = SubResource("StandardMaterial3D_m377s")
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="DistanceZooMovementGym" parent="LevelData/DZMG" unique_id=406319967 instance=ExtResource("8_ya36b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 232.5)
+
+[node name="DZMGTeleporterExit" parent="LevelData/DZMG" unique_id=606468088 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.5, 230)
+target_teleporter = NodePath("../DZMGTeleporterEntry")
+label_text = "Teleport back to main"
