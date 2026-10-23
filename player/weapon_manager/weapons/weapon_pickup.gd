@@ -28,18 +28,6 @@ func _ready():
 		push_error('visual_node not assigned in ', self)
 
 
-## internal
-#
-func _apply_visual_scale() -> void:
-	if not visual_node:
-		return
-
-	if custom_visual_scale != Vector3.ZERO:
-		visual_node.scale = custom_visual_scale
-	elif internal_weapon:
-		visual_node.scale = internal_weapon.get_world_scale()
-
-
 ## public
 #
 func start_drop_cooldown(duration := 2.5) -> void:
@@ -53,3 +41,15 @@ func set_visual_scale(target_scale: Vector3) -> void:
 
 	if visual_node:
 		visual_node.scale = target_scale
+
+
+## internal
+#
+func _apply_visual_scale() -> void:
+	if not visual_node:
+		return
+
+	if custom_visual_scale != Vector3.ZERO:
+		visual_node.scale = custom_visual_scale
+	elif internal_weapon:
+		visual_node.scale = internal_weapon.get_world_scale()

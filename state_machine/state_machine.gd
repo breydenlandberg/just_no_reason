@@ -81,7 +81,7 @@ func _stop() -> void:
 
 ## state transitions
 #
-func transition(state, new_state_name) -> void:
+func transition(state: State, new_state_name: StringName) -> void:
 	if state != current_state:
 		push_warning('⛶ Passed state \'' + state.name + '\' does not equal current state \'' + current_state.name + '\'')
 		return

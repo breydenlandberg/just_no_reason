@@ -68,18 +68,18 @@ func _on_button_pressed() -> void:
 ## 2. Header Naming & Hierarchy
 
 1. **Pluralized Section Headers (`# <category>`):**
-   - Always pluralized: `# signals`, `# enums`, `# consts`, `# vars`, `# static vars`.
+   - Always pluralized: `# signals`, `# enums`, `# consts`, `# vars`.
 2. **Top-Level Function Header (`### fn`):**
    - Denoted strictly with three hashes: `### fn`.
    - Preceded by **2 blank lines**.
    - Followed by **1 blank line** before the first function group subheader.
 3. **Function Group Subheaders (`## <group>`):**
    - Denoted strictly with two hashes and an underlined `#` comment:
-	 ```gdscript
-	 ## helper
-	 #
-	 func my_helper() -> void:
-	 ```
+     ```gdscript
+     ## helper
+     #
+     func my_helper() -> void:
+     ```
    - Standard category names: `## virtual`, `## public`, `## internal`, `## helper`, `## signals`, `## SignalBus`.
    - Domain-specific subheaders are encouraged where logical (e.g. `## mouse / look`, `## stance & alignment`, `## weapons & combat`, `## ammo & reload`).
 
@@ -104,6 +104,8 @@ func _on_button_pressed() -> void:
    - Built-in engine virtual hooks (`_ready`, `_process`, `_physics_process`, `_input`, `_unhandled_input`) and `State` virtual overrides (`_enter`, `_exit`, `_state_input`, `_state_process`, `_state_physics_process`) **should not** declare `-> void`. This adheres strictly to Godot's virtual method dispatch standard.
 3. **Parameter Typing:**
    - Always type parameters where known (e.g., `_delta: float`, `_event: InputEvent`).
+4. **String Quotes:**
+   - Always use single quotes (`'...'` and `&'...'`) for strings and `StringName` literals.
 
 ---
 

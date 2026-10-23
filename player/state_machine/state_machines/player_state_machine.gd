@@ -29,7 +29,7 @@ func _ready():
 ## state transitions
 #
 # This allows us to go straight from eg Unarmed/AimWalk -> Armed/AimWalk and the reverse when equipping / unequipping weapon
-func transition(state, new_state_name) -> void:
+func transition(state: State, new_state_name: StringName) -> void:
 	var motion_state_to_preserve: StringName = &''
 
 	if current_state is PlayerCombatTransitionState and current_state.state_machine:

@@ -3,7 +3,7 @@ class_name State extends Node3D
 
 # signals
 @warning_ignore('unused_signal')
-signal _transition(state, new_state)
+signal _transition(state: State, new_state_name: StringName)
 
 # vars
 var previous_state: State

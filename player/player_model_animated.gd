@@ -53,7 +53,7 @@ func on_input_direction_changed(_input_dir: Vector2) -> void:
 				pass
 			CombatStatus.COMBAT:
 				if owner.is_aiming:
-					animation_tree["parameters/rifle_aim_walk/blend_position"] = input_direction
+					animation_tree['parameters/rifle_aim_walk/blend_position'] = input_direction
 
 		rotation_degrees.y = %Camera.rotation_degrees.y - rad_to_deg(input_direction.angle()) + 90
 

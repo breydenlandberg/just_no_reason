@@ -7,7 +7,6 @@ signal pause_requested
 @warning_ignore('unused_signal')
 signal return_to_title_requested
 
-
 # vars
 var currently_paused := false
 var can_pause := false

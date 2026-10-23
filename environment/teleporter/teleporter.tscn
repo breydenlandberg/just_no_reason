@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bmcm0qoejulda"]
+
+[ext_resource type="Script" uid="uid://dca43njjh2cit" path="res://environment/teleporter/teleporter.gd" id="1_huduu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yb1s"]
+transparency = 4
+albedo_color = Color(0.7254902, 0.5686275, 0.13725491, 0.92156863)
+emission_enabled = true
+emission = Color(0.93448275, 0, 0.20162952, 1)
+emission_energy_multiplier = 3.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m377s"]
+size = Vector3(2, 0.2, 2)
+
+[node name="Teleporter" type="Node3D" unique_id=1951845624 node_paths=PackedStringArray("teleport_exit")]
+script = ExtResource("1_huduu")
+teleport_exit = NodePath("TeleportPoint")
+
+[node name="TeleportPoint" type="Marker3D" parent="." unique_id=2018113143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=461908006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
+use_collision = true
+radius = 1.0
+height = 0.01
+sides = 16
+cone = true
+material = SubResource("StandardMaterial3D_3yb1s")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1365752473]
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=548172964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_m377s")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_teleporter_body_entered"]

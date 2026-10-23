@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 
 # vars
-@export var species: SphereSpecies = preload("uid://cpscedpei1tgq"):
+@export var species: SphereSpecies = preload('uid://cpscedpei1tgq'):
 	set(value):
 		species = value
 		_update_visuals()

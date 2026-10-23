@@ -78,15 +78,15 @@ func release_mouse() -> void:
 func enter_aim() -> void:
 	tween_camera_properties({
 		camera: ['fov', aim_fov],
-		edge_spring_arm: ["spring_length", aim_edge_spring_length * current_camera_alignment],
-		rear_spring_arm: ["spring_length", aim_rear_spring_length]
+		edge_spring_arm: ['spring_length', aim_edge_spring_length * current_camera_alignment],
+		rear_spring_arm: ['spring_length', aim_rear_spring_length]
 	}, aim_duration)#, Tween.TRANS_EXPO, Tween.EASE_OUT)
 
 func exit_aim() -> void:
 	tween_camera_properties({
 		camera: ['fov', default_fov],
-		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * current_camera_alignment],
-		rear_spring_arm: ["spring_length", default_rear_spring_arm_length]
+		edge_spring_arm: ['spring_length', default_edge_spring_arm_length * current_camera_alignment],
+		rear_spring_arm: ['spring_length', default_rear_spring_arm_length]
 	}, aim_duration)#, Tween.TRANS_EXPO, Tween.EASE_OUT)
 
 func swap_camera_alignment() -> void:
@@ -106,15 +106,15 @@ func swap_camera_alignment() -> void:
 func enter_sprint() -> void:
 	tween_camera_properties({
 		camera: ['fov', sprint_fov],
-		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * current_camera_alignment],
-		rear_spring_arm: ["spring_length", default_rear_spring_arm_length]
+		edge_spring_arm: ['spring_length', default_edge_spring_arm_length * current_camera_alignment],
+		rear_spring_arm: ['spring_length', default_rear_spring_arm_length]
 	}, sprint_tween_duration)#, Tween.TRANS_EXPO, Tween.EASE_OUT)
 
 func exit_sprint() -> void:
 	tween_camera_properties({
 		camera: ['fov', default_fov],
-		edge_spring_arm: ["spring_length", default_edge_spring_arm_length * current_camera_alignment],
-		rear_spring_arm: ["spring_length", default_rear_spring_arm_length]
+		edge_spring_arm: ['spring_length', default_edge_spring_arm_length * current_camera_alignment],
+		rear_spring_arm: ['spring_length', default_rear_spring_arm_length]
 	}, sprint_tween_duration)#, Tween.TRANS_EXPO, Tween.EASE_OUT)
 
 
