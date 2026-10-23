@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="6_ti4gw"]
 [ext_resource type="Texture2D" uid="uid://bh2tpishmathl" path="res://assets/textures/stone/shine_stone.png" id="7_0gdxf"]
 [ext_resource type="PackedScene" uid="uid://bdaq1v7cg2fay" path="res://killzone/killzone.tscn" id="8_ssg5x"]
-[ext_resource type="PackedScene" uid="uid://cd068vk3icid0" path="res://environment/gyms+zoos+museums/distance_zoo/distance_zoo.tscn" id="8_ya36b"]
+[ext_resource type="PackedScene" uid="uid://cd068vk3icid0" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/distance_zoo_movement_gym.tscn" id="8_ya36b"]
 [ext_resource type="PackedScene" uid="uid://dx1jttysmunls" path="res://enemies/sphere/sphere.tscn" id="14_dp5o0"]
 [ext_resource type="Resource" uid="uid://dxd5oswmr1rfr" path="res://enemies/sphere/species/grunt_sphere.tres" id="22_pxy07"]
 [ext_resource type="PackedScene" uid="uid://dntywopo4nbyu" path="res://environment/props/weapon_rack.tscn" id="22_v3mv3"]
@@ -330,7 +330,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 [node name="WeaponRack" parent="LevelData" unique_id=894834646 instance=ExtResource("22_v3mv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10)
 
-[node name="DistanceZoo" parent="LevelData" unique_id=406319967 instance=ExtResource("8_ya36b")]
+[node name="DistanceZooMovementGym" parent="LevelData" unique_id=406319967 instance=ExtResource("8_ya36b")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 17.5)
 
 [node name="Building2" type="Node3D" parent="LevelData" unique_id=1403035672]

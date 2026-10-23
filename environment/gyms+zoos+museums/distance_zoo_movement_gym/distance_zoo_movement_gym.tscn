@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cd068vk3icid0"]
 
-[ext_resource type="PackedScene" uid="uid://deqdrb033v5o7" path="res://environment/gyms+zoos+museums/distance_zoo/1_metre_cube.tscn" id="1_edd0i"]
-[ext_resource type="PackedScene" uid="uid://dbvuwykdi3ros" path="res://environment/gyms+zoos+museums/distance_zoo/2_metre_slab.tscn" id="2_bbc1t"]
-[ext_resource type="PackedScene" uid="uid://c7glylf4ys1xm" path="res://environment/gyms+zoos+museums/distance_zoo/3_metre_slab.tscn" id="3_fjk53"]
-[ext_resource type="PackedScene" uid="uid://diwd63dvrgcwv" path="res://environment/gyms+zoos+museums/distance_zoo/4_metre_slab.tscn" id="4_yp2ja"]
-[ext_resource type="PackedScene" uid="uid://csxwdstvlx8v7" path="res://environment/gyms+zoos+museums/distance_zoo/5_metre_slab.tscn" id="5_v11fn"]
-[ext_resource type="Material" uid="uid://cdfccr75548di" path="res://environment/gyms+zoos+museums/distance_zoo/structure.tres" id="6_a1b45"]
+[ext_resource type="PackedScene" uid="uid://deqdrb033v5o7" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/1_metre_cube.tscn" id="1_edd0i"]
+[ext_resource type="PackedScene" uid="uid://dbvuwykdi3ros" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/2_metre_slab.tscn" id="2_bbc1t"]
+[ext_resource type="PackedScene" uid="uid://c7glylf4ys1xm" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/3_metre_slab.tscn" id="3_fjk53"]
+[ext_resource type="PackedScene" uid="uid://diwd63dvrgcwv" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/4_metre_slab.tscn" id="4_yp2ja"]
+[ext_resource type="PackedScene" uid="uid://csxwdstvlx8v7" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/5_metre_slab.tscn" id="5_v11fn"]
+[ext_resource type="Material" uid="uid://cdfccr75548di" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/structure.tres" id="6_a1b45"]
 
-[node name="DistanceZoo" type="Node3D" unique_id=406319967]
+[node name="DistanceZooMovementGym" type="Node3D" unique_id=406319967]
 
 [node name="1MetreCube" parent="." unique_id=1969905235 instance=ExtResource("1_edd0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 0)
