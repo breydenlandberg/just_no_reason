@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://cd068vk3icid0"]
 
-[ext_resource type="PackedScene" uid="uid://deqdrb033v5o7" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/scenes/1_metre_cube.tscn" id="1_edd0i"]
-[ext_resource type="PackedScene" uid="uid://dbvuwykdi3ros" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/scenes/2_metre_slab.tscn" id="2_bbc1t"]
-[ext_resource type="PackedScene" uid="uid://c7glylf4ys1xm" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/scenes/3_metre_slab.tscn" id="3_fjk53"]
-[ext_resource type="PackedScene" uid="uid://diwd63dvrgcwv" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/scenes/4_metre_slab.tscn" id="4_yp2ja"]
-[ext_resource type="PackedScene" uid="uid://csxwdstvlx8v7" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/scenes/5_metre_slab.tscn" id="5_v11fn"]
-[ext_resource type="Material" uid="uid://cdfccr75548di" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/materials/structure.tres" id="6_a1b45"]
-[ext_resource type="Material" uid="uid://bokpfen24nn38" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/materials/distance_bar.tres" id="7_d6ii1"]
+[ext_resource type="PackedScene" uid="uid://deqdrb033v5o7" path="res://environment/gyms+zoos+museums/measuring_props/1_metre_cube.tscn" id="1_edd0i"]
+[ext_resource type="PackedScene" uid="uid://dbvuwykdi3ros" path="res://environment/gyms+zoos+museums/measuring_props/2_metre_slab.tscn" id="2_bbc1t"]
+[ext_resource type="PackedScene" uid="uid://c7glylf4ys1xm" path="res://environment/gyms+zoos+museums/measuring_props/3_metre_slab.tscn" id="3_fjk53"]
+[ext_resource type="PackedScene" uid="uid://diwd63dvrgcwv" path="res://environment/gyms+zoos+museums/measuring_props/4_metre_slab.tscn" id="4_yp2ja"]
+[ext_resource type="PackedScene" uid="uid://csxwdstvlx8v7" path="res://environment/gyms+zoos+museums/measuring_props/5_metre_slab.tscn" id="5_v11fn"]
+[ext_resource type="Material" uid="uid://cdfccr75548di" path="res://environment/gyms+zoos+museums/materials/structure.tres" id="6_a1b45"]
+[ext_resource type="Material" uid="uid://bokpfen24nn38" path="res://environment/gyms+zoos+museums/materials/distance_bar.tres" id="7_d6ii1"]
 
-[node name="DistanceZooMovementGym" type="Node3D" unique_id=406319967]
+[node name="MovementGym" type="Node3D" unique_id=406319967]
 
 [node name="Floor" type="Node3D" parent="." unique_id=1468630956]
 

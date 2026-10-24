@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://dxsryej3nlkg" path="res://levels/level.gd" id="1_v3mv3"]
 [ext_resource type="Material" uid="uid://c6v30peo0qbcu" path="res://environment/scaffolding/scaffolding_material.tres" id="3_j6sme"]
 [ext_resource type="Texture2D" uid="uid://bq1gb0px7oo1h" path="res://assets/textures/Day0.exr" id="3_l7xvt"]
+[ext_resource type="Material" uid="uid://dwqwnrxiisdvd" path="res://assets/materials/black.tres" id="4_tuwnn"]
 [ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="5_3e5dw"]
 [ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="6_ti4gw"]
 [ext_resource type="Texture2D" uid="uid://bh2tpishmathl" path="res://assets/textures/stone/shine_stone.png" id="7_0gdxf"]
 [ext_resource type="PackedScene" uid="uid://bdaq1v7cg2fay" path="res://killzone/killzone.tscn" id="8_ssg5x"]
-[ext_resource type="PackedScene" uid="uid://cd068vk3icid0" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/distance_zoo_movement_gym.tscn" id="8_ya36b"]
+[ext_resource type="PackedScene" uid="uid://cd068vk3icid0" path="res://environment/gyms+zoos+museums/movement_gym.tscn" id="8_ya36b"]
 [ext_resource type="PackedScene" uid="uid://bmcm0qoejulda" path="res://environment/teleporter/teleporter.tscn" id="13_hlnx3"]
 [ext_resource type="PackedScene" uid="uid://dx1jttysmunls" path="res://enemies/sphere/sphere.tscn" id="14_dp5o0"]
 [ext_resource type="Resource" uid="uid://dxd5oswmr1rfr" path="res://enemies/sphere/species/grunt_sphere.tres" id="22_pxy07"]
@@ -28,9 +29,6 @@ glow_enabled = true
 glow_intensity = 1.5
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_efxa6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m377s"]
-albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_3slpx"]
 length = 0.001
@@ -293,9 +291,9 @@ shape = SubResource("WorldBoundaryShape3D_efxa6")
 
 [node name="Ground" type="CSGBox3D" parent="LevelData" unique_id=1462739968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, -1, 0)
-material_override = SubResource("StandardMaterial3D_m377s")
 use_collision = true
 size = Vector3(500, 1, 100)
+material = ExtResource("4_tuwnn")
 
 [node name="Enemies" type="Node3D" parent="LevelData" unique_id=2099937265]
 
@@ -384,27 +382,44 @@ material_override = SubResource("StandardMaterial3D_kek77")
 use_collision = true
 size = Vector3(3, 5, 9)
 
-[node name="Building2TeleporterExit" parent="LevelData" unique_id=810522326 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+[node name="Building2TeleporterExit" parent="LevelData" unique_id=810522326 instance=ExtResource("13_hlnx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370, -0.5, -38)
-target_teleporter = NodePath("../DZMG/DZMGTeleporterEntry")
 
-[node name="DZMG" type="Node3D" parent="LevelData" unique_id=225832260]
+[node name="MovementGymContainer" type="Node3D" parent="LevelData" unique_id=225832260]
 
-[node name="DZMGTeleporterEntry" parent="LevelData/DZMG" unique_id=1951845624 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+[node name="TeleporterEntry" parent="LevelData/MovementGymContainer" unique_id=1951845624 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 5)
-target_teleporter = NodePath("../DZMGTeleporterExit")
-label_text = "Teleport to Distance Zoo & Movement Gym"
+target_teleporter = NodePath("../TeleporterExit")
+label_text = "Teleport to Movement Gym"
 
-[node name="Ground" type="CSGBox3D" parent="LevelData/DZMG" unique_id=123701465]
+[node name="TeleporterExit" parent="LevelData/MovementGymContainer" unique_id=606468088 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.5, 230)
+target_teleporter = NodePath("../TeleporterEntry")
+label_text = "Teleport back to main"
+
+[node name="Ground" type="CSGBox3D" parent="LevelData/MovementGymContainer" unique_id=123701465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 200)
-material_override = SubResource("StandardMaterial3D_m377s")
 use_collision = true
 size = Vector3(100, 1, 100)
+material = ExtResource("4_tuwnn")
 
-[node name="DistanceZooMovementGym" parent="LevelData/DZMG" unique_id=406319967 instance=ExtResource("8_ya36b")]
+[node name="MovementGym" parent="LevelData/MovementGymContainer" unique_id=406319967 instance=ExtResource("8_ya36b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 232.5)
 
-[node name="DZMGTeleporterExit" parent="LevelData/DZMG" unique_id=606468088 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.5, 230)
-target_teleporter = NodePath("../DZMGTeleporterEntry")
+[node name="AssetZooContainer" type="Node3D" parent="LevelData" unique_id=1109994234]
+
+[node name="TeleporterEntry" parent="LevelData/AssetZooContainer" unique_id=777582413 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.5, 5)
+target_teleporter = NodePath("../TeleporterExit")
+label_text = "Teleport to Asset Zoo"
+
+[node name="TeleporterExit" parent="LevelData/AssetZooContainer" unique_id=1462192031 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, -0.5, 230)
+target_teleporter = NodePath("../TeleporterEntry")
 label_text = "Teleport back to main"
+
+[node name="Ground" type="CSGBox3D" parent="LevelData/AssetZooContainer" unique_id=1916491388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, -1, 200)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = ExtResource("4_tuwnn")

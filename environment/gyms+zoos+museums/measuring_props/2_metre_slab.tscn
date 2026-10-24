@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbvuwykdi3ros"]
 
-[ext_resource type="Material" uid="uid://bw165jywuuyvu" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/materials/2_metre_slab.tres" id="1_6udvw"]
+[ext_resource type="Material" uid="uid://bw165jywuuyvu" path="res://environment/gyms+zoos+museums/measuring_props/2_metre_slab.tres" id="1_6udvw"]
 
 [node name="2MetreSlab" type="CSGBox3D" unique_id=870663662]
 use_collision = true

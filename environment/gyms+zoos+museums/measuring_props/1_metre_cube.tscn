@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://deqdrb033v5o7"]
 
-[ext_resource type="Material" uid="uid://tjwa6a8luii0" path="res://environment/gyms+zoos+museums/distance_zoo_movement_gym/materials/1_metre_cube.tres" id="1_nqcbp"]
+[ext_resource type="Material" uid="uid://tjwa6a8luii0" path="res://environment/gyms+zoos+museums/measuring_props/1_metre_cube.tres" id="1_nqcbp"]
 
 [node name="1MetreCube" type="CSGBox3D" unique_id=870663662]
 use_collision = true
