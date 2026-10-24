@@ -31,7 +31,7 @@ window/size/borderless=true
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
 [filesystem]
 
