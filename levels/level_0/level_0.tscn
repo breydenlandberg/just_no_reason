@@ -423,3 +423,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, -1, 200)
 use_collision = true
 size = Vector3(100, 1, 100)
 material = ExtResource("4_tuwnn")
+
+[node name="EnemyCombatMuseumContainer" type="Node3D" parent="LevelData" unique_id=2132446747]
+
+[node name="TeleporterEntry" parent="LevelData/EnemyCombatMuseumContainer" unique_id=1899013784 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 5)
+target_teleporter = NodePath("../TeleporterExit")
+label_text = "Teleport to Enemy Combat Museum"
+
+[node name="TeleporterExit" parent="LevelData/EnemyCombatMuseumContainer" unique_id=506385678 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 275, -0.5, 230)
+target_teleporter = NodePath("../TeleporterEntry")
+label_text = "Teleport back to main"
+
+[node name="Ground" type="CSGBox3D" parent="LevelData/EnemyCombatMuseumContainer" unique_id=1938812020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, -1, 200)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = ExtResource("4_tuwnn")
+
+[node name="VignetteMuseumContainer" type="Node3D" parent="LevelData" unique_id=12190809]
+
+[node name="TeleporterEntry" parent="LevelData/VignetteMuseumContainer" unique_id=1046711595 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.5, 5)
+target_teleporter = NodePath("../TeleporterExit")
+label_text = "Teleport to Vignette Museum"
+
+[node name="TeleporterExit" parent="LevelData/VignetteMuseumContainer" unique_id=116454157 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 425, -0.5, 230)
+target_teleporter = NodePath("../TeleporterEntry")
+label_text = "Teleport back to main"
+
+[node name="Ground" type="CSGBox3D" parent="LevelData/VignetteMuseumContainer" unique_id=1000588884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 450, -1, 200)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = ExtResource("4_tuwnn")
