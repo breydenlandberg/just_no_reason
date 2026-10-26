@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dxsryej3nlkg" path="res://levels/level.gd" id="1_v3mv3"]
 [ext_resource type="Material" uid="uid://c6v30peo0qbcu" path="res://environment/scaffolding/scaffolding_material.tres" id="3_j6sme"]
 [ext_resource type="Texture2D" uid="uid://bq1gb0px7oo1h" path="res://assets/textures/Day0.exr" id="3_l7xvt"]
+[ext_resource type="PackedScene" uid="uid://cidp4028jhbty" path="res://environment/experiment_terrain_3d/experiment_terrain_3d.scn" id="4_r5v0c"]
 [ext_resource type="Material" uid="uid://dwqwnrxiisdvd" path="res://assets/materials/black.tres" id="4_tuwnn"]
 [ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="5_3e5dw"]
 [ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="6_ti4gw"]
@@ -289,13 +290,16 @@ shape = SubResource("WorldBoundaryShape3D_efxa6")
 
 [node name="LevelData" type="Node3D" parent="." unique_id=1412284672]
 
+[node name="ExperimentTerrain3D" parent="LevelData" unique_id=856417913 instance=ExtResource("4_r5v0c")]
+
 [node name="Ground" type="CSGBox3D" parent="LevelData" unique_id=1462739968]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 750, -1, 0)
 use_collision = true
 size = Vector3(500, 1, 100)
 material = ExtResource("4_tuwnn")
 
 [node name="Enemies" type="Node3D" parent="LevelData" unique_id=2099937265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 550, 0, 0)
 
 [node name="FloatingEnemySphereGroup" type="Node3D" parent="LevelData/Enemies" unique_id=238213674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -120)
@@ -329,10 +333,10 @@ species = ExtResource("23_v3mv3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 
 [node name="WeaponRack" parent="LevelData" unique_id=894834646 instance=ExtResource("22_v3mv3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 550, 0.5, -10)
 
 [node name="Building2" type="Node3D" parent="LevelData" unique_id=1403035672]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 49.5, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 950, 49.5, -17)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelData/Building2" unique_id=112799481]
 material_override = ExtResource("3_j6sme")
@@ -383,9 +387,10 @@ use_collision = true
 size = Vector3(3, 5, 9)
 
 [node name="Building2TeleporterExit" parent="LevelData" unique_id=810522326 instance=ExtResource("13_hlnx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370, -0.5, -38)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 920, -0.5, -38)
 
 [node name="MovementGymContainer" type="Node3D" parent="LevelData" unique_id=225832260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 550, 0, 0)
 
 [node name="TeleporterEntry" parent="LevelData/MovementGymContainer" unique_id=1951845624 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 5)
@@ -407,6 +412,7 @@ material = ExtResource("4_tuwnn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 232.5)
 
 [node name="AssetZooContainer" type="Node3D" parent="LevelData" unique_id=1109994234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 550, 0, 0)
 
 [node name="TeleporterEntry" parent="LevelData/AssetZooContainer" unique_id=777582413 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.5, 5)
@@ -425,6 +431,7 @@ size = Vector3(100, 1, 100)
 material = ExtResource("4_tuwnn")
 
 [node name="EnemyCombatMuseumContainer" type="Node3D" parent="LevelData" unique_id=2132446747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 550, 0, 0)
 
 [node name="TeleporterEntry" parent="LevelData/EnemyCombatMuseumContainer" unique_id=1899013784 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 5)
@@ -443,6 +450,7 @@ size = Vector3(100, 1, 100)
 material = ExtResource("4_tuwnn")
 
 [node name="VignetteMuseumContainer" type="Node3D" parent="LevelData" unique_id=12190809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 550, 0, 0)
 
 [node name="TeleporterEntry" parent="LevelData/VignetteMuseumContainer" unique_id=1046711595 node_paths=PackedStringArray("target_teleporter") instance=ExtResource("13_hlnx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.5, 5)
