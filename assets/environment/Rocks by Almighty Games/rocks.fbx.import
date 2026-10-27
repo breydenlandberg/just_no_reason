@@ -1,0 +1,1102 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bk688lhcfjr0s"
+path="res://.godot/imported/rocks.fbx-2816721911b6ceeb26a96187e90a2b9a.scn"
+
+[deps]
+
+source_file="res://assets/environment/Rocks by Almighty Games/rocks.fbx"
+dest_files=["res://.godot/imported/rocks.fbx-2816721911b6ceeb26a96187e90a2b9a.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"meshes": {
+"debris1_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/debris1_dark.res",
+"save_to_file/path": "uid://deiune7g8w30e"
+},
+"debris1_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/debris1_light.res",
+"save_to_file/path": "uid://cjbbajwg3jlrc"
+},
+"debris1_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/debris1_medium.res",
+"save_to_file/path": "uid://d3swmy737c3qw"
+},
+"debris2_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/debris2_dark.res",
+"save_to_file/path": "uid://djfx25fa06x8s"
+},
+"debris2_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/debris2_light.res",
+"save_to_file/path": "uid://comjjkvf7mic2"
+},
+"debris2_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/debris2_medium.res",
+"save_to_file/path": "uid://dxutcfr3owtyb"
+},
+"pebbles1_caves_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles1_caves_dark.res",
+"save_to_file/path": "uid://b208rbgdtjb5m"
+},
+"pebbles1_caves_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles1_caves_light.res",
+"save_to_file/path": "uid://drsegw4xjf4mx"
+},
+"pebbles1_caves_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles1_caves_medium.res",
+"save_to_file/path": "uid://b5opoeu3edhct"
+},
+"pebbles1_dirt_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles1_dirt_dark.res",
+"save_to_file/path": "uid://ciidcj1a2un38"
+},
+"pebbles1_dirt_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles1_dirt_light.res",
+"save_to_file/path": "uid://dvufxh7ln8dff"
+},
+"pebbles1_dirt_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles1_dirt_medium.res",
+"save_to_file/path": "uid://b63vd23ceh2m5"
+},
+"pebbles2_caves_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles2_caves_dark.res",
+"save_to_file/path": "uid://d2xpdoo20ien2"
+},
+"pebbles2_caves_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles2_caves_light.res",
+"save_to_file/path": "uid://ywh1u37k4p18"
+},
+"pebbles2_caves_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles2_caves_medium.res",
+"save_to_file/path": "uid://creipdlvau52i"
+},
+"pebbles2_dirt_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles2_dirt_dark.res",
+"save_to_file/path": "uid://b6hfyib8kwb6s"
+},
+"pebbles2_dirt_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles2_dirt_light.res",
+"save_to_file/path": "uid://ca2owrpl7cank"
+},
+"pebbles2_dirt_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles2_dirt_medium.res",
+"save_to_file/path": "uid://c2u7lwoi13d67"
+},
+"pebbles3_caves_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles3_caves_dark.res",
+"save_to_file/path": "uid://dgqg7rk8mol4q"
+},
+"pebbles3_caves_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles3_caves_light.res",
+"save_to_file/path": "uid://cyvx5wwsp3g05"
+},
+"pebbles3_caves_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles3_caves_medium.res",
+"save_to_file/path": "uid://cyu4vydrlxthr"
+},
+"pebbles3_dirt_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles3_dirt_dark.res",
+"save_to_file/path": "uid://hf7dan41lc6m"
+},
+"pebbles3_dirt_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles3_dirt_light.res",
+"save_to_file/path": "uid://bvcdk2vy54i57"
+},
+"pebbles3_dirt_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles3_dirt_medium.res",
+"save_to_file/path": "uid://c5lvpkmco2ub3"
+},
+"pebbles4_caves_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles4_caves_dark.res",
+"save_to_file/path": "uid://dgnc3iokvbjsm"
+},
+"pebbles4_caves_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles4_caves_light.res",
+"save_to_file/path": "uid://bs4xgt1ietivr"
+},
+"pebbles4_caves_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles4_caves_medium.res",
+"save_to_file/path": "uid://dxycsbu07k1c2"
+},
+"pebbles4_dirt_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles4_dirt_dark.res",
+"save_to_file/path": "uid://b24oyeny4cppo"
+},
+"pebbles4_dirt_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles4_dirt_light.res",
+"save_to_file/path": "uid://b8b4kce3u1d0k"
+},
+"pebbles4_dirt_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/pebbles4_dirt_medium.res",
+"save_to_file/path": "uid://brucmqxxvctrm"
+},
+"rock10_cave_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock10_cave_dark.res",
+"save_to_file/path": "uid://cwevmc70nrsjb"
+},
+"rock10_cave_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock10_cave_light.res",
+"save_to_file/path": "uid://dnjverkh18nao"
+},
+"rock10_cave_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock10_cave_medium.res",
+"save_to_file/path": "uid://cdrocidyjkrhy"
+},
+"rock10_natural_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock10_natural_dark.res",
+"save_to_file/path": "uid://c6xdp0uq86chs"
+},
+"rock10_natural_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock10_natural_light.res",
+"save_to_file/path": "uid://egt6rpoibupo"
+},
+"rock10_natural_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock10_natural_medium.res",
+"save_to_file/path": "uid://bosx5r1gakoge"
+},
+"rock1_cave_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock1_cave_dark.res",
+"save_to_file/path": "uid://8ak5cfysnl1b"
+},
+"rock1_cave_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock1_cave_light.res",
+"save_to_file/path": "uid://dl04abaayp3ov"
+},
+"rock1_cave_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock1_cave_medium.res",
+"save_to_file/path": "uid://cffbuf13fjux0"
+},
+"rock1_natural_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock1_natural_dark.res",
+"save_to_file/path": "uid://dr3pn1uwpnbh2"
+},
+"rock1_natural_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock1_natural_light.res",
+"save_to_file/path": "uid://co13xow2dchtb"
+},
+"rock1_natural_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock1_natural_medium.res",
+"save_to_file/path": "uid://mf7t1xx1gb4j"
+},
+"rock2_cave_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock2_cave_dark.res",
+"save_to_file/path": "uid://c0lj2qpcvx666"
+},
+"rock2_cave_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock2_cave_light.res",
+"save_to_file/path": "uid://b8rlwlntjixyv"
+},
+"rock2_cave_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock2_cave_medium.res",
+"save_to_file/path": "uid://boi005rivj5fb"
+},
+"rock2_natural_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock2_natural_dark.res",
+"save_to_file/path": "uid://byrq632v7sjoj"
+},
+"rock2_natural_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock2_natural_light.res",
+"save_to_file/path": "uid://dlgo3r8mpc8tx"
+},
+"rock2_natural_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock2_natural_medium.res",
+"save_to_file/path": "uid://b73n8m2rrkx6o"
+},
+"rock3_cave_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock3_cave_dark.res",
+"save_to_file/path": "uid://b62wk8ftsa8ko"
+},
+"rock3_cave_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock3_cave_light.res",
+"save_to_file/path": "uid://dvxsrq6b4xy5c"
+},
+"rock3_cave_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock3_cave_medium.res",
+"save_to_file/path": "uid://svfy01ohxjb0"
+},
+"rock3_natural_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock3_natural_dark.res",
+"save_to_file/path": "uid://dvybrqgb464tn"
+},
+"rock3_natural_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock3_natural_light.res",
+"save_to_file/path": "uid://cc0h21ybj3k0k"
+},
+"rock3_natural_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock3_natural_medium.res",
+"save_to_file/path": "uid://dd2hso2hp0il1"
+},
+"rock4_cave_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock4_cave_dark.res",
+"save_to_file/path": "uid://b8y0yk07k628s"
+},
+"rock4_cave_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock4_cave_light.res",
+"save_to_file/path": "uid://cygdb4flkxok0"
+},
+"rock4_cave_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock4_cave_medium.res",
+"save_to_file/path": "uid://cx7ovmrxfljco"
+},
+"rock4_natural_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock4_natural_dark.res",
+"save_to_file/path": "uid://bjmddke6gdcnp"
+},
+"rock4_natural_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock4_natural_light.res",
+"save_to_file/path": "uid://b7wdlsyh2kom0"
+},
+"rock4_natural_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock4_natural_medium.res",
+"save_to_file/path": "uid://cg5xbx678vllc"
+},
+"rock5_cave_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock5_cave_dark.res",
+"save_to_file/path": "uid://b2ub4o1gbwau0"
+},
+"rock5_cave_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock5_cave_light.res",
+"save_to_file/path": "uid://xgu2redjxsnr"
+},
+"rock5_cave_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock5_cave_medium.res",
+"save_to_file/path": "uid://dvfrqrl1x8uf7"
+},
+"rock5_natural_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock5_natural_dark.res",
+"save_to_file/path": "uid://c5lful3ymqmoa"
+},
+"rock5_natural_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock5_natural_light.res",
+"save_to_file/path": "uid://bpgmi5l1ejgq8"
+},
+"rock5_natural_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock5_natural_medium.res",
+"save_to_file/path": "uid://dyxud0h0dtoeo"
+},
+"rock6_cave_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock6_cave_dark.res",
+"save_to_file/path": "uid://bywf2dospjuqq"
+},
+"rock6_cave_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock6_cave_light.res",
+"save_to_file/path": "uid://b6gn6xmxy7vlb"
+},
+"rock6_cave_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock6_cave_medium.res",
+"save_to_file/path": "uid://b50l103vil51k"
+},
+"rock6_natural_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock6_natural_dark.res",
+"save_to_file/path": "uid://fmy077ke2nk1"
+},
+"rock6_natural_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock6_natural_light.res",
+"save_to_file/path": "uid://ciqim4q343cnv"
+},
+"rock6_natural_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock6_natural_medium.res",
+"save_to_file/path": "uid://1pm30nxbbt43"
+},
+"rock7_cave_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock7_cave_dark.res",
+"save_to_file/path": "uid://dbc0f642egeab"
+},
+"rock7_cave_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock7_cave_light.res",
+"save_to_file/path": "uid://72rwfjtvng3i"
+},
+"rock7_cave_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock7_cave_medium.res",
+"save_to_file/path": "uid://d2cqhti3ydjna"
+},
+"rock7_natural_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock7_natural_dark.res",
+"save_to_file/path": "uid://ddt1vgtefp5s8"
+},
+"rock7_natural_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock7_natural_light.res",
+"save_to_file/path": "uid://bxpbriqnsgmp"
+},
+"rock7_natural_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock7_natural_medium.res",
+"save_to_file/path": "uid://d0yc5jgh4o2s4"
+},
+"rock8_cave_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock8_cave_dark.res",
+"save_to_file/path": "uid://0a0h1fy8drd6"
+},
+"rock8_cave_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock8_cave_light.res",
+"save_to_file/path": "uid://rhvow5la50xl"
+},
+"rock8_cave_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock8_cave_medium.res",
+"save_to_file/path": "uid://rlwdkatb26ds"
+},
+"rock8_natural_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock8_natural_dark.res",
+"save_to_file/path": "uid://dk6mca7ibbl0c"
+},
+"rock8_natural_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock8_natural_light.res",
+"save_to_file/path": "uid://bxx0htmhbhhlq"
+},
+"rock8_natural_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock8_natural_medium.res",
+"save_to_file/path": "uid://cf8gm3d3tcwn0"
+},
+"rock9_cave_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock9_cave_dark.res",
+"save_to_file/path": "uid://duxur6v1f4do4"
+},
+"rock9_cave_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock9_cave_light.res",
+"save_to_file/path": "uid://c4drx60u638ae"
+},
+"rock9_cave_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock9_cave_medium.res",
+"save_to_file/path": "uid://cimbyr7u3oqbg"
+},
+"rock9_natural_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock9_natural_dark.res",
+"save_to_file/path": "uid://by5gvp8ai313s"
+},
+"rock9_natural_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock9_natural_light.res",
+"save_to_file/path": "uid://c241rsretx0wf"
+},
+"rock9_natural_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rock9_natural_medium.res",
+"save_to_file/path": "uid://8luangotqpci"
+},
+"rockform_arch_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_arch_dark.res",
+"save_to_file/path": "uid://8cquj4sebmty"
+},
+"rockform_arch_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_arch_light.res",
+"save_to_file/path": "uid://kmc4qycu4ffo"
+},
+"rockform_arch_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_arch_medium.res",
+"save_to_file/path": "uid://csa2efgymbllh"
+},
+"rockform_column_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_column_dark.res",
+"save_to_file/path": "uid://clertpo5gsujf"
+},
+"rockform_column_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_column_light.res",
+"save_to_file/path": "uid://bseulwhygw1s1"
+},
+"rockform_column_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_column_medium.res",
+"save_to_file/path": "uid://dqbfngpfjggy6"
+},
+"rockform_corner_hard_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_corner_hard_dark.res",
+"save_to_file/path": "uid://by38kjgvi65i5"
+},
+"rockform_corner_hard_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_corner_hard_light.res",
+"save_to_file/path": "uid://bpq4oer0jdi4l"
+},
+"rockform_corner_hard_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_corner_hard_medium.res",
+"save_to_file/path": "uid://ceipl6e1mskv3"
+},
+"rockform_corner_soft_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_corner_soft_dark.res",
+"save_to_file/path": "uid://co6nbcx0lasrx"
+},
+"rockform_corner_soft_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_corner_soft_light.res",
+"save_to_file/path": "uid://cq14ro2jpq8ar"
+},
+"rockform_corner_soft_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_corner_soft_medium.res",
+"save_to_file/path": "uid://cs7hvr7uac3pq"
+},
+"rockform_wall_long_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_wall_long_dark.res",
+"save_to_file/path": "uid://clyaprouulttn"
+},
+"rockform_wall_long_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_wall_long_light.res",
+"save_to_file/path": "uid://c7briphc8gfa5"
+},
+"rockform_wall_long_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_wall_long_medium.res",
+"save_to_file/path": "uid://b1a3h3ex2fny7"
+},
+"rockform_wall_short1_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_wall_short1_dark.res",
+"save_to_file/path": "uid://doyai5jbctdu1"
+},
+"rockform_wall_short1_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_wall_short1_light.res",
+"save_to_file/path": "uid://bw4sb0iiidulf"
+},
+"rockform_wall_short1_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_wall_short1_medium.res",
+"save_to_file/path": "uid://bxww2ks5my756"
+},
+"rockform_wall_short2_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_wall_short2_dark.res",
+"save_to_file/path": "uid://btnwqlgwrmg3d"
+},
+"rockform_wall_short2_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_wall_short2_light.res",
+"save_to_file/path": "uid://cdbppex4h3pca"
+},
+"rockform_wall_short2_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockform_wall_short2_medium.res",
+"save_to_file/path": "uid://c8ua1uoydcuew"
+},
+"rockwall_corner_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockwall_corner_dark.res",
+"save_to_file/path": "uid://757rtw6a1os0"
+},
+"rockwall_corner_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockwall_corner_light.res",
+"save_to_file/path": "uid://cnl03bkycbvis"
+},
+"rockwall_corner_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockwall_corner_medium.res",
+"save_to_file/path": "uid://b0yxtbd06uidx"
+},
+"rockwall_straight_dark": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockwall_straight_dark.res",
+"save_to_file/path": "uid://bby6aku8buiy3"
+},
+"rockwall_straight_light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockwall_straight_light.res",
+"save_to_file/path": "uid://dqg7albusdnh0"
+},
+"rockwall_straight_medium": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/environment/Rocks by Almighty Games/meshes/rockwall_straight_medium.res",
+"save_to_file/path": "uid://dawsj6xjoqeli"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2
