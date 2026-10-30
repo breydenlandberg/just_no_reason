@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dxsryej3nlkg" path="res://levels/level.gd" id="1_v3mv3"]
 [ext_resource type="Material" uid="uid://c6v30peo0qbcu" path="res://environment/scaffolding/scaffolding_material.tres" id="3_j6sme"]
 [ext_resource type="Texture2D" uid="uid://bq1gb0px7oo1h" path="res://assets/textures/Day0.exr" id="3_l7xvt"]
-[ext_resource type="PackedScene" uid="uid://ctnkaj3meyqsd" path="res://environment/experiment_terrain_3d/experiment_terrain_3d.scn" id="4_r5v0c"]
+[ext_resource type="PackedScene" uid="uid://ds62a23attc1n" path="res://environment/experiment_terrain_3d/experiment_terrain_3d.scn" id="4_r5v0c"]
 [ext_resource type="Material" uid="uid://dwqwnrxiisdvd" path="res://assets/materials/black.tres" id="4_tuwnn"]
 [ext_resource type="Texture2D" uid="uid://c5olu1kfc4rhv" path="res://assets/textures/stone/green_tan_tiles.png" id="5_3e5dw"]
 [ext_resource type="Texture2D" uid="uid://c8vfm257wtpkm" path="res://assets/textures/stone/bluec.png" id="6_ti4gw"]
