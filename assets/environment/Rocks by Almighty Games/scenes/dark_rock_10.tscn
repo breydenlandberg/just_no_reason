@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://5bkhpu4u56fp"]
+
+[ext_resource type="ArrayMesh" uid="uid://cwevmc70nrsjb" path="res://assets/environment/Rocks by Almighty Games/meshes/rock10_cave_dark.res" id="1_xg04d"]
+
+[node name="DarkRock10" type="MeshInstance3D" unique_id=1727946692]
+mesh = ExtResource("1_xg04d")
